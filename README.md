@@ -7,18 +7,22 @@
 5. Formik
 6. Yup
 
-## Organize folders
+## Folder structure
 
 ```js
 src
 |__assets
 |  |__images
-|  |__styles  // global styles
+|  |__styles
 |__app
 |  |__store.js
-|__components // shared components
+|__components
 |  |__Header // navs, cart, account
 |  |__Footer // operating times, contacts, map
+|  |__NotFound
+|  |__SignIn
+|  |  |__Form
+|  |     |__FormInput
 |  |__PrRedBtn
 |__features
 |  |__Home
