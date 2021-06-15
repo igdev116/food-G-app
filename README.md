@@ -6,6 +6,7 @@
 4. Axios
 5. Formik
 6. Yup
+7. Swiper
 
 ## Folder structure
 
@@ -22,8 +23,8 @@ src
 |  |__NotFound
 |  |__PrRedBtn
 |  |__ShopProduct
+|  |__Firebase
 |  |__Auth
-|     |__Firebase
 |     |__SignIn
 |        |__Form
 |           |__FormInput
