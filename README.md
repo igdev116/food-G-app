@@ -1,4 +1,4 @@
-# What we use?
+## What we use?
 
 1. SCSS
 2. Material UI
@@ -7,7 +7,7 @@
 5. Formik
 6. Yup
 
-# Organize folders
+## Organize folders
 
 ```js
 src
