@@ -20,29 +20,30 @@ src
 |  |__Header // navs, cart, account
 |  |__Footer // operating times, contacts, map
 |  |__NotFound
-|  |__SignIn
-|  |  |__Form
-|  |     |__FormInput
 |  |__PrRedBtn
+|  |__ShopProduct
+|  |__Auth
+|     |__Firebase
+|     |__SignIn
+|        |__Form
+|           |__FormInput
 |__features
 |  |__Home
 |  |  |__components
-|  |  |  |__HomeBanners
-|  |  |  |  |__HomeFirstBanner
-|  |  |  |  |__HomeSecondBanner
-|  |  |  |  |__HomeThirdBanner
-|  |  |  |__HowItWorks
-|  |  |  |__HomeIngredients
-|  |  |  |__HomeCategories
-|  |  |  |__HomeDelivery
-|  |  |  |__HomeProducts
-|  |  |  |  |__HomeProduct
-|  |  |  |__HomePromotions
-|  |  |  |__HomeAnalysis
-|  |  |  |__HomeReviews
-|  |  |  |__HomeGallery
-|  |  |__pages
-|  |  |  |__HomePage
+|  |     |__HomeBanners
+|  |     |  |__HomeBannerSt
+|  |     |  |__HomeBannerNd
+|  |     |  |__HomeBannerRd
+|  |     |__HowItWorks
+|  |     |__HomeIngredients
+|  |     |__HomeCategories
+|  |     |__HomeDelivery
+|  |     |__HomeProducts
+|  |     |  |__HomeProduct
+|  |     |__HomePromotions
+|  |     |__HomeAnalysis
+|  |     |__HomeReviews
+|  |     |__HomeGallery
 |  |__Shop
 |  |  |__components
 |  |  |  |__ShopBanner
@@ -51,10 +52,7 @@ src
 |  |  |     |__ShopContent
 |  |  |     |  |__ShopHandlings // search, sort
 |  |  |     |  |__ShopProducts
-|  |  |     |     |__ShopProduct
 |  |  |     |__ShopContainer.js
 |  |  |     |__index.jsx // render
-|  |  |__pages
-|  |  |  |__ShopPage
 |  |  |__shopSlice.js
 ```
