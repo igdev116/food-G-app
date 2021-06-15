@@ -14,34 +14,43 @@ src
 |__assets
 |  |__images
 |  |__styles  // global styles
+|__app
+|  |__store.js
 |__components // shared components
-|  |__Header
-|  |  |__Navs
-|  |  |__Cart
-|  |  |__Account
-|  |__Footer
-|  |  |__OperatingTimes
-|  |  |__Contacts
-|  |  |__Map
+|  |__Header // navs, cart, account
+|  |__Footer // operating times, contacts, map
 |  |__PrRedBtn
 |__features
 |  |__Home
 |  |  |__components
-|  |  |  |__Banners
-|  |  |  |  |__FirstBanner
-|  |  |  |  |__SecondBanner
-|  |  |  |  |__ThirdBanner
+|  |  |  |__HomeBanners
+|  |  |  |  |__HomeFirstBanner
+|  |  |  |  |__HomeSecondBanner
+|  |  |  |  |__HomeThirdBanner
 |  |  |  |__HowItWorks
-|  |  |  |__Ingredients
-|  |  |  |__Categories
-|  |  |  |__Delivery
-|  |  |  |__Products
-|  |  |  |  |__Product
-|  |  |  |__Promotions
-|  |  |  |__Analysis
-|  |  |  |__Reviews
-|  |  |  |__Gallery
+|  |  |  |__HomeIngredients
+|  |  |  |__HomeCategories
+|  |  |  |__HomeDelivery
+|  |  |  |__HomeProducts
+|  |  |  |  |__HomeProduct
+|  |  |  |__HomePromotions
+|  |  |  |__HomeAnalysis
+|  |  |  |__HomeReviews
+|  |  |  |__HomeGallery
 |  |  |__pages
-|  |  |  |__HomePage.jsx // includes
-|  |  |__index.js
+|  |  |  |__HomePage
+|  |__Shop
+|  |  |__components
+|  |  |  |__ShopBanner
+|  |  |  |__ShopContainer
+|  |  |     |__ShopFilters // filter by types, prices, sizes, best deals
+|  |  |     |__ShopContent
+|  |  |     |  |__ShopHandlings // search, sort
+|  |  |     |  |__ShopProducts
+|  |  |     |     |__ShopProduct
+|  |  |     |__ShopContainer.js
+|  |  |     |__index.jsx // render
+|  |  |__pages
+|  |  |  |__ShopPage
+|  |  |__shopSlice.js
 ```
