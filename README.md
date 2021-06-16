@@ -12,9 +12,12 @@
 
 ```js
 src
+|__api
+|  |__Firebase
 |__assets
 |  |__images
 |  |__styles
+|  |__svgs
 |__app
 |  |__store.js
 |__components
@@ -23,11 +26,9 @@ src
 |  |__NotFound
 |  |__PrRedBtn
 |  |__ShopProduct
-|  |__Firebase
-|  |__Auth
-|     |__SignIn
-|        |__Form
-|           |__FormInput
+|  |__SignIn
+|  |  |__FormSignIn
+|  |     |__InputSignIn
 |__features
 |  |__Home
 |  |  |__components
@@ -56,4 +57,5 @@ src
 |  |  |     |__ShopContainer.js
 |  |  |     |__index.jsx // render
 |  |  |__shopSlice.js
+|__utils
 ```
