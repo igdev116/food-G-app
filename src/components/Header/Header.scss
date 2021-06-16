@@ -1,0 +1,85 @@
+@import "assets/styles/colors";
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: aqua;
+
+  &--left,
+  &--right {
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+    height: 6rem;
+  }
+
+  &__logo {
+    height: 100%;
+  }
+
+  &__list {
+    display: flex;
+    margin-left: 20px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    font-size: 1.6rem;
+    padding: 3px;
+    margin: 0 8px;
+
+    transition: 0.2s ease-out;
+
+    cursor: pointer;
+  }
+
+  &__item:hover {
+    color: $primary-red-color;
+  }
+
+  &__cart {
+    position: relative;
+    padding: 5px;
+
+    cursor: pointer;
+  }
+
+  &__cart > svg {
+    font-size: 2.8rem;
+  }
+
+  &__cart-qnt {
+    position: absolute;
+    bottom: 2px;
+    right: -6px;
+
+    font-size: 1.4rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    text-align: center;
+    border-radius: 50%;
+
+    color: $primary-white-color;
+    background-color: $primary-yellow-color;
+  }
+
+  &__account {
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+
+    cursor: pointer;
+  }
+
+  &__username {
+    font-size: 1.6rem;
+    margin-left: 8px;
+  }
+}
