@@ -3,26 +3,39 @@ import React from "react";
 import Home from "features/Home";
 import NotFound from "components/NotFound";
 
-import "./App.css";
-
 import {
   BrowserRouter as Router,
   Redirect,
   Route,
   Switch,
 } from "react-router-dom";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+
+import "./App.scss";
+
+const theme = createMuiTheme({
+  overrides: {
+    MuiContainer: {
+      root: {
+        padding: "0 75px !important",
+      },
+    },
+  },
+});
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Redirect exact from="/" to="/home" />
+    <ThemeProvider theme={theme}>
+      <Router>
+        <Switch>
+          <Redirect exact from="/" to="/home" />
 
-        <Route exact path="/home" component={Home} />
-        <Route exact path="/sign-in" component={Home} />
-        <Route component={NotFound} />
-      </Switch>
-    </Router>
+          <Route path="/home" component={Home} />
+          <Route path="/sign-in" component={Home} />
+          <Route component={NotFound} />
+        </Switch>
+      </Router>
+    </ThemeProvider>
   );
 }
 
