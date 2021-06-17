@@ -1,5 +1,6 @@
 ## What we use?
 
+```js
 1. SCSS
 2. Material UI
 3. React-router-dom
@@ -7,6 +8,9 @@
 5. Formik
 6. Yup
 7. Swiper
+8. Redux-toolkit
+9. Firebase
+```
 
 ## Folder structure
 
@@ -28,9 +32,6 @@ src
 |  |__ShopProduct
 |  |__PrRedBtn
 |  |__CusButtons
-|  |__SignIn
-|     |__FormSignIn
-|     |__FieldSignIn
 |__features
 |  |__Home
 |  |  |__components
@@ -59,5 +60,8 @@ src
 |  |  |     |__ShopContainer.js
 |  |  |     |__index.jsx // render
 |  |  |__shopSlice.js
+|  |__SignIn
+|     |__FormSignIn
+|     |__FieldSignIn
 |__utils
 ```
