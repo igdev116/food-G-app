@@ -65,3 +65,12 @@ src
 |     |__FieldSignIn
 |__utils
 ```
+
+## Progress
+
+```js
+14/06: Design the theme
+15/06: Analysis home page and shop page
+16/06: Make sign in interface
+17/06: Done sign in interface, banner and firebase auth
+```
