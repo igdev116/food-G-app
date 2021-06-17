@@ -2,7 +2,7 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 import { Avatar, Container } from "@material-ui/core";
-import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 
 import Logo from "assets/svgs/logo.svg";
@@ -36,8 +36,8 @@ function Header() {
 
         <div className="navbar--right">
           <div className="navbar__cart">
-            <AddShoppingCartIcon />
-            <span className="navbar__cart-qnt">0</span>
+            <ShoppingCartIcon />
+            <div className="navbar__cart-qnt">0</div>
           </div>
 
           <div className="navbar__account">
