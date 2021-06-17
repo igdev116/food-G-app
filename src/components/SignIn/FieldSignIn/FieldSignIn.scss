@@ -1,0 +1,37 @@
+@import "assets/styles/colors";
+
+.field-signin {
+  margin-bottom: 15px;
+
+  label {
+    font-size: 1.3rem;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    margin-top: 5px;
+
+    background-color: #f5f5f5;
+  }
+
+  &__wrapper svg {
+    width: 18px;
+    height: 18px;
+    margin: 0 8px;
+  }
+
+  input {
+    border: none;
+    outline: none;
+    flex: 1;
+    padding: 12px 0;
+
+    background-color: transparent;
+  }
+
+  input::placeholder {
+    color: $primary-grey-color;
+  }
+}

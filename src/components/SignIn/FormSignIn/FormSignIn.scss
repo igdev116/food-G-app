@@ -1,0 +1,21 @@
+@import "assets/styles/colors";
+
+.form {
+  margin-bottom: 15px;
+
+  &__commit {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+
+  &__commit-checkbox svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .signin-btn-wrapper {
+    text-align: center;
+  }
+}
