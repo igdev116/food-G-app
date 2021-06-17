@@ -20,15 +20,17 @@ src
 |  |__svgs
 |__app
 |  |__store.js
+|__constants
 |__components
 |  |__Header // navs, cart, account
 |  |__Footer // operating times, contacts, map
 |  |__NotFound
-|  |__PrRedBtn
 |  |__ShopProduct
+|  |__PrRedBtn
+|  |__CusButtons
 |  |__SignIn
-|  |  |__FormSignIn
-|  |     |__InputSignIn
+|     |__FormSignIn
+|     |__FieldSignIn
 |__features
 |  |__Home
 |  |  |__components
