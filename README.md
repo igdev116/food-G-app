@@ -1,6 +1,6 @@
 ## What we use?
 
-```js
+```
 1. SCSS
 2. Material UI
 3. React-router-dom
@@ -14,7 +14,7 @@
 
 ## Folder structure
 
-```js
+```
 src
 |__api
 |  |__Firebase
@@ -68,7 +68,7 @@ src
 
 ## Progress
 
-```js
+```
 14/06: Design the theme
 15/06: Analysis home page and shop page
 16/06: Make sign in interface
