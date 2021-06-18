@@ -73,4 +73,5 @@ src
 15/06: Analysis home page and shop page
 16/06: Make sign in interface
 17/06: Done sign in interface, banner and firebase auth
+18/06: Done sliders of banner
 ```
