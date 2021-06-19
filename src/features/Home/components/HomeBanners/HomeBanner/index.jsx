@@ -25,21 +25,20 @@ function HomeBanner(props) {
   const { title, description, strong, className } = props;
 
   return (
-    <>
-      <div className={`banner ${className}`}>
-        <div className="banner__container">
-          <div className="banner__title">{title}</div>
-          <div className="banner__description">
-            {description}
-            <strong>{strong}</strong>
-          </div>
-          <PrRedBtn>
-            <AddShoppingCartIcon class="banner__icon" />
-            Order now
-          </PrRedBtn>
+    <div className={`banner ${className}`}>
+      <div className="banner__container">
+        <div className="banner__title">{title}</div>
+        <div className="banner__description">
+          {description}
+          <strong>{strong}</strong>
         </div>
+
+        <PrRedBtn>
+          <AddShoppingCartIcon className="banner__icon" />
+          Order now
+        </PrRedBtn>
       </div>
-    </>
+    </div>
   );
 }
 
