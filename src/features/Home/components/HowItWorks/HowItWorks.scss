@@ -1,0 +1,102 @@
+@import "assets/styles/colors";
+
+$step-color: #ff514e;
+
+.how-work {
+  text-align: center;
+  margin: 110px 0;
+
+  &__steps {
+    display: flex;
+    margin-top: 50px;
+
+    justify-content: center;
+  }
+
+  &__step {
+    position: relative;
+
+    margin: 0 45px;
+  }
+
+  &__step:first-child {
+    margin-left: 0;
+  }
+
+  &__step:last-child {
+    margin-right: 0;
+  }
+
+  &__step:hover span {
+    border-color: $step-color;
+
+    color: $step-color;
+    background-color: $primary-white-color;
+  }
+
+  &__step:hover &__content {
+    color: $step-color;
+  }
+
+  &__thumb {
+    position: relative;
+  }
+
+  &__thumb:before {
+    content: "";
+    position: absolute;
+    right: -45%;
+    top: 50%;
+
+    height: 2.8rem;
+    width: 9rem;
+    transform: translateY(-50%);
+
+    background-repeat: no-repeat;
+  }
+
+  &__step:nth-child(1) &__thumb:before {
+    background: url("../../imgs/arrow-1.png");
+  }
+
+  &__step:nth-child(2) &__thumb:before {
+    background: url("../../imgs/arrow-2.png");
+  }
+
+  &__step:nth-child(3) &__thumb:before {
+    background: url("../../imgs/arrow-3.png");
+  }
+
+  &__thumb span {
+    position: absolute;
+    right: 0;
+
+    font-size: 1.3rem;
+    width: 6rem;
+    height: 6rem;
+    padding: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 50%;
+    border: 5px solid $primary-white-color;
+
+    color: $primary-white-color;
+    background-color: $step-color;
+
+    transition: all 0.25s ease;
+  }
+
+  &__img {
+    border: 15px solid $primary-white-color;
+    border-radius: 50%;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.06);
+  }
+
+  &__content {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: 25px;
+
+    transition: all 0.25s ease;
+  }
+}
