@@ -1,11 +1,20 @@
 @import "assets/styles/colors";
 
 .navbar {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  padding: 5px 205px;
+  margin-top: 5px;
 
-  background-color: aqua;
+  background-color: transparent;
+
+  transition: 0.2s ease-out;
 
   &--left,
   &--right {
@@ -18,21 +27,23 @@
   }
 
   &__logo {
-    height: 100%;
+    height: 5.3rem;
   }
 
   &__list {
     display: flex;
-    margin-left: 20px;
+    margin-left: 15px;
   }
 
   &__item {
     display: flex;
     align-items: center;
     list-style: none;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     padding: 3px;
     margin: 0 8px;
+
+    color: $primary-white-color;
 
     transition: 0.2s ease-out;
 
@@ -52,6 +63,8 @@
 
   &__cart > svg {
     font-size: 2.8rem;
+
+    color: $primary-white-color;
   }
 
   &__cart-qnt {
@@ -79,7 +92,15 @@
   }
 
   &__username {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     margin-left: 8px;
+
+    color: $primary-white-color;
+  }
+
+  &.active {
+    margin-top: 0;
+
+    background-color: $primary-black-color;
   }
 }
