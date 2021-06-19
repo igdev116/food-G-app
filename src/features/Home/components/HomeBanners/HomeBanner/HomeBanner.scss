@@ -1,0 +1,56 @@
+@import "assets/styles/colors";
+
+.banner {
+  height: 100vh;
+  flex-shrink: 0;
+  width: 100%;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &-st {
+    background-image: url("../../../../../assets/imgs/home-banner-st.jpg");
+  }
+
+  &-nd {
+    background-image: url("../../../../../assets/imgs/home-banner-nd.jpg");
+  }
+
+  &-rd {
+    background-image: url("../../../../../assets/imgs/home-banner-rd.jpg");
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+    height: 100%;
+    padding-left: 205px;
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    color: $primary-white-color;
+  }
+
+  &__description {
+    font-size: 7.2rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 5px 0 15px;
+
+    color: $primary-white-color;
+  }
+
+  &__icon {
+    margin-right: 5px;
+    width: 2.1rem;
+    height: 2.1rem;
+
+    fill: $primary-white-color;
+  }
+}

@@ -2,7 +2,7 @@ import React from "react";
 
 import Home from "features/Home";
 import NotFound from "components/NotFound";
-import SignIn from "components/SignIn";
+import SignIn from "features/SignIn";
 
 import {
   BrowserRouter as Router,

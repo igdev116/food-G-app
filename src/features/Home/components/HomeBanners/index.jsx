@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import HomeBanner from "./HomeBanner";
+import Momo, { MomoSlide } from "components/Momo";
 
 import "./HomeBanners.scss";
 

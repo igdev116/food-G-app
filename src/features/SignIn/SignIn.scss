@@ -1,8 +1,31 @@
 @import "assets/styles/colors";
 
+.signin-container {
+  display: flex;
+  flex: 1;
+  height: 70%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+
+  background-color: $primary-white-color;
+}
+
+.signin-thumb {
+  width: 55%;
+
+  background-image: url("../../assets/svgs/signin-thumb.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .signin {
-  width: 50%;
-  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 45%;
+  padding: 60px 50px;
 
   h2 {
     font-size: 2rem;
@@ -32,7 +55,6 @@
     width: 100%;
     top: 50%;
     left: 50%;
-    z-index: -1;
 
     transform: translate(-50%, -50%);
     text-align: center;
@@ -41,6 +63,9 @@
   }
 
   .signin__separate-text {
+    position: relative;
+    z-index: 1;
+
     font-size: 1.3rem;
     background-color: white;
     padding: 0 5px;
@@ -55,12 +80,13 @@
   }
 
   .signin-option {
-    padding: 10px;
+    padding: 10px 12px;
     font-size: 1.3rem;
     margin-top: 15px;
     text-transform: unset;
     color: inherit;
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 999px;
 
     background-color: #fff;
   }

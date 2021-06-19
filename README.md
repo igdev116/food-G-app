@@ -14,7 +14,7 @@
 
 ## Folder structure
 
-```
+```js
 src
 |__api
 |  |__Firebase
@@ -32,6 +32,7 @@ src
 |  |__ShopProduct
 |  |__PrRedBtn
 |  |__CusButtons
+|  |__Momo
 |__features
 |  |__Home
 |  |  |__components
@@ -72,6 +73,6 @@ src
 14/06: Design the theme
 15/06: Analysis home page and shop page
 16/06: Make sign in interface
-17/06: Done sign in interface, banner and firebase auth
-18/06: Done sliders of banner
+17/06: Done sign in, banner interface and firebase auth
+18/06: Done sliders for banner
 ```
