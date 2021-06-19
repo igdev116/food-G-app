@@ -1,0 +1,139 @@
+@import "assets/styles/colors";
+
+.ingredients {
+  height: 100vh;
+
+  &__thumb {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+
+    background-image: url("../../imgs/ingredients.jpg");
+    background-size: cover;
+  }
+
+  &__cards-left &__card:nth-child(2) {
+    transform: translateX(60px);
+  }
+
+  &__cards-right &__card:nth-child(2) {
+    transform: translateX(-60px);
+  }
+
+  &__cards-left &__card:nth-child(2):hover {
+    transform: translate(60px, -10px);
+  }
+
+  &__cards-right &__card:nth-child(2):hover {
+    transform: translate(-60px, -10px);
+  }
+
+  &__card {
+    position: relative;
+
+    flex: 1;
+    max-width: 38rem;
+    min-height: 18rem;
+    padding: 40px;
+    margin: 55px 0;
+    border-radius: 4px;
+    box-shadow: 1px 0 20px rgba(0, 0, 0, 0.2);
+
+    background-color: $primary-white-color;
+
+    transition: all 0.25s ease-in-out;
+
+    cursor: default;
+  }
+
+  &__card span {
+    position: absolute;
+    top: -20%;
+    left: 20px;
+
+    font-size: 2.2rem;
+    width: 6rem;
+    height: 6rem;
+    padding: 18px;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 1px 0 20px rgba(0, 0, 0, 0.12);
+
+    color: $primary-black-color;
+    background-color: $primary-white-color;
+  }
+
+  &__card:hover {
+    transform: translateY(-10px);
+    box-shadow: 1px 3px 20px rgba(0, 0, 0, 0.3);
+
+    background-color: $primary-red-color;
+  }
+
+  &__card:hover &__card-title,
+  &__card:hover &__card-content {
+    color: $primary-white-color;
+
+    transition: all 0.2s ease-in-out;
+  }
+
+  &__card-title {
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+
+    color: $primary-black-color;
+  }
+
+  &__card-content {
+    font-size: 1.4rem;
+    line-height: 1.6;
+
+    color: $primary-grey-color;
+  }
+
+  &__content {
+    text-align: center;
+  }
+
+  .pr-yellow-text {
+    margin-top: 20px;
+  }
+
+  &__food-name {
+    font-size: 3.6rem;
+    margin-top: 5px;
+  }
+
+  &__price {
+    font-size: 3.6rem;
+    margin: 5px 0 10px;
+  }
+
+  &__shape-st,
+  &__shape-nd {
+    position: absolute;
+    top: 50%;
+
+    width: 13rem;
+    height: 75%;
+    transform: translateY(-50%);
+
+    background-repeat: no-repeat;
+  }
+
+  &__shape-st {
+    left: 30%;
+
+    background-image: url("../../imgs/shape-2.png");
+  }
+
+  &__shape-nd {
+    right: 30%;
+
+    background-image: url("../../imgs/shape-1.png");
+  }
+}
