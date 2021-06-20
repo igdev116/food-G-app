@@ -36,20 +36,20 @@ src
 |__features
 |  |__Home
 |  |  |__components
-|  |     |__HomeBanners
-|  |     |  |__HomeBannerSt
-|  |     |  |__HomeBannerNd
-|  |     |  |__HomeBannerRd
-|  |     |__HowItWorks
-|  |     |__HomeIngredients
-|  |     |__HomeCategories
-|  |     |__HomeDelivery
-|  |     |__HomeProducts
-|  |     |  |__HomeProduct
-|  |     |__HomePromotions
-|  |     |__HomeAnalysis
-|  |     |__HomeReviews
-|  |     |__HomeGallery
+|  |  |  |__HomeBanners
+|  |  |  |  |__HomeBanner
+|  |  |  |__HowItWorks
+|  |  |  |__HomeIngredients
+|  |  |  |__HomeCategory
+|  |  |  |__HomeDelivery
+|  |  |  |__HomeProducts
+|  |  |  |  |__HomeProduct
+|  |  |  |__HomePromotions
+|  |  |  |__HomeAnalysis
+|  |  |  |__HomeReviews
+|  |  |  |__HomeGallery
+|  |  |__imgs
+|  |  |__svgs
 |  |__Shop
 |  |  |__components
 |  |  |  |__ShopBanner
@@ -62,17 +62,9 @@ src
 |  |  |     |__index.jsx // render
 |  |  |__shopSlice.js
 |  |__SignIn
-|     |__FormSignIn
-|     |__FieldSignIn
+|     |__components
+|     |  |__FormSignIn
+|     |  |__FieldSignIn
+|     |__svgs
 |__utils
-```
-
-## Progress
-
-```
-14/06: Design the theme
-15/06: Analysis home page and shop page
-16/06: Make sign in interface
-17/06: Done sign in, banner interface and firebase auth
-18/06: Done sliders for banner
 ```
