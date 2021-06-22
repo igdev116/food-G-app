@@ -9,15 +9,19 @@
   background-repeat: no-repeat;
 
   &-st {
-    background-image: url("../../../../../assets/imgs/home-banner-st.jpg");
+    background-image: url("../../../imgs/home-banner-st.jpg");
   }
 
   &-nd {
-    background-image: url("../../../../../assets/imgs/home-banner-nd.jpg");
+    background-image: url("../../../imgs/home-banner-nd.jpg");
   }
 
   &-rd {
-    background-image: url("../../../../../assets/imgs/home-banner-rd.jpg");
+    background-image: url("../../../imgs/home-banner-rd.jpg");
+  }
+
+  .container-ui {
+    height: 100%;
   }
 
   &__container {
@@ -26,7 +30,6 @@
     justify-content: center;
     width: 60%;
     height: 100%;
-    padding-left: 205px;
   }
 
   &__title {
@@ -46,10 +49,10 @@
     color: $primary-white-color;
   }
 
-  &__icon {
+  .pr-red-btn &__icon {
     margin-right: 5px;
-    width: 2.1rem;
-    height: 2.1rem;
+    width: 1.8rem;
+    height: 1.8rem;
 
     fill: $primary-white-color;
   }
