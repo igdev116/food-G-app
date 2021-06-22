@@ -1,0 +1,30 @@
+.bg-icon {
+  position: absolute;
+  z-index: -1;
+
+  &--float {
+    animation: float 2s infinite alternate;
+  }
+
+  &--scale {
+    animation: scale 2s infinite alternate;
+  }
+
+  @keyframes float {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-15px);
+    }
+  }
+
+  @keyframes scale {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.2);
+    }
+  }
+}
