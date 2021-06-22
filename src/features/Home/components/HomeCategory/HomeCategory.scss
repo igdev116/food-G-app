@@ -1,0 +1,140 @@
+@import "assets/styles/colors";
+
+.home-category {
+  text-align: center;
+  margin: 55px 0;
+
+  &__container {
+    border-radius: 10px;
+    padding-top: 50px;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.08);
+
+    background-color: $primary-white-color;
+  }
+
+  &__cards {
+    position: relative;
+
+    display: flex;
+    padding: 40px 0px 70px;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px;
+  }
+
+  &__card-img-wrapper {
+    width: 12rem;
+    height: 12rem;
+    border-radius: 5px;
+    margin-top: 10px;
+    box-shadow: 0 1px 12px rgba(0, 0, 0, 0.05);
+
+    background-color: $primary-white-color;
+
+    transition: all 0.3s;
+
+    cursor: default;
+  }
+
+  &__card:hover &__card-img-wrapper {
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  &__card-img {
+    width: 6rem;
+    height: 100%;
+
+    fill: $primary-red-color;
+  }
+
+  &__card-description {
+    margin-top: 20px;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+
+    transition: all 0.3s;
+
+    cursor: pointer;
+  }
+
+  &__card:hover &__card-description {
+    color: $primary-red-color;
+  }
+
+  // custom swiper
+  // .swiper-pagination-bullet {
+  //   position: relative;
+  //   content: "";
+  //   background-color: transparent;
+
+  //   width: 1.6rem;
+  //   height: 1.6rem;
+  //   border: 2px solid $primary-red-color;
+
+  //   &:before {
+  //     position: absolute;
+  //     content: "";
+  //     right: 0;
+  //     bottom: 0;
+
+  //     width: 1.35rem;
+  //     height: 1.35rem;
+  //     border-radius: 50%;
+  //     transform: translate(2px, 1px) scale(0.7);
+  //     opacity: 0;
+  //     transition: 0.3s ease-in-out;
+
+  //     background-color: $primary-red-color;
+  //   }
+
+  //   &-active:before {
+  //     opacity: 1;
+  //     transform: translate(2px, 1px) scale(1);
+  //   }
+  // }
+
+  .prev-btn,
+  .next-btn {
+    position: absolute;
+    top: 34%;
+    z-index: 999;
+
+    box-shadow: 0 1px 13px rgba(0, 0, 0, 0.08);
+    min-width: 3.5rem;
+    min-height: 3.5rem;
+
+    &:hover {
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+
+      background-color: $primary-red-color;
+    }
+
+    svg {
+      fill: rgba($primary-black-color, 0.7);
+    }
+
+    &:hover svg {
+      fill: $primary-white-color;
+    }
+  }
+
+  .prev-btn {
+    left: 7px;
+  }
+
+  .next-btn {
+    right: 7px;
+  }
+
+  .swiper-container {
+    position: static;
+
+    width: 90%;
+  }
+}
