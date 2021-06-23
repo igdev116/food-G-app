@@ -1,0 +1,16 @@
+@import "colors";
+@import url("https://fonts.googleapis.com/css2?family=Pangolin&display=swap");
+
+.pr-yellow-text {
+  font-size: 1.8rem;
+  font-family: "Pangolin", cursive;
+
+  color: $primary-yellow-color;
+}
+
+.pr-heading-text {
+  font-size: 3.6rem;
+  margin-top: 5px;
+
+  color: $primary-black-color;
+}

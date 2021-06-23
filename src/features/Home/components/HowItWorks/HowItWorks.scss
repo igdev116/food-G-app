@@ -4,7 +4,7 @@ $step-color: #ff514e;
 
 .how-work {
   text-align: center;
-  margin: 110px 0;
+  margin: 100px 0;
 
   &__steps {
     display: flex;
@@ -53,18 +53,6 @@ $step-color: #ff514e;
     transform: translateY(-50%);
 
     background-repeat: no-repeat;
-  }
-
-  &__step:nth-child(1) &__thumb:before {
-    background: url("../../imgs/arrow-1.png");
-  }
-
-  &__step:nth-child(2) &__thumb:before {
-    background: url("../../imgs/arrow-2.png");
-  }
-
-  &__step:nth-child(3) &__thumb:before {
-    background: url("../../imgs/arrow-3.png");
   }
 
   &__thumb span {

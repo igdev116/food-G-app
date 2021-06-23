@@ -1,14 +1,32 @@
 import React from "react";
 import "./HowItWorks.scss";
 
-import StepOne from "../../imgs/step-1.jpg";
-import StepTwo from "../../imgs/step-2.jpg";
-import StepThree from "../../imgs/step-3.jpg";
-import StepFour from "../../imgs/step-4.jpg";
-
 import { Container } from "@material-ui/core";
 
 import "assets/styles/_typography.scss";
+
+const data = [
+  {
+    img: "step-1.jpg",
+    step: "1",
+    content: "Choose Your Favorite",
+  },
+  {
+    img: "step-2.jpg",
+    step: "2",
+    content: "We Deliver Your Meals",
+  },
+  {
+    img: "step-3.jpg",
+    step: "3",
+    content: "Cash on Delivery",
+  },
+  {
+    img: "step-4.jpg",
+    step: "4",
+    content: "Eat And Enjoy",
+  },
+];
 
 function HowItWorks() {
   return (
@@ -18,34 +36,19 @@ function HowItWorks() {
         <h2 className="pr-heading-text">How it works</h2>
 
         <div className="how-work__steps">
-          <div className="how-work__step">
-            <div className="how-work__thumb">
-              <img className="how-work__img" src={StepOne} alt="steps" />
-              <span>01 Step</span>
+          {data.map(({ img, step, content }, index) => (
+            <div key={index} className="how-work__step">
+              <div className="how-work__thumb">
+                <img
+                  className="how-work__img"
+                  src={`/imgs/home/${img}`}
+                  alt="steps"
+                />
+                <span>0{step} Step</span>
+              </div>
+              <div className="how-work__content">{content}</div>
             </div>
-            <div className="how-work__content">Choose Your Favorite</div>
-          </div>
-          <div className="how-work__step">
-            <div className="how-work__thumb">
-              <img className="how-work__img" src={StepTwo} alt="steps" />
-              <span>02 Step</span>
-            </div>
-            <div className="how-work__content">We Deliver Your Meals</div>
-          </div>
-          <div className="how-work__step">
-            <div className="how-work__thumb">
-              <img className="how-work__img" src={StepThree} alt="steps" />
-              <span>03 Step</span>
-            </div>
-            <div className="how-work__content">Cash on Delivery</div>
-          </div>
-          <div className="how-work__step">
-            <div className="how-work__thumb">
-              <img className="how-work__img" src={StepFour} alt="steps" />
-              <span>04 Step</span>
-            </div>
-            <div className="how-work__content">Eat And Enjoy</div>
-          </div>
+          ))}
         </div>
       </Container>
     </section>

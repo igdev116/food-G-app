@@ -1,8 +1,10 @@
 @import "assets/styles/colors";
 
 .home-category {
+  position: relative;
+
   text-align: center;
-  margin: 55px 0;
+  margin: 100px 0;
 
   &__container {
     border-radius: 10px;

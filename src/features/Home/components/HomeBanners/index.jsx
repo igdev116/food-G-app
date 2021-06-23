@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
 import HomeBanner from "./HomeBanner";
-import Momo, { MomoSlide } from "components/Momo";
+
+import { Container } from "@material-ui/core";
 
 import "./HomeBanners.scss";
 
@@ -11,18 +12,21 @@ const datas = [
     title: "Enjoy your meal",
     description: "Good food is wise",
     strong: " medicine",
+    background: "banner-st.jpg",
   },
   {
     className: "banner-nd",
     title: "Happy your special",
     description: "Love at first",
     strong: " bite",
+    background: "banner-nd.jpg",
   },
   {
     className: "banner-rd",
     title: "Good food is good mood",
     description: "The belly rules the",
     strong: " mind",
+    background: "banner-rd.jpg",
   },
 ];
 
@@ -35,16 +39,15 @@ function HomeBanners() {
     } else {
       setSlideNum(0);
     }
-  }, 5000);
+  }, 6000);
 
   const moveDot = (idx) => {
     clearTimeout(timeWaiter);
-    console.log(timeWaiter);
     setSlideNum(idx);
   };
 
   return (
-    <div className="banners">
+    <section className="banners">
       <div
         className="slides"
         style={{ transform: `translateX(${-100 * slideNum}%)` }}
@@ -66,7 +69,7 @@ function HomeBanners() {
             );
           })}
       </div>
-    </div>
+    </section>
   );
 }
 

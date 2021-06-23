@@ -47,10 +47,13 @@ const rightCardDatas = [
 function HomeIngredients() {
   return (
     <section className="ingredients">
-      <div className="ingredients__thumb">
+      <div
+        className="ingredients__thumb"
+        style={{ backgroundImage: "url(/imgs/home/ingredients.jpg)" }}
+      >
         <div className="ingredients__cards-left">
-          {leftCardDatas.map(({ title, content, order }) => (
-            <div className="ingredients__card">
+          {leftCardDatas.map(({ title, content, order }, index) => (
+            <div key={index} className="ingredients__card">
               <h3 className="ingredients__card-title">{title}</h3>
               <p className="ingredients__card-content">{content}</p>
               <span>{order}</span>
@@ -58,22 +61,28 @@ function HomeIngredients() {
           ))}
         </div>
         <div className="ingredients__cards-right">
-          {rightCardDatas.map(({ title, content, order }) => (
-            <div className="ingredients__card">
+          {rightCardDatas.map(({ title, content, order }, index) => (
+            <div key={index} className="ingredients__card">
               <h3 className="ingredients__card-title">{title}</h3>
               <p className="ingredients__card-content">{content}</p>
               <span>{order}</span>
             </div>
           ))}
         </div>
-        <span className="ingredients__shape-st"></span>
-        <span className="ingredients__shape-nd"></span>
+        <span
+          className="ingredients__shape-st"
+          style={{ backgroundImage: "url(/imgs/home/shape-1.png)" }}
+        ></span>
+        <span
+          className="ingredients__shape-nd"
+          style={{ backgroundImage: "url(/imgs/home/shape-2.png)" }}
+        ></span>
       </div>
 
       <div className="ingredients__content">
         <div className="pr-yellow-text">Best food</div>
 
-        <h2 className="ingredients__food-name">
+        <h2 className="pr-heading-text">
           Super delicious Steak <strong>Hamburger</strong>
         </h2>
 

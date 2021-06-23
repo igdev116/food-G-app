@@ -7,7 +7,8 @@ const Theme = createMuiTheme({
   overrides: {
     MuiContainer: {
       root: {
-        padding: "0 75px !important",
+        paddingLeft: "75px !important",
+        paddingRight: "75px !important",
       },
     },
     MuiCheckbox: {

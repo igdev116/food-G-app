@@ -1,0 +1,53 @@
+@import "assets/styles/colors";
+
+.home-delivery {
+  margin-bottom: 80px;
+
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__col {
+    width: 40%;
+    margin-right: 50px;
+  }
+
+  &__description {
+    font-size: 1.4rem;
+    margin: 10px 0 20px;
+    line-height: 1.8;
+
+    color: $primary-black-color;
+  }
+
+  &__contact {
+    display: flex;
+    align-items: center;
+
+    &-col {
+      margin: 0 15px;
+    }
+
+    &-img {
+      width: 8.5rem;
+      transform: rotateY(180deg);
+    }
+
+    &-title {
+      font-size: 1.4rem;
+      line-height: 1.8;
+
+      color: $primary-black-color;
+    }
+
+    &-phone {
+      font-size: 1.4rem;
+    }
+  }
+
+  &__img {
+    min-width: 40%;
+    flex: 1;
+  }
+}
