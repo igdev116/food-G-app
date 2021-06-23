@@ -1,0 +1,224 @@
+@import "assets/styles/colors";
+
+.home-analysis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  min-height: 75rem;
+
+  background-position: center bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  &__video {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__video-content {
+    position: relative;
+
+    width: 17.5rem;
+    height: 17.5rem;
+    letter-spacing: 0.5px;
+
+    background-color: transparent;
+  }
+
+  &__video-content-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    transform: translate(-50%, -50%);
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+
+    background-color: $primary-white-color;
+
+    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  &__video-content:hover &__video-content-text {
+    background-color: $primary-red-color;
+  }
+
+  &__video-content-name {
+    font-size: 2.5rem;
+
+    color: $primary-grey-color;
+
+    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  &__video-content-price {
+    font-size: 5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+
+    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  &__video-content:hover &__video-content-name,
+  &__video-content:hover &__video-content-price {
+    color: $primary-white-color;
+  }
+
+  &__video-btn {
+    position: absolute;
+    right: 15px;
+    bottom: 5px;
+    z-index: 999;
+
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    transition: all 0.3s ease-in-out;
+
+    cursor: pointer;
+  }
+
+  &__video-btn:before,
+  &__video-btn:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+
+  &__video-btn:before {
+    z-index: 2;
+
+    background-color: $primary-red-color;
+
+    transition: all 0.3s ease-in-out;
+  }
+
+  &__video-content:hover &__video-btn:before {
+    background-color: $primary-yellow-color;
+  }
+
+  &__video-btn:after {
+    z-index: 1;
+
+    border: 2px solid $primary-red-color;
+
+    background-color: transparent;
+
+    animation: ripple 0.8s infinite ease-out;
+  }
+
+  &__video-content:hover &__video-btn:after {
+    border-color: $primary-yellow-color;
+  }
+
+  &__video-btn .triangle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid $primary-white-color;
+    transform: translate(-20%, -50%);
+
+    transition: all 0.2s ease-out;
+  }
+
+  .gooey {
+    position: absolute;
+
+    border-radius: 50%;
+
+    background-color: $primary-red-color;
+
+    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  .gooey:nth-of-type(1) {
+    top: 10%;
+    right: 20%;
+
+    width: 10rem;
+    height: 10rem;
+  }
+
+  .gooey:nth-of-type(2) {
+    bottom: 10%;
+    left: 10%;
+
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .gooey:nth-of-type(3) {
+    top: 10%;
+    left: 10%;
+
+    width: 7rem;
+    height: 7rem;
+  }
+
+  &__video-content:hover .gooey:nth-of-type(1) {
+    right: -30%;
+    top: 0%;
+  }
+
+  &__video-content:hover .gooey:nth-of-type(2) {
+    bottom: -20%;
+    left: -15%;
+  }
+
+  &__video-content:hover .gooey:nth-of-type(3) {
+    top: -15%;
+    left: -10%;
+  }
+
+  &__container {
+    padding: 80px 0;
+
+    background-color: $primary-red-color;
+  }
+
+  &__qnt {
+    font-size: 5rem;
+    font-weight: 600;
+
+    color: $primary-white-color;
+  }
+
+  &__description {
+    font-size: 2rem;
+
+    color: $primary-white-color;
+  }
+}
+
+@keyframes ripple {
+  from {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  to {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
