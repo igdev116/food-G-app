@@ -12,14 +12,14 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
 
-  &__video {
+  &__wrapper {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  &__video-content {
+  &__content {
     position: relative;
 
     width: 17.5rem;
@@ -29,11 +29,11 @@
     background-color: transparent;
   }
 
-  &__video-content-text {
+  &__content-text {
     position: absolute;
     top: 50%;
     left: 50%;
-    z-index: 999;
+    z-index: 1;
 
     width: 100%;
     height: 100%;
@@ -48,11 +48,11 @@
     transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
-  &__video-content:hover &__video-content-text {
+  &__content:hover &__content-text {
     background-color: $primary-red-color;
   }
 
-  &__video-content-name {
+  &__content-name {
     font-size: 2.5rem;
 
     color: $primary-grey-color;
@@ -60,7 +60,7 @@
     transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
-  &__video-content-price {
+  &__content-price {
     font-size: 5rem;
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -68,16 +68,16 @@
     transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
-  &__video-content:hover &__video-content-name,
-  &__video-content:hover &__video-content-price {
+  &__content:hover &__content-name,
+  &__content:hover &__content-price {
     color: $primary-white-color;
   }
 
-  &__video-btn {
+  &__btn {
     position: absolute;
     right: 15px;
     bottom: 5px;
-    z-index: 999;
+    z-index: 2;
 
     width: 4.5rem;
     height: 4.5rem;
@@ -89,8 +89,8 @@
     cursor: pointer;
   }
 
-  &__video-btn:before,
-  &__video-btn:after {
+  &__btn:before,
+  &__btn:after {
     position: absolute;
     content: "";
     left: 0;
@@ -103,7 +103,7 @@
     border-radius: 50%;
   }
 
-  &__video-btn:before {
+  &__btn:before {
     z-index: 2;
 
     background-color: $primary-red-color;
@@ -111,11 +111,11 @@
     transition: all 0.3s ease-in-out;
   }
 
-  &__video-content:hover &__video-btn:before {
+  &__content:hover &__btn:before {
     background-color: $primary-yellow-color;
   }
 
-  &__video-btn:after {
+  &__btn:after {
     z-index: 1;
 
     border: 2px solid $primary-red-color;
@@ -125,11 +125,11 @@
     animation: ripple 0.8s infinite ease-out;
   }
 
-  &__video-content:hover &__video-btn:after {
+  &__content:hover &__btn:after {
     border-color: $primary-yellow-color;
   }
 
-  &__video-btn .triangle {
+  &__btn .triangle {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -148,9 +148,13 @@
 
     border-radius: 50%;
 
-    background-color: $primary-red-color;
+    background-color: rgba($primary-red-color, 0.2);
 
-    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) 70ms;
+  }
+
+  &__content:hover .gooey {
+    background-color: $primary-red-color;
   }
 
   .gooey:nth-of-type(1) {
@@ -177,17 +181,17 @@
     height: 7rem;
   }
 
-  &__video-content:hover .gooey:nth-of-type(1) {
+  &__content:hover .gooey:nth-of-type(1) {
     right: -30%;
     top: 0%;
   }
 
-  &__video-content:hover .gooey:nth-of-type(2) {
+  &__content:hover .gooey:nth-of-type(2) {
     bottom: -20%;
     left: -15%;
   }
 
-  &__video-content:hover .gooey:nth-of-type(3) {
+  &__content:hover .gooey:nth-of-type(3) {
     top: -15%;
     left: -10%;
   }
@@ -209,6 +213,51 @@
     font-size: 2rem;
 
     color: $primary-white-color;
+  }
+
+  &__video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  &__video-container.show {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__modal {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  &__video-container &__video {
+    width: 50%;
+    height: 55%;
+    margin: auto;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: scale(0.3);
+    visibility: hidden;
+
+    transition: transform 0.35s ease-in-out;
+  }
+
+  &__video.show {
+    opacity: 1;
+    transform: scale(1);
+    visibility: visible;
   }
 }
 
