@@ -11,6 +11,7 @@
 8. Redux-toolkit
 9. Firebase
 10. Styled-component
+11. React-countup
 ```
 
 ## Folder structure
