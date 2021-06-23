@@ -10,6 +10,7 @@
 7. Swiper
 8. Redux-toolkit
 9. Firebase
+10. Styled-component
 ```
 
 ## Folder structure
@@ -33,6 +34,7 @@ src
 |  |__PrRedBtn
 |  |__CusButtons
 |  |__Momo
+|  |__BackgroundIcon
 |__features
 |  |__Home
 |  |  |__components
@@ -68,3 +70,5 @@ src
 |     |__svgs
 |__utils
 ```
+
+#FB4B4B
