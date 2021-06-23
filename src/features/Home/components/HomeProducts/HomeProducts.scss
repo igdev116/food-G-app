@@ -36,7 +36,7 @@
       width: 1.35rem;
       height: 1.35rem;
       border-radius: 50%;
-      transform: translate(2px, 1px) scale(0.7);
+      transform: translate(2.2px, 1.5px) scale(0.7);
       opacity: 0;
       transition: 0.3s ease-in-out;
 
@@ -45,7 +45,7 @@
 
     &-active:before {
       opacity: 1;
-      transform: translate(2px, 1px) scale(1);
+      transform: translate(2.2px, 1.5px) scale(1);
     }
   }
 }
