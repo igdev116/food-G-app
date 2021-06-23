@@ -2,16 +2,16 @@
 
 .home-product {
   text-align: center;
-  border: 1px dashed $primary-red-color;
   border-radius: 6px;
   overflow: hidden;
+
+  background-color: rgba(0, 0, 0, 0.01);
 
   transition: all 0.35s ease-in-out;
 
   cursor: default;
 
   &:hover {
-    border: 1px solid rgba($primary-red-color, 0.1);
     transform: translateY(-5px);
 
     background-color: rgba($primary-red-color, 0.25);
@@ -34,7 +34,7 @@
     width: 100%;
     height: 100%;
 
-    background-color: rgba($primary-red-color, 0.7);
+    background-color: rgba($primary-red-color, 0.75);
     clip-path: ellipse(70% 80% at 50% 13%);
 
     transition: all 0.35s ease-in-out;
