@@ -1,105 +1,134 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 
-import HomeCategoryDatas from "./HomeCategoryDatas";
+import BackgroundIcon from "components/BackgroundIcon";
+// import HomeCategoryData from "./HomeCategoryData";
 
-import { Container } from "@material-ui/core";
+// material ui
+import { Button, Container } from "@material-ui/core";
+import DoubleArrowIcon from "@material-ui/icons/DoubleArrow";
+
+// swiper js
+import SwiperCore, { Autoplay, Navigation } from "swiper/core";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper.scss";
+import "swiper/components/navigation/navigation.scss";
 
 import "assets/styles/_typography.scss";
 import "./HomeCategory.scss";
 
-let cardWidth; // get width of card
-// let datas = HomeCategoryDatas;
+// swiper modules
+SwiperCore.use([Autoplay, Navigation]);
+
+const data = [
+  {
+    img: "hamburger",
+    name: "breakfast",
+  },
+  {
+    img: "coffee",
+    name: "coffee",
+  },
+  {
+    img: "pork",
+    name: "pork ham",
+  },
+  {
+    img: "dinner",
+    name: "dinner",
+  },
+  {
+    img: "tea",
+    name: "tea",
+  },
+  {
+    img: "lunch",
+    name: "lunch",
+  },
+  {
+    img: "juice",
+    name: "juice",
+  },
+  {
+    img: "chicken",
+    name: "grilled chicken",
+  },
+  {
+    img: "beef",
+    name: "roast beef",
+  },
+];
 
 function HomeCategory() {
-  const datas =
-    HomeCategoryDatas.concat(HomeCategoryDatas).concat(HomeCategoryDatas);
-  const slidesLen = datas.length;
-  const middleSlide = slidesLen / 3;
-
-  const ref = useRef();
-  const slider = useRef();
-  const [cardWidth, setCardWidth] = useState(0);
-  const [movedSlide, setMovedSlide] = useState(middleSlide);
-  const [isBack, setIsBack] = useState(false);
-  const [index, setIndex] = useState(middleSlide);
-
-  const handlePrevSlider = () => {
-    setIndex((index - 1 + slidesLen) % slidesLen);
-    setMovedSlide(movedSlide - 1);
-
-    if (isBack) {
-      setIsBack(false);
-    }
-  };
-
-  const handleNextSlider = () => {
-    setIndex((index + 1 + slidesLen) % slidesLen);
-    setMovedSlide(movedSlide + 1);
-    console.log({ index });
-
-    if (isBack) {
-      setIsBack(false);
-    }
-  };
-
-  useEffect(() => {
-    setCardWidth(ref.current.getBoundingClientRect().width);
-  });
-
-  const timeWaiter = setTimeout(() => {
-    if (movedSlide === (slidesLen / 3) * 2 || movedSlide === 0) {
-      setIndex(middleSlide);
-      setMovedSlide(middleSlide);
-      setIsBack(true);
-      console.log("if:", index);
-    } else {
-      setIndex((index + 1 + slidesLen) % slidesLen);
-      setMovedSlide(movedSlide + 1);
-      setIsBack(false);
-      console.log("else:", index);
-    }
-  }, 1000);
-
-  const handleTransition = () => {
-    // handle slide back or next
-    if (movedSlide === (slidesLen / 3) * 2 || movedSlide === 0) {
-      setIndex(middleSlide);
-      setMovedSlide(middleSlide);
-      setIsBack(true);
-    }
-  };
-
   return (
     <section className="home-category">
-      <Container>
-        <div className="pr-yellow-text">What we have?</div>
-        <h2 className="pr-heading-text">Browse food category</h2>
+      <BackgroundIcon
+        index="0"
+        width="25"
+        top="-60"
+        left="-20"
+        type="float"
+        duration="3"
+      />
+      <BackgroundIcon
+        index="1"
+        width="15"
+        top="-85"
+        right="20"
+        type="scale"
+        duration="5"
+      />
+      <BackgroundIcon
+        index="2"
+        width="15"
+        top="60"
+        right="60"
+        type="float"
+        duration="2.5"
+        delay="1"
+      />
 
-        <div className="home-category__cards-wrapper">
-          <div
-            // onTransitionEnd={handleTransition}
-            ref={slider}
-            className="home-category__cards"
-            style={{
-              transform: `translateX(${
-                isBack ? -middleSlide * cardWidth : -index * cardWidth
-              }px)`,
-              transition: `${isBack ? "none" : "transform 0.15s"}`,
-            }}
-          >
-            {datas.map(({ svg, name }, index) => (
-              <div ref={ref} key={index} className="home-category__card">
-                <div className="home-category__card-img-wrapper">
-                  <img className="home-category__card-img" src={svg}></img>
-                </div>
-                <div className="home-category__card-description">{name}</div>
-              </div>
-            ))}
+      <Container>
+        <div className="home-category__container">
+          <div className="pr-yellow-text">What we have?</div>
+          <h2 className="pr-heading-text">Browse food category</h2>
+          <div className="home-category__cards">
+            <Swiper
+              slidesPerView={7}
+              loop
+              loopFillGroupWithBlank={true}
+              autoplay={{
+                delay: 1800,
+                disableOnInteraction: false,
+              }}
+              navigation={{
+                prevEl: ".prev-btn",
+                nextEl: ".next-btn",
+              }}
+            >
+              {data.map(({ img, name }, index) => (
+                <SwiperSlide key={index}>
+                  <div className="home-category__card">
+                    <div className="home-category__card-img-wrapper">
+                      <img
+                        className="home-category__card-img"
+                        src={`/svgs/home/${img}.svg`}
+                      />
+                    </div>
+                    <div className="home-category__card-description">
+                      {name}
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            <Button className="prev-btn">
+              <DoubleArrowIcon style={{ transform: "rotate(180deg)" }} />
+            </Button>
+            <Button className="next-btn">
+              <DoubleArrowIcon />
+            </Button>
           </div>
         </div>
-
-        {/* <button onClick={handlePrevSlider}>Prev</button> */}
-        {/* <button onClick={handleNextSlider}>Next</button> */}
       </Container>
     </section>
   );
