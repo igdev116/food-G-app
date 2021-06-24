@@ -1,22 +1,39 @@
 @import "assets/styles/colors";
+@import "assets/styles/mixins";
 
+// desktop
 .navbar {
   position: fixed;
   top: 0;
-  z-index: 999;
+  left: 0;
+  right: 0;
+  z-index: 998;
 
-  padding: 5px 0;
+  padding: 10px 0;
   margin-top: 5px;
   width: 100%;
 
-  background-color: transparent;
-
   transition: 0.2s ease-out;
+
+  .hamburger-btn {
+    display: none;
+    width: 3.3rem;
+    height: 3.3rem;
+
+    fill: $primary-white-color;
+
+    @include respond(mobile) {
+      display: block;
+    }
+  }
 
   &__container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+
+    @include respond(mobile) {
+      justify-content: space-between;
+    }
   }
 
   &--left,
@@ -25,12 +42,26 @@
     align-items: center;
   }
 
-  &__link {
-    height: 6rem;
+  &--left {
+    @include respond(mobile) {
+      display: none;
+    }
+  }
+
+  &--right {
+    margin-left: auto;
+
+    @include respond(mobile) {
+      margin-left: unset;
+    }
   }
 
   &__logo {
     height: 5.3rem;
+
+    @include respond(mobile) {
+      height: 4.5rem;
+    }
   }
 
   &__list {
@@ -42,7 +73,7 @@
     display: flex;
     align-items: center;
     list-style: none;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     padding: 3px;
     margin: 0 8px;
 
@@ -51,6 +82,12 @@
     transition: 0.2s ease-out;
 
     cursor: pointer;
+  }
+
+  &__item svg {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 5px;
   }
 
   &__item:hover {
@@ -92,10 +129,14 @@
     margin-left: 40px;
 
     cursor: pointer;
+
+    @include respond(mobile) {
+      display: none;
+    }
   }
 
   &__username {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     margin-left: 8px;
 
     color: $primary-white-color;
@@ -105,5 +146,90 @@
     margin-top: 0;
 
     background-color: $primary-black-color;
+  }
+}
+
+// mobile
+.hamburger-nav {
+  @include respond(desktop) {
+    display: none;
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+
+    background-color: rgba(0, 0, 0, 0.3);
+
+    transition: opacity 0.3s ease;
+  }
+
+  &__overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 999;
+
+    height: 100%;
+    width: 80%;
+    padding: 10px 12px;
+    transform: translateX(-100%);
+
+    background-color: rgba(0, 0, 0, 0.97);
+
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  }
+
+  &__content.active {
+    transform: translateX(0);
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+    line-height: 1.7;
+    padding: 10px 0;
+    margin: 2px 0;
+
+    color: $primary-white-color;
+  }
+
+  &__item svg {
+    width: 2.2rem;
+    height: 2.2rem;
+    margin-right: 8px;
+  }
+
+  &__account {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba($primary-white-color, 0.2);
+  }
+
+  &__account &__icon {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  &__username {
+    font-size: 1.4rem;
+    margin-left: 8px;
+
+    color: $primary-white-color;
   }
 }
