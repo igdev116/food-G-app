@@ -12,6 +12,7 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import YouTubeIcon from "@material-ui/icons/YouTube";
+import LinearScaleIcon from "@material-ui/icons/LinearScale";
 
 import "./Footer.scss";
 
@@ -20,7 +21,7 @@ function Footer() {
     <footer className="footer">
       <Container>
         <Grid container spacing={8}>
-          <Grid item sm={4}>
+          <Grid item xs={12} md={6} lg={4}>
             <div className="footer__time">
               <div className="col">
                 <span className="footer__time-day">Sunday</span>
@@ -31,12 +32,12 @@ function Footer() {
                 <span className="footer__time-day">Saturday</span>
               </div>
               <div className="col">
-                <span className="footer__time-dots">........</span>
-                <span className="footer__time-dots">........</span>
-                <span className="footer__time-dots">........</span>
-                <span className="footer__time-dots">........</span>
-                <span className="footer__time-dots">........</span>
-                <span className="footer__time-dots">........</span>
+                <LinearScaleIcon className="footer__time-dots" />
+                <LinearScaleIcon className="footer__time-dots" />
+                <LinearScaleIcon className="footer__time-dots" />
+                <LinearScaleIcon className="footer__time-dots" />
+                <LinearScaleIcon className="footer__time-dots" />
+                <LinearScaleIcon className="footer__time-dots" />
               </div>
               <div className="col">
                 <span className="footer__time-hours">Closed</span>
@@ -49,7 +50,7 @@ function Footer() {
             </div>
           </Grid>
 
-          <Grid item sm={4}>
+          <Grid item xs={12} md={6} lg={4}>
             <div className="footer__contacts">
               <h4 className="footer__contact-title">Address</h4>
 
@@ -66,7 +67,7 @@ function Footer() {
               <div className="footer__contact">
                 <BusinessOutlinedIcon className="footer__contact-icon" />
                 <span className="footer__contact-txt">
-                  855 Road, Brooklyn Street New York 600
+                  855 Hoi An, Viet Nam
                 </span>
               </div>
               <div className="footer__contact footer__contact--icons">
@@ -78,13 +79,13 @@ function Footer() {
             </div>
           </Grid>
 
-          <Grid item sm={4}>
+          <Grid item xs={12} md={6} lg={4}>
             <div className="footer__map">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1864.0568347757392!2d108.34615808661933!3d15.890428922499089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31420d9e24aab795%3A0x28e64d847e6eba35!2sHoi%20An%20Golden%20Rice%20Villa!5e0!3m2!1sen!2s!4v1624506959425!5m2!1sen!2s"
                 // width="600"
                 style={{ border: 0, width: "100%", height: "100%" }}
-                allowfullscreen="true"
+                allowFullScreen={true}
                 loading="lazy"
                 scrolling="auto"
               ></iframe>
