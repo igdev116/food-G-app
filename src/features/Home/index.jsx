@@ -7,6 +7,8 @@ import HomeIngredients from "./components/HomeIngredients";
 import HomeCategory from "./components/HomeCategory";
 import HomeDelivery from "./components/HomeDelivery";
 import HomeProducts from "./components/HomeProducts";
+import HomeAnalysis from "./components/HomeAnalysis";
+import HomeReview from "./components/HomeReview";
 
 import auth from "api/Firebase";
 
@@ -20,6 +22,8 @@ function Home() {
       <HomeCategory />
       <HomeDelivery />
       <HomeProducts />
+      <HomeAnalysis />
+      <HomeReview />
     </>
   );
 }

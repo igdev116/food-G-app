@@ -3,6 +3,7 @@ import React from "react";
 import Home from "features/Home";
 import NotFound from "components/NotFound";
 import SignIn from "features/SignIn";
+import Footer from "components/Footer";
 
 import {
   BrowserRouter as Router,
@@ -27,6 +28,7 @@ function App() {
           <Route component={NotFound} />
         </Switch>
       </Router>
+      <Footer />
     </ThemeProvider>
   );
 }

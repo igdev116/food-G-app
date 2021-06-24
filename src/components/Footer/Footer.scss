@@ -1,0 +1,93 @@
+@import "assets/styles/colors";
+
+.footer {
+  padding: 100px 0 85px;
+
+  background-color: rgba(0, 0, 0, 0.87);
+
+  .col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  &__time-day,
+  &__time-dots,
+  &__time-hours {
+    line-height: 2.3;
+  }
+
+  &__time {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__time-day {
+    font-size: 1.6rem;
+
+    color: $primary-white-color;
+  }
+
+  &__time-dots {
+    color: $primary-white-color;
+  }
+
+  &__time-hours {
+    font-size: 1.6rem;
+    // font-weight: 500;
+
+    color: $primary-yellow-color;
+  }
+
+  &__contact {
+    display: flex;
+    align-items: center;
+    line-height: 2.3;
+  }
+
+  &__contact-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+
+    color: $primary-white-color;
+  }
+
+  &__contact &__contact-icon {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 10px;
+
+    fill: $primary-yellow-color;
+  }
+
+  &__contact-txt {
+    font-size: 1.6rem;
+
+    color: $primary-white-color;
+
+    transition: color 0.2s ease-in-out;
+  }
+
+  &__contact-txt:hover {
+    color: $primary-yellow-color;
+
+    cursor: pointer;
+  }
+
+  &__contact--icons {
+    margin-top: 10px;
+  }
+
+  &__contact--icons svg {
+    width: 2.3rem;
+    height: 2.3rem;
+    margin-right: 12px;
+
+    cursor: pointer;
+  }
+
+  &__map {
+    width: 100%;
+    height: 100%;
+  }
+}

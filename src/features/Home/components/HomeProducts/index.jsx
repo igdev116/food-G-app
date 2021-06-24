@@ -89,7 +89,7 @@ function HomeProducts() {
             }}
           >
             {data.map(({ img, name, description, price }, index) => (
-              <SwiperSlide>
+              <SwiperSlide key={index}>
                 <HomeProduct
                   img={img}
                   name={name}

@@ -47,7 +47,7 @@ src
 |  |  |  |__HomeDelivery
 |  |  |  |__HomeProducts
 |  |  |  |  |__HomeProduct
-|  |  |  |__HomePromotions
+|  |  |  |__HomePromotions // don't
 |  |  |  |__HomeAnalysis
 |  |  |  |__HomeReviews
 |  |  |  |__HomeGallery
