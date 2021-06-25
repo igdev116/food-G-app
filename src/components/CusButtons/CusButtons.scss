@@ -1,4 +1,5 @@
 @import "assets/styles/colors";
+@import "assets/styles/mixins";
 
 .pr-red-btn {
   .btn {
@@ -11,6 +12,11 @@
 
     background-color: $primary-red-color;
     color: $primary-white-color;
+
+    @include respond(mobile) {
+      padding: 8px 13px;
+      font-size: 1rem;
+    }
   }
 
   .btn:hover {
