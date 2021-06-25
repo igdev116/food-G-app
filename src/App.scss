@@ -1,4 +1,5 @@
 @import "assets/styles/colors";
+@import "assets/styles/mixins";
 
 *,
 *::before,
@@ -23,6 +24,18 @@ body {
 
   color: rgba(0, 0, 0, 0.85);
   background-color: $primary-white-color;
+
+  .MuiContainer-root {
+    padding: 0 75px;
+
+    @include respond(mobile) {
+      padding: 0 20px;
+    }
+  }
+
+  .MuiCheckbox-root {
+    padding: 3px;
+  }
 }
 
 img {
@@ -40,4 +53,6 @@ a {
 button {
   outline: 0;
   border: none;
+
+  cursor: pointer;
 }
