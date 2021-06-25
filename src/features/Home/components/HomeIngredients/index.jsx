@@ -62,7 +62,7 @@ function HomeIngredients() {
         className="ingredients__thumb"
         style={{
           backgroundImage: `${
-            hasBackground ? "url(/imgs/home/ingredients.jpg)" : "none"
+            hasBackground ? "url(/imgs/Home/ingredients.jpg)" : "none"
           }`,
         }}
       >
@@ -86,11 +86,11 @@ function HomeIngredients() {
         </div>
         <span
           className="ingredients__shape-st"
-          style={{ backgroundImage: "url(/imgs/home/shape-1.png)" }}
+          style={{ backgroundImage: "url(/imgs/Home/shape-1.png)" }}
         ></span>
         <span
           className="ingredients__shape-nd"
-          style={{ backgroundImage: "url(/imgs/home/shape-2.png)" }}
+          style={{ backgroundImage: "url(/imgs/Home/shape-2.png)" }}
         ></span>
       </div>
 

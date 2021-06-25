@@ -1,6 +1,12 @@
+@import "assets/styles/mixins";
+
 .bg-icon {
   position: absolute;
   z-index: -1;
+
+  @include respond(mobile) {
+    display: none;
+  }
 
   &--float {
     animation: float 2s infinite alternate;

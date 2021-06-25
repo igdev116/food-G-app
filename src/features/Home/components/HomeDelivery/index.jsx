@@ -25,7 +25,7 @@ function HomeDelivery() {
             </p>
             <div className="home-delivery__contact">
               <img
-                src="/svgs/home/small-delivery.svg"
+                src="/svgs/Home/small-delivery.svg"
                 className="home-delivery__contact-img"
               ></img>
               <div className="home-delivery__contact-col">
@@ -40,7 +40,7 @@ function HomeDelivery() {
             </div>
           </div>
           <img
-            src="/svgs/home/big-delivery.svg"
+            src="/svgs/Home/big-delivery.svg"
             className="home-delivery__img"
           />
         </div>

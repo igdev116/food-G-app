@@ -118,7 +118,7 @@ function HomeCategory() {
                     <div className="home-category__card-img-wrapper">
                       <img
                         className="home-category__card-img"
-                        src={`/svgs/home/${img}.svg`}
+                        src={`/svgs/Home/${img}.svg`}
                       />
                     </div>
                     <div className="home-category__card-description">

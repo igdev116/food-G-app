@@ -47,6 +47,7 @@ $step-color: #ff514e;
 
   &__thumb-wrapper {
     position: relative;
+
     display: inline-block;
   }
 
@@ -98,5 +99,9 @@ $step-color: #ff514e;
     margin-top: 25px;
 
     transition: all 0.25s ease;
+
+    @include respond(phone) {
+      margin-top: 20px;
+    }
   }
 }

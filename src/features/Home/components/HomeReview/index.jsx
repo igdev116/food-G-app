@@ -89,6 +89,7 @@ function HomeReview() {
       <Container>
         <Swiper
           speed={500}
+          spaceBetween={20}
           loop
           grabCursor={true}
           pagination={{ clickable: true }}

@@ -95,7 +95,6 @@
     cursor: default;
 
     @include respond(tablet) {
-      // max-width: 33rem;
       min-height: 15rem;
       padding: 40px 30px;
     }
@@ -122,6 +121,13 @@
 
     color: $primary-black-color;
     background-color: $primary-white-color;
+  }
+
+  @include respond(mobile) {
+    &__cards-right span {
+      right: 20px;
+      left: unset;
+    }
   }
 
   &__card:hover {

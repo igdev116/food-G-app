@@ -26,11 +26,21 @@
     line-height: 1.8;
 
     color: $primary-black-color;
+
+    @include respond(phone) {
+      margin: 15px 0 25px;
+      overflow: hidden;
+      display: block;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
   }
 
   &__contact {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 
     &-col {
       margin: 0 15px;
@@ -39,6 +49,12 @@
     &-img {
       width: 8.5rem;
       transform: rotateY(180deg);
+    }
+
+    &-img {
+      @include respond(mobile) {
+        width: 7rem;
+      }
     }
 
     &-title {

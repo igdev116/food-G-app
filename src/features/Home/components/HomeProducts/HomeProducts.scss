@@ -5,12 +5,16 @@
   margin-bottom: 80px;
   text-align: center;
 
+  @include respond(mobile) {
+    margin-bottom: 50px;
+  }
+
   &__container {
     display: flex;
     margin-top: 35px;
 
     @include respond(mobile) {
-      margin-top: 20px;
+      margin-top: 10px;
     }
   }
 

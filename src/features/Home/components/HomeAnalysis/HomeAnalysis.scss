@@ -1,4 +1,5 @@
 @import "assets/styles/colors";
+@import "assets/styles/mixins";
 
 .home-analysis {
   display: flex;
@@ -11,6 +12,10 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+
+  @include respond(mobile) {
+    min-height: 60rem;
+  }
 
   &__wrapper {
     flex: 1;
@@ -27,6 +32,11 @@
     letter-spacing: 0.5px;
 
     background-color: transparent;
+
+    @include respond(mobile) {
+      width: 13.5rem;
+      height: 13.5rem;
+    }
   }
 
   &__content-text {
@@ -58,6 +68,10 @@
     color: $primary-grey-color;
 
     transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    @include respond(mobile) {
+      font-size: 1.8rem;
+    }
   }
 
   &__content-price {
@@ -66,6 +80,10 @@
     letter-spacing: 0.5px;
 
     transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    @include respond(mobile) {
+      font-size: 4.2rem;
+    }
   }
 
   &__content:hover &__content-name,
@@ -87,6 +105,14 @@
     transition: all 0.3s ease-in-out;
 
     cursor: pointer;
+
+    @include respond(mobile) {
+      width: 3.8rem;
+      height: 3.8rem;
+
+      right: 18px;
+      bottom: -3px;
+    }
   }
 
   &__btn:before,
@@ -163,6 +189,11 @@
 
     width: 10rem;
     height: 10rem;
+
+    @include respond(mobile) {
+      width: 7.5rem;
+      height: 7.5rem;
+    }
   }
 
   .gooey:nth-of-type(2) {
@@ -171,6 +202,11 @@
 
     width: 5rem;
     height: 5rem;
+
+    @include respond(mobile) {
+      width: 4rem;
+      height: 4rem;
+    }
   }
 
   .gooey:nth-of-type(3) {
@@ -179,27 +215,48 @@
 
     width: 7rem;
     height: 7rem;
+
+    @include respond(mobile) {
+      width: 6rem;
+      height: 6rem;
+    }
   }
 
   &__content:hover .gooey:nth-of-type(1) {
     right: -30%;
     top: 0%;
+
+    @include respond(mobile) {
+      right: -20%;
+    }
   }
 
   &__content:hover .gooey:nth-of-type(2) {
     bottom: -20%;
     left: -15%;
+
+    @include respond(mobile) {
+      left: -15%;
+    }
   }
 
   &__content:hover .gooey:nth-of-type(3) {
     top: -15%;
     left: -10%;
+
+    @include respond(mobile) {
+      left: -8%;
+    }
   }
 
   &__container {
     padding: 80px 0;
 
     background-color: $primary-red-color;
+
+    @include respond(mobile) {
+      padding: 30px 0;
+    }
   }
 
   &__qnt {
@@ -207,12 +264,28 @@
     font-weight: 600;
 
     color: $primary-white-color;
+
+    @include respond(tablet) {
+      font-size: 3.2rem;
+    }
+
+    @include respond(phone) {
+      font-size: 2.8rem;
+    }
   }
 
   &__description {
     font-size: 2rem;
 
     color: $primary-white-color;
+
+    @include respond(tablet) {
+      font-size: 1.6rem;
+    }
+
+    @include respond(phone) {
+      font-size: 1.4rem;
+    }
   }
 
   &__video-container {
@@ -252,6 +325,7 @@
     visibility: hidden;
 
     transition: transform 0.35s ease-in-out;
+    will-change: all;
   }
 
   &__video.show {

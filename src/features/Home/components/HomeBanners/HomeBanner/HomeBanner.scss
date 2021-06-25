@@ -61,5 +61,11 @@
     height: 1.8rem;
 
     fill: $primary-white-color;
+
+    @include respond(mobile) {
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-right: 3px;
+    }
   }
 }

@@ -15,7 +15,7 @@ import "./FormSignIn.scss";
 
 function FormSignIn() {
   return (
-    <form className="form">
+    <form className="form-signin">
       <FieldSignIn
         icon={<MailOutlineIcon />}
         type="text"
@@ -30,18 +30,9 @@ function FormSignIn() {
         placeholder="Your password"
       />
 
-      <div className="form__commit">
-        <Checkbox color="primary" className="form__commit-checkbox" />
-        <span>
-          I agree Platform's{" "}
-          <Link to="#">
-            <strong>Terms of Service</strong>
-          </Link>{" "}
-          and{" "}
-          <Link to="#">
-            <strong>Privacy Policy</strong>
-          </Link>
-        </span>
+      <div className="form-signin__commit">
+        <Checkbox color="primary" className="form-signin__commit-checkbox" />
+        <span>Save your password</span>
       </div>
 
       <div className="signin-btn-wrapper">

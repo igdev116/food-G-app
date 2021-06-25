@@ -136,6 +136,10 @@
   &__name {
     font-size: 2.2rem;
     margin: 10px 0;
+
+    @include respond(mobile) {
+      font-size: 1.8rem;
+    }
   }
 
   &__description {
@@ -144,6 +148,15 @@
     color: $primary-grey-color;
 
     transition: all 0.2s ease-out;
+
+    @include respond(mobile) {
+      font-size: 1.35rem;
+      overflow: hidden;
+      display: block;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
   }
 
   &:hover &__description {

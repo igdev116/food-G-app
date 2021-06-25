@@ -1,10 +1,15 @@
 @import "assets/styles/colors";
+@import "assets/styles/mixins";
 
 .home-review {
   position: relative;
 
   margin: 80px 0;
   text-align: center;
+
+  @include respond(mobile) {
+    margin: 70px 0 60px;
+  }
 
   &__img-wrapper {
     position: relative;
@@ -13,6 +18,11 @@
     display: flex;
     width: 17.5rem;
     height: 17.5rem;
+
+    @include respond(mobile) {
+      width: 13.5rem;
+      height: 13.5rem;
+    }
   }
 
   &__img-wrapper:before {
@@ -44,6 +54,11 @@
     font-size: 2.8rem;
     font-weight: 600;
     margin: 20px 0 10px;
+
+    @include respond(mobile) {
+      font-size: 2.5rem;
+      margin-bottom: 5px;
+    }
   }
 
   &__role {
@@ -57,6 +72,20 @@
     margin-top: 20px;
     line-height: 1.5;
     padding: 0 60px;
+
+    @include respond(phone) {
+      overflow: hidden;
+      display: block;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+
+    @include respond(mobile) {
+      font-size: 1.5rem;
+      margin-top: 10px;
+      padding: 0;
+    }
   }
 
   // custom swiper
@@ -71,6 +100,10 @@
   .swiper-pagination {
     bottom: 10px;
     cursor: default;
+
+    @include respond(mobile) {
+      bottom: 22px;
+    }
   }
 
   .swiper-pagination-bullet {
@@ -89,10 +122,10 @@
       right: 0;
       bottom: 0;
 
-      width: 1.35rem;
-      height: 1.35rem;
+      width: 1.3rem;
+      height: 1.3rem;
       border-radius: 50%;
-      transform: translate(2.2px, 1.5px) scale(0.7);
+      transform: translate(2px, 1.5px) scale(0.7);
       opacity: 0;
       transition: 0.3s ease-in-out;
 
@@ -101,7 +134,26 @@
 
     &-active:before {
       opacity: 1;
-      transform: translate(2.2px, 1.5px) scale(1);
+      transform: translate(2px, 1.5px) scale(1);
+    }
+
+    @include respond(mobile) {
+      width: 1.45rem;
+      height: 1.45rem;
+    }
+
+    &:before {
+      @include respond(mobile) {
+        width: 1.15rem;
+        height: 1.15rem;
+        transform: translate(1.2px, 1.2px) scale(0.7);
+      }
+    }
+
+    &-active:before {
+      @include respond(mobile) {
+        transform: translate(1.2px, 1.2px) scale(1);
+      }
     }
   }
 }

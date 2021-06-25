@@ -78,18 +78,15 @@ function HomeProducts() {
         <div className="home-products__container">
           <Swiper
             loop
-            slidesPerView={1}
-            slidesPerGroup={1}
             speed={800}
             pagination={{ clickable: true }}
-            dynamicMainBullets={2}
-            dynamicBullets={false}
-            // autoplay={{
-            //   delay: 5000,
-            //   disableOnInteraction: false,
-            // }}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
             breakpoints={{
               0: {
+                slidesPerView: 1,
                 pagination: false,
               },
               // >= tablet

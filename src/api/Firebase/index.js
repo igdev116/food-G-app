@@ -2,7 +2,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA81KHBVaceEImdmA7B7IoyiO_N0XW-Pj4",
+  apiKey: "AIzaSyDBnJoi0ZzVOAa7hrE3QSiqvNtNWH36PWE",
   authDomain: "food-g-app.firebaseapp.com",
   projectId: "food-g-app",
   storageBucket: "food-g-app.appspot.com",

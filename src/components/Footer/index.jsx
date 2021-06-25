@@ -21,7 +21,7 @@ function Footer() {
     <footer className="footer">
       <Container>
         <Grid container spacing={8}>
-          <Grid item xs={12} md={6} lg={4}>
+          <Grid item xs={12} sm={6} md={4}>
             <div className="footer__time">
               <div className="col">
                 <span className="footer__time-day">Sunday</span>
@@ -50,7 +50,7 @@ function Footer() {
             </div>
           </Grid>
 
-          <Grid item xs={12} md={6} lg={4}>
+          <Grid item xs={12} sm={6} md={4}>
             <div className="footer__contacts">
               <h4 className="footer__contact-title">Address</h4>
 
@@ -83,7 +83,6 @@ function Footer() {
             <div className="footer__map">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1864.0568347757392!2d108.34615808661933!3d15.890428922499089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31420d9e24aab795%3A0x28e64d847e6eba35!2sHoi%20An%20Golden%20Rice%20Villa!5e0!3m2!1sen!2s!4v1624506959425!5m2!1sen!2s"
-                // width="600"
                 style={{ border: 0, width: "100%", height: "100%" }}
                 allowFullScreen={true}
                 loading="lazy"

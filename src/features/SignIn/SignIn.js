@@ -5,22 +5,12 @@ import FormSignIn from "./components/FormSignIn";
 
 import { Link } from "react-router-dom";
 
-import { Button, Container, makeStyles } from "@material-ui/core";
+import { Button, Container } from "@material-ui/core";
 import FacebookIcon from "@material-ui/icons/Facebook";
 
 import "./SignIn.scss";
 
-const useStyles = makeStyles({
-  container: {
-    height: "100vh",
-    display: "flex",
-    alignItems: "center",
-  },
-});
-
 function SignIn() {
-  const classes = useStyles();
-
   // sign in with google
   const onGoogleSignIn = () => {
     auth
@@ -38,50 +28,52 @@ function SignIn() {
   });
 
   return (
-    <Container fixed className={classes.container}>
-      <div className="signin-container">
-        <div
-          className="signin-thumb"
-          style={{ backgroundImage: "url(/svgs/SignIn/thumb.svg)" }}
-        ></div>
+    <section className="signin">
+      <Container>
+        <div className="signin__container">
+          <div
+            className="signin__thumb"
+            style={{ backgroundImage: "url(/svgs/SignIn/thumb.svg)" }}
+          ></div>
 
-        <div className="signin">
-          <h2>JOIN WITH US</h2>
+          <div className="signin__content">
+            <h2>JOIN WITH US</h2>
 
-          <div className="signin__msg">
-            <span>Don't have an account? </span>
-            <Link className="signin__msg-btn" to="#">
-              <strong>Sign up</strong>
-            </Link>
-          </div>
+            <div className="signin__msg">
+              <span>Don't have an account? </span>
+              <Link className="signin__msg-btn" to="#">
+                <strong>Sign up</strong>
+              </Link>
+            </div>
 
-          <FormSignIn />
+            <FormSignIn />
 
-          <div className="signin__separate">
-            <span className="signin__separate-text">OR</span>
-          </div>
+            <div className="signin__separate">
+              <span className="signin__separate-text">OR</span>
+            </div>
 
-          <div className="signin-options">
-            <Button
-              onClick={onGoogleSignIn}
-              variant="contained"
-              className="signin-option signin-option--gg"
-            >
-              <img src="/svgs/SignIn/google.svg" alt="google icon" />
-              Sign in with Google
-            </Button>
+            <div className="signin__options">
+              <Button
+                onClick={onGoogleSignIn}
+                variant="contained"
+                className="signin__option signin__option--gg"
+              >
+                <img src="/svgs/SignIn/google.svg" alt="google icon" />
+                Sign in with Google
+              </Button>
 
-            <Button
-              variant="contained"
-              className="signin-option signin-option--fb"
-            >
-              <FacebookIcon />
-              Sign in with Facebook
-            </Button>
+              <Button
+                variant="contained"
+                className="signin__option signin__option--fb"
+              >
+                <FacebookIcon />
+                Sign in with Facebook
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
-    </Container>
+      </Container>
+    </section>
   );
 }
 

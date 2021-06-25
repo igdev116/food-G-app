@@ -1,30 +1,56 @@
 @import "assets/styles/colors";
-
-.signin-container {
-  display: flex;
-  flex: 1;
-  height: 70%;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
-
-  background-color: $primary-white-color;
-}
-
-.signin-thumb {
-  width: 55%;
-
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
+@import "assets/styles/mixins";
 
 .signin {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 45%;
-  padding: 60px 50px;
+  &__container {
+    display: flex;
+    flex: 1;
+    height: 70%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.07);
+    margin: 150px 0;
+
+    background-color: $primary-white-color;
+
+    @include respond(tablet) {
+      flex-direction: column;
+      margin: 70px 0;
+    }
+
+    @include respond(phone) {
+      box-shadow: none;
+      margin: 50px 0;
+    }
+  }
+
+  &__thumb {
+    width: 55%;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include respond(mobile) {
+      width: 100%;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 45%;
+    padding: 60px 50px;
+
+    @include respond(mobile) {
+      width: 100%;
+    }
+
+    @include respond(phone) {
+      padding: 20px 0;
+    }
+  }
 
   h2 {
     font-size: 2rem;
@@ -32,22 +58,18 @@
 
   &__msg {
     font-size: 1.3rem;
-    margin: 10px 0 10px;
+    margin: 15px 0 15px;
 
     color: $primary-grey-color;
   }
 
-  .signin-btn-wrapper {
-    text-align: center;
-  }
-
-  .signin__separate {
+  &__separate {
     position: relative;
 
     text-align: center;
   }
 
-  .signin__separate:after {
+  &__separate:after {
     position: absolute;
     content: "";
     height: 0.05rem;
@@ -61,7 +83,7 @@
     background-color: rgba($primary-grey-color, 0.15);
   }
 
-  .signin__separate-text {
+  &__separate-text {
     position: relative;
     z-index: 1;
 
@@ -72,13 +94,18 @@
     color: $primary-grey-color;
   }
 
-  .signin-options {
+  &__options {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
+
+    @include respond(phone) {
+      flex-direction: column;
+    }
   }
 
-  .signin-option {
+  &__options &__option {
     padding: 10px 12px;
     font-size: 1.3rem;
     margin-top: 15px;
@@ -88,31 +115,40 @@
     border-radius: 999px;
 
     background-color: #fff;
+
+    @include respond(phone) {
+      min-width: 65%;
+    }
   }
 
-  .signin-option:hover {
+  &__options &__option:hover {
     box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.2);
 
     background-color: #ebe9e9;
   }
 
-  .signin-option--gg {
+  &__options &__option--gg {
     margin-right: 20px;
+
+    @include respond(phone) {
+      margin-right: 0;
+      margin-bottom: 5px;
+    }
   }
 
-  .signin-option img,
-  .signin-option svg {
+  &__options &__option img,
+  &__options &__option svg {
     width: 2.2rem;
     height: 2.2rem;
     margin-right: 5px;
   }
 
-  .signin-option svg {
+  &__options &__option svg {
     fill: #4166b1;
   }
 
-  .gg-icon,
-  .fb-icon {
+  &__options .gg-icon,
+  &__options .fb-icon {
     margin-right: 3px;
   }
 }

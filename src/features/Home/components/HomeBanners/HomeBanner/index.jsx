@@ -28,7 +28,7 @@ function HomeBanner(props) {
   return (
     <div
       className={`banner`}
-      style={{ backgroundImage: `url(/imgs/home/${background})` }}
+      style={{ backgroundImage: `url(/imgs/Home/${background})` }}
     >
       <Container className="container-ui">
         <div className="banner__container">

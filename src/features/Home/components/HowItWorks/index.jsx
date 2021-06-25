@@ -50,15 +50,15 @@ function HowItWorks() {
                     <div className="how-work__thumb-wrapper">
                       <img
                         className="how-work__img"
-                        src={`/imgs/home/${img}`}
+                        src={`/imgs/Home/${img}`}
                         alt="steps"
                       ></img>
                       <span>0{step} Step</span>
+                      <div
+                        style={{ backgroundImage: `url(/imgs/Home/${arrow})` }}
+                        className="how-work__thumb-arrow"
+                      ></div>
                     </div>
-                    <div
-                      style={{ backgroundImage: `url(/imgs/Home/${arrow})` }}
-                      className="how-work__thumb-arrow"
-                    ></div>
                   </div>
                   <div className="how-work__content">{content}</div>
                 </div>

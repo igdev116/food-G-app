@@ -9,6 +9,36 @@ import CountUp from "react-countup";
 
 import "./HomeAnalysis.scss";
 
+const data = [
+  {
+    end: 350,
+    delay: 0.3,
+    duration: 4,
+    suffix: "+",
+    description: "Cups of Coffee",
+  },
+  {
+    end: 2678,
+    delay: 0.2,
+    duration: 4,
+    separator: ",",
+    suffix: "+",
+    description: "Orders Everyday",
+  },
+  {
+    end: 60,
+    delay: 0.5,
+    duration: 4,
+    description: "Skilled Professionals",
+  },
+  {
+    end: 30,
+    delay: 0.5,
+    duration: 4,
+    description: "Sandwichs at Hour",
+  },
+];
+
 function HomeAnalysis() {
   const [isShow, setIsShow] = useState(false);
   const [isCome, setIsCome] = useState(false);
@@ -69,73 +99,32 @@ function HomeAnalysis() {
       <div className="home-analysis__container">
         <Container>
           <Grid container spacing={3}>
-            <Grid item xs={3}>
-              <div className="home-analysis__qnt">
-                {isCome ? (
-                  <CountUp
-                    className="home-analysis__qnt"
-                    end={350}
-                    delay={0.3}
-                    duration={4}
-                  />
-                ) : (
-                  0
-                )}
-                +
-              </div>
-              <div className="home-analysis__description">Cups of Coffee</div>
-            </Grid>
-            <Grid item xs={3}>
-              <div className="home-analysis__qnt">
-                {isCome ? (
-                  <CountUp
-                    className="home-analysis__qnt"
-                    separator={","}
-                    end={2678}
-                    delay={0.2}
-                    duration={4}
-                  />
-                ) : (
-                  0
-                )}
-                +
-              </div>
-              <div className="home-analysis__description">Orders Everyday</div>
-            </Grid>
-            <Grid item xs={3}>
-              <div className="home-analysis__qnt">
-                {isCome ? (
-                  <CountUp
-                    className="home-analysis__qnt"
-                    end={60}
-                    delay={0.5}
-                    duration={4}
-                  />
-                ) : (
-                  0
-                )}
-              </div>
-              <div className="home-analysis__description">
-                Skilled Professionals
-              </div>
-            </Grid>
-            <Grid item xs={3}>
-              <div className="home-analysis__qnt">
-                {isCome ? (
-                  <CountUp
-                    className="home-analysis__qnt"
-                    end={30}
-                    delay={0.5}
-                    duration={4}
-                  />
-                ) : (
-                  0
-                )}
-              </div>
-              <div className="home-analysis__description">
-                Sandwichs at Hour
-              </div>
-            </Grid>
+            {data.map(
+              (
+                { end, delay, duration, description, suffix, seperator },
+                index
+              ) => (
+                <Grid key={index} item xs={12} sm={6} md={3}>
+                  <div className="home-analysis__qnt">
+                    {isCome ? (
+                      <CountUp
+                        className="home-analysis__qnt"
+                        end={end}
+                        delay={delay}
+                        duration={duration}
+                        seperator={seperator}
+                      />
+                    ) : (
+                      0
+                    )}
+                    {suffix}
+                  </div>
+                  <div className="home-analysis__description">
+                    {description}
+                  </div>
+                </Grid>
+              )
+            )}
           </Grid>
         </Container>
       </div>
