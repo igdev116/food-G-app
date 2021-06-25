@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 import PrRedBtn from "components/CusButtons";
+import { MOBILE_BREAKPOINT } from "constants/breakpoints";
 
 import "assets/styles/_typography.scss";
 import "./HomeIngredients.scss";
@@ -45,11 +46,25 @@ const rightCardDatas = [
 ];
 
 function HomeIngredients() {
+  const [hasBackground, setHasBackground] = useState(true);
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth < MOBILE_BREAKPOINT) {
+      setHasBackground(false);
+    } else {
+      setHasBackground(true);
+    }
+  });
+
   return (
     <section className="ingredients">
       <div
         className="ingredients__thumb"
-        style={{ backgroundImage: "url(/imgs/home/ingredients.jpg)" }}
+        style={{
+          backgroundImage: `${
+            hasBackground ? "url(/imgs/home/ingredients.jpg)" : "none"
+          }`,
+        }}
       >
         <div className="ingredients__cards-left">
           {leftCardDatas.map(({ title, content, order }, index) => (

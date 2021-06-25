@@ -1,4 +1,5 @@
 @import "assets/styles/colors";
+@import "assets/styles/mixins";
 
 .home-product {
   text-align: center;
@@ -11,10 +12,20 @@
 
   cursor: default;
 
-  &:hover {
-    transform: translateY(-5px);
-
+  @include respond(mobile) {
     background-color: rgba($primary-red-color, 0.25);
+  }
+
+  @include respond(phone) {
+    margin: 0 40px;
+  }
+
+  &:hover {
+    background-color: rgba($primary-red-color, 0.25);
+
+    @include respond(desktop) {
+      transform: translateY(-5px);
+    }
   }
 
   &__wrapper {
@@ -38,6 +49,10 @@
     clip-path: ellipse(70% 80% at 50% 13%);
 
     transition: all 0.35s ease-in-out;
+
+    @include respond(mobile) {
+      background-color: $primary-red-color;
+    }
   }
 
   &:hover &__wrapper:before {
@@ -46,6 +61,10 @@
 
   &__img {
     width: 20rem;
+
+    @include respond(tablet) {
+      width: 15rem;
+    }
   }
 
   .btn {
@@ -64,6 +83,15 @@
     background-color: $primary-red-color;
 
     cursor: default;
+
+    @include respond(mobile) {
+      display: block;
+      padding: 10px 15px;
+      margin-left: auto;
+      margin-right: auto;
+
+      background-color: $primary-white-color;
+    }
   }
 
   .btn span {
@@ -72,6 +100,10 @@
     font-weight: 600;
 
     transition: all 0.25s ease-in-out;
+
+    @include respond(mobile) {
+      color: $primary-red-color;
+    }
   }
 
   .btn:before {
@@ -109,7 +141,6 @@
   &__description {
     font-size: 1.4rem;
 
-    // color: #737373;
     color: $primary-grey-color;
 
     transition: all 0.2s ease-out;
@@ -127,6 +158,10 @@
     color: $primary-yellow-color;
 
     transition: all 0.25s ease-in-out;
+
+    @include respond(mobile) {
+      color: $primary-red-color;
+    }
   }
 
   &:hover &__price {

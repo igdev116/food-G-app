@@ -1,4 +1,5 @@
 @import "assets/styles/colors";
+@import "assets/styles/mixins";
 
 .banners {
   position: relative;
@@ -34,16 +35,23 @@
       cursor: pointer;
     }
 
+    .dot {
+      @include respond(mobile) {
+        width: 1.65rem;
+        height: 1.65rem;
+      }
+    }
+
     .dot:before {
       position: absolute;
       content: "";
       right: 0;
       bottom: 0;
 
-      width: 1.65rem;
-      height: 1.65rem;
+      width: calc(100% - 0.15px);
+      height: calc(100% - 0.15px);
       border-radius: 50%;
-      transform: translate(2px, 1px) scale(0.7);
+      transform: translate(1px, 1px) scale(0.7);
       opacity: 0;
       transition: 0.3s ease-in-out;
 
@@ -52,7 +60,7 @@
 
     .dot.active:before {
       opacity: 1;
-      transform: translate(2px, 1px) scale(1);
+      transform: translate(1px, 1px) scale(1);
     }
   }
 }

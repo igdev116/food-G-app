@@ -1,7 +1,10 @@
 import React from "react";
+
 import "./HowItWorks.scss";
 
+// material ui
 import { Container } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
 
 import "assets/styles/_typography.scss";
 
@@ -10,16 +13,19 @@ const data = [
     img: "step-1.jpg",
     step: "1",
     content: "Choose Your Favorite",
+    arrow: "arrow-1.png",
   },
   {
     img: "step-2.jpg",
     step: "2",
     content: "We Deliver Your Meals",
+    arrow: "arrow-2.png",
   },
   {
     img: "step-3.jpg",
     step: "3",
     content: "Cash on Delivery",
+    arrow: "arrow-3.png",
   },
   {
     img: "step-4.jpg",
@@ -36,19 +42,29 @@ function HowItWorks() {
         <h2 className="pr-heading-text">How it works</h2>
 
         <div className="how-work__steps">
-          {data.map(({ img, step, content }, index) => (
-            <div key={index} className="how-work__step">
-              <div className="how-work__thumb">
-                <img
-                  className="how-work__img"
-                  src={`/imgs/home/${img}`}
-                  alt="steps"
-                />
-                <span>0{step} Step</span>
-              </div>
-              <div className="how-work__content">{content}</div>
-            </div>
-          ))}
+          <Grid container spacing={3}>
+            {data.map(({ img, step, content, arrow }, index) => (
+              <Grid key={index} item xs={12} sm={6} lg={3}>
+                <div className="how-work__step">
+                  <div className="how-work__thumb">
+                    <div className="how-work__thumb-wrapper">
+                      <img
+                        className="how-work__img"
+                        src={`/imgs/home/${img}`}
+                        alt="steps"
+                      ></img>
+                      <span>0{step} Step</span>
+                    </div>
+                    <div
+                      style={{ backgroundImage: `url(/imgs/Home/${arrow})` }}
+                      className="how-work__thumb-arrow"
+                    ></div>
+                  </div>
+                  <div className="how-work__content">{content}</div>
+                </div>
+              </Grid>
+            ))}
+          </Grid>
         </div>
       </Container>
     </section>

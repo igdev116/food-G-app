@@ -70,22 +70,41 @@ const data = [
 function HomeProducts() {
   return (
     <section className="home-products">
-      <div className="pr-yellow-text">Quality Products</div>
-      <h2 className="pr-heading-text">
-        Burger as expected <strong>dilicious</strong> one
-      </h2>
       <Container>
+        <div className="pr-yellow-text">Quality Products</div>
+        <h2 className="pr-heading-text">
+          Burger as expected <strong>dilicious</strong> one
+        </h2>
         <div className="home-products__container">
           <Swiper
             loop
-            slidesPerView={4}
-            spaceBetween={30}
+            slidesPerView={1}
+            slidesPerGroup={1}
+            speed={800}
             pagination={{ clickable: true }}
-            slidesPerGroup={4}
-            speed={2000}
-            autoplay={{
-              delay: 5000,
-              disableOnInteraction: false,
+            dynamicMainBullets={2}
+            dynamicBullets={false}
+            // autoplay={{
+            //   delay: 5000,
+            //   disableOnInteraction: false,
+            // }}
+            breakpoints={{
+              0: {
+                pagination: false,
+              },
+              // >= tablet
+              600: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+                pagination: false,
+              },
+              // >= desktop
+              960: {
+                slidesPerView: 4,
+                spaceBetween: 30,
+                slidesPerGroup: 4,
+                speed: 1500,
+              },
             }}
           >
             {data.map(({ img, name, description, price }, index) => (

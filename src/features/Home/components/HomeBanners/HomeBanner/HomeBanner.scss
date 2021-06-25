@@ -1,7 +1,8 @@
 @import "assets/styles/colors";
+@import "assets/styles/mixins";
 
 .banner {
-  height: 100vh;
+  height: 80rem;
   flex-shrink: 0;
   width: 100%;
 
@@ -12,12 +13,21 @@
     height: 100%;
   }
 
+  @include respond(mobile) {
+    height: 50rem;
+  }
+
   &__container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 60%;
     height: 100%;
+
+    @include respond(mobile) {
+      text-align: center;
+      width: 100%;
+    }
   }
 
   &__title {
@@ -26,6 +36,10 @@
     text-transform: uppercase;
 
     color: $primary-white-color;
+
+    @include respond(mobile) {
+      font-size: 1.4rem;
+    }
   }
 
   &__description {
@@ -35,6 +49,10 @@
     margin: 5px 0 15px;
 
     color: $primary-white-color;
+
+    @include respond(mobile) {
+      font-size: 4.5rem;
+    }
   }
 
   .pr-red-btn &__icon {

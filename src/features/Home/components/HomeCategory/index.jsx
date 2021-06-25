@@ -1,7 +1,6 @@
 import React from "react";
 
 import BackgroundIcon from "components/BackgroundIcon";
-// import HomeCategoryData from "./HomeCategoryData";
 
 // material ui
 import { Button, Container } from "@material-ui/core";
@@ -93,7 +92,7 @@ function HomeCategory() {
           <h2 className="pr-heading-text">Browse food category</h2>
           <div className="home-category__cards">
             <Swiper
-              slidesPerView={7}
+              slidesPerView={2}
               loop
               loopFillGroupWithBlank={true}
               autoplay={{
@@ -103,6 +102,14 @@ function HomeCategory() {
               navigation={{
                 prevEl: ".prev-btn",
                 nextEl: ".next-btn",
+              }}
+              breakpoints={{
+                600: {
+                  slidesPerView: 4,
+                },
+                960: {
+                  slidesPerView: 7,
+                },
               }}
             >
               {data.map(({ img, name }, index) => (

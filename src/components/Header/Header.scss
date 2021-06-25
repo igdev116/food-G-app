@@ -13,6 +13,10 @@
   margin-top: 5px;
   width: 100%;
 
+  @include respond(mobile) {
+    padding: 5px 0;
+  }
+
   transition: 0.2s ease-out;
 
   .hamburger-btn {
@@ -21,6 +25,8 @@
     height: 3.3rem;
 
     fill: $primary-white-color;
+
+    cursor: pointer;
 
     @include respond(mobile) {
       display: block;
@@ -60,7 +66,7 @@
     height: 5.3rem;
 
     @include respond(mobile) {
-      height: 4.5rem;
+      height: 4.2rem;
     }
   }
 

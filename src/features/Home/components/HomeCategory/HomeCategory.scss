@@ -1,4 +1,5 @@
 @import "assets/styles/colors";
+@import "assets/styles/mixins";
 
 .home-category {
   position: relative;
@@ -19,6 +20,10 @@
 
     display: flex;
     padding: 40px 0px 70px;
+
+    @include respond(mobile) {
+      padding: 30px 0px 60px;
+    }
   }
 
   &__card {
@@ -69,38 +74,6 @@
     color: $primary-red-color;
   }
 
-  // custom swiper
-  // .swiper-pagination-bullet {
-  //   position: relative;
-  //   content: "";
-  //   background-color: transparent;
-
-  //   width: 1.6rem;
-  //   height: 1.6rem;
-  //   border: 2px solid $primary-red-color;
-
-  //   &:before {
-  //     position: absolute;
-  //     content: "";
-  //     right: 0;
-  //     bottom: 0;
-
-  //     width: 1.35rem;
-  //     height: 1.35rem;
-  //     border-radius: 50%;
-  //     transform: translate(2px, 1px) scale(0.7);
-  //     opacity: 0;
-  //     transition: 0.3s ease-in-out;
-
-  //     background-color: $primary-red-color;
-  //   }
-
-  //   &-active:before {
-  //     opacity: 1;
-  //     transform: translate(2px, 1px) scale(1);
-  //   }
-  // }
-
   .prev-btn,
   .next-btn {
     position: absolute;
@@ -123,6 +96,10 @@
 
     &:hover svg {
       fill: $primary-white-color;
+    }
+
+    @include respond(mobile) {
+      display: none;
     }
   }
 

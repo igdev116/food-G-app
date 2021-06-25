@@ -44,7 +44,7 @@ function HomeReview() {
     <section className="home-review">
       <BackgroundIcon
         index="3"
-        width="15"
+        width="14"
         top="-10"
         left="0"
         type="float"

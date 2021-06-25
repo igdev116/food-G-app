@@ -1,4 +1,5 @@
 @import "assets/styles/colors";
+@import "assets/styles/mixins";
 
 .home-products {
   margin-bottom: 80px;
@@ -7,6 +8,10 @@
   &__container {
     display: flex;
     margin-top: 35px;
+
+    @include respond(mobile) {
+      margin-top: 20px;
+    }
   }
 
   // custom swiper

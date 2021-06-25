@@ -1,4 +1,5 @@
 @import "assets/styles/colors";
+@import "assets/styles/mixins";
 
 $step-color: #ff514e;
 
@@ -6,17 +7,23 @@ $step-color: #ff514e;
   text-align: center;
   margin: 100px 0;
 
+  @include respond(mobile) {
+    margin: 80px 0 40px;
+  }
+
   &__steps {
-    display: flex;
     margin-top: 50px;
 
-    justify-content: center;
+    @include respond(mobile) {
+      margin-top: 30px;
+    }
   }
 
   &__step {
     position: relative;
 
     margin: 0 45px;
+    padding: 0 25px;
   }
 
   &__step:first-child {
@@ -38,8 +45,9 @@ $step-color: #ff514e;
     color: $step-color;
   }
 
-  &__thumb {
+  &__thumb-wrapper {
     position: relative;
+    display: inline-block;
   }
 
   &__thumb-arrow {
@@ -53,6 +61,10 @@ $step-color: #ff514e;
     transform: translateY(-50%);
 
     background-repeat: no-repeat;
+
+    @include respond(mobile) {
+      display: none;
+    }
   }
 
   &__thumb span {
