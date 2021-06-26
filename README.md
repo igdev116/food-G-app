@@ -57,7 +57,7 @@ src
 |  |  |  |__ShopContainer
 |  |  |     |__ShopFilters // filter by types, prices, sizes, best deals
 |  |  |     |__ShopContent
-|  |  |     |  |__ShopHandlings // search, sort
+|  |  |     |  |__ShopHandle // search, sort
 |  |  |     |  |__ShopProducts
 |  |  |     |__ShopContainer.js
 |  |  |     |__index.jsx // render
