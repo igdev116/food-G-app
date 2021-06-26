@@ -1,0 +1,119 @@
+@import "assets/styles/colors";
+
+.shop-handle {
+  display: flex;
+  align-items: flex-start;
+
+  &__search {
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    padding: 5px 10px 5px 15px;
+    margin-left: 30px;
+
+    border: 1px solid rgba(0, 0, 0, 0.15);
+  }
+
+  &__search input {
+    outline: 0;
+    border: 0;
+  }
+
+  &__search-btn {
+    width: 3rem;
+    height: 3rem;
+
+    background: none;
+  }
+
+  &__search-btn svg {
+    width: 2.3rem;
+    height: 100%;
+    text-align: center;
+
+    fill: $primary-grey-color;
+  }
+
+  &__drop {
+    margin-left: auto;
+  }
+
+  &__drop-list {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+    margin-top: 10px;
+    padding: 7px 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    transform: translateY(10px);
+    opacity: 0;
+    visibility: hidden;
+
+    transition: all 0.3s cubic-bezier(0.77, 0.2, 0.05, 1);
+  }
+
+  &__drop-list.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  &__drop-item {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    padding: 6px 17px;
+
+    transition: all 0.1s ease-out;
+  }
+
+  &__drop-item:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  }
+
+  &__drop-item:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+
+    cursor: pointer;
+  }
+
+  &__drop-current {
+    display: flex;
+    align-items: center;
+    line-height: 1.8;
+    padding: 5px 17px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+
+    cursor: pointer;
+  }
+
+  &__drop-current span {
+    font-size: 1.4rem;
+  }
+
+  &__drop-current svg {
+    margin-left: auto;
+  }
+
+  &__display-types {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+  }
+
+  &__display-types &__display-type {
+    width: 3.2rem;
+    height: 3.2rem;
+
+    fill: rgba(0, 0, 0, 0.45);
+
+    cursor: pointer;
+  }
+
+  &__display-type:first-child {
+    margin-right: 3px;
+  }
+
+  &__display-type.active {
+    fill: $primary-red-color;
+  }
+}

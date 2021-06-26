@@ -4,6 +4,7 @@ import Home from "features/Home";
 import NotFound from "components/NotFound";
 import SignIn from "features/SignIn";
 import Footer from "components/Footer";
+import Shop from "features/Shop";
 
 import {
   BrowserRouter as Router,
@@ -25,6 +26,7 @@ function App() {
 
           <Route path="/home" component={Home} />
           <Route path="/sign-in" component={SignIn} />
+          <Route path="/shop" component={Shop} />
           <Route component={NotFound} />
         </Switch>
       </Router>

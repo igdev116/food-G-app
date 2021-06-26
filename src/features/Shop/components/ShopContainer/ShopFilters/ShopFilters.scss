@@ -1,0 +1,112 @@
+@import "assets/styles/colors";
+
+.shop-filters {
+  width: 20%;
+
+  &__title {
+    font-size: 2rem;
+    padding: 8px 0;
+    margin-bottom: 10px;
+    padding-left: 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    margin: 3px 0;
+    border-radius: 4px;
+
+    transition: all 0.1s ease-in-out;
+  }
+
+  &__item:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+
+    cursor: pointer;
+  }
+
+  &__item img {
+    height: 2.2rem;
+    width: 2.2rem;
+  }
+
+  &__item-name {
+    font-size: 1.4rem;
+    text-transform: capitalize;
+    margin-left: 10px;
+  }
+
+  &__form {
+    padding: 0 12px;
+  }
+
+  &__label {
+    position: relative;
+
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    padding: 10px 30px;
+    margin: 3px 0;
+
+    cursor: pointer;
+  }
+
+  &__input {
+    display: none;
+    margin-right: 5px;
+  }
+
+  .checkmark {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 0;
+
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 3px solid $primary-grey-color;
+    transform: translateY(-50%);
+
+    transition: all 0.2s ease-out;
+  }
+
+  &__input:checked ~ .checkmark {
+    border-color: $primary-red-color;
+  }
+
+  .checkmark:after {
+    position: absolute;
+    content: "";
+    top: 1px;
+    left: 1px;
+
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+
+    background-color: transparent;
+
+    transition: all 0.1s ease-out;
+  }
+
+  &__input:checked ~ .checkmark:after {
+    background-color: $primary-red-color;
+  }
+
+  &__stars {
+    margin: 5px 0;
+    padding: 0 12px;
+  }
+
+  &__stars svg {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 3px;
+
+    fill: $primary-yellow-color;
+  }
+}

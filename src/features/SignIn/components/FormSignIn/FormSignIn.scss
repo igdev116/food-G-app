@@ -9,15 +9,16 @@
     align-items: center;
     font-size: 1.3rem;
     margin-bottom: 10px;
-  }
-
-  &__commit span:last-child {
-    margin-left: 2px;
+    margin-left: 10px;
   }
 
   &__commit-checkbox svg {
     width: 20px;
     height: 20px;
+  }
+
+  &__commit-msg {
+    margin-left: 3px;
   }
 
   .signin-btn-wrapper {

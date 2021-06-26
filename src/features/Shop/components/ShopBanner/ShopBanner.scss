@@ -1,0 +1,53 @@
+@import "assets/styles/colors";
+
+.shop-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 32.5rem;
+  width: 100%;
+  margin-bottom: 80px;
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &__title {
+    font-size: 3.6rem;
+    text-align: center;
+
+    color: $primary-white-color;
+  }
+
+  &__paths {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3px;
+  }
+
+  &__path {
+    font-size: 1.4rem;
+    margin: 5px;
+    padding: 7px;
+
+    color: $primary-white-color;
+
+    transition: 0.2s ease-out;
+  }
+
+  &__path:hover {
+    color: $primary-red-color;
+
+    cursor: pointer;
+  }
+
+  &__path.active {
+    color: $primary-red-color;
+  }
+
+  svg {
+    fill: $primary-white-color;
+  }
+}

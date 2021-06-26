@@ -32,7 +32,7 @@ function FormSignIn() {
 
       <div className="form-signin__commit">
         <Checkbox color="primary" className="form-signin__commit-checkbox" />
-        <span>Save your password</span>
+        <span className="form-signin__commit-msg">Save your password</span>
       </div>
 
       <div className="signin-btn-wrapper">
