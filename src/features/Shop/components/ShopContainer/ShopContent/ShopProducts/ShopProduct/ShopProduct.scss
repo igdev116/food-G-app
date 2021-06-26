@@ -1,0 +1,178 @@
+@import "assets/styles/colors";
+@import "assets/styles/mixins";
+
+.shop-product {
+  position: relative;
+
+  padding-bottom: 10px;
+
+  cursor: pointer;
+
+  &__img-wrapper {
+    height: 16.5rem;
+    text-align: center;
+
+    @include respond(mobile) {
+      height: 18.5rem;
+    }
+  }
+
+  &__img {
+    height: 100%;
+    width: 100%;
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  &__rate {
+    margin-right: 5px;
+  }
+
+  &__rate svg {
+    width: 1.5rem;
+    height: 1.5rem;
+
+    fill: $primary-yellow-color;
+  }
+
+  &__name {
+    font-weight: 600;
+    font-size: 1.7rem;
+    margin: 8px 0 8px;
+    overflow: hidden;
+    display: block;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+
+    transition: color 0.15s ease-out;
+  }
+
+  &__name:hover {
+    color: $primary-red-color;
+  }
+
+  &__description {
+    font-size: 1.3rem;
+    line-height: 1.5;
+    margin-bottom: 5px;
+    overflow: hidden;
+    display: block;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__price {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: $primary-red-color;
+  }
+
+  &__btns {
+    position: absolute;
+    top: 7px;
+    right: -3px;
+    opacity: 0;
+    visibility: hidden;
+
+    transition: all 0.15s linear;
+
+    @include respond(mobile) {
+      visibility: visible;
+      opacity: 1;
+      right: 8px;
+    }
+  }
+
+  &:hover &__btns {
+    visibility: visible;
+    opacity: 1;
+    right: 8px;
+  }
+
+  &__btn {
+    border-radius: 50%;
+    width: 2.95rem;
+    height: 2.95rem;
+    text-align: center;
+    margin-bottom: 5px;
+
+    background-color: rgba(0, 0, 0, 0.65);
+  }
+
+  &__btn svg {
+    width: 1.65rem;
+    height: 100%;
+
+    fill: $primary-white-color;
+  }
+
+  &__btn:hover svg {
+    fill: $primary-red-color;
+  }
+
+  &__label {
+    position: absolute;
+    top: 10px;
+    left: -3px;
+
+    text-align: center;
+    font-size: 1.3rem;
+    padding: 3px 5px;
+    font-weight: 500;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+
+    color: $primary-white-color;
+    background-color: $primary-red-color;
+  }
+
+  &__label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+
+    border-top: 3px solid $primary-red-color;
+    border-left: 3px solid transparent;
+
+    filter: brightness(90%);
+  }
+}
+
+.shop-products.display-flex {
+  display: flex;
+  flex-direction: column;
+
+  .shop-product {
+    display: flex;
+    margin-bottom: 10px;
+
+    &__img-wrapper {
+      width: 28.5rem;
+      height: 12.5rem;
+      text-align: center;
+    }
+
+    &__content {
+      margin-left: 10px;
+    }
+
+    &__row {
+      display: unset;
+      justify-content: unset;
+    }
+
+    &__rate {
+      margin-top: 5px;
+    }
+  }
+}

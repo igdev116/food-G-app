@@ -1,4 +1,5 @@
 @import "assets/styles/colors";
+@import "assets/styles/mixins";
 
 .shop-banner {
   display: flex;
@@ -13,11 +14,24 @@
   background-size: cover;
   background-repeat: no-repeat;
 
+  @include respond(tablet) {
+    margin-bottom: 30px;
+    height: 30.5rem;
+  }
+
+  @include respond(phone) {
+    height: 22.5rem;
+  }
+
   &__title {
     font-size: 3.6rem;
     text-align: center;
 
     color: $primary-white-color;
+
+    @include respond(mobile) {
+      font-size: 2.8rem;
+    }
   }
 
   &__paths {
@@ -35,6 +49,10 @@
     color: $primary-white-color;
 
     transition: 0.2s ease-out;
+
+    @include respond(mobile) {
+      margin: 3px;
+    }
   }
 
   &__path:hover {

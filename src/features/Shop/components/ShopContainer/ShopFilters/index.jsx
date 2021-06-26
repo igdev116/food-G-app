@@ -42,25 +42,25 @@ function ShopFilters() {
       <form className="shop-filters__form">
         <label className="shop-filters__label">
           <input className="shop-filters__input" type="radio" name="price" />
-          <span class="checkmark"></span>
+          <span className="checkmark"></span>
           Unger $100
         </label>
 
         <label className="shop-filters__label">
           <input className="shop-filters__input" type="radio" name="price" />
-          <span class="checkmark"></span>
+          <span className="checkmark"></span>
           Unger $100
         </label>
 
         <label className="shop-filters__label">
           <input className="shop-filters__input" type="radio" name="price" />
-          <span class="checkmark"></span>
+          <span className="checkmark"></span>
           Unger $100
         </label>
 
         <label className="shop-filters__label">
           <input className="shop-filters__input" type="radio" name="price" />
-          <span class="checkmark"></span>
+          <span className="checkmark"></span>
           Unger $100
         </label>
       </form>

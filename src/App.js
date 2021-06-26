@@ -4,6 +4,7 @@ import Home from "features/Home";
 import NotFound from "components/NotFound";
 import SignIn from "features/SignIn";
 import Footer from "components/Footer";
+import Header from "components/Header";
 import Shop from "features/Shop";
 
 import {
@@ -21,6 +22,7 @@ function App() {
   return (
     <ThemeProvider theme={Theme}>
       <Router>
+        <Header />
         <Switch>
           <Redirect exact from="/" to="/home" />
 

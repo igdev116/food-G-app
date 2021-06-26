@@ -32,8 +32,8 @@ function ShopHandle() {
       </div>
 
       <div className="shop-handle__display-types">
-        <ViewList className="shop-handle__display-type active" />
-        <ViewModuleIcon className="shop-handle__display-type" />
+        <ViewList className="shop-handle__display-type" />
+        <ViewModuleIcon className="shop-handle__display-type active" />
       </div>
     </div>
   );

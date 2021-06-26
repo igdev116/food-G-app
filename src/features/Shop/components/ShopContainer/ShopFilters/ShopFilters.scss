@@ -1,7 +1,12 @@
 @import "assets/styles/colors";
+@import "assets/styles/mixins";
 
 .shop-filters {
-  width: 20%;
+  width: 18%;
+
+  @include respond(mobile) {
+    display: none;
+  }
 
   &__title {
     font-size: 2rem;
@@ -98,13 +103,13 @@
   }
 
   &__stars {
-    margin: 5px 0;
+    margin: 3px 0;
     padding: 0 12px;
   }
 
   &__stars svg {
-    width: 2rem;
-    height: 2rem;
+    width: 1.8rem;
+    height: 1.8rem;
     margin-right: 3px;
 
     fill: $primary-yellow-color;

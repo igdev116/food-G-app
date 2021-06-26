@@ -1,5 +1,12 @@
+@import "assets/styles/mixins";
+
 .shop-products {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-gap: 15px;
+  padding: 22px 0 20px 20px;
+
+  @include respond(mobile) {
+    padding: 0;
+  }
 }
