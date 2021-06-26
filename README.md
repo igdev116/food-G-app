@@ -51,8 +51,6 @@ src
 |  |  |  |__HomeAnalysis
 |  |  |  |__HomeReviews
 |  |  |  |__HomeGallery
-|  |  |__imgs
-|  |  |__svgs
 |  |__Shop
 |  |  |__components
 |  |  |  |__ShopBanner
