@@ -14,13 +14,8 @@
   background-size: cover;
   background-repeat: no-repeat;
 
-  @include respond(tablet) {
+  @include respond(mobile) {
     margin-bottom: 30px;
-    height: 30.5rem;
-  }
-
-  @include respond(phone) {
-    height: 22.5rem;
   }
 
   &__title {

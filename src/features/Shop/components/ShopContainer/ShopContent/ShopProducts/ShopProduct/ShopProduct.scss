@@ -12,8 +12,12 @@
     height: 16.5rem;
     text-align: center;
 
-    @include respond(mobile) {
+    @include respond(tablet) {
       height: 18.5rem;
+    }
+
+    @include respond(phone) {
+      height: 16.5rem;
     }
   }
 
@@ -68,6 +72,7 @@
   &__row {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
   &__price {
@@ -126,7 +131,7 @@
 
     text-align: center;
     font-size: 1.3rem;
-    padding: 3px 5px;
+    padding: 1.5px 5px;
     font-weight: 500;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
