@@ -20,7 +20,7 @@ function Header() {
   const [isShow, setIsShow] = useState(false);
 
   window.addEventListener("scroll", () => {
-    if (window.scrollY >= 150) {
+    if (window.scrollY >= 100) {
       setIsActive(true);
     } else {
       setIsActive(false);

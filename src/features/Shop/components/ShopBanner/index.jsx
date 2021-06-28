@@ -5,6 +5,7 @@ import LinearScaleIcon from "@material-ui/icons/LinearScale";
 import "./ShopBanner.scss";
 
 function ShopBanner() {
+  
   return (
     <section
       className="shop-banner"

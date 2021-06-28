@@ -35,6 +35,10 @@ body {
     @include respond(mobile) {
       padding: 0 20px;
     }
+
+    @include respond(mobile) {
+      padding: 0 10px;
+    }
   }
 
   .MuiCheckbox-root {

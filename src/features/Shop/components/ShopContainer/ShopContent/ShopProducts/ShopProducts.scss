@@ -2,11 +2,15 @@
 
 .shop-products {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
   grid-gap: 15px;
   padding: 22px 0 20px 20px;
 
   @include respond(mobile) {
     padding: 0;
+  }
+
+  @include respond(phone) {
+    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
   }
 }

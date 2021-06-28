@@ -8,7 +8,7 @@
   margin: 100px 0;
 
   @include respond(mobile) {
-    margin: 40px 0 80px;
+    margin: 40px 0 50px;
   }
 
   &__container {
