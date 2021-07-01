@@ -4,7 +4,9 @@ const shop = createSlice({
   name: "shop",
   initialState: [],
   reducers: {
-    filterShop: (state, action) => {},
+    filterShop: (state, action) => {
+      return (state = action.payload);
+    },
   },
 });
 

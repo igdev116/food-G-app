@@ -23,7 +23,7 @@
     margin: 3px 0;
     border-radius: 4px;
 
-    transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-out;
   }
 
   &__item:hover {
@@ -105,6 +105,8 @@
   &__stars {
     margin: 3px 0;
     padding: 0 12px;
+
+    cursor: pointer;
   }
 
   &__stars svg {

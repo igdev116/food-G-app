@@ -1,41 +1,55 @@
 import React from "react";
-
-import PrRedBtn from "components/CusButtons";
+import PropTypes from "prop-types";
 
 import StarIcon from "@material-ui/icons/Star";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import RoomIcon from "@material-ui/icons/Room";
 
 import "./ShopProduct.scss";
 
-function ShopProduct() {
+ShopProduct.propsTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
+  img: PropTypes.string,
+  dsc: PropTypes.string,
+  price: PropTypes.number,
+  rate: PropTypes.number,
+};
+
+ShopProduct.propsTypes = {
+  id: "",
+  name: "",
+  img: "",
+  dsc: "",
+  price: 0,
+  rate: 0,
+};
+
+function ShopProduct(props) {
+  const { id, name, img, dsc, price, rate, country } = props;
   return (
-    <div className="shop-product">
+    <div id={id} className="shop-product">
       <div className="shop-product__img-wrapper">
-        <img
-          style={{
-            backgroundImage:
-              "url(https://d1omecegou7wuo.cloudfront.net/wp-content/uploads/2020/01/featured-honey-soy-chicken-wings.jpg)",
-          }}
+        <div
+          style={{ backgroundImage: `url(${img})` }}
           className="shop-product__img"
-        ></img>
+          alt="Product"
+        ></div>
+        <div className="shop-product__rate">
+          <StarIcon />
+          <span>{rate}</span>
+        </div>
       </div>
       <div className="shop-product__content">
-        <div className="shop-product__name">Bacon Burger</div>
-        <p className="shop-product__description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
-          velit facere molestiae odit voluptatibus excepturi atque dignissimos
-          perspiciatis nobis porro!
-        </p>
+        <div className="shop-product__name">{name}</div>
+        <p className="shop-product__description">{dsc}</p>
         <div className="shop-product__row">
-          <div className="shop-product__price">$18</div>
-          <div className="shop-product__rate">
-            <StarIcon />
-            <StarIcon />
-            <StarIcon />
-            <StarIcon />
-            <StarIcon />
+          <div className="shop-product__location">
+            <RoomIcon />
+            <span>{country}</span>
           </div>
+          <div className="shop-product__price">${price}</div>
         </div>
       </div>
       <div className="shop-product__btns">

@@ -1,86 +1,130 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 import StarIcon from "@material-ui/icons/Star";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 
 import "./ShopFilters.scss";
 
-function ShopFilters() {
-  const [value, setValue] = useState("female");
+ShopFilters.propsTypes = {
+  filterByTypes: PropTypes.func,
+  filterByPrices: PropTypes.func,
+};
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
+ShopFilters.defaultProps = {
+  filterByTypes: null,
+  filterByPrices: null,
+};
+
+const dataTypes = [
+  {
+    img: "burger.svg",
+    name: "Burgers",
+    type: "burgers",
+  },
+  {
+    img: "bread.svg",
+    name: "Breads",
+    type: "breads",
+  },
+  {
+    img: "ice-cream.svg",
+    name: "Ice cream",
+    type: "ice-cream",
+  },
+  {
+    img: "drinks.svg",
+    name: "Drinks",
+    type: "drinks",
+  },
+  {
+    img: "pizza.svg",
+    name: "Pizzas",
+    type: "pizzas",
+  },
+];
+
+const dataPrices = [
+  { info: "Under $100", range: { price_lte: 100 } },
+  { info: "$50 to $100", range: { price_gte: 50, price_lte: 100 } },
+  { info: "Under $50", range: { price_lte: 50 } },
+  { info: "Above $100", range: { price_gte: 100 } },
+];
+
+function ShopFilters(props) {
+  const { filterByTypes, filterByPrices, filterByRatings } = props;
+
+  const [currentType, setCurrentType] = useState("best-foods");
+
+  const onFilterByTypes = (type) => {
+    setCurrentType(type);
+    filterByTypes(type);
+  };
+
+  const onFilterByPrices = (type, range) => {
+    filterByPrices(type, range);
+  };
+
+  const onFilterByRatings = (type, rate) => {
+    filterByRatings(type, rate);
   };
 
   return (
     <div className="shop-filters">
       <h2 className="shop-filters__title">Popular</h2>
       <ul className="shop-filters__list">
-        <li className="shop-filters__item">
-          <img src="/svgs/Shop/burger.svg" alt="shop-icon" />
-          <span className="shop-filters__item-name">Burgers</span>
-        </li>
-        <li className="shop-filters__item">
-          <img src="/svgs/Shop/coffee.svg" alt="shop-icon" />
-          <span className="shop-filters__item-name">Coffees</span>
-        </li>
-        <li className="shop-filters__item">
-          <img src="/svgs/Shop/ice-cream.svg" alt="shop-icon" />
-          <span className="shop-filters__item-name">Ice cream</span>
-        </li>
-        <li className="shop-filters__item">
-          <img src="/svgs/Shop/drink.svg" alt="shop-icon" />
-          <span className="shop-filters__item-name">Cold drinks</span>
-        </li>
-        <li className="shop-filters__item">
-          <img src="/svgs/Shop/pizza.svg" alt="shop-icon" />
-          <span className="shop-filters__item-name">Pizza</span>
-        </li>
+        {dataTypes.map(({ img, name, type }, index) => (
+          <li
+            key={index}
+            onClick={() => onFilterByTypes(type)}
+            className="shop-filters__item"
+          >
+            <img src={`/svgs/Shop/${img}`} alt="Shop icons" />
+            <span className="shop-filters__item-name">{name}</span>
+          </li>
+        ))}
       </ul>
 
       <h2 className="shop-filters__title">Price</h2>
       <form className="shop-filters__form">
-        <label className="shop-filters__label">
-          <input className="shop-filters__input" type="radio" name="price" />
-          <span className="checkmark"></span>
-          Unger $100
-        </label>
-
-        <label className="shop-filters__label">
-          <input className="shop-filters__input" type="radio" name="price" />
-          <span className="checkmark"></span>
-          Unger $100
-        </label>
-
-        <label className="shop-filters__label">
-          <input className="shop-filters__input" type="radio" name="price" />
-          <span className="checkmark"></span>
-          Unger $100
-        </label>
-
-        <label className="shop-filters__label">
-          <input className="shop-filters__input" type="radio" name="price" />
-          <span className="checkmark"></span>
-          Unger $100
-        </label>
+        {dataPrices.map(({ info, range }, index) => (
+          <label
+            onClick={() => onFilterByPrices(currentType, range)}
+            key={index}
+            className="shop-filters__label"
+          >
+            <input className="shop-filters__input" type="radio" name="price" />
+            <span className="checkmark"></span>
+            {info}
+          </label>
+        ))}
       </form>
 
       <h2 className="shop-filters__title">Rate</h2>
-      <div className="shop-filters__stars">
+      <div
+        onClick={() => onFilterByRatings(currentType, { rate_like: 5 })}
+        className="shop-filters__stars"
+      >
         <StarIcon />
         <StarIcon />
         <StarIcon />
         <StarIcon />
         <StarIcon />
       </div>
-      <div className="shop-filters__stars">
+      <div
+        onClick={() => onFilterByRatings(currentType, { rate_like: 4 })}
+        className="shop-filters__stars"
+      >
         <StarIcon />
         <StarIcon />
         <StarIcon />
         <StarIcon />
         <StarBorderIcon />
       </div>
-      <div className="shop-filters__stars">
+      <div
+        onClick={() => onFilterByRatings(currentType, { rate_like: 3 })}
+        className="shop-filters__stars"
+      >
         <StarIcon />
         <StarIcon />
         <StarIcon />

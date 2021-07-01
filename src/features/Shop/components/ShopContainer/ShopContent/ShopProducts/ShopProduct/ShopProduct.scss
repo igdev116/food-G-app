@@ -9,6 +9,8 @@
   cursor: pointer;
 
   &__img-wrapper {
+    position: relative;
+
     height: 16.5rem;
     text-align: center;
 
@@ -21,6 +23,32 @@
     }
   }
 
+  &__rate {
+    position: absolute;
+    bottom: 0;
+    left: 3.5px;
+
+    display: flex;
+    align-items: center;
+  }
+
+  &__rate span {
+    font-size: 3rem;
+    font-weight: 600;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.45);
+
+    color: $primary-white-color;
+  }
+
+  &__rate svg {
+    width: 1.85rem;
+    height: 1.85rem;
+    -webkit-filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.45));
+    filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.45));
+
+    fill: $primary-white-color;
+  }
+
   &__img {
     height: 100%;
     width: 100%;
@@ -30,28 +58,19 @@
     background-repeat: no-repeat;
   }
 
-  &__rate {
-    margin-right: 5px;
-  }
-
-  &__rate svg {
-    width: 1.5rem;
-    height: 1.5rem;
-
-    fill: $primary-yellow-color;
-  }
-
   &__name {
     font-weight: 600;
     font-size: 1.7rem;
-    margin: 8px 0 5px;
-    overflow: hidden;
-    display: block;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-
+    margin: 8px 0 6px;
     transition: color 0.15s ease-out;
+
+    @include respond(phone) {
+      overflow: hidden;
+      display: block;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+    }
   }
 
   &__name:hover {
@@ -62,17 +81,51 @@
     font-size: 1.3rem;
     line-height: 1.5;
     margin-bottom: 5px;
-    overflow: hidden;
-    display: block;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+
+    @include respond(phone) {
+      overflow: hidden;
+      display: block;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
   }
 
   &__row {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  &__location {
+    display: flex;
+    align-items: center;
+    margin-left: -1px;
+  }
+
+  &__location svg {
+    font-size: 1.8rem;
+    margin-right: 1px;
+
+    fill: $primary-red-color;
+
+    @include respond(phone) {
+      font-size: 1.75rem;
+    }
+  }
+
+  &__location span {
+    font-size: 1.3rem;
+    width: 85%;
+    overflow: hidden;
+    display: block;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+
+    @include respond(phone) {
+      width: 80%;
+    }
   }
 
   &__price {
@@ -174,10 +227,6 @@
     &__row {
       display: unset;
       justify-content: unset;
-    }
-
-    &__rate {
-      margin-top: 5px;
     }
   }
 }
