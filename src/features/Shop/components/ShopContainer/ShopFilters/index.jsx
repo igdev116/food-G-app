@@ -7,13 +7,11 @@ import StarBorderIcon from "@material-ui/icons/StarBorder";
 import "./ShopFilters.scss";
 
 ShopFilters.propsTypes = {
-  filterByTypes: PropTypes.func,
-  filterByPrices: PropTypes.func,
+  filterProducts: PropTypes.func,
 };
 
 ShopFilters.defaultProps = {
-  filterByTypes: null,
-  filterByPrices: null,
+  filterProducts: null,
 };
 
 const dataTypes = [
@@ -52,21 +50,13 @@ const dataPrices = [
 ];
 
 function ShopFilters(props) {
-  const { filterByTypes, filterByPrices, filterByRatings } = props;
+  const { filterProducts } = props;
 
   const [currentType, setCurrentType] = useState("best-foods");
 
-  const onFilterByTypes = (type) => {
+  const onFilterProducts = (type, params) => {
     setCurrentType(type);
-    filterByTypes(type);
-  };
-
-  const onFilterByPrices = (type, range) => {
-    filterByPrices(type, range);
-  };
-
-  const onFilterByRatings = (type, rate) => {
-    filterByRatings(type, rate);
+    filterProducts(type, params);
   };
 
   return (
@@ -76,7 +66,7 @@ function ShopFilters(props) {
         {dataTypes.map(({ img, name, type }, index) => (
           <li
             key={index}
-            onClick={() => onFilterByTypes(type)}
+            onClick={() => onFilterProducts(type)}
             className="shop-filters__item"
           >
             <img src={`/svgs/Shop/${img}`} alt="Shop icons" />
@@ -89,7 +79,7 @@ function ShopFilters(props) {
       <form className="shop-filters__form">
         {dataPrices.map(({ info, range }, index) => (
           <label
-            onClick={() => onFilterByPrices(currentType, range)}
+            onClick={() => onFilterProducts(currentType, range)}
             key={index}
             className="shop-filters__label"
           >
@@ -102,7 +92,7 @@ function ShopFilters(props) {
 
       <h2 className="shop-filters__title">Rate</h2>
       <div
-        onClick={() => onFilterByRatings(currentType, { rate_like: 5 })}
+        onClick={() => onFilterProducts(currentType, { rate_like: 5 })}
         className="shop-filters__stars"
       >
         <StarIcon />
@@ -112,7 +102,7 @@ function ShopFilters(props) {
         <StarIcon />
       </div>
       <div
-        onClick={() => onFilterByRatings(currentType, { rate_like: 4 })}
+        onClick={() => onFilterProducts(currentType, { rate_like: 4 })}
         className="shop-filters__stars"
       >
         <StarIcon />
@@ -122,7 +112,7 @@ function ShopFilters(props) {
         <StarBorderIcon />
       </div>
       <div
-        onClick={() => onFilterByRatings(currentType, { rate_like: 3 })}
+        onClick={() => onFilterProducts(currentType, { rate_like: 3 })}
         className="shop-filters__stars"
       >
         <StarIcon />
