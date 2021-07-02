@@ -2,49 +2,29 @@ import React, { useEffect } from "react";
 
 import ShopContent from "./ShopContent";
 import ShopFilters from "./ShopFilters";
-import shopApi from "api/shopApi";
-import { filterShop } from "features/Shop/shopSlice";
 
-import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+
+import { useFilterProducts } from "hooks/useFilterProducts";
 
 import "./ShopContainer.scss";
 
 function ShopContainer() {
-  const dispatch = useDispatch();
+  const { name } = useParams();
 
-  const filterProducts = async (type, params) => {
-    try {
-      const response = await shopApi.getAll(type, params);
-      const action = filterShop(response);
-      dispatch(action);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+  const filterProducts = useFilterProducts();
 
-  // initial products
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const params = {
-          _limit: 15,
-        };
-        console.log(params);
-
-        const response = await shopApi.getAll("best-foods", params);
-        const action = filterShop(response);
-        dispatch(action);
-      } catch (error) {
-        console.log(error.message);
-      }
+    const params = {
+      _limit: 10,
     };
 
-    fetchProducts();
-  }, []);
+    filterProducts(params);
+  }, [name]);
 
   return (
     <div className="shop-container">
-      <ShopFilters filterProducts={filterProducts} />
+      <ShopFilters />
       <ShopContent />
     </div>
   );
