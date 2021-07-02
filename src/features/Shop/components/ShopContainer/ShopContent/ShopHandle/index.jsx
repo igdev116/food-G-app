@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 
-import { useParams } from "react-router-dom";
+import { filterShopBySort } from "features/Shop/shopSlice";
 
-import { useFilterProducts } from "hooks/useFilterProducts";
+import { useDispatch } from "react-redux";
 
 import SearchIcon from "@material-ui/icons/Search";
 import ViewList from "@material-ui/icons/ViewList";
@@ -14,29 +14,26 @@ import "./ShopHandle.scss";
 const dataTypes = [
   {
     value: "Price: Low to High",
-    sort: { _sort: "price", _order: "dsc" },
+    sort: "price_lth",
   },
   {
     value: "Price: High to Low",
-    sort: "htl",
+    sort: "price_htl",
   },
   {
     value: "Rate: Low to High",
-    sort: "lth",
+    sort: "rate_lth",
   },
   {
     value: "Rate: High to Low",
-    sort: "lth",
+    sort: "rate_htl",
   },
 ];
 
 function ShopHandle() {
   const [isDrop, setIsDrop] = useState(false);
   const ref = useRef();
-
-  const { name } = useParams();
-
-  const filterProducts = useFilterProducts();
+  const dispatch = useDispatch();
 
   window.addEventListener("click", (e) => {
     if (ref.current.contains(e.target)) {
@@ -46,8 +43,9 @@ function ShopHandle() {
     }
   });
 
-  const onFilterProducts = (sort) => {
-    filterProducts(name, sort);
+  const onFilterBySort = (sort) => {
+    const action = filterShopBySort(sort);
+    dispatch(action);
   };
 
   return (
@@ -72,7 +70,7 @@ function ShopHandle() {
         >
           {dataTypes.map(({ value, sort }, index) => (
             <li
-              onClick={() => onFilterProducts(sort)}
+              onClick={() => onFilterBySort(sort)}
               key={index}
               className="shop-handle__drop-item"
             >

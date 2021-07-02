@@ -11,16 +11,15 @@ import "./ShopContainer.scss";
 
 function ShopContainer() {
   const { name } = useParams();
-
-  const filterProducts = useFilterProducts();
+  const filterInitialProducts = useFilterProducts();
 
   useEffect(() => {
     const params = {
       _limit: 10,
     };
 
-    filterProducts(params);
-  }, [name]);
+    filterInitialProducts(name, params);
+  }, [name, filterInitialProducts]);
 
   return (
     <div className="shop-container">

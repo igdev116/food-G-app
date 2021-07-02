@@ -6,6 +6,6 @@ export const usePrevious = (value) => {
   useEffect(() => {
     ref.current = value;
   });
-
+  console.log("Use previous");
   return ref.current;
 };

@@ -2,7 +2,6 @@ import axiosClient from "./axiosClient";
 
 const shopApi = {
   getAll: (type, params) => {
-    console.log(type, params);
     return axiosClient.get(type, { params });
   },
 

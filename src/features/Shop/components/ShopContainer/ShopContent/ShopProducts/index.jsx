@@ -11,7 +11,7 @@ function ShopProducts() {
 
   const productData = useSelector((state) => state.shop);
 
-  // set products to render
+  // get products to render
   useEffect(() => {
     setProducts(productData);
   }, [productData]);
@@ -19,20 +19,7 @@ function ShopProducts() {
   return (
     <div className="shop-products">
       {productData &&
-        productData.map(
-          ({ id, img, name, dsc, price, rate, country }, index) => (
-            <ShopProduct
-              key={index}
-              id={id}
-              img={img}
-              dsc={dsc}
-              price={price}
-              name={name}
-              rate={rate}
-              country={country}
-            />
-          )
-        )}
+        productData.map((item, index) => <ShopProduct key={index} {...item} />)}
     </div>
   );
 }

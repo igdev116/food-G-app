@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { useFilterProducts } from "hooks/useFilterProducts";
 
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 import StarIcon from "@material-ui/icons/Star";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
@@ -46,16 +46,17 @@ const dataPrices = [
 
 function ShopFilters() {
   const history = useHistory();
+  const { name } = useParams();
 
   const filterProducts = useFilterProducts();
 
-  const onFilterProducts = (params) => {
-    filterProducts(params);
+  const onFilterByType = (params) => {
+    filterProducts(name, params);
   };
 
-  const onFilterProductsByType = (type) => {
+  const onFilterByName = (type) => {
     history.push(type);
-    filterProducts();
+    filterProducts(type);
   };
 
   return (
@@ -65,7 +66,7 @@ function ShopFilters() {
         {dataTypes.map(({ img, name, type }, index) => (
           <li
             key={index}
-            onClick={() => onFilterProductsByType(type)}
+            onClick={() => onFilterByName(type)}
             className="shop-filters__item"
           >
             <img src={`/svgs/Shop/${img}`} alt="Shop icons" />
@@ -78,7 +79,7 @@ function ShopFilters() {
       <form className="shop-filters__form">
         {dataPrices.map(({ info, range }, index) => (
           <label
-            onClick={() => onFilterProducts(range)}
+            onClick={() => onFilterByType(range)}
             key={index}
             className="shop-filters__label"
           >
@@ -91,7 +92,7 @@ function ShopFilters() {
 
       <h2 className="shop-filters__title">Rate</h2>
       <div
-        onClick={() => onFilterProducts({ rate_like: 5 })}
+        onClick={() => onFilterByType({ rate_like: 5 })}
         className="shop-filters__stars"
       >
         <StarIcon />
@@ -101,7 +102,7 @@ function ShopFilters() {
         <StarIcon />
       </div>
       <div
-        onClick={() => onFilterProducts({ rate_like: 4 })}
+        onClick={() => onFilterByType({ rate_like: 4 })}
         className="shop-filters__stars"
       >
         <StarIcon />
@@ -111,7 +112,7 @@ function ShopFilters() {
         <StarBorderIcon />
       </div>
       <div
-        onClick={() => onFilterProducts({ rate_like: 3 })}
+        onClick={() => onFilterByType({ rate_like: 3 })}
         className="shop-filters__stars"
       >
         <StarIcon />
