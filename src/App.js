@@ -7,6 +7,8 @@ import Footer from "components/Footer";
 import Header from "components/Header";
 import Shop from "features/Shop";
 
+import Theme from "utils/cusMatUi";
+
 import {
   BrowserRouter as Router,
   Redirect,
@@ -14,7 +16,6 @@ import {
   Switch,
 } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core/styles";
-import Theme from "utils/cusMatUi";
 
 import "./App.scss";
 
@@ -25,10 +26,13 @@ function App() {
         <Header />
         <Switch>
           <Redirect exact from="/" to="/home" />
-
           <Route path="/home" component={Home} />
+
           <Route path="/sign-in" component={SignIn} />
-          <Route path="/shop" component={Shop} />
+
+          {/* <Route exact path="/shop" component={Shop} /> */}
+          <Route exact path="/shop/:name" component={Shop} />
+
           <Route component={NotFound} />
         </Switch>
       </Router>
