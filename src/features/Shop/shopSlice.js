@@ -4,10 +4,10 @@ const shop = createSlice({
   name: "shop",
   initialState: [],
   reducers: {
-    filterShop: (state, action) => {
+    getShopProducts: (state, action) => {
       return (state = action.payload);
     },
-    filterShopBySort: (state, action) => {
+    filterShopByOrder: (state, action) => {
       switch (action.payload) {
         case "price_lth":
           state.sort((a, b) => a.price - b.price);
@@ -30,5 +30,5 @@ const shop = createSlice({
 
 const { reducer, actions } = shop;
 
-export const { filterShop, filterShopBySort } = actions;
+export const { getShopProducts, filterShopByOrder } = actions;
 export default reducer;

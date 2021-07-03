@@ -9,7 +9,7 @@
   right: 0;
   z-index: 998;
 
-  padding: 10px 0;
+  padding: 8px 0;
   margin-top: 5px;
   width: 100%;
 
@@ -63,7 +63,7 @@
   }
 
   &__logo {
-    height: 5.3rem;
+    height: 4.8rem;
 
     @include respond(mobile) {
       height: 4rem;

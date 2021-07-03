@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-import { filterShopBySort } from "features/Shop/shopSlice";
+import { filterShopByOrder } from "features/Shop/shopSlice";
 
 import { useDispatch } from "react-redux";
 
@@ -44,7 +44,7 @@ function ShopHandle() {
   });
 
   const onFilterBySort = (sort) => {
-    const action = filterShopBySort(sort);
+    const action = filterShopByOrder(sort);
     dispatch(action);
   };
 

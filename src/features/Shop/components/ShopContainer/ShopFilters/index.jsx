@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { useFilterProducts } from "hooks/useFilterProducts";
+import { usePrevious } from "hooks/usePrevious";
 
 import { useHistory, useParams } from "react-router-dom";
 
@@ -48,15 +49,28 @@ function ShopFilters() {
   const history = useHistory();
   const { name } = useParams();
 
+  const [prevName, setPrevName] = useState(null);
+  const [prevPrice, setPrevPrice] = useState(null);
+
   const filterProducts = useFilterProducts();
 
-  const onFilterByType = (params) => {
-    filterProducts(name, params);
+  const onFilterByName = (name) => {
+    new Promise((resolve) => resolve(setPrevName(name))).then(() => {
+      if (name !== prevName) {
+        filterProducts(name);
+        history.push(name);
+        console.log("IF:");
+      }
+    });
   };
 
-  const onFilterByName = (type) => {
-    history.push(type);
-    filterProducts(type);
+  const onFilterByPrice = (params) => {
+    new Promise((resolve) => resolve(setPrevPrice(params))).then(() => {
+      // console.log("INSIDE:", prevPrice, params, prevPrice !== params);
+      if (prevPrice !== params) {
+        filterProducts(name, params);
+      }
+    });
   };
 
   return (
@@ -79,7 +93,7 @@ function ShopFilters() {
       <form className="shop-filters__form">
         {dataPrices.map(({ info, range }, index) => (
           <label
-            onClick={() => onFilterByType(range)}
+            onClick={() => onFilterByPrice(range)}
             key={index}
             className="shop-filters__label"
           >
@@ -92,7 +106,7 @@ function ShopFilters() {
 
       <h2 className="shop-filters__title">Rate</h2>
       <div
-        onClick={() => onFilterByType({ rate_like: 5 })}
+        // onClick={() => onFilterByType({ rate_like: 5 })}
         className="shop-filters__stars"
       >
         <StarIcon />
@@ -102,7 +116,7 @@ function ShopFilters() {
         <StarIcon />
       </div>
       <div
-        onClick={() => onFilterByType({ rate_like: 4 })}
+        // onClick={() => onFilterByType({ rate_like: 4 })}
         className="shop-filters__stars"
       >
         <StarIcon />
@@ -112,7 +126,7 @@ function ShopFilters() {
         <StarBorderIcon />
       </div>
       <div
-        onClick={() => onFilterByType({ rate_like: 3 })}
+        // onClick={() => onFilterByType({ rate_like: 3 })}
         className="shop-filters__stars"
       >
         <StarIcon />

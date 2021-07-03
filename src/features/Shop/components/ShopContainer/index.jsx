@@ -11,15 +11,16 @@ import "./ShopContainer.scss";
 
 function ShopContainer() {
   const { name } = useParams();
-  const filterInitialProducts = useFilterProducts();
+
+  const filterProducts = useFilterProducts();
 
   useEffect(() => {
     const params = {
       _limit: 10,
     };
 
-    filterInitialProducts(name, params);
-  }, [name, filterInitialProducts]);
+    filterProducts(name, params);
+  }, [name, filterProducts]);
 
   return (
     <div className="shop-container">
@@ -28,5 +29,5 @@ function ShopContainer() {
     </div>
   );
 }
-
+// https://felixgerschau.com/react-rerender-components/#:~:text=In%20function%20components%2C%20the%20execution,t%20even%20receive%20any%20props.
 export default ShopContainer;
