@@ -10,7 +10,7 @@ import HomeProducts from "./components/HomeProducts";
 import HomeAnalysis from "./components/HomeAnalysis";
 import HomeReview from "./components/HomeReview";
 
-import auth from "api/Firebase";
+import auth from "configs/firebase";
 
 function Home() {
   return (

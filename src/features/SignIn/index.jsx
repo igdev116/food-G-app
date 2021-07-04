@@ -1,6 +1,6 @@
 import React from "react";
 
-import auth, { googleProvider } from "api/Firebase";
+import auth, { googleProvider } from "configs/firebase";
 import FormSignIn from "./components/FormSignIn";
 
 import { Link } from "react-router-dom";
