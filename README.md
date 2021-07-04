@@ -25,7 +25,6 @@ src
 |  |__styles
 |  |__svgs
 |__app
-|  |__store.js
 |__constants
 |__components
 |  |__Header // navs, cart, account
@@ -68,6 +67,9 @@ src
 |     |  |__FieldSignIn
 |     |__svgs
 |__utils
+|__hooks
 ```
 
-#FB4B4B
+```
+Move to home page but ref is null
+```
