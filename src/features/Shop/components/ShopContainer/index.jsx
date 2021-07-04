@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import ShopContent from "./ShopContent";
 import ShopFilters from "./ShopFilters";
@@ -14,9 +14,9 @@ function ShopContainer() {
 
   const filterProducts = useFilterProducts();
 
-  useEffect(() => {
+  window.addEventListener("load", () => {
     filterProducts(name);
-  }, [name, filterProducts]);
+  });
 
   return (
     <div className="shop-container">
