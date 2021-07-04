@@ -212,18 +212,29 @@
     margin-bottom: 10px;
 
     &__img-wrapper {
-      width: 28.5rem;
-      height: 12.5rem;
+      width: 23.5rem;
+      height: 15.5rem;
       text-align: center;
     }
 
     &__content {
       margin-left: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    &__name {
+      margin-bottom: 10px;
     }
 
     &__row {
       display: unset;
       justify-content: unset;
+    }
+
+    &__location {
+      margin: 5px 0 10px -3px;
     }
   }
 }

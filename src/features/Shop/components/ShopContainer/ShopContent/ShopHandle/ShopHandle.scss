@@ -143,6 +143,10 @@
     margin-right: 3px;
   }
 
+  &__display-types svg {
+    transition: none;
+  }
+
   &__display-type.active {
     fill: $primary-red-color;
   }

@@ -1,17 +1,25 @@
 import React, { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import PropTypes from "prop-types";
 
+// features
 import { filterShopByOrder } from "features/Shop/shopSlice";
 
-import { useDispatch } from "react-redux";
-
+// custom hooks
 import { useFilterProducts } from "hooks/useFilterProducts";
 
+// material ui icons
 import SearchIcon from "@material-ui/icons/Search";
 import ViewList from "@material-ui/icons/ViewList";
 import ViewModuleIcon from "@material-ui/icons/ViewModule";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import "./ShopHandle.scss";
+
+ShopHandle.propsTypes = {
+  isFlex: PropTypes.bool.isRequired,
+  setIsFlex: PropTypes.func.isRequired,
+};
 
 const dataTypes = [
   {
@@ -32,12 +40,14 @@ const dataTypes = [
   },
 ];
 
-function ShopHandle() {
+function ShopHandle(props) {
+  const { isFlex, setIsFlex } = props;
   const [inputValue, setInputValue] = useState("");
   const [isDrop, setIsDrop] = useState(false);
   const ref = useRef();
   const dispatch = useDispatch();
 
+  // custom hooks
   const filterProducts = useFilterProducts();
 
   const handleClickDrop = (e) => {
@@ -104,8 +114,22 @@ function ShopHandle() {
       </div>
 
       <div className="shop-handle__display-types">
-        <ViewList className="shop-handle__display-type" />
-        <ViewModuleIcon className="shop-handle__display-type active" />
+        <ViewList
+          onClick={() => setIsFlex(true)}
+          className={
+            isFlex
+              ? "shop-handle__display-type active"
+              : "shop-handle__display-type"
+          }
+        />
+        <ViewModuleIcon
+          onClick={() => setIsFlex(false)}
+          className={
+            isFlex
+              ? "shop-handle__display-type"
+              : "shop-handle__display-type active"
+          }
+        />
       </div>
     </div>
   );
