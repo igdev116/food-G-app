@@ -15,11 +15,7 @@ function ShopContainer() {
   const filterProducts = useFilterProducts();
 
   useEffect(() => {
-    const params = {
-      _limit: 10,
-    };
-
-    filterProducts(name, params);
+    filterProducts(name);
   }, [name, filterProducts]);
 
   return (
@@ -29,5 +25,5 @@ function ShopContainer() {
     </div>
   );
 }
-// https://felixgerschau.com/react-rerender-components/#:~:text=In%20function%20components%2C%20the%20execution,t%20even%20receive%20any%20props.
+
 export default ShopContainer;

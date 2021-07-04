@@ -4,6 +4,8 @@ import { filterShopByOrder } from "features/Shop/shopSlice";
 
 import { useDispatch } from "react-redux";
 
+import { useFilterProducts } from "hooks/useFilterProducts";
+
 import SearchIcon from "@material-ui/icons/Search";
 import ViewList from "@material-ui/icons/ViewList";
 import ViewModuleIcon from "@material-ui/icons/ViewModule";
@@ -31,27 +33,48 @@ const dataTypes = [
 ];
 
 function ShopHandle() {
+  const [inputValue, setInputValue] = useState("");
   const [isDrop, setIsDrop] = useState(false);
   const ref = useRef();
   const dispatch = useDispatch();
 
-  window.addEventListener("click", (e) => {
-    if (ref.current.contains(e.target)) {
+  const filterProducts = useFilterProducts();
+
+  const handleClickDrop = (e) => {
+    const el = ref.current;
+
+    if (el && el.contains(e.target)) {
       setIsDrop(!isDrop);
     } else {
       setIsDrop(false);
     }
-  });
+  };
+
+  window.addEventListener("click", handleClickDrop);
 
   const onFilterBySort = (sort) => {
     const action = filterShopByOrder(sort);
     dispatch(action);
   };
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+
+    if (!inputValue) return;
+    const query = { name_like: inputValue };
+
+    filterProducts("all", query);
+    setInputValue("");
+  };
+
   return (
     <div className="shop-handle">
-      <form className="shop-handle__search">
-        <input placeholder="Search your product" />
+      <form onSubmit={handleSearch} className="shop-handle__search">
+        <input
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          placeholder="Search your product"
+        />
         <button className="shop-handle__search-btn">
           <SearchIcon />
         </button>

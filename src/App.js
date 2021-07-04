@@ -5,6 +5,7 @@ import NotFound from "components/NotFound";
 import SignIn from "features/SignIn";
 import Footer from "components/Footer";
 import Header from "components/Header";
+import ScrollButton from "components/ScrollButton";
 import Shop from "features/Shop";
 
 import Theme from "utils/cusMatUi";
@@ -36,6 +37,7 @@ function App() {
           <Route component={NotFound} />
         </Switch>
       </Router>
+      <ScrollButton />
       <Footer />
     </ThemeProvider>
   );

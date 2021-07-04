@@ -6,6 +6,12 @@ import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import RoomIcon from "@material-ui/icons/Room";
 
+import {
+  LazyLoadImage,
+  LazyLoadComponent,
+} from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
+
 import "./ShopProduct.scss";
 
 ShopProduct.propsTypes = {
@@ -31,11 +37,14 @@ function ShopProduct(props) {
   return (
     <div id={id} className="shop-product">
       <div className="shop-product__img-wrapper">
-        <div
-          style={{ backgroundImage: `url(${img})` }}
+        <LazyLoadImage
+          effect="blur"
+          src={img}
           className="shop-product__img"
-          alt="Product"
-        ></div>
+          alt={name}
+          width="100%"
+          height="100%"
+        ></LazyLoadImage>
         <div className="shop-product__rate">
           <StarIcon />
           <span>{rate}</span>

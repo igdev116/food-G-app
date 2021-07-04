@@ -11,7 +11,7 @@ function ShopProducts() {
 
   const productData = useSelector((state) => state.shop);
 
-  // get products to render
+  // get products from store to render
   useEffect(() => {
     setProducts(productData);
   }, [productData]);
@@ -19,7 +19,7 @@ function ShopProducts() {
   return (
     <div className="shop-products">
       {productData &&
-        productData.map((item, index) => <ShopProduct key={index} {...item} />)}
+        productData.map((item) => <ShopProduct key={item.index} {...item} />)}
     </div>
   );
 }
