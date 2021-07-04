@@ -51,26 +51,32 @@ function ShopFilters() {
 
   const [prevName, setPrevName] = useState(null);
   const [prevPrice, setPrevPrice] = useState(null);
+  const [prevRate, setPrevRate] = useState(null);
 
   const filterProducts = useFilterProducts();
 
   const onFilterByName = (name) => {
-    new Promise((resolve) => resolve(setPrevName(name))).then(() => {
-      if (name !== prevName) {
-        filterProducts(name);
-        history.push(name);
-        console.log("IF:");
-      }
-    });
+    setPrevName(name);
+    if (name !== prevName) {
+      filterProducts(name);
+      history.push(name);
+    }
   };
 
   const onFilterByPrice = (params) => {
-    new Promise((resolve) => resolve(setPrevPrice(params))).then(() => {
-      // console.log("INSIDE:", prevPrice, params, prevPrice !== params);
-      if (prevPrice !== params) {
-        filterProducts(name, params);
-      }
-    });
+    setPrevPrice(params);
+    if (prevPrice !== params) {
+      filterProducts(name, params);
+    }
+  };
+
+  const onFilterByRate = (params) => {
+    const stringParams = JSON.stringify(params);
+
+    setPrevRate(stringParams);
+    if (prevRate !== stringParams) {
+      filterProducts(name, params);
+    }
   };
 
   return (
@@ -106,7 +112,7 @@ function ShopFilters() {
 
       <h2 className="shop-filters__title">Rate</h2>
       <div
-        // onClick={() => onFilterByType({ rate_like: 5 })}
+        onClick={() => onFilterByRate({ rate_like: 5 })}
         className="shop-filters__stars"
       >
         <StarIcon />
@@ -116,7 +122,7 @@ function ShopFilters() {
         <StarIcon />
       </div>
       <div
-        // onClick={() => onFilterByType({ rate_like: 4 })}
+        onClick={() => onFilterByRate({ rate_like: 4 })}
         className="shop-filters__stars"
       >
         <StarIcon />
@@ -126,7 +132,7 @@ function ShopFilters() {
         <StarBorderIcon />
       </div>
       <div
-        // onClick={() => onFilterByType({ rate_like: 3 })}
+        onClick={() => onFilterByRate({ rate_like: 3 })}
         className="shop-filters__stars"
       >
         <StarIcon />
