@@ -1,5 +1,6 @@
 import React from "react";
 
+import Header from "components/Header";
 import ShopBanner from "./components/ShopBanner";
 import ShopContainer from "./components/ShopContainer";
 
@@ -9,12 +10,15 @@ import "./Shop.scss";
 
 function Shop() {
   return (
-    <section className="shop">
-      <ShopBanner />
-      <Container>
-        <ShopContainer />
-      </Container>
-    </section>
+    <>
+      <Header />
+      <section className="shop">
+        <ShopBanner />
+        <Container>
+          <ShopContainer />
+        </Container>
+      </section>
+    </>
   );
 }
 

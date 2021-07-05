@@ -14,12 +14,12 @@
     background-color: $primary-white-color;
 
     @include respond(tablet) {
+      box-shadow: none;
       flex-direction: column;
       margin: 70px 0;
     }
 
     @include respond(phone) {
-      box-shadow: none;
       margin: 50px 0;
     }
   }

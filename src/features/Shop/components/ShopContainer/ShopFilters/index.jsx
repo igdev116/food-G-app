@@ -1,10 +1,12 @@
-import React, { useState } from "react";
-
-import { useFilterProducts } from "hooks/useFilterProducts";
-import { usePrevious } from "hooks/usePrevious";
-
+import React, { useContext, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
+import { ApiContext } from "context/ApiProvider";
+
+// query string
+import queryString from "query-string";
+
+// material ui icons
 import StarIcon from "@material-ui/icons/Star";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 
@@ -53,12 +55,12 @@ function ShopFilters() {
   const [prevPrice, setPrevPrice] = useState(null);
   const [prevRate, setPrevRate] = useState(null);
 
-  const filterProducts = useFilterProducts();
+  const { getProducts } = useContext(ApiContext);
 
   const onFilterByName = (name) => {
     setPrevName(name);
     if (name !== prevName) {
-      filterProducts(name);
+      getProducts(name);
       history.push(name);
     }
   };
@@ -66,7 +68,10 @@ function ShopFilters() {
   const onFilterByPrice = (params) => {
     setPrevPrice(params);
     if (prevPrice !== params) {
-      filterProducts(name, params);
+      getProducts(name, params);
+      history.push({
+        search: queryString.stringify(params),
+      });
     }
   };
 
@@ -75,7 +80,10 @@ function ShopFilters() {
 
     setPrevRate(stringParams);
     if (prevRate !== stringParams) {
-      filterProducts(name, params);
+      getProducts(name, params);
+      history.push({
+        search: queryString.stringify(params),
+      });
     }
   };
 

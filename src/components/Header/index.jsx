@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-
-// router dom
 import { Link } from "react-router-dom";
 
 // material ui

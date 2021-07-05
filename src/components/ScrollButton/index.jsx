@@ -16,7 +16,6 @@ function ScrollButton() {
 
   window.addEventListener("scroll", () => {
     if (window.scrollY > 800) {
-      console.log(window.scrollY);
       setIsShow(true);
     } else {
       setIsShow(false);

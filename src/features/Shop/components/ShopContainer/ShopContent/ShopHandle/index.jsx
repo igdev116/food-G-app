@@ -1,12 +1,13 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 
-// features
 import { filterShopByOrder } from "features/Shop/shopSlice";
+import { ApiContext } from "context/ApiProvider";
 
-// custom hooks
-import { useFilterProducts } from "hooks/useFilterProducts";
+// query string
+import queryString from "query-string";
 
 // material ui icons
 import SearchIcon from "@material-ui/icons/Search";
@@ -42,13 +43,15 @@ const dataTypes = [
 
 function ShopHandle(props) {
   const { isFlex, setIsFlex } = props;
+
   const [inputValue, setInputValue] = useState("");
   const [isDrop, setIsDrop] = useState(false);
   const ref = useRef();
   const dispatch = useDispatch();
 
-  // custom hooks
-  const filterProducts = useFilterProducts();
+  const history = useHistory();
+
+  const { getProducts } = useContext(ApiContext);
 
   const handleClickDrop = (e) => {
     const el = ref.current;
@@ -73,7 +76,11 @@ function ShopHandle(props) {
     if (!inputValue) return;
     const query = { name_like: inputValue };
 
-    filterProducts("all", query);
+    getProducts("all", query);
+    history.push({
+      pathname: "all",
+      search: queryString.stringify(query),
+    });
     setInputValue("");
   };
 

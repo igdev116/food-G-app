@@ -12,20 +12,27 @@
 9. Firebase
 10. Styled-component
 11. React-countup
+12. React Lazy Load Image Component
 ```
 
 ## Folder structure
 
 ```js
+public
+|__imgs
+|  |__Home
+|  |__Shop
+|__svgs
+|  |__Home
+|  |__Shop
+|  |__SignIn
+|
 src
 |__api
-|  |__Firebase
+|__app
 |__assets
-|  |__images
 |  |__styles
 |  |__svgs
-|__app
-|__constants
 |__components
 |  |__Header // navs, cart, account
 |  |__Footer // operating times, contacts, map
@@ -35,6 +42,9 @@ src
 |  |__CusButtons
 |  |__Momo
 |  |__BackgroundIcon
+|__configs
+|__constants
+|__context
 |__features
 |  |__Home
 |  |  |__components
@@ -54,22 +64,19 @@ src
 |  |  |__components
 |  |  |  |__ShopBanner
 |  |  |  |__ShopContainer
-|  |  |     |__ShopFilters // filter by types, prices, sizes, best deals
 |  |  |     |__ShopContent
 |  |  |     |  |__ShopHandle // search, sort
 |  |  |     |  |__ShopProducts
-|  |  |     |__ShopContainer.js
+|  |  |     |     |__ShopProduct
+|  |  |     |__ShopFilters // filter by types, prices, sizes, best deals
 |  |  |     |__index.jsx // render
 |  |  |__shopSlice.js
 |  |__SignIn
 |     |__components
-|     |  |__FormSignIn
-|     |  |__FieldSignIn
-|     |__svgs
-|__utils
+|        |__FormSignIn
+|        |__FieldSignIn
 |__hooks
+|__utils
 ```
 
-```
-Move to home page but ref is null
-```
+// https://felixgerschau.com/react-rerender-components/#:~:text=In%20function%20components%2C%20the%20execution,t%20even%20receive%20any%20props.

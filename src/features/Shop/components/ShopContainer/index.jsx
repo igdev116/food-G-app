@@ -1,21 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useHistory, useParams } from "react-router-dom";
 
 import ShopContent from "./ShopContent";
 import ShopFilters from "./ShopFilters";
-
-import { useParams } from "react-router-dom";
-
-import { useFilterProducts } from "hooks/useFilterProducts";
+import { ApiContext } from "context/ApiProvider";
 
 import "./ShopContainer.scss";
 
 function ShopContainer() {
   const { name } = useParams();
+  const history = useHistory();
+  const { getProducts } = useContext(ApiContext);
 
-  const filterProducts = useFilterProducts();
-
+  // when browser loaded get url to re-render
   window.addEventListener("load", () => {
-    filterProducts(name);
+    const params = history.location.search;
+
+    if (params) {
+      const paramsObj = JSON.parse(
+        '{"' +
+          decodeURI(
+            params.substr(1).replace(/&/g, '","').replace(/=/g, '":"')
+          ) +
+          '"}'
+      );
+
+      getProducts(name, paramsObj);
+    } else {
+      getProducts(name);
+    }
   });
 
   return (
