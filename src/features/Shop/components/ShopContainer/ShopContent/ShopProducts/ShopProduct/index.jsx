@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
+
+import { AuthContext } from "context/AuthProvider";
+
+// lazy load img
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 import StarIcon from "@material-ui/icons/Star";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import RoomIcon from "@material-ui/icons/Room";
-
-import {
-  LazyLoadImage,
-  LazyLoadComponent,
-} from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/blur.css";
 
 import "./ShopProduct.scss";
 
@@ -34,6 +35,17 @@ ShopProduct.propsTypes = {
 
 function ShopProduct(props) {
   const { id, name, img, dsc, price, rate, country } = props;
+
+  const history = useHistory();
+
+  const { user } = useContext(AuthContext);
+
+  const onAddToCart = () => {
+    if (!user) {
+      history.push("/sign-in");
+    }
+  };
+
   return (
     <div id={id} className="shop-product">
       <div className="shop-product__img-wrapper">
@@ -50,6 +62,7 @@ function ShopProduct(props) {
           <span>{rate}</span>
         </div>
       </div>
+
       <div className="shop-product__content">
         <div className="shop-product__name">{name}</div>
         <p className="shop-product__description">{dsc}</p>
@@ -61,11 +74,12 @@ function ShopProduct(props) {
           <div className="shop-product__price">${price}</div>
         </div>
       </div>
+
       <div className="shop-product__btns">
         <div className="shop-product__btn">
           <FavoriteBorderIcon />
         </div>
-        <div className="shop-product__btn">
+        <div onClick={onAddToCart} className="shop-product__btn">
           <ShoppingCartOutlinedIcon />
         </div>
       </div>
