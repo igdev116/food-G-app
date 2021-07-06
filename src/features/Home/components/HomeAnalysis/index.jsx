@@ -44,14 +44,20 @@ function HomeAnalysis() {
   const [isCome, setIsCome] = useState(false);
   const ref = useRef();
 
+  // handle scroll to count component
   useEffect(() => {
     const spaceToTop = ref.current.offsetTop;
 
-    window.addEventListener("scroll", () => {
+    const handleScrollToCount = () => {
       if (window.scrollY > spaceToTop + 150) {
         setIsCome(true);
       }
-    });
+    };
+    window.addEventListener("scroll", handleScrollToCount);
+
+    return () => {
+      window.addEventListener("scroll", handleScrollToCount);
+    };
   }, []);
 
   const handleModal = () => {

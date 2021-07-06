@@ -4,7 +4,7 @@ const shop = createSlice({
   name: "shop",
   initialState: [],
   reducers: {
-    getShopProducts: (state, action) => {
+    setShopProducts: (state, action) => {
       return (state = action.payload);
     },
     filterShopByOrder: (state, action) => {
@@ -30,5 +30,5 @@ const shop = createSlice({
 
 const { reducer, actions } = shop;
 
-export const { getShopProducts, filterShopByOrder } = actions;
+export const { setShopProducts, filterShopByOrder } = actions;
 export default reducer;

@@ -1,14 +1,24 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 
-// material ui
+import { AuthContext } from "context/AuthProvider";
+import auth from "configs/firebase";
+
+import BurgerNavbar from "./BurgerNavbar";
+
+// material ui core
 import { Container, Avatar } from "@material-ui/core";
+
+// material ui icons
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import HomeIcon from "@material-ui/icons/Home";
 import RestaurantMenuIcon from "@material-ui/icons/RestaurantMenu";
 import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
 import StoreMallDirectoryIcon from "@material-ui/icons/StoreMallDirectory";
 import EmojiFoodBeverageIcon from "@material-ui/icons/EmojiFoodBeverage";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import PermContactCalendarIcon from "@material-ui/icons/PermContactCalendar";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 import Logo from "assets/svgs/logo.svg";
 import "./Header.scss";
@@ -17,26 +27,51 @@ function Header() {
   const [isActive, setIsActive] = useState(false);
   const [isShow, setIsShow] = useState(false);
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY >= 100) {
-      setIsActive(true);
-    } else {
-      setIsActive(false);
-    }
-  });
+  const history = useHistory();
 
-  const showHamburgerNav = () => {
+  const { user, setUser, hasHeader } = useContext(AuthContext);
+
+  // handle scroll
+  useEffect(() => {
+    const scrollShowNav = () => {
+      if (window.scrollY >= 100) {
+        setIsActive(true);
+      } else {
+        setIsActive(false);
+      }
+    };
+    window.addEventListener("scroll", scrollShowNav);
+
+    return () => {
+      window.addEventListener("scroll", scrollShowNav);
+    };
+  }, []);
+
+  const showBurgerNav = () => {
     setIsShow(!isShow);
   };
 
+  const handleSignIn = () => {
+    history.push("/sign-in");
+  };
+
+  const handleSignOut = () => {
+    auth.signOut().then(() => {
+      setUser(false);
+    });
+  };
+
   return (
-    <header>
-      <div className={isActive ? "navbar active" : "navbar"}>
+    <>
+      <header
+        className={isActive ? "navbar active" : "navbar"}
+        style={{ display: hasHeader ? "block" : "none" }}
+      >
         <Container>
           <div className="navbar__container">
             {/* mobile */}
             <EmojiFoodBeverageIcon
-              onClick={showHamburgerNav}
+              onClick={showBurgerNav}
               className="hamburger-btn"
             />
 
@@ -72,52 +107,43 @@ function Header() {
                 <div className="navbar__cart-qnt">0</div>
               </div>
 
-              <div className="navbar__account">
-                <Avatar />
-                <div className="navbar__username">My account</div>
-              </div>
+              {user ? (
+                <div className="navbar__account">
+                  <Avatar src={user.photoURL} />
+                  <div className="navbar__username">{user.displayName}</div>
+
+                  <ul className="navbar__account-options">
+                    <li className="navbar__account-option">
+                      <AccountCircleIcon />
+                      <span>Profile</span>
+                    </li>
+                    <li className="navbar__account-option">
+                      <PermContactCalendarIcon />
+                      <span>My account</span>{" "}
+                    </li>
+                    <li
+                      onClick={handleSignOut}
+                      className="navbar__account-option"
+                    >
+                      <ExitToAppIcon />
+                      <span>Logout</span>
+                    </li>
+                  </ul>
+                </div>
+              ) : (
+                <div onClick={handleSignIn} className="navbar__account">
+                  <Avatar />
+                  <div className="navbar__username">SIGN IN</div>
+                </div>
+              )}
             </div>
           </div>
         </Container>
-      </div>
+      </header>
 
       {/* mobile */}
-      <div className="hamburger-nav">
-        <div
-          className={
-            isShow ? "hamburger-nav__content active" : "hamburger-nav__content"
-          }
-        >
-          <div className="hamburger-nav__account">
-            <Avatar className="hamburger-nav__icon" />
-            <div className="hamburger-nav__username">My account</div>
-          </div>
-
-          <ul className="hamburger-nav__list">
-            <li className="hamburger-nav__item">
-              <HomeIcon />
-              Pages
-            </li>
-            <li className="hamburger-nav__item">
-              <RestaurantMenuIcon /> Order online
-            </li>
-            <li className="hamburger-nav__item">
-              <LibraryBooksIcon /> News
-            </li>
-            <li className="hamburger-nav__item">
-              <StoreMallDirectoryIcon /> Store locations
-            </li>
-          </ul>
-        </div>
-
-        <span
-          className={
-            isShow ? "hamburger-nav__overlay active" : "hamburger-nav__overlay"
-          }
-          onClick={showHamburgerNav}
-        ></span>
-      </div>
-    </header>
+      <BurgerNavbar isShow={isShow} showBurgerNav={showBurgerNav} user={user} />
+    </>
   );
 }
 

@@ -6,14 +6,17 @@ import {
   Switch,
 } from "react-router-dom";
 
-import Home from "features/Home";
+import Theme from "utils/cusMatUi";
+import ApiProvider from "./context/ApiProvider";
+import AuthProvider from "./context/AuthProvider";
+
+import Header from "components/Header";
 import NotFound from "components/NotFound";
-import SignIn from "features/SignIn";
 import Footer from "components/Footer";
 import ScrollButton from "components/ScrollButton";
+import Home from "features/Home";
+import SignIn from "features/SignIn";
 import Shop from "features/Shop";
-import Theme from "utils/cusMatUi";
-import { ApiProvider } from "./context/ApiProvider";
 
 // material ui core
 import { ThemeProvider } from "@material-ui/core/styles";
@@ -22,24 +25,27 @@ import "./App.scss";
 
 function App() {
   return (
-    <ApiProvider>
-      <ThemeProvider theme={Theme}>
-        <Router>
-          <Switch>
-            <Redirect exact from="/" to="/home" />
-            <Route path="/home" component={Home} />
+    <ThemeProvider theme={Theme}>
+      <Router>
+        <AuthProvider>
+          <ApiProvider>
+            <Header />
+            <Switch>
+              <Redirect exact from="/" to="/home" />
+              <Route path="/home" component={Home}></Route>
 
-            <Route path="/sign-in" component={SignIn} />
+              <Route path="/sign-in" component={SignIn} />
 
-            <Route exact path="/shop/:name" component={Shop} />
+              <Route exact path="/shop/:name" component={Shop} />
 
-            <Route component={NotFound} />
-          </Switch>
-        </Router>
-        <ScrollButton />
-        <Footer />
-      </ThemeProvider>
-    </ApiProvider>
+              <Route component={NotFound} />
+            </Switch>
+          </ApiProvider>
+        </AuthProvider>
+      </Router>
+      <ScrollButton />
+      <Footer />
+    </ThemeProvider>
   );
 }
 

@@ -18,13 +18,17 @@ ShopProducts.propsTypes = {
 function ShopProducts(props) {
   const { isFlex } = props;
   const [products, setProducts] = useState([]);
-  const { isLoading } = useContext(ApiContext);
 
+  const { isLoading } = useContext(ApiContext);
   const productData = useSelector((state) => state.shop);
 
   // get products from store to render
   useEffect(() => {
     setProducts(productData);
+
+    return () => {
+      setProducts(productData);
+    };
   }, [productData]);
 
   return isLoading ? (

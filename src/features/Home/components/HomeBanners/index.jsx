@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import HomeBanner from "./HomeBanner";
-
-import { Container } from "@material-ui/core";
 
 import "./HomeBanners.scss";
 
@@ -33,16 +31,22 @@ const datas = [
 function HomeBanners() {
   const [slideNum, setSlideNum] = useState(0);
 
-  const timeWaiter = setTimeout(() => {
-    if (slideNum < datas.length - 1) {
-      setSlideNum(slideNum + 1);
-    } else {
-      setSlideNum(0);
-    }
-  }, 6000);
+  // handle auto slide
+  useEffect(() => {
+    const timeWaiter = setTimeout(() => {
+      if (slideNum < datas.length - 1) {
+        setSlideNum(slideNum + 1);
+      } else {
+        setSlideNum(0);
+      }
+    }, 6000);
+
+    return () => {
+      clearTimeout(timeWaiter);
+    };
+  });
 
   const moveDot = (idx) => {
-    clearTimeout(timeWaiter);
     setSlideNum(idx);
   };
 

@@ -131,6 +131,8 @@
   }
 
   &__account {
+    position: relative;
+
     display: flex;
     align-items: center;
     margin-left: 40px;
@@ -142,101 +144,93 @@
     }
   }
 
+  &__account:after {
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    content: "";
+
+    width: 100%;
+    height: 2rem;
+
+    background-color: transparent;
+  }
+
   &__username {
     font-size: 1.4rem;
-    margin-left: 8px;
+    margin-left: 8.5px;
 
     color: $primary-white-color;
+  }
+
+  &__account:hover &__account-options {
+    top: 45px;
+
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__account-options {
+    position: absolute;
+    right: 0;
+    top: 55px;
+
+    padding: 7px 0;
+    border-radius: 4px;
+    min-width: 11.7rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    visibility: hidden;
+    opacity: 0;
+
+    background-color: $primary-white-color;
+
+    transition: all 0.15s linear;
+  }
+
+  &__account-options:before {
+    position: absolute;
+    right: 12px;
+    top: -19.5px;
+
+    content: "";
+
+    border-top: 10.5px solid transparent;
+    border-left: 10.5px solid transparent;
+    border-right: 10.5px solid transparent;
+    border-bottom: 10.5px solid $primary-white-color;
+  }
+
+  &__account-option {
+    display: flex;
+    align-items: center;
+
+    font-size: 1.4rem;
+    line-height: 1.8;
+    padding: 6px 15px;
+
+    transition: all 0.08s ease-out;
+  }
+
+  &__account-option:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  }
+
+  &__account-option:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+  }
+
+  &__account-option svg {
+    margin-right: 5px;
+    font-size: 1.8rem;
+
+    fill: rgba(0, 0, 0, 0.84);
   }
 
   &.active {
     margin-top: 0;
 
     background-color: $primary-black-color;
-  }
-}
-
-// mobile
-.hamburger-nav {
-  @include respond(desktop) {
-    display: none;
-  }
-
-  &__overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 998;
-    opacity: 0;
-    visibility: hidden;
-
-    background-color: rgba(0, 0, 0, 0.3);
-
-    transition: opacity 0.3s ease;
-  }
-
-  &__overlay.active {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  &__content {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    z-index: 999;
-
-    height: 100%;
-    width: 80%;
-    padding: 10px 12px;
-    transform: translateX(-100%);
-
-    background-color: rgba(0, 0, 0, 0.97);
-
-    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-  }
-
-  &__content.active {
-    transform: translateX(0);
-  }
-
-  &__item {
-    display: flex;
-    align-items: center;
-    font-size: 1.4rem;
-    line-height: 1.7;
-    padding: 10px 0;
-    margin: 2px 0;
-
-    color: $primary-white-color;
-  }
-
-  &__item svg {
-    width: 2.2rem;
-    height: 2.2rem;
-    margin-right: 8px;
-  }
-
-  &__account {
-    display: flex;
-    align-items: center;
-    padding: 15px 0;
-    margin-bottom: 10px;
-    border-bottom: 1px solid rgba($primary-white-color, 0.2);
-  }
-
-  &__account &__icon {
-    width: 3rem;
-    height: 3rem;
-  }
-
-  &__username {
-    font-size: 1.4rem;
-    margin-left: 8px;
-
-    color: $primary-white-color;
   }
 }

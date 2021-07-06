@@ -1,0 +1,86 @@
+@import "assets/styles/colors";
+@import "assets/styles/mixins";
+
+.burger-nav {
+  @include respond(desktop) {
+    display: none;
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+
+    background-color: rgba(0, 0, 0, 0.3);
+
+    transition: opacity 0.3s ease;
+  }
+
+  &__overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 999;
+
+    height: 100%;
+    width: 80%;
+    padding: 10px 12px;
+    transform: translateX(-100%);
+
+    background-color: rgba(0, 0, 0, 0.97);
+
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  }
+
+  &__content.active {
+    transform: translateX(0);
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+    line-height: 1.7;
+    padding: 10px 0;
+    margin: 2px 0;
+
+    color: $primary-white-color;
+  }
+
+  &__item svg {
+    width: 2.2rem;
+    height: 2.2rem;
+    margin-right: 8px;
+  }
+
+  &__account {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba($primary-white-color, 0.2);
+  }
+
+  &__account &__icon {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  &__username {
+    font-size: 1.4rem;
+    margin-left: 8px;
+
+    color: $primary-white-color;
+  }
+}

@@ -2,7 +2,7 @@ import { createMuiTheme } from "@material-ui/core";
 
 import PR_RED_COLOR from "constants/colors";
 
-// overrides  button
+// overrides button
 const Theme = createMuiTheme({
   palette: {
     primary: {

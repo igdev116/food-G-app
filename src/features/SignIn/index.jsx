@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
+
+import { AuthContext } from "context/AuthProvider";
 
 import auth, { googleProvider } from "configs/firebase";
 import FormSignIn from "./components/FormSignIn";
 
-import { Link } from "react-router-dom";
-
+// material ui icons
 import { Button, Container } from "@material-ui/core";
 import FacebookIcon from "@material-ui/icons/Facebook";
 
@@ -13,19 +15,14 @@ import "./SignIn.scss";
 function SignIn() {
   // sign in with google
   const onGoogleSignIn = () => {
-    auth
-      .signInWithPopup(googleProvider)
-      .then((result) => {
-        const user = result.user;
-      })
-      .catch((error) => {
-        alert(error);
-      });
+    auth.signInWithPopup(googleProvider);
   };
 
-  auth.onAuthStateChanged((user) => {
-    console.log("State changed:", user);
-  });
+  const { setHasHeader } = useContext(AuthContext);
+
+  useEffect(() => {
+    setHasHeader(false);
+  }, [setHasHeader]);
 
   return (
     <section className="signin">

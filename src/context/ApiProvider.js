@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import shopApi from "api/shopApi";
-import { getShopProducts } from "features/Shop/shopSlice";
+import { setShopProducts } from "features/Shop/shopSlice";
 
 import { useDispatch } from "react-redux";
 
@@ -15,7 +15,7 @@ const ApiProvider = ({ children }) => {
     try {
       setIsLoading(true);
       const response = await shopApi.getAll(type, params);
-      const action = getShopProducts(response);
+      const action = setShopProducts(response);
       dispatch(action);
       setIsLoading(false);
     } catch (error) {
@@ -30,4 +30,5 @@ const ApiProvider = ({ children }) => {
   );
 };
 
-export { ApiContext, ApiProvider };
+export { ApiContext };
+export default ApiProvider;

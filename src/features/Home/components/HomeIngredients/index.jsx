@@ -105,7 +105,7 @@ function HomeIngredients() {
           <strong>$25.00</strong>
         </h2>
 
-        <PrRedBtn>Order Now</PrRedBtn>
+        <PrRedBtn type="shop">Order Now</PrRedBtn>
       </div>
     </section>
   );

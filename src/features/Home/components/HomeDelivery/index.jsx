@@ -17,12 +17,14 @@ function HomeDelivery() {
             <h2 className="pr-heading-text">
               A Moments Of Delivered <strong>On Right Time & Place</strong>
             </h2>
+
             <p className="home-delivery__description">
               Food G is a restaurant, bar and coffee roastery located on a busy
               corner site in Farringdon's Exmouth Market. With glazed frontage
               on two sides of the building, overlooking the market and a
               bustling London inteon.
             </p>
+
             <div className="home-delivery__contact">
               <img
                 src="/svgs/Home/small-delivery.svg"
@@ -37,7 +39,7 @@ function HomeDelivery() {
                   <strong>123-59794069</strong>
                 </div>
               </div>
-              <PrRedBtn>Order Now</PrRedBtn>
+              <PrRedBtn type="shop">Order Now</PrRedBtn>
             </div>
           </div>
           <img
