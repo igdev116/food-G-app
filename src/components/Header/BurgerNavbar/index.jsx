@@ -41,7 +41,7 @@ function BurgerNavbar(props) {
         ) : (
           <div className="burger-nav__account">
             <Avatar className="burger-nav__icon" />
-            <div className="burger-nav__username">My account</div>
+            <div className="burger-nav__username">Sign In</div>
           </div>
         )}
 

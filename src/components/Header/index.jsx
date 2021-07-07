@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 
 import { AuthContext } from "context/AuthProvider";
-import auth from "configs/firebase";
+import auth from "firebase/configs";
 
+import Dialog from "components/Dialog";
 import BurgerNavbar from "./BurgerNavbar";
 
 // material ui core
@@ -26,10 +28,12 @@ import "./Header.scss";
 function Header() {
   const [isActive, setIsActive] = useState(false);
   const [isShow, setIsShow] = useState(false);
+  const [isShowDialog, setIsShowDialog] = useState(false);
 
   const history = useHistory();
 
   const { user, setUser, hasHeader } = useContext(AuthContext);
+  const cartData = useSelector((state) => state.cart);
 
   // handle scroll
   useEffect(() => {
@@ -59,6 +63,10 @@ function Header() {
     auth.signOut().then(() => {
       setUser(false);
     });
+  };
+
+  const toggleDialog = () => {
+    setIsShowDialog(true);
   };
 
   return (
@@ -102,9 +110,12 @@ function Header() {
             </div>
 
             <div className="navbar--right">
-              <div className="navbar__cart">
+              
+              <div onClick={toggleDialog} className="navbar__cart">
                 <ShoppingCartIcon />
-                <div className="navbar__cart-qnt">0</div>
+                <div className="navbar__cart-qnt">
+                  {user ? cartData.length : 0}
+                </div>
               </div>
 
               {user ? (
@@ -133,7 +144,9 @@ function Header() {
               ) : (
                 <div onClick={handleSignIn} className="navbar__account">
                   <Avatar />
-                  <div className="navbar__username">SIGN IN</div>
+                  <div className="navbar__username navbar__username--signed-out">
+                    Sign In
+                  </div>
                 </div>
               )}
             </div>
@@ -143,6 +156,8 @@ function Header() {
 
       {/* mobile */}
       <BurgerNavbar isShow={isShow} showBurgerNav={showBurgerNav} user={user} />
+
+      <Dialog isShow={isShowDialog} setIsShow={setIsShowDialog} />
     </>
   );
 }

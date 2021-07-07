@@ -1,0 +1,84 @@
+@import "assets/styles/colors";
+@import "assets/styles/mixins";
+
+.dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  visibility: hidden;
+
+  display: flex;
+
+  &.show {
+    visibility: visible;
+  }
+
+  &__overlay {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+
+    background-color: rgba(0, 0, 0, 0.4);
+
+    transition: all 0.25s ease-out;
+  }
+
+  &.show &__overlay {
+    opacity: 1;
+  }
+
+  &__wrapper {
+    z-index: 1;
+
+    margin: auto;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(300%);
+    opacity: 0.5;
+    visibility: hidden;
+
+    background-color: $primary-white-color;
+
+    transition: all 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+
+    @include respond(phone) {
+      margin: auto 20px;
+    }
+  }
+
+  &.show &__wrapper {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__title {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    margin-bottom: 17px;
+    text-align: start;
+  }
+
+  &__description {
+    font-size: 1.5rem;
+  }
+
+  &__btns {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 40px;
+  }
+
+  &__btn:first-child {
+    margin-right: 10px;
+  }
+
+  & &__btn {
+    font-size: 1.3rem;
+    padding: 4px 8px;
+  }
+}

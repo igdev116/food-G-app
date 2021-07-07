@@ -163,8 +163,12 @@
     color: $primary-white-color;
   }
 
+  &__username--signed-out {
+    font-weight: 500;
+  }
+
   &__account:hover &__account-options {
-    top: 45px;
+    top: 47px;
 
     visibility: visible;
     opacity: 1;
@@ -177,7 +181,7 @@
 
     padding: 7px 0;
     border-radius: 4px;
-    min-width: 11.7rem;
+    width: max-content;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
     border: 1px solid rgba(0, 0, 0, 0.15);
     visibility: hidden;

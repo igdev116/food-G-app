@@ -1,8 +1,10 @@
-import React, { useContext } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 
+import Dialog from "components/Dialog";
 import { AuthContext } from "context/AuthProvider";
+import { addToCart } from "components/Cart/cartSlice";
 
 // lazy load img
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -22,6 +24,8 @@ ShopProduct.propsTypes = {
   dsc: PropTypes.string,
   price: PropTypes.number,
   rate: PropTypes.number,
+
+  toggleDialog: PropTypes.func,
 };
 
 ShopProduct.propsTypes = {
@@ -31,60 +35,68 @@ ShopProduct.propsTypes = {
   dsc: "",
   price: 0,
   rate: 0,
+
+  toggleDialog: null,
 };
 
 function ShopProduct(props) {
-  const { id, name, img, dsc, price, rate, country } = props;
+  const { id, name, img, dsc, price, rate, country, toggleDialog } = props;
 
-  const history = useHistory();
+  const dispatch = useDispatch();
 
   const { user } = useContext(AuthContext);
 
   const onAddToCart = () => {
     if (!user) {
-      history.push("/sign-in");
+      toggleDialog();
+      return;
     }
+
+    const action = addToCart({ id, name, img, dsc, price, rate, country });
+    dispatch(action);
   };
 
   return (
-    <div id={id} className="shop-product">
-      <div className="shop-product__img-wrapper">
-        <LazyLoadImage
-          effect="blur"
-          src={img}
-          className="shop-product__img"
-          alt={name}
-          width="100%"
-          height="100%"
-        ></LazyLoadImage>
-        <div className="shop-product__rate">
-          <StarIcon />
-          <span>{rate}</span>
-        </div>
-      </div>
-
-      <div className="shop-product__content">
-        <div className="shop-product__name">{name}</div>
-        <p className="shop-product__description">{dsc}</p>
-        <div className="shop-product__row">
-          <div className="shop-product__location">
-            <RoomIcon />
-            <span>{country}</span>
+    <>
+      <div id={id} className="shop-product">
+        <div className="shop-product__img-wrapper">
+          <LazyLoadImage
+            effect="blur"
+            src={img}
+            className="shop-product__img"
+            alt={name}
+            width="100%"
+            height="100%"
+          ></LazyLoadImage>
+          <div className="shop-product__rate">
+            <StarIcon />
+            <span>{rate}</span>
           </div>
-          <div className="shop-product__price">${price}</div>
         </div>
-      </div>
 
-      <div className="shop-product__btns">
-        <div className="shop-product__btn">
-          <FavoriteBorderIcon />
+        <div className="shop-product__content">
+          <div className="shop-product__name">{name}</div>
+          <p className="shop-product__description">{dsc}</p>
+          <div className="shop-product__row">
+            <div className="shop-product__location">
+              <RoomIcon />
+              <span>{country}</span>
+            </div>
+            <div className="shop-product__price">${price}</div>
+          </div>
         </div>
-        <div onClick={onAddToCart} className="shop-product__btn">
-          <ShoppingCartOutlinedIcon />
+
+        <div className="shop-product__btns">
+          <div className="shop-product__btn">
+            <FavoriteBorderIcon />
+          </div>
+          <div onClick={onAddToCart} className="shop-product__btn">
+            <ShoppingCartOutlinedIcon />
+          </div>
         </div>
+        <div className="shop-product__label">Favourite</div>
       </div>
-      <div className="shop-product__label">Favourite</div>
-    </div>
+    </>
   );
 }
 

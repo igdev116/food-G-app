@@ -1,6 +1,7 @@
 import React from "react";
 
 import HomeProduct from "./HomeProduct";
+import Dialog from "components/Dialog";
 
 // material ui
 import { Container } from "@material-ui/core";
@@ -70,6 +71,7 @@ const data = [
 function HomeProducts() {
   return (
     <section className="home-products">
+      <Dialog />
       <Container>
         <div className="pr-yellow-text">Quality Products</div>
         <h2 className="pr-heading-text">

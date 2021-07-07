@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import auth from "configs/firebase";
+import auth from "firebase/configs";
 
 export const AuthContext = React.createContext();
 
@@ -16,7 +16,6 @@ function AuthProvider({ children }) {
       if (user) {
         const { displayName, email, uid, photoURL } = user;
         setUser({ displayName, email, uid, photoURL });
-        history.goBack();
       }
     });
 

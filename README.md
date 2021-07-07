@@ -35,6 +35,7 @@ src
 |  |__svgs
 |__components
 |  |__Header // navs, cart, account
+|  |  |__BurgerNavbar // mobile
 |  |__Footer // operating times, contacts, map
 |  |__NotFound
 |  |__ShopProduct
@@ -48,18 +49,18 @@ src
 |__features
 |  |__Home
 |  |  |__components
-|  |  |  |__HomeBanners
-|  |  |  |  |__HomeBanner
-|  |  |  |__HowItWorks
-|  |  |  |__HomeIngredients
-|  |  |  |__HomeCategory
-|  |  |  |__HomeDelivery
-|  |  |  |__HomeProducts
-|  |  |  |  |__HomeProduct
-|  |  |  |__HomePromotions // don't
-|  |  |  |__HomeAnalysis
-|  |  |  |__HomeReviews
-|  |  |  |__HomeGallery
+|  |     |__HomeBanners
+|  |     |  |__HomeBanner
+|  |     |__HowItWorks
+|  |     |__HomeIngredients
+|  |     |__HomeCategory
+|  |     |__HomeDelivery
+|  |     |__HomeProducts
+|  |     |  |__HomeProduct
+|  |     |__HomePromotions // don't
+|  |     |__HomeAnalysis
+|  |     |__HomeReviews
+|  |     |__HomeGallery
 |  |__Shop
 |  |  |__components
 |  |  |  |__ShopBanner

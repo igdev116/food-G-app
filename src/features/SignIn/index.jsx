@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import { AuthContext } from "context/AuthProvider";
 
-import auth, { googleProvider } from "configs/firebase";
+import auth, { googleProvider } from "firebase/configs";
 import FormSignIn from "./components/FormSignIn";
 
 // material ui icons
@@ -13,9 +13,13 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import "./SignIn.scss";
 
 function SignIn() {
+  const history = useHistory();
+
   // sign in with google
   const onGoogleSignIn = () => {
-    auth.signInWithPopup(googleProvider);
+    auth.signInWithPopup(googleProvider).then(() => {
+      history.goBack();
+    });
   };
 
   const { setHasHeader } = useContext(AuthContext);

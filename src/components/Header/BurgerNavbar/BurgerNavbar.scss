@@ -18,7 +18,7 @@
 
     background-color: rgba(0, 0, 0, 0.3);
 
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
   }
 
   &__overlay.active {
@@ -40,7 +40,7 @@
 
     background-color: rgba(0, 0, 0, 0.97);
 
-    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+    transition: all 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
   }
 
   &__content.active {
@@ -56,6 +56,8 @@
     margin: 2px 0;
 
     color: $primary-white-color;
+
+    cursor: pointer;
   }
 
   &__item svg {
