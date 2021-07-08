@@ -1,7 +1,8 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 
 import { ApiContext } from "context/ApiProvider";
+import { usePrevious } from "hooks/usePrevious";
 
 // material ui icons
 import StarIcon from "@material-ui/icons/Star";
@@ -47,47 +48,49 @@ const dataPrices = [
 function ShopFilters() {
   const { name } = useParams();
 
-  const [prevName, setPrevName] = useState(null);
-  const [prevPrice, setPrevPrice] = useState(null);
-  const [prevRate, setPrevRate] = useState(null);
+  const handlePrevious = usePrevious();
+  const { selectedRadio } = handlePrevious();
 
-  const { getProducts, selectedRadio, setSelectedRadio } =
-    useContext(ApiContext);
+  const { getProducts } = useContext(ApiContext);
 
-  const onFilterByName = (name) => {
-    setPrevName(name);
+  const onFilterByName = (params) => {
+    const { prevName, setPrevName, setSelectedRadio } = handlePrevious(
+      "name",
+      params
+    );
 
-    if (name !== prevName) {
-      getProducts(name);
+    if (params !== prevName) {
+      getProducts(params);
       setSelectedRadio(null);
     }
 
-    setPrevPrice(null);
-    setPrevRate(null);
+    setPrevName(params);
   };
 
   const onFilterByPrice = (params) => {
-    setPrevPrice(params);
+    const { prevPrice, setPrevPrice } = handlePrevious("price", params);
 
     if (prevPrice !== params) {
       getProducts(name, params);
-      setPrevRate(null);
     }
+
+    setPrevPrice(params);
   };
 
   const onFilterByRate = (params) => {
     const stringParams = JSON.stringify(params); // covert to string to compare
+    const { prevRate, setPrevRate } = handlePrevious("rate", params);
 
     if (prevRate !== stringParams) {
       getProducts(name, params);
-      setSelectedRadio(null);
     }
 
     setPrevRate(stringParams);
-    setPrevPrice(null);
   };
 
   const handleOptionChange = (e) => {
+    const { setSelectedRadio } = handlePrevious();
+
     setSelectedRadio(e.target.value);
   };
 
