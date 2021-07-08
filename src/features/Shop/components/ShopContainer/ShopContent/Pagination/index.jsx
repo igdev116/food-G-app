@@ -21,7 +21,6 @@ function Pagination() {
 
   const { getProducts, totalRows, paginationActive } = useContext(ApiContext);
   const maxPage = Math.ceil(totalRows[name] / 16);
-  console.log("maxPage", maxPage);
 
   const handlePagination = (page) => {
     const { selected } = page;
@@ -35,50 +34,11 @@ function Pagination() {
   };
 
   return (
-    // <div className="pagination">
-    //   <div className="pagination__btns">
-    //     {/* <Button
-    //       disabled={currentPage <= 1 ? true : false}
-    //       onClick={() => handlePagination(currentPage - 1)}
-    //       className="pagination__btn pagination__btn--prev"
-    //     >
-    //       <NavigateBeforeIcon />
-    //     </Button> */}
-    //     {/* {maxPage &&
-    //       Array(maxPage)
-    //         .fill()
-    //         .map((_, index) =>
-    //           index === maxPage - 2 ? (
-    //             <Button className="pagination__btn ">...</Button>
-    //           ) : (
-    //             <Button
-    //               key={index}
-    //               onClick={() => handlePagination(index + 1, true)}
-    //               className={
-    //                 paginationActive === index
-    //                   ? "pagination__btn active"
-    //                   : "pagination__btn"
-    //               }
-    //             >
-    //               {index + 1 || "..."}
-    //             </Button>
-    //           )
-    //         )} */}
-
-    //     {/* <Button
-    //       disabled={currentPage >= maxPage ? true : false}
-    //       onClick={() => handlePagination(currentPage + 1)}
-    //       className="pagination__btn pagination__btn--next"
-    //     >
-    //       <NavigateNextIcon />
-    //     </Button> */}
-    //   </div>
-    // </div>
     <ReactPaginate
       previousLabel={<NavigateBeforeIcon />}
       nextLabel={<NavigateNextIcon />}
       pageCount={maxPage}
-      pageRangeDisplayed={4}
+      pageRangeDisplayed={3}
       onPageChange={handlePagination}
       marginPagesDisplayed={1}
       containerClassName={"pagination"}

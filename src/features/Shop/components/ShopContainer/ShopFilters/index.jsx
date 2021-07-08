@@ -1,10 +1,7 @@
-import React, { useContext, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import React, { useContext, useRef, useState } from "react";
+import { useParams } from "react-router-dom";
 
 import { ApiContext } from "context/ApiProvider";
-
-// query string
-import queryString from "query-string";
 
 // material ui icons
 import StarIcon from "@material-ui/icons/Star";
@@ -48,43 +45,50 @@ const dataPrices = [
 ];
 
 function ShopFilters() {
-  const history = useHistory();
   const { name } = useParams();
 
   const [prevName, setPrevName] = useState(null);
   const [prevPrice, setPrevPrice] = useState(null);
   const [prevRate, setPrevRate] = useState(null);
 
-  const { getProducts } = useContext(ApiContext);
+  const { getProducts, selectedRadio, setSelectedRadio } =
+    useContext(ApiContext);
 
   const onFilterByName = (name) => {
     setPrevName(name);
+
     if (name !== prevName) {
       getProducts(name);
-      history.push(name);
+      setSelectedRadio(null);
     }
+
+    setPrevPrice(null);
+    setPrevRate(null);
   };
 
   const onFilterByPrice = (params) => {
     setPrevPrice(params);
+
     if (prevPrice !== params) {
       getProducts(name, params);
-      history.push({
-        search: queryString.stringify(params),
-      });
+      setPrevRate(null);
     }
   };
 
   const onFilterByRate = (params) => {
-    const stringParams = JSON.stringify(params);
+    const stringParams = JSON.stringify(params); // covert to string to compare
 
-    setPrevRate(stringParams);
     if (prevRate !== stringParams) {
       getProducts(name, params);
-      history.push({
-        search: queryString.stringify(params),
-      });
+      setSelectedRadio(null);
     }
+
+    setPrevRate(stringParams);
+    setPrevPrice(null);
+  };
+
+  const handleOptionChange = (e) => {
+    setSelectedRadio(e.target.value);
   };
 
   return (
@@ -111,7 +115,14 @@ function ShopFilters() {
             key={index}
             className="shop-filters__label"
           >
-            <input className="shop-filters__input" type="radio" name="price" />
+            <input
+              checked={selectedRadio === info}
+              onChange={handleOptionChange}
+              className="shop-filters__input"
+              type="radio"
+              name="Radio"
+              value={info}
+            />
             <span className="checkmark"></span>
             {info}
           </label>

@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
+
+import { ApiContext } from "context/ApiProvider";
 
 import ShopContent from "./ShopContent";
 import ShopFilters from "./ShopFilters";
-import { ApiContext } from "context/ApiProvider";
 
 import "./ShopContainer.scss";
 

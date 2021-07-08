@@ -76,9 +76,9 @@ function HomeAnalysis() {
             <span className="home-analysis__content-name">Sandwich</span>
             <span className="home-analysis__content-price">$45</span>
           </div>
-          <a onClick={handleModal} className="home-analysis__btn">
+          <div onClick={handleModal} className="home-analysis__btn">
             <div className="triangle"></div>
-          </a>
+          </div>
           <span className="gooey"></span>
           <span className="gooey"></span>
           <span className="gooey"></span>
@@ -92,6 +92,7 @@ function HomeAnalysis() {
         >
           <span onClick={handleModal} className="home-analysis__modal"></span>
           <iframe
+            title="Map"
             className={
               isShow ? "home-analysis__video show" : "home-analysis__video"
             }

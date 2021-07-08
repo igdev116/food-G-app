@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import ShopHandle from "./ShopHandle";
 import ShopProducts from "./ShopProducts";
+import Pagination from "./Pagination";
 
 import "./ShopContent.scss";
 
@@ -12,6 +13,7 @@ function ShopContent() {
     <div className="shop-content">
       <ShopHandle isFlex={isFlex} setIsFlex={setIsFlex} />
       <ShopProducts isFlex={isFlex} />
+      <Pagination />
     </div>
   );
 }

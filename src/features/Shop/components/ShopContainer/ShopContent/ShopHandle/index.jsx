@@ -1,13 +1,9 @@
 import React, { useContext, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import { filterShopByOrder } from "features/Shop/shopSlice";
 import { ApiContext } from "context/ApiProvider";
-
-// query string
-import queryString from "query-string";
 
 // material ui icons
 import SearchIcon from "@material-ui/icons/Search";
@@ -45,13 +41,12 @@ function ShopHandle(props) {
   const { isFlex, setIsFlex } = props;
 
   const [inputValue, setInputValue] = useState("");
+  const [currentSelect, setCurrentSelect] = useState("Featured");
   const [isDrop, setIsDrop] = useState(false);
   const ref = useRef();
   const dispatch = useDispatch();
 
-  const history = useHistory();
-
-  const { getProducts } = useContext(ApiContext);
+  const { getProducts, setSelectedRadio } = useContext(ApiContext);
 
   const handleClickDrop = (e) => {
     const el = ref.current;
@@ -65,9 +60,11 @@ function ShopHandle(props) {
 
   window.addEventListener("click", handleClickDrop);
 
-  const onFilterBySort = (sort) => {
+  const onFilterBySort = (sort, value) => {
     const action = filterShopByOrder(sort);
+
     dispatch(action);
+    setCurrentSelect(value);
   };
 
   const handleSearch = (e) => {
@@ -76,12 +73,9 @@ function ShopHandle(props) {
     if (!inputValue) return;
     const query = { name_like: inputValue };
 
-    getProducts("all", query);
-    history.push({
-      pathname: "all",
-      search: queryString.stringify(query),
-    });
+    getProducts("our-foods", query);
     setInputValue("");
+    setSelectedRadio(null);
   };
 
   return (
@@ -99,7 +93,7 @@ function ShopHandle(props) {
 
       <div className="shop-handle__drop">
         <div ref={ref} className="shop-handle__drop-current">
-          <span>Featured</span>
+          <span>{currentSelect}</span>
           <ExpandMoreIcon />
         </div>
 
@@ -110,7 +104,7 @@ function ShopHandle(props) {
         >
           {dataTypes.map(({ value, sort }, index) => (
             <li
-              onClick={() => onFilterBySort(sort)}
+              onClick={() => onFilterBySort(sort, value)}
               key={index}
               className="shop-handle__drop-item"
             >

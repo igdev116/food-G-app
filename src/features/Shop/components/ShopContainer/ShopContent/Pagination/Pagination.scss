@@ -1,0 +1,52 @@
+@import "assets/styles/colors";
+
+.pagination {
+  text-align: center;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  ul {
+    display: inline-block;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  li {
+    display: inline-block;
+    font-size: 1.4rem;
+    margin: 0 6px;
+    border-radius: 4px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    height: 100%;
+    background-color: $primary-white-color;
+
+    transition: all 0.2s ease;
+
+    cursor: pointer;
+  }
+
+  li:hover {
+    filter: brightness(97%);
+  }
+
+  a {
+    padding: 8px 17px;
+    display: block;
+    height: 100%;
+  }
+
+  li.selected {
+    color: $primary-white-color;
+    background-color: $primary-red-color;
+  }
+
+  :is(.previous a, .next a) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
