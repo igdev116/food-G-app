@@ -14,7 +14,6 @@ const ApiProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [totalRows, setTotalRows] = useState(0);
   const [paginationActive, setPaginationActive] = useState(0);
-  const [selectedRadio, setSelectedRadio] = useState(null);
   const dispatch = useDispatch();
 
   const history = useHistory();
@@ -58,8 +57,6 @@ const ApiProvider = ({ children }) => {
         getProducts,
         totalRows,
         paginationActive,
-        selectedRadio,
-        setSelectedRadio,
       }}
     >
       {children}

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 
 import { ApiContext } from "context/ApiProvider";
-import { usePrevious } from "hooks/usePrevious";
+import { PrevFilterContext } from "context/PrevFilterProvider";
 
 // material ui icons
 import StarIcon from "@material-ui/icons/Star";
@@ -48,9 +48,8 @@ const dataPrices = [
 function ShopFilters() {
   const { name } = useParams();
 
-  const handlePrevious = usePrevious();
+  const { handlePrevious } = useContext(PrevFilterContext);
   const { selectedRadio } = handlePrevious();
-
   const { getProducts } = useContext(ApiContext);
 
   const onFilterByName = (params) => {

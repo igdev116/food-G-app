@@ -9,6 +9,7 @@ import {
 import Theme from "utils/cusMatUi";
 import ApiProvider from "./context/ApiProvider";
 import AuthProvider from "./context/AuthProvider";
+import PrevFilterProvider from "./context/PrevFilterProvider";
 
 import Header from "components/Header";
 import NotFound from "components/NotFound";
@@ -36,7 +37,9 @@ function App() {
 
               <Route path="/sign-in" component={SignIn} />
 
-              <Route exact path="/shop/:name" component={Shop} />
+              <PrevFilterProvider>
+                <Route exact path="/shop/:name" component={Shop} />
+              </PrevFilterProvider>
 
               <Route component={NotFound} />
             </Switch>

@@ -1,9 +1,10 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 
 import { filterShopByOrder } from "features/Shop/shopSlice";
 import { ApiContext } from "context/ApiProvider";
+import { PrevFilterContext } from "context/PrevFilterProvider";
 
 // material ui icons
 import SearchIcon from "@material-ui/icons/Search";
@@ -41,41 +42,44 @@ function ShopHandle(props) {
   const { isFlex, setIsFlex } = props;
 
   const [inputValue, setInputValue] = useState("");
-  const [currentSelect, setCurrentSelect] = useState("Featured");
   const [isDrop, setIsDrop] = useState(false);
   const ref = useRef();
   const dispatch = useDispatch();
 
-  const { getProducts, setSelectedRadio } = useContext(ApiContext);
+  const { getProducts } = useContext(ApiContext);
+  const { handlePrevious } = useContext(PrevFilterContext);
+  const { selectedDrop, setSelectedDrop } = handlePrevious();
 
-  const handleClickDrop = (e) => {
-    const el = ref.current;
+  useEffect(() => {
+    const handleClickDrop = (e) => {
+      const el = ref.current;
 
-    if (el && el.contains(e.target)) {
-      setIsDrop(!isDrop);
-    } else {
-      setIsDrop(false);
-    }
-  };
+      if (el && el.contains(e.target)) {
+        setIsDrop(!isDrop);
+      } else {
+        setIsDrop(false);
+      }
+    };
 
-  window.addEventListener("click", handleClickDrop);
-
-  const onFilterBySort = (sort, value) => {
-    const action = filterShopByOrder(sort);
-
-    dispatch(action);
-    setCurrentSelect(value);
-  };
+    window.addEventListener("click", handleClickDrop);
+  }, []);
 
   const handleSearch = (e) => {
+    handlePrevious("search");
     e.preventDefault();
-
     if (!inputValue) return;
     const query = { name_like: inputValue };
 
     getProducts("our-foods", query);
     setInputValue("");
-    setSelectedRadio(null);
+  };
+
+  const onFilterBySort = (sort, value) => {
+    handlePrevious("sort");
+    const action = filterShopByOrder(sort);
+
+    dispatch(action);
+    setSelectedDrop(value);
   };
 
   return (
@@ -93,7 +97,7 @@ function ShopHandle(props) {
 
       <div className="shop-handle__drop">
         <div ref={ref} className="shop-handle__drop-current">
-          <span>{currentSelect}</span>
+          <span>{selectedDrop}</span>
           <ExpandMoreIcon />
         </div>
 
