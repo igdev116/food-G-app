@@ -38,10 +38,9 @@ function App() {
 
               <Route path="/sign-in" component={SignIn} />
 
-              <Route path="/detail" component={Detail} />
-
               <PrevFilterProvider>
                 <Route exact path="/shop/:name" component={Shop} />
+                <Route exact path="/shop/:name/:id" component={Detail} />
               </PrevFilterProvider>
 
               <Route component={NotFound} />

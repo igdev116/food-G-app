@@ -68,46 +68,44 @@ function ShopProduct(props) {
   };
 
   return (
-    <>
-      <div onClick={handleToDetail} id={id} className="shop-product">
-        <div className="shop-product__img-wrapper">
-          <LazyLoadImage
-            effect="blur"
-            src={img}
-            className="shop-product__img"
-            alt={name}
-            width="100%"
-            height="100%"
-          ></LazyLoadImage>
-          <div className="shop-product__rate">
-            <StarIcon />
-            <span>{rate}</span>
-          </div>
+    <div id={id} className="shop-product">
+      <div onClick={handleToDetail} className="shop-product__img-wrapper">
+        <LazyLoadImage
+          effect="blur"
+          src={img}
+          className="shop-product__img"
+          alt={name}
+          width="100%"
+          height="100%"
+        ></LazyLoadImage>
+        <div className="shop-product__rate">
+          <StarIcon />
+          <span>{rate}</span>
         </div>
-
-        <div className="shop-product__content">
-          <div className="shop-product__name">{name}</div>
-          <p className="shop-product__description">{dsc}</p>
-          <div className="shop-product__row">
-            <div className="shop-product__location">
-              <RoomIcon />
-              <span>{country}</span>
-            </div>
-            <div className="shop-product__price">${price}</div>
-          </div>
-        </div>
-
-        <div className="shop-product__btns">
-          <div className="shop-product__btn">
-            <FavoriteBorderIcon />
-          </div>
-          <div onClick={onAddToCart} className="shop-product__btn">
-            <ShoppingCartOutlinedIcon />
-          </div>
-        </div>
-        <div className="shop-product__label">Favourite</div>
       </div>
-    </>
+
+      <div onClick={handleToDetail} className="shop-product__content">
+        <div className="shop-product__name">{name}</div>
+        <p className="shop-product__description">{dsc}</p>
+        <div className="shop-product__row">
+          <div className="shop-product__location">
+            <RoomIcon />
+            <span>{country}</span>
+          </div>
+          <div className="shop-product__price">${price}</div>
+        </div>
+      </div>
+
+      <div className="shop-product__btns">
+        <div className="shop-product__btn">
+          <FavoriteBorderIcon />
+        </div>
+        <div onClick={onAddToCart} className="shop-product__btn">
+          <ShoppingCartOutlinedIcon />
+        </div>
+      </div>
+      <div className="shop-product__label">Favourite</div>
+    </div>
   );
 }
 

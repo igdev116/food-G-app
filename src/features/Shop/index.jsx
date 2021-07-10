@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from "react";
 
 import { AuthContext } from "context/AuthProvider";
 
-import ShopBanner from "../../components/ShopBanner";
+import Banner from "components/Banner";
 import ShopContainer from "./components/ShopContainer";
 
 // material ui core
@@ -20,7 +20,7 @@ function Shop() {
   return (
     <>
       <section className="shop">
-        <ShopBanner />
+        <Banner />
         <Container>
           <ShopContainer />
         </Container>

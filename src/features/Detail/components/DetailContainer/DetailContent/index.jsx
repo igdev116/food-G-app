@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 
 import CusButtons from "components/CusButtons";
 import Checkbox from "components/Checkbox";
@@ -18,7 +18,28 @@ import AddShoppingCartOutlinedIcon from "@material-ui/icons/AddShoppingCartOutli
 
 import "./DetailContent.scss";
 
+const dataOptions = [
+  {
+    content: "Buy 2 get 15 percent off",
+    percentOff: "15",
+  },
+  {
+    content: "Buy 3 get 25 percent off",
+    percentOff: "25",
+  },
+  {
+    content: "Buy 5 get 50 percent off",
+    percentOff: "50",
+  },
+];
+
 function DetailContent() {
+  const [selectedRadio, setSelectedRadio] = useState("");
+
+  const handleOptionChange = (e) => {
+    setSelectedRadio(e.target.value);
+  };
+
   return (
     <div className="detail-content">
       <h2 className="detail-content__title">asdasdasd</h2>
@@ -63,9 +84,15 @@ function DetailContent() {
 
       <form className="detail-content__form">
         <div className="detail-content__form-title">Choose your options</div>
-        <Checkbox content="Buy 2 get 55 percent off" />
-        <Checkbox content="Buy 2 get 55 percent off" />
-        <Checkbox content="Buy 2 get 55 percent off" />
+        {dataOptions.map(({ content, percentOff }) => (
+          <Checkbox
+            key={content}
+            checked={selectedRadio === content}
+            content={content}
+            value={content}
+            handleOptionChange={handleOptionChange}
+          />
+        ))}
       </form>
 
       <div className="detail-content__btns">

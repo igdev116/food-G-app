@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import Dialog from "components/Dialog";
@@ -23,6 +23,7 @@ function ShopProducts(props) {
   const [products, setProducts] = useState([]);
   const [isShowDialog, setIsShowDialog] = useState(false);
 
+  const { name } = useParams();
   const history = useHistory();
 
   const { isLoading } = useContext(ApiContext);
@@ -33,7 +34,7 @@ function ShopProducts(props) {
   };
 
   const handleToDetail = () => {
-    history.push("/detail");
+    history.push(`/shop/${name}`);
   };
 
   // get products from store to render

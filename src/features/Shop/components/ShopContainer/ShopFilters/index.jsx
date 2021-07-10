@@ -69,12 +69,18 @@ function ShopFilters() {
 
   const onFilterByPrice = (params) => {
     const { prevPrice, setPrevPrice } = handlePrevious("price", params);
-    console.log("onFilterPrice");
+
     if (prevPrice !== params) {
       getProducts(name, params);
     }
 
     setPrevPrice(params);
+  };
+
+  const handleOptionChange = (e) => {
+    const { setSelectedRadio } = handlePrevious();
+
+    setSelectedRadio(e.target.value);
   };
 
   const onFilterByRate = (params) => {
@@ -86,12 +92,6 @@ function ShopFilters() {
     }
 
     setPrevRate(stringParams);
-  };
-
-  const handleOptionChange = (e) => {
-    const { setSelectedRadio } = handlePrevious();
-
-    setSelectedRadio(e.target.value);
   };
 
   return (
@@ -116,7 +116,7 @@ function ShopFilters() {
 
       <h2 className="shop-filters__title">Price</h2>
       <form className="shop-filters__form">
-        {dataPrices.map(({ content, range }, index) => (
+        {dataPrices.map(({ content, range }) => (
           <Checkbox
             key={content}
             handleOptionClick={() => onFilterByPrice(range)}

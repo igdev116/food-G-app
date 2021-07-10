@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import shopApi from "api/shopApi";
@@ -23,17 +23,17 @@ function DetailProducts() {
 
   // get products from store to render
   useEffect(() => {
-    setProducts(productData.slice(0, 5));
+    setProducts(productData);
 
     return () => {
-      setProducts(productData.slice(0, 5));
+      setProducts(productData);
     };
   }, [productData]);
 
   // when browser loaded get url to re-render
   window.addEventListener("load", () => {
     const getProducts = async (type) => {
-      const response = await shopApi.getAll(type);
+      const response = await shopApi.getAll(type, { _limit: 5 });
       const action = setDetailProducts(response);
 
       dispatch(action);
