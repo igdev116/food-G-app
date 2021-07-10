@@ -35,15 +35,17 @@ src
 |  |__styles
 |  |__svgs
 |__components
+|  |__BackgroundIcon
+|  |__Banner
+|  |__Cart
+|  |__Checkbox
+|  |__CusButtons
+|  |__Dialog
+|  |__Footer // operating times, contacts, map
 |  |__Header // navs, cart, account
 |  |  |__BurgerNavbar // mobile
-|  |__Footer // operating times, contacts, map
 |  |__NotFound
 |  |__ShopProduct
-|  |__PrRedBtn
-|  |__CusButtons
-|  |__Momo
-|  |__BackgroundIcon
 |__configs
 |__constants
 |__context
@@ -64,15 +66,14 @@ src
 |  |     |__HomeGallery
 |  |__Shop
 |  |  |__components
-|  |  |  |__ShopBanner
-|  |  |  |__ShopContainer
-|  |  |     |__ShopContent
-|  |  |     |  |__ShopHandle // search, sort
-|  |  |     |  |__ShopProducts
-|  |  |     |     |__ShopProduct
-|  |  |     |__ShopFilters // filter by types, prices, sizes, best deals
-|  |  |     |__index.jsx // render
-|  |  |__shopSlice.js
+|  |     |__ShopBanner
+|  |     |__ShopContainer
+|  |        |__ShopContent
+|  |        |  |__ShopHandle // search, sort
+|  |        |  |__ShopProducts
+|  |        |     |__ShopProduct
+|  |        |__ShopFilters // filter by types, prices, sizes, best deals
+|  |        |__index.jsx // render
 |  |__SignIn
 |  |  |__components
 |  |     |__FormSignIn
@@ -80,15 +81,16 @@ src
 |  |__Detail
 |  |  |__components
 |  |     |__DetailContainer
-|  |     |  |__DetailImg
 |  |     |  |__DetailContent
+|  |     |  |__DetailImg
 |  |     |__DetailTabs
 |  |     |__DetailProducts
 |__hooks
 |__utils
 ```
 
-<!-- use effect in apiprovider -->
 <!-- filter but page not change -->
+<!-- remove pagination when products length == 0 -->
+<!-- keep rate or price when paginate -->
 
-// https://felixgerschau.com/react-rerender-components/#:~:text=In%20function%20components%2C%20the%20execution,t%20even%20receive%20any%20props.
+<!-- https://felixgerschau.com/react-rerender-components/#:~:text=In%20function%20components%2C%20the%20execution,t%20even%20receive%20any%20props. -->
