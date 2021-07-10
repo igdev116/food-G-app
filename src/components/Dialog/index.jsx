@@ -34,7 +34,7 @@ function Dialog(props) {
     <div className={isShow ? "dialog show" : "dialog"}>
       <div onClick={hideDialog} className="dialog__overlay"></div>
       <div className="dialog__wrapper">
-        <h2 className="dialog__title">Join with us!! 🚀</h2>
+        <h2 className="dialog__title">Join with us 🚀</h2>
         <p className="dialog__description">
           You are not signed in. Please sign in to use this feature!
         </p>

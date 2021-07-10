@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { useParams } from "react-router-dom";
 
 import { ApiContext } from "context/ApiProvider";
@@ -22,9 +22,9 @@ const dataTypes = [
     type: "breads",
   },
   {
-    img: "ice-cream.svg",
-    name: "Ice cream",
-    type: "ice-cream",
+    img: "sandwich.svg",
+    name: "Sandwiches",
+    type: "sandwiches",
   },
   {
     img: "drinks.svg",
@@ -49,20 +49,19 @@ function ShopFilters() {
   const { name } = useParams();
 
   const { handlePrevious } = useContext(PrevFilterContext);
-  const { selectedRadio } = handlePrevious();
+  const { selectedRadio, nameActive } = handlePrevious();
   const { getProducts } = useContext(ApiContext);
 
   const onFilterByName = (params) => {
-    const { prevName, setPrevName, setSelectedRadio } = handlePrevious(
-      "name",
-      params
-    );
+    const { prevName, setPrevName, setSelectedRadio, setNameActive } =
+      handlePrevious("name", params);
 
     if (params !== prevName) {
       getProducts(params);
       setSelectedRadio(null);
     }
 
+    setNameActive(params);
     setPrevName(params);
   };
 
@@ -97,11 +96,15 @@ function ShopFilters() {
     <div className="shop-filters">
       <h2 className="shop-filters__title">Popular</h2>
       <ul className="shop-filters__list">
-        {dataTypes.map(({ img, name, type }, index) => (
+        {dataTypes.map(({ img, name, type }) => (
           <li
-            key={index}
+            key={name}
             onClick={() => onFilterByName(type)}
-            className="shop-filters__item"
+            className={
+              type === nameActive
+                ? "shop-filters__item active"
+                : "shop-filters__item"
+            }
           >
             <img src={`/svgs/Shop/${img}`} alt="Shop icons" />
             <span className="shop-filters__item-name">{name}</span>
@@ -141,6 +144,7 @@ function ShopFilters() {
         <StarIcon />
         <StarIcon />
         <StarIcon />
+        <span>& up</span>
       </div>
       <div
         onClick={() => onFilterByRate({ rate_like: 4 })}
@@ -151,6 +155,7 @@ function ShopFilters() {
         <StarIcon />
         <StarIcon />
         <StarBorderIcon />
+        <span>& up</span>
       </div>
       <div
         onClick={() => onFilterByRate({ rate_like: 3 })}
@@ -161,6 +166,7 @@ function ShopFilters() {
         <StarIcon />
         <StarBorderIcon />
         <StarBorderIcon />
+        <span>& up</span>
       </div>
     </div>
   );

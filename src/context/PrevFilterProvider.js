@@ -8,6 +8,7 @@ function PrevFilterProvider({ children }) {
   const [prevRate, setPrevRate] = useState(null);
   const [selectedRadio, setSelectedRadio] = useState(null);
   const [selectedDrop, setSelectedDrop] = useState("Featured");
+  const [nameActive, setNameActive] = useState(null);
 
   const handlePrevious = (type, value) => {
     switch (type) {
@@ -34,6 +35,7 @@ function PrevFilterProvider({ children }) {
         setPrevRate(null);
         setSelectedRadio(null);
         setSelectedDrop("Featured");
+        setNameActive(null);
         break;
       case "sort":
         setPrevPrice(null);
@@ -61,11 +63,13 @@ function PrevFilterProvider({ children }) {
       prevRate,
       selectedRadio,
       selectedDrop,
+      nameActive,
       setPrevName,
       setPrevPrice,
       setPrevRate,
       setSelectedRadio,
       setSelectedDrop,
+      setNameActive,
     };
   };
 

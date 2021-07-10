@@ -21,9 +21,13 @@
     align-items: center;
     padding: 10px 12px;
     margin: 3px 0;
-    border-radius: 4px;
+    border-radius: 6px;
 
     transition: all 0.1s ease-out;
+  }
+
+  &__item.active {
+    background-color: rgba(0, 0, 0, 0.08);
   }
 
   &__item:hover {
@@ -103,17 +107,30 @@
   }
 
   &__stars {
-    margin: 8px 0;
-    padding: 0 12px;
+    margin: 5px 0;
+    padding: 3px 12px;
+    display: flex;
+    align-items: center;
 
     cursor: pointer;
   }
 
   &__stars svg {
-    width: 1.8rem;
-    height: 1.8rem;
-    margin-right: 3px;
+    font-size: 2rem;
+    margin-right: 2px;
 
     fill: $primary-yellow-color;
+  }
+
+  &__stars span {
+    font-size: 1.4rem;
+    margin-left: 4px;
+    font-weight: 500;
+
+    transition: all 0.12s ease-out;
+  }
+
+  &__stars:hover span {
+    color: $primary-red-color;
   }
 }

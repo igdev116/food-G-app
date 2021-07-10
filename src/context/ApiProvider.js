@@ -39,7 +39,9 @@ const ApiProvider = ({ children }) => {
 
       dispatch(action);
       setIsLoading(false);
-      currentPagination && setPaginationActive(Number(currentPagination) - 1);
+      currentPagination
+        ? setPaginationActive(Number(currentPagination) - 1)
+        : setPaginationActive(0);
 
       history.push({
         pathname: type,

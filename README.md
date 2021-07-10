@@ -13,6 +13,7 @@
 10. Styled-component
 11. React-countup
 12. React Lazy Load Image Component
+13. React-paginate
 ```
 
 ## Folder structure
@@ -79,5 +80,7 @@ src
 |__hooks
 |__utils
 ```
+
+<!-- use effect in apiprovider -->
 
 // https://felixgerschau.com/react-rerender-components/#:~:text=In%20function%20components%2C%20the%20execution,t%20even%20receive%20any%20props.

@@ -49,4 +49,12 @@
     padding-left: 14px;
     padding-right: 14px;
   }
+
+  .disabled:hover {
+    filter: none;
+  }
+
+  .disabled a {
+    color: rgba(0, 0, 0, 0.25);
+  }
 }

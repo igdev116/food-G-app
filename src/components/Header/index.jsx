@@ -66,7 +66,7 @@ function Header() {
   };
 
   const toggleDialog = () => {
-    setIsShowDialog(true);
+    !user && setIsShowDialog(true);
   };
 
   return (
@@ -110,7 +110,6 @@ function Header() {
             </div>
 
             <div className="navbar--right">
-              
               <div onClick={toggleDialog} className="navbar__cart">
                 <ShoppingCartIcon />
                 <div className="navbar__cart-qnt">
