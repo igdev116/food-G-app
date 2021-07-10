@@ -18,6 +18,7 @@ import ScrollButton from "components/ScrollButton";
 import Home from "features/Home";
 import SignIn from "features/SignIn";
 import Shop from "features/Shop";
+import Detail from "features/Detail";
 
 // material ui core
 import { ThemeProvider } from "@material-ui/core/styles";
@@ -33,9 +34,11 @@ function App() {
             <Header />
             <Switch>
               <Redirect exact from="/" to="/home" />
-              <Route path="/home" component={Home}></Route>
+              <Route path="/home" component={Home} />
 
               <Route path="/sign-in" component={SignIn} />
+
+              <Route path="/detail" component={Detail} />
 
               <PrevFilterProvider>
                 <Route exact path="/shop/:name" component={Shop} />

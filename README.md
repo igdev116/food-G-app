@@ -74,13 +74,21 @@ src
 |  |  |     |__index.jsx // render
 |  |  |__shopSlice.js
 |  |__SignIn
-|     |__components
-|        |__FormSignIn
-|        |__FieldSignIn
+|  |  |__components
+|  |     |__FormSignIn
+|  |     |__FieldSignIn
+|  |__Detail
+|  |  |__components
+|  |     |__DetailContainer
+|  |     |  |__DetailImg
+|  |     |  |__DetailContent
+|  |     |__DetailTabs
+|  |     |__DetailProducts
 |__hooks
 |__utils
 ```
 
 <!-- use effect in apiprovider -->
+<!-- filter but page not change -->
 
 // https://felixgerschau.com/react-rerender-components/#:~:text=In%20function%20components%2C%20the%20execution,t%20even%20receive%20any%20props.

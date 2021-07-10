@@ -11,6 +11,7 @@ import "./ShopContainer.scss";
 function ShopContainer() {
   const { name } = useParams();
   const history = useHistory();
+
   const { getProducts } = useContext(ApiContext);
 
   // when browser loaded get url to re-render

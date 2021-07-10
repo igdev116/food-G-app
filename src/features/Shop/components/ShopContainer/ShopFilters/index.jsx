@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { ApiContext } from "context/ApiProvider";
 import { PrevFilterContext } from "context/PrevFilterProvider";
 
+import Checkbox from "components/Checkbox";
+
 // material ui icons
 import StarIcon from "@material-ui/icons/Star";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
@@ -39,10 +41,10 @@ const dataTypes = [
 ];
 
 const dataPrices = [
-  { info: "Under $100", range: { price_lte: 100 } },
-  { info: "$50 to $100", range: { price_gte: 50, price_lte: 100 } },
-  { info: "Under $50", range: { price_lte: 50 } },
-  { info: "Above $100", range: { price_gte: 100 } },
+  { content: "Under $100", range: { price_lte: 100 } },
+  { content: "$50 to $100", range: { price_gte: 50, price_lte: 100 } },
+  { content: "Under $50", range: { price_lte: 50 } },
+  { content: "Above $100", range: { price_gte: 100 } },
 ];
 
 function ShopFilters() {
@@ -67,7 +69,7 @@ function ShopFilters() {
 
   const onFilterByPrice = (params) => {
     const { prevPrice, setPrevPrice } = handlePrevious("price", params);
-
+    console.log("onFilterPrice");
     if (prevPrice !== params) {
       getProducts(name, params);
     }
@@ -114,23 +116,15 @@ function ShopFilters() {
 
       <h2 className="shop-filters__title">Price</h2>
       <form className="shop-filters__form">
-        {dataPrices.map(({ info, range }, index) => (
-          <label
-            onClick={() => onFilterByPrice(range)}
-            key={index}
-            className="shop-filters__label"
-          >
-            <input
-              checked={selectedRadio === info}
-              onChange={handleOptionChange}
-              className="shop-filters__input"
-              type="radio"
-              name="Radio"
-              value={info}
-            />
-            <span className="checkmark"></span>
-            {info}
-          </label>
+        {dataPrices.map(({ content, range }, index) => (
+          <Checkbox
+            key={content}
+            handleOptionClick={() => onFilterByPrice(range)}
+            checked={selectedRadio === content}
+            handleOptionChange={handleOptionChange}
+            value={content}
+            content={content}
+          />
         ))}
       </form>
 

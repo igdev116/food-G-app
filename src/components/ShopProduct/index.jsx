@@ -1,8 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 
-import Dialog from "components/Dialog";
 import { AuthContext } from "context/AuthProvider";
 import { addToCart } from "components/Cart/cartSlice";
 
@@ -26,6 +25,7 @@ ShopProduct.propsTypes = {
   rate: PropTypes.number,
 
   toggleDialog: PropTypes.func,
+  handleToDetail: PropTypes.func,
 };
 
 ShopProduct.propsTypes = {
@@ -37,10 +37,21 @@ ShopProduct.propsTypes = {
   rate: 0,
 
   toggleDialog: null,
+  handleToDetail: null,
 };
 
 function ShopProduct(props) {
-  const { id, name, img, dsc, price, rate, country, toggleDialog } = props;
+  const {
+    id,
+    name,
+    img,
+    dsc,
+    price,
+    rate,
+    country,
+    toggleDialog,
+    handleToDetail,
+  } = props;
 
   const dispatch = useDispatch();
 
@@ -58,7 +69,7 @@ function ShopProduct(props) {
 
   return (
     <>
-      <div id={id} className="shop-product">
+      <div onClick={handleToDetail} id={id} className="shop-product">
         <div className="shop-product__img-wrapper">
           <LazyLoadImage
             effect="blur"

@@ -1,0 +1,155 @@
+@import "assets/styles/colors";
+
+.detail-content {
+  &__title {
+    font-size: 2.8rem;
+    text-transform: capitalize;
+    margin-bottom: 15px;
+  }
+
+  &__rate {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  &__stars {
+    margin-right: 8px;
+  }
+
+  &__stars svg {
+    font-size: 1.8rem;
+
+    fill: $primary-yellow-color;
+  }
+
+  &__reviews span {
+    font-size: 1.4rem;
+  }
+
+  &__form-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 7px;
+  }
+
+  &__price {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+
+  &__tags {
+    display: flex;
+    align-items: center;
+    margin-bottom: 22px;
+  }
+
+  &__tag {
+    margin-right: 20px;
+    font-size: 1.4rem;
+  }
+
+  &__tag-label {
+    margin-right: 5px;
+
+    color: $primary-grey-color;
+  }
+
+  &__description {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    line-height: 1.7;
+  }
+
+  &__form {
+    margin-bottom: 25px;
+  }
+
+  &__option-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+  }
+
+  &__btns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  &__btn-handle {
+    display: flex;
+    align-items: center;
+  }
+
+  &__btn-qnt {
+    font-size: 1.4rem;
+    margin: 0 10px;
+  }
+
+  & :is(&__btn-dec, &__btn-inc) {
+    font-size: 1.8rem;
+  }
+
+  .pr-red-btn {
+    flex: 1;
+    margin: 25px 18px 25px 40px;
+  }
+
+  .pr-red-btn .btn {
+    width: 100%;
+  }
+
+  .pr-red-btn svg {
+    font-size: 1.75rem;
+    margin-right: 5px;
+  }
+
+  & &__btn-like {
+    font-size: 1.9rem;
+  }
+
+  &__btn-like svg {
+    font-size: 1.6rem;
+
+    fill: rgba(0, 0, 0, 0.55);
+  }
+
+  .btn-circle {
+    min-width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .btn-circle svg {
+    transition: all 0.25s ease-out;
+  }
+
+  .btn-circle:hover svg {
+    fill: $primary-red-color;
+  }
+
+  .btn-circle:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+  }
+
+  &__commit {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    padding: 4px 7px;
+    border-left: 3.8px solid $primary-red-color;
+  }
+
+  &__commit svg {
+    font-size: 2.2rem;
+    margin-right: 8px;
+
+    fill: $primary-red-color;
+  }
+}

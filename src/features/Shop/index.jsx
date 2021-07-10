@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from "react";
 
 import { AuthContext } from "context/AuthProvider";
 
-import ShopBanner from "./components/ShopBanner";
+import ShopBanner from "../../components/ShopBanner";
 import ShopContainer from "./components/ShopContainer";
 
 // material ui core

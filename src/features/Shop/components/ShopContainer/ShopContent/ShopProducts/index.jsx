@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import Dialog from "components/Dialog";
@@ -7,7 +8,7 @@ import Dialog from "components/Dialog";
 // material ui icons
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-import ShopProduct from "./ShopProduct";
+import ShopProduct from "components/ShopProduct";
 import PR_RED_COLOR from "constants/colors";
 import { ApiContext } from "context/ApiProvider";
 
@@ -22,11 +23,17 @@ function ShopProducts(props) {
   const [products, setProducts] = useState([]);
   const [isShowDialog, setIsShowDialog] = useState(false);
 
+  const history = useHistory();
+
   const { isLoading } = useContext(ApiContext);
   const productData = useSelector((state) => state.shop);
 
   const toggleDialog = () => {
     setIsShowDialog(true);
+  };
+
+  const handleToDetail = () => {
+    history.push("/detail");
   };
 
   // get products from store to render
@@ -47,7 +54,12 @@ function ShopProducts(props) {
       <div className={isFlex ? "shop-products display-flex" : "shop-products"}>
         {productData &&
           productData.map((item, index) => (
-            <ShopProduct toggleDialog={toggleDialog} key={index} {...item} />
+            <ShopProduct
+              toggleDialog={toggleDialog}
+              handleToDetail={handleToDetail}
+              key={index}
+              {...item}
+            />
           ))}
       </div>
 

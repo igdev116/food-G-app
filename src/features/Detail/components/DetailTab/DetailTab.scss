@@ -1,0 +1,99 @@
+@import "assets/styles/colors";
+
+.detail-tab {
+  margin-top: 100px;
+  margin-bottom: 130px;
+  padding: 0 50px;
+
+  &__btns {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+
+  &__btn {
+    font-size: 1.95rem;
+    font-weight: bold;
+    margin: 0 15px;
+    padding: 12px 20px;
+    border-radius: 12px;
+
+    cursor: pointer;
+  }
+
+  &__btn.active {
+    color: $primary-white-color;
+    background-color: $primary-red-color;
+  }
+
+  &__content-description {
+    font-size: 1.4rem;
+    line-height: 1.7;
+  }
+
+  &__content-table {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(calc(100% / 7), 1fr));
+    margin-top: 40px;
+  }
+
+  &__content-table:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 14.5%;
+
+    height: 100%;
+    width: 0.5px;
+
+    background-color: rgba(0, 0, 0, 0.15);
+  }
+
+  &__content-table:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 27%;
+
+    width: 100%;
+    height: 0.5px;
+
+    background-color: rgba(0, 0, 0, 0.15);
+  }
+
+  &__content-col {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  &__content-col:first-child {
+    padding-top: 10px;
+  }
+
+  &__content-col:first-child :is(&__content-col-title, &__content-ingredients) {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+
+  &__content-col-wrapper {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  &__content-col-title {
+    font-size: 2.8rem;
+    font-weight: bold;
+    margin-bottom: 3px;
+  }
+
+  &__content-col-description {
+    font-size: 1.4rem;
+  }
+
+  &__content-ingredients {
+    font-size: 1.4rem;
+    margin-top: 5px;
+  }
+}
