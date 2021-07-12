@@ -45,9 +45,6 @@ function PrevFilterProvider({ children }) {
         break;
       case "pagination":
         setPrevName(null);
-        setPrevPrice(null);
-        setPrevRate(null);
-        setSelectedRadio(null);
         setSelectedDrop("Featured");
         break;
       case "drop":

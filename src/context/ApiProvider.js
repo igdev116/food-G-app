@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -7,6 +7,7 @@ import queryString from "query-string";
 
 import shopApi from "api/shopApi";
 import { setShopProducts } from "features/Shop/shopSlice";
+import { PrevFilterContext } from "./PrevFilterProvider";
 
 const ApiContext = React.createContext();
 
@@ -17,6 +18,8 @@ const ApiProvider = ({ children }) => {
   const dispatch = useDispatch();
 
   const history = useHistory();
+
+  const { handlePrevious } = useContext(PrevFilterContext);
 
   // call api to get obj have pagination
   useEffect(() => {
@@ -29,13 +32,22 @@ const ApiProvider = ({ children }) => {
   }, []);
 
   const getProducts = async (type, params) => {
+    const { prevPrice, prevRate } = handlePrevious();
     const currentPagination =
       params && params.hasOwnProperty("_page") && params["_page"];
 
+    const valueWithPage =
+      currentPagination && (prevPrice || JSON.parse(prevRate)); // get params of price or value when paginate
+
     try {
       setIsLoading(true);
-      const response = await shopApi.getAll(type, { _limit: 16, ...params });
+      const response = await shopApi.getAll(type, {
+        _limit: 16,
+        ...params,
+        ...valueWithPage,
+      });
       const action = setShopProducts(response);
+      console.log("prevPrice", valueWithPage);
 
       dispatch(action);
       setIsLoading(false);
@@ -45,7 +57,11 @@ const ApiProvider = ({ children }) => {
 
       history.push({
         pathname: type,
-        search: queryString.stringify({ _limit: 16, ...params }),
+        search: queryString.stringify({
+          _limit: 16,
+          ...params,
+          ...valueWithPage,
+        }),
       });
     } catch (error) {
       console.log(error.message);
@@ -68,3 +84,12 @@ const ApiProvider = ({ children }) => {
 
 export { ApiContext };
 export default ApiProvider;
+
+// if params includes price params
+// then click paginate
+// keep price params
+// then get pagination + price params
+
+// next time click paginate, check has price params
+// keep price params
+// then get pagination + price params
