@@ -40,7 +40,7 @@ function App() {
 
               <PrevFilterProvider>
                 <Route exact path="/shop/:name" component={Shop} />
-                <Route exact path="/shop/:name/:id" component={Detail} />
+                <Route path="/shop/:name/:id" component={Detail} />
               </PrevFilterProvider>
 
               <Route component={NotFound} />
