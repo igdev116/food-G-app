@@ -30,22 +30,22 @@ function App() {
     <ThemeProvider theme={Theme}>
       <Router>
         <AuthProvider>
-          <ApiProvider>
-            <Header />
-            <Switch>
-              <Redirect exact from="/" to="/home" />
-              <Route path="/home" component={Home} />
+          <PrevFilterProvider>
+            <ApiProvider>
+              <Header />
+              <Switch>
+                <Redirect exact from="/" to="/home" />
+                <Route path="/home" component={Home} />
 
-              <Route path="/sign-in" component={SignIn} />
+                <Route path="/sign-in" component={SignIn} />
 
-              <PrevFilterProvider>
                 <Route exact path="/shop/:name" component={Shop} />
                 <Route path="/shop/:name/:id" component={Detail} />
-              </PrevFilterProvider>
 
-              <Route component={NotFound} />
-            </Switch>
-          </ApiProvider>
+                <Route component={NotFound} />
+              </Switch>
+            </ApiProvider>
+          </PrevFilterProvider>
         </AuthProvider>
       </Router>
       <ScrollButton />

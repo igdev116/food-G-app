@@ -47,7 +47,6 @@ const ApiProvider = ({ children }) => {
         ...valueWithPage,
       });
       const action = setShopProducts(response);
-      console.log("prevPrice", valueWithPage);
 
       dispatch(action);
       setIsLoading(false);
@@ -84,12 +83,3 @@ const ApiProvider = ({ children }) => {
 
 export { ApiContext };
 export default ApiProvider;
-
-// if params includes price params
-// then click paginate
-// keep price params
-// then get pagination + price params
-
-// next time click paginate, check has price params
-// keep price params
-// then get pagination + price params
