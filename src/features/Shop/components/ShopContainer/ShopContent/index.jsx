@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 import ShopHandle from "./ShopHandle";
 import ShopProducts from "./ShopProducts";
@@ -8,12 +9,13 @@ import "./ShopContent.scss";
 
 function ShopContent() {
   const [isFlex, setIsFlex] = useState(false);
+  const products = useSelector((state) => state.shop);
 
   return (
     <div className="shop-content">
       <ShopHandle isFlex={isFlex} setIsFlex={setIsFlex} />
       <ShopProducts isFlex={isFlex} />
-      <Pagination />
+      {products.length > 0 && <Pagination />}
     </div>
   );
 }

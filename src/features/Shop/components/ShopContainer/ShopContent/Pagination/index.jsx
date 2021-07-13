@@ -1,8 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import { ApiContext } from "context/ApiProvider";
 import { PrevFilterContext } from "context/PrevFilterProvider";
+import shopApi from "api/shopApi";
 
 // react paginate
 import ReactPaginate from "react-paginate";
@@ -14,11 +16,33 @@ import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import "./Pagination.scss";
 
 function Pagination() {
+  const [filteredProductsLen, setFilteredProductsLen] = useState(0);
+
   const { name } = useParams();
 
   const { handlePrevious } = useContext(PrevFilterContext);
   const { getProducts, totalRows, paginationActive } = useContext(ApiContext);
-  const maxPage = Math.ceil(totalRows[name] / 16);
+
+  const { prevPrice, prevRate } = handlePrevious();
+  const maxPage =
+    prevPrice || prevRate
+      ? Math.ceil(filteredProductsLen / 16)
+      : Math.ceil(totalRows[name] / 16);
+
+  useEffect(() => {
+    const getFilteredProductsLen = async () => {
+      if (prevPrice || prevRate) {
+        const response = await shopApi.getAll(
+          name,
+          prevPrice || JSON.parse(prevRate)
+        );
+
+        setFilteredProductsLen(response.length);
+      }
+    };
+
+    getFilteredProductsLen();
+  }, [name, prevPrice, prevRate]);
 
   const handlePagination = (page) => {
     const { selected } = page;
@@ -46,3 +70,7 @@ function Pagination() {
 }
 
 export default Pagination;
+// if filter product by price or rate
+// reset totalRows with products length
+
+// dispatch action to store to get filtered products length
