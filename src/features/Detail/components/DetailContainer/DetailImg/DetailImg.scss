@@ -1,9 +1,26 @@
+@import "assets/styles/mixins";
+
 .detail-img {
   display: flex;
   flex-direction: column;
 
   &__main {
     overflow: hidden;
+  }
+
+  &__main > div {
+    width: 100%;
+    height: 50rem;
+
+    @include respond(phone) {
+      height: 30rem;
+    }
+  }
+
+  &__main > div > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   &__main.last img {
@@ -15,14 +32,22 @@
     grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
     column-gap: 15px;
     margin-top: 20px;
+
+    @include respond(phone) {
+      display: flex;
+      width: 19.5rem;
+    }
   }
 
   &__slide {
-    width: 100%;
     height: 9.5rem;
     overflow: hidden;
 
     cursor: pointer;
+
+    @include respond(phone) {
+      height: 8.5rem;
+    }
   }
 
   &__slide img {

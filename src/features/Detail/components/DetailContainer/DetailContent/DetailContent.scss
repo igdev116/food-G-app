@@ -1,10 +1,15 @@
 @import "assets/styles/colors";
+@import "assets/styles/mixins";
 
 .detail-content {
   &__title {
     font-size: 2.8rem;
     text-transform: capitalize;
     margin-bottom: 15px;
+
+    @include respond(mobile) {
+      font-size: 2.5rem;
+    }
   }
 
   &__rate {
@@ -31,17 +36,30 @@
     font-size: 1.8rem;
     font-weight: bold;
     margin-bottom: 7px;
+
+    @include respond(phone) {
+      font-size: 1.6rem;
+    }
   }
 
   &__price {
     font-size: 2.5rem;
     margin-bottom: 15px;
+
+    @include respond(mobile) {
+      font-size: 2rem;
+    }
   }
 
   &__tags {
     display: flex;
     align-items: center;
-    margin-bottom: 22px;
+    margin-bottom: 20px;
+
+    @include respond(phone) {
+      flex-wrap: wrap;
+      line-height: 1.7;
+    }
   }
 
   &__tag {
@@ -66,7 +84,7 @@
   }
 
   &__form {
-    margin-bottom: 25px;
+    margin-bottom: 15px;
   }
 
   &__option-title {
@@ -78,14 +96,23 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     border-top: 1px solid rgba(0, 0, 0, 0.08);
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+
+    @include respond(phone) {
+      flex-wrap: wrap;
+      padding: 15px 0;
+    }
   }
 
   &__btn-handle {
     display: flex;
     align-items: center;
+
+    @include respond(phone) {
+      margin-right: 100%;
+    }
   }
 
   &__btn-qnt {
@@ -100,6 +127,10 @@
   .pr-red-btn {
     flex: 1;
     margin: 25px 18px 25px 40px;
+
+    @include respond(phone) {
+      margin: 15px 0 0;
+    }
   }
 
   .pr-red-btn .btn {
@@ -113,6 +144,10 @@
 
   & &__btn-like {
     font-size: 1.9rem;
+
+    @include respond(phone) {
+      margin: 15px 0 0 20px;
+    }
   }
 
   &__btn-like svg {

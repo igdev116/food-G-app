@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 // react img magnifiers
@@ -22,14 +22,13 @@ function DetailImg(props) {
   return (
     product && (
       <div className="detail-img">
-        <div className={isLast ? "detail-img__main last" : "detail-img__main"}>
-          <SideBySideMagnifier
-            imageSrc={img}
-            imageAlt="Foods"
-            alwaysInPlace={true}
-            transitionSpeedInPlace={0.3}
-          />
-        </div>
+        <SideBySideMagnifier
+          className={isLast ? "detail-img__main last" : "detail-img__main"}
+          imageSrc={img}
+          imageAlt="Foods"
+          alwaysInPlace={true}
+          transitionSpeedInPlace={0.3}
+        />
 
         <div className="detail-img__slides">
           <div

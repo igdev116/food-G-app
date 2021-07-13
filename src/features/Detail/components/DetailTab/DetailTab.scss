@@ -1,8 +1,14 @@
 @import "assets/styles/colors";
+@import "assets/styles/mixins";
 
 .detail-tab {
   margin: 110px 0;
   padding: 0 50px;
+
+  @include respond(mobile) {
+    padding: 0;
+    margin: 80px 0;
+  }
 
   &__btns {
     display: flex;
@@ -28,6 +34,10 @@
   &__content-description {
     font-size: 1.4rem;
     line-height: 1.7;
+
+    @include respond(phone) {
+      text-align: center;
+    }
   }
 
   &__content-table {
@@ -35,6 +45,10 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(calc(100% / 7), 1fr));
     margin-top: 40px;
+
+    @include respond(phone) {
+      grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+    }
   }
 
   &__content-table:before {
@@ -47,6 +61,12 @@
     width: 0.5px;
 
     background-color: rgba(0, 0, 0, 0.15);
+
+    @include respond(phone) {
+      left: 50%;
+
+      transform: translateX(-50%);
+    }
   }
 
   &__content-table:after {
@@ -59,16 +79,39 @@
     height: 0.5px;
 
     background-color: rgba(0, 0, 0, 0.15);
+
+    @include respond(phone) {
+      display: none;
+    }
   }
 
   &__content-col {
     display: flex;
     flex-direction: column;
     text-align: center;
+
+    @include respond(tablet) {
+      justify-content: space-evenly;
+    }
+
+    @include respond(phone) {
+      flex-direction: row;
+      padding-top: 35px;
+    }
+  }
+
+  &__content-col:not(:first-child) {
+    @include respond(phone) {
+      border-top: 1px solid rgba(0, 0, 0, 0.15);
+    }
   }
 
   &__content-col:first-child {
     padding-top: 10px;
+
+    @include respond(phone) {
+      padding-top: 30px;
+    }
   }
 
   &__content-col:first-child :is(&__content-col-title, &__content-ingredients) {
@@ -79,12 +122,21 @@
   &__content-col-wrapper {
     text-align: center;
     margin-bottom: 50px;
+
+    @include respond(phone) {
+      width: 50%;
+      margin-bottom: 40px;
+    }
   }
 
   &__content-col-title {
     font-size: 2.8rem;
     font-weight: bold;
     margin-bottom: 3px;
+
+    @include respond(mobile) {
+      font-size: 2.5rem;
+    }
   }
 
   &__content-col-description {
@@ -94,5 +146,15 @@
   &__content-ingredients {
     font-size: 1.4rem;
     margin-top: 5px;
+
+    @include respond(phone) {
+      width: 50%;
+    }
+  }
+
+  &__content-col:not(:first-child) &__content-ingredients {
+    @include respond(phone) {
+      margin-top: 15px;
+    }
   }
 }

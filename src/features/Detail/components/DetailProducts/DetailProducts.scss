@@ -1,3 +1,5 @@
+@import "assets/styles/mixins";
+
 .detail-products {
   text-align: center;
   margin-bottom: 80px;
@@ -6,11 +8,19 @@
     margin-top: 25px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-    column-gap: 15px;
+    gap: 15px;
     text-align: start;
+
+    @include respond(phone) {
+      grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+    }
   }
 
   .shop-product__img-wrapper {
     height: 20rem;
+
+    @include respond(mobile) {
+      height: 15rem;
+    }
   }
 }

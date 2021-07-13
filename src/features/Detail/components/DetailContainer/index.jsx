@@ -28,10 +28,10 @@ function DetailContainer() {
   return (
     <section className="detail-container">
       <Grid container spacing={6}>
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
           <DetailImg product={selectedProduct} />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
           <DetailContent product={selectedProduct} />
         </Grid>
       </Grid>
