@@ -5,7 +5,7 @@ const detail = createSlice({
   initialState: [],
   reducers: {
     setDetailProducts: (state, action) => {
-      return (state = action.payload);
+      return action.payload;
     },
   },
 });

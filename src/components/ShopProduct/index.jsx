@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import { AuthContext } from "context/AuthProvider";
@@ -25,7 +26,6 @@ ShopProduct.propsTypes = {
   rate: PropTypes.number,
 
   toggleDialog: PropTypes.func,
-  handleToDetail: PropTypes.func,
 };
 
 ShopProduct.propsTypes = {
@@ -37,21 +37,13 @@ ShopProduct.propsTypes = {
   rate: 0,
 
   toggleDialog: null,
-  handleToDetail: null,
 };
 
 function ShopProduct(props) {
-  const {
-    id,
-    name,
-    img,
-    dsc,
-    price,
-    rate,
-    country,
-    toggleDialog,
-    handleToDetail,
-  } = props;
+  const { id, name, img, dsc, price, rate, country, toggleDialog } = props;
+
+  const params = useParams();
+  const history = useHistory();
 
   const dispatch = useDispatch();
 
@@ -67,9 +59,16 @@ function ShopProduct(props) {
     dispatch(action);
   };
 
+  const handleToDetail = (id) => {
+    history.push(`/shop/${params.name}/${id}`);
+  };
+
   return (
     <div id={id} className="shop-product">
-      <div onClick={handleToDetail} className="shop-product__img-wrapper">
+      <div
+        onClick={() => handleToDetail(id)}
+        className="shop-product__img-wrapper"
+      >
         <LazyLoadImage
           effect="blur"
           src={img}
@@ -84,7 +83,7 @@ function ShopProduct(props) {
         </div>
       </div>
 
-      <div onClick={handleToDetail} className="shop-product__content">
+      <div onClick={() => handleToDetail(id)} className="shop-product__content">
         <div className="shop-product__name">{name}</div>
         <p className="shop-product__description">{dsc}</p>
         <div className="shop-product__row">

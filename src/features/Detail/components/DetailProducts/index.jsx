@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import shopApi from "api/shopApi";
@@ -11,6 +12,8 @@ import "./DetailProducts.scss";
 import "assets/styles/_typography.scss";
 
 function DetailProducts() {
+  const { name } = useParams();
+
   const [products, setProducts] = useState([]);
   const [isShowDialog, setIsShowDialog] = useState(false);
   const dispatch = useDispatch();
@@ -30,8 +33,8 @@ function DetailProducts() {
     };
   }, [productData]);
 
-  // when browser loaded get url to re-render
-  window.addEventListener("load", () => {
+  // get or reset products when id is changed
+  useEffect(() => {
     const getProducts = async (type) => {
       const response = await shopApi.getAll(type, { _limit: 5 });
       const action = setDetailProducts(response);
@@ -39,8 +42,8 @@ function DetailProducts() {
       dispatch(action);
     };
 
-    getProducts("burgers");
-  });
+    getProducts(name);
+  }, [name, dispatch]);
 
   return (
     <div className="detail-products">

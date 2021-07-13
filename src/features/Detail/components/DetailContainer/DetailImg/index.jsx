@@ -1,44 +1,52 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+
+// react img magnifiers
+import { SideBySideMagnifier } from "react-image-magnifiers";
 
 import "./DetailImg.scss";
 
-function DetailImg() {
-  return (
-    <div className="detail-img">
-      <div className="detail-img__main">
-        <img
-          src="https://goldbelly.imgix.net/uploads/showcase_media_asset/image/110906/bo-ssam-dinner-for-4.c4a32e8801e2f0283e0565bbe8493149.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1"
-          alt="Detail"
-        />
-      </div>
+DetailImg.propsTypes = {
+  product: PropTypes.object,
+};
 
-      <div className="detail-img__slides">
-        <div className="detail-img__slide">
-          <img
-            src="https://goldbelly.imgix.net/uploads/showcase_media_asset/image/110906/bo-ssam-dinner-for-4.c4a32e8801e2f0283e0565bbe8493149.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1"
-            alt="Slide"
+DetailImg.defaultProps = {
+  product: null,
+};
+
+function DetailImg(props) {
+  const { product } = props;
+  const { img } = product ? product : "";
+  const [isLast, setIsLast] = useState(false);
+
+  return (
+    product && (
+      <div className="detail-img">
+        <div className={isLast ? "detail-img__main last" : "detail-img__main"}>
+          <SideBySideMagnifier
+            imageSrc={img}
+            imageAlt="Foods"
+            alwaysInPlace={true}
+            transitionSpeedInPlace={0.3}
           />
         </div>
-        <div className="detail-img__slide">
-          <img
-            src="https://goldbelly.imgix.net/uploads/showcase_media_asset/image/110906/bo-ssam-dinner-for-4.c4a32e8801e2f0283e0565bbe8493149.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1"
-            alt="Slide"
-          />
-        </div>
-        <div className="detail-img__slide">
-          <img
-            src="https://goldbelly.imgix.net/uploads/showcase_media_asset/image/110906/bo-ssam-dinner-for-4.c4a32e8801e2f0283e0565bbe8493149.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1"
-            alt="Slide"
-          />
-        </div>
-        <div className="detail-img__slide">
-          <img
-            src="https://goldbelly.imgix.net/uploads/showcase_media_asset/image/110906/bo-ssam-dinner-for-4.c4a32e8801e2f0283e0565bbe8493149.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1"
-            alt="Slide"
-          />
+
+        <div className="detail-img__slides">
+          <div
+            onClick={() => setIsLast(false)}
+            className={isLast ? "detail-img__slide last" : "detail-img__slide"}
+          >
+            <img src={img} alt="Slide" />
+          </div>
+          <div
+            onClick={() => setIsLast(true)}
+            className={isLast ? "detail-img__slide" : "detail-img__slide last"}
+          >
+            <img src={img} alt="Slide" />
+          </div>
         </div>
       </div>
-    </div>
+    )
   );
 }
 

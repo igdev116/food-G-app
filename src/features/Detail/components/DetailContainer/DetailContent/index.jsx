@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import CusButtons from "components/CusButtons";
 import Checkbox from "components/Checkbox";
@@ -15,8 +18,17 @@ import LocalShippingOutlinedIcon from "@material-ui/icons/LocalShippingOutlined"
 import EventAvailableOutlinedIcon from "@material-ui/icons/EventAvailableOutlined";
 import LocalOfferOutlinedIcon from "@material-ui/icons/LocalOfferOutlined";
 import AddShoppingCartOutlinedIcon from "@material-ui/icons/AddShoppingCartOutlined";
+import StarBorderIcon from "@material-ui/icons/StarBorder";
 
 import "./DetailContent.scss";
+
+DetailContent.propsTypes = {
+  product: PropTypes.object,
+};
+
+DetailContent.defaultProps = {
+  product: null,
+};
 
 const dataOptions = [
   {
@@ -33,7 +45,13 @@ const dataOptions = [
   },
 ];
 
-function DetailContent() {
+function DetailContent(props) {
+  const { product } = props;
+  const { name, price, country, dsc, rate } = product ? product : "";
+
+  const params = useParams();
+  const paramsName = params.name.replace("-", " ");
+
   const [selectedRadio, setSelectedRadio] = useState("");
 
   const handleOptionChange = (e) => {
@@ -42,7 +60,7 @@ function DetailContent() {
 
   return (
     <div className="detail-content">
-      <h2 className="detail-content__title">asdasdasd</h2>
+      <h2 className="detail-content__title">{name}</h2>
 
       <div className="detail-content__rate">
         <div className="detail-content__stars">
@@ -50,7 +68,7 @@ function DetailContent() {
           <StarIcon />
           <StarIcon />
           <StarIcon />
-          <StarIcon />
+          {rate === 5 ? <StarIcon /> : <StarBorderIcon />}
         </div>
         <div className="detail-content__reviews">
           <span className="detail-content__reviews-qnt">5</span>
@@ -59,28 +77,23 @@ function DetailContent() {
       </div>
 
       <div className="detail-content__price">
-        <strong>$100.00</strong>
+        <strong>${price}</strong>
       </div>
 
       <div className="detail-content__tags">
         <div className="detail-content__tag">
           <span className="detail-content__tag-label">Category:</span>
-          <span className="detail-content__tag-detail">Chicken</span>
+          <span className="detail-content__tag-detail category">
+            {paramsName}
+          </span>
         </div>
         <div className="detail-content__tag">
-          <span className="detail-content__tag-label">Category:</span>
-          <span className="detail-content__tag-detail">Chicken</span>
-        </div>
-        <div className="detail-content__tag">
-          <span className="detail-content__tag-label">Category:</span>
-          <span className="detail-content__tag-detail">Chicken</span>
+          <span className="detail-content__tag-label">Country:</span>
+          <span className="detail-content__tag-detail">{country}</span>
         </div>
       </div>
 
-      <p className="detail-content__description">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. In nam
-        officiis cumque voluptates harum quidem pariatur magni inventore.
-      </p>
+      <p className="detail-content__description">{dsc}</p>
 
       <form className="detail-content__form">
         <div className="detail-content__form-title">Choose your options</div>

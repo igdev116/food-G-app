@@ -27,19 +27,19 @@ function HomeBanner(props) {
 
   return (
     <div
-      className={`banner`}
+      className="home-banner"
       style={{ backgroundImage: `url(/imgs/Home/${background})` }}
     >
       <Container className="container-ui">
-        <div className="banner__container">
-          <div className="banner__title">{title}</div>
-          <div className="banner__description">
+        <div className="home-banner__container">
+          <div className="home-banner__title">{title}</div>
+          <div className="home-banner__description">
             {description}
             <strong>{strong}</strong>
           </div>
 
           <PrRedBtn type="shop">
-            <AddShoppingCartIcon className="banner__icon" />
+            <AddShoppingCartIcon className="home-banner__icon" />
             Order now
           </PrRedBtn>
         </div>

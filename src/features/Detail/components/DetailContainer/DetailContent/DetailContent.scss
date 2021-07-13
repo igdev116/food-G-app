@@ -55,6 +55,10 @@
     color: $primary-grey-color;
   }
 
+  &__tag-detail.category {
+    text-transform: capitalize;
+  }
+
   &__description {
     font-size: 1.4rem;
     margin-bottom: 20px;

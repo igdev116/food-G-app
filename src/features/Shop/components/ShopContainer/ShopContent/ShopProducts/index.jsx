@@ -1,16 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import Dialog from "components/Dialog";
+import PR_RED_COLOR from "constants/colors";
+import { ApiContext } from "context/ApiProvider";
 
 // material ui icons
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 import ShopProduct from "components/ShopProduct";
-import PR_RED_COLOR from "constants/colors";
-import { ApiContext } from "context/ApiProvider";
+import Dialog from "components/Dialog";
 
 import "./ShopProducts.scss";
 
@@ -20,11 +19,7 @@ ShopProducts.propsTypes = {
 
 function ShopProducts(props) {
   const { isFlex } = props;
-  const [products, setProducts] = useState([]);
   const [isShowDialog, setIsShowDialog] = useState(false);
-
-  const { name } = useParams();
-  const history = useHistory();
 
   const { isLoading } = useContext(ApiContext);
   const productData = useSelector((state) => state.shop);
@@ -32,19 +27,6 @@ function ShopProducts(props) {
   const toggleDialog = () => {
     setIsShowDialog(true);
   };
-
-  const handleToDetail = () => {
-    history.push(`/shop/${name}`);
-  };
-
-  // get products from store to render
-  useEffect(() => {
-    setProducts(productData);
-
-    return () => {
-      setProducts(productData);
-    };
-  }, [productData]);
 
   return isLoading ? (
     <div className="spinner">
@@ -55,12 +37,7 @@ function ShopProducts(props) {
       <div className={isFlex ? "shop-products display-flex" : "shop-products"}>
         {productData &&
           productData.map((item, index) => (
-            <ShopProduct
-              toggleDialog={toggleDialog}
-              handleToDetail={handleToDetail}
-              key={index}
-              {...item}
-            />
+            <ShopProduct toggleDialog={toggleDialog} key={index} {...item} />
           ))}
       </div>
 

@@ -51,7 +51,7 @@ function HomeBanners() {
   };
 
   return (
-    <section className="banners">
+    <section className="home-banners">
       <div
         className="slides"
         style={{ transform: `translateX(${-100 * slideNum}%)` }}
