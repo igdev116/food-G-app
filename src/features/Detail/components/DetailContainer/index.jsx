@@ -18,7 +18,7 @@ function DetailContainer() {
   useEffect(() => {
     const getProducts = async () => {
       const response = await shopApi.getAll(name, { id: id });
-      console.log(response);
+
       setSelectedProduct(response[0]);
     };
 

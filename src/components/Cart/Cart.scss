@@ -1,0 +1,104 @@
+@import "assets/styles/colors";
+@import "assets/styles/mixins";
+
+.cart {
+  &__heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 30px 20px 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+
+    @include respond(phone) {
+      font-size: 2rem;
+    }
+  }
+
+  &__close {
+    position: relative;
+    width: 3rem;
+    height: 3rem;
+
+    cursor: pointer;
+
+    @include respond(phone) {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+
+  &__close:before,
+  &__close:after {
+    position: absolute;
+    content: "";
+    top: 45%;
+
+    height: 0.5rem;
+    width: 100%;
+    border-radius: 999px;
+    display: inline-block;
+    opacity: 1;
+    visibility: visible;
+
+    background-color: #404040;
+  }
+
+  &__close:before {
+    transform: rotate(45deg);
+  }
+
+  &__close:after {
+    transform: rotate(-45deg);
+  }
+
+  &__close.active:before,
+  &__close.active:after {
+    animation: collapse 1.2s cubic-bezier(0.77, 0.2, 0.05, 1) forwards;
+  }
+
+  &__container {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 999;
+
+    width: 45rem;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    opacity: 0.85;
+    box-shadow: -2px 0 15px rgba(0, 0, 0, 0.1);
+    transform: translateX(100%);
+
+    background-color: $primary-white-color;
+
+    transition: all 0.45s ease-in-out 1.03s;
+
+    @include respond(mobile) {
+      width: 100%;
+    }
+  }
+
+  &.active &__container {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.55s;
+  }
+}
+
+@keyframes collapse {
+  40% {
+    transform: rotate(0);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+}

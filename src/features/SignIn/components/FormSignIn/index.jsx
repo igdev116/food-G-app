@@ -1,7 +1,7 @@
 import React from "react";
 
 import FieldSignIn from "../FieldSignIn";
-import PrRedBtn from "components/CusButtons";
+import PrRedBtn from "components/PrimaryButton";
 
 // router dom
 import { Link } from "react-router-dom";

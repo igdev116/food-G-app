@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import CusButtons from "components/CusButtons";
+import PrimaryButton from "components/PrimaryButton";
 import Checkbox from "components/Checkbox";
 
 // material ui core
@@ -118,10 +117,10 @@ function DetailContent(props) {
             <RemoveIcon />
           </Button>
         </div>
-        <CusButtons>
+        <PrimaryButton subClass="red">
           <AddShoppingCartOutlinedIcon />
           <span>Add to cart</span>
-        </CusButtons>
+        </PrimaryButton>
         <Button className="detail-content__btn-like btn-circle">
           <FavoriteBorderIcon />
         </Button>

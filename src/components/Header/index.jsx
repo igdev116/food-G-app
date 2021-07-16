@@ -7,6 +7,7 @@ import auth from "firebase/configs";
 
 import Dialog from "components/Dialog";
 import BurgerNavbar from "./BurgerNavbar";
+import Cart from "components/Cart";
 
 // material ui core
 import { Container, Avatar } from "@material-ui/core";
@@ -28,6 +29,7 @@ import "./Header.scss";
 function Header() {
   const [isActive, setIsActive] = useState(false);
   const [isShow, setIsShow] = useState(false);
+  const [isDropUp, setIsDropUp] = useState(false);
   const [isShowDialog, setIsShowDialog] = useState(false);
 
   const history = useHistory();
@@ -65,7 +67,12 @@ function Header() {
     });
   };
 
+  const toggleDropUp = () => {
+    setIsDropUp(!isDropUp);
+  };
+
   const toggleDialog = () => {
+    toggleDropUp();
     !user && setIsShowDialog(true);
   };
 
@@ -110,7 +117,11 @@ function Header() {
             </div>
 
             <div className="navbar--right">
-              <div onClick={toggleDialog} className="navbar__cart">
+              <div
+                onClick={toggleDialog}
+                className={isDropUp ? "navbar__cart active" : "navbar__cart"}
+              >
+                {user && <div className="navbar__overlay"></div>}
                 <ShoppingCartIcon />
                 <div className="navbar__cart-qnt">
                   {user ? cartData.length : 0}
@@ -155,6 +166,8 @@ function Header() {
 
       {/* mobile */}
       <BurgerNavbar isShow={isShow} showBurgerNav={showBurgerNav} user={user} />
+
+      <Cart isDropUp={isDropUp} setIsDropUp={setIsDropUp} />
 
       <Dialog isShow={isShowDialog} setIsShow={setIsShowDialog} />
     </>

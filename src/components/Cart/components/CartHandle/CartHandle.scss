@@ -1,0 +1,115 @@
+@import "assets/styles/colors";
+@import "assets/styles/mixins";
+
+.cart-handle {
+  position: relative;
+
+  padding: 0 25px 25px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.05);
+
+  @include respond(phone) {
+    padding: 0 15px 25px;
+  }
+
+  &__dropup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+    padding-top: 3px;
+
+    cursor: pointer;
+  }
+
+  &__dropup svg {
+    font-size: 2.2rem;
+    transform: rotate(90deg);
+
+    color: rgba(0, 0, 0, 0.45);
+  }
+
+  &__total {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    margin-bottom: 10px;
+  }
+
+  &__txt {
+    font-size: 1.8rem;
+    text-transform: capitalize;
+    font-weight: bold;
+
+    @include respond(phone) {
+      font-size: 1.65rem;
+    }
+  }
+
+  &__price {
+    font-size: 2.2rem;
+    font-weight: bold;
+
+    color: $primary-red-color;
+
+    @include respond(phone) {
+      font-size: 1.8rem;
+    }
+  }
+
+  &__btns {
+    display: flex;
+    align-items: center;
+  }
+
+  &__btn {
+    flex: 1;
+  }
+
+  &__btn:first-child {
+    margin-right: 20px;
+  }
+
+  &__detail {
+    width: 100%;
+    height: 0;
+    padding: 0 10px;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+
+    transition: all 0.5s ease-in-out;
+  }
+
+  &__detail.active {
+    height: 16rem;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__detail-title {
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+
+    @include respond(phone) {
+      font-size: 1.65rem;
+    }
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  &__label {
+    font-size: 1.3rem;
+
+    color: $primary-grey-color;
+  }
+
+  &__content {
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+}

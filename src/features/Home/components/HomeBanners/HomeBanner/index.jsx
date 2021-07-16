@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import PrRedBtn from "components/CusButtons";
+import PrimaryButton from "components/PrimaryButton";
 
 import { Container } from "@material-ui/core";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
@@ -38,10 +38,10 @@ function HomeBanner(props) {
             <strong>{strong}</strong>
           </div>
 
-          <PrRedBtn type="shop">
+          <PrimaryButton subClass="red" type="shop">
             <AddShoppingCartIcon className="home-banner__icon" />
             Order now
-          </PrRedBtn>
+          </PrimaryButton>
         </div>
       </Container>
     </div>

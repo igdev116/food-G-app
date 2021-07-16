@@ -1,6 +1,6 @@
 import React from "react";
 
-import PrRedBtn from "components/CusButtons";
+import PrRedBtn from "components/PrimaryButton";
 
 import { Container } from "@material-ui/core";
 

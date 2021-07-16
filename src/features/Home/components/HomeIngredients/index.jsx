@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import PrRedBtn from "components/CusButtons";
+import PrRedBtn from "components/PrimaryButton";
 import { MOBILE_BREAKPOINT } from "constants/breakpoints";
 
 import "assets/styles/_typography.scss";

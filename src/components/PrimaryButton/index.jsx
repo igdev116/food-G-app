@@ -7,18 +7,18 @@ import { ApiContext } from "context/ApiProvider";
 // material ui core
 import { Button } from "@material-ui/core";
 
-import "./CusButtons.scss";
+import "./PrimaryButton.scss";
 
-PrRedBtn.propsTypes = {
+PrimaryButton.propsTypes = {
   type: PropTypes.string,
 };
 
-PrRedBtn.defaultProps = {
+PrimaryButton.defaultProps = {
   type: "",
 };
 
-function PrRedBtn(props) {
-  const { type, children } = props;
+function PrimaryButton(props) {
+  const { type, subClass, children } = props;
 
   const history = useHistory();
 
@@ -32,12 +32,13 @@ function PrRedBtn(props) {
   };
 
   return (
-    <div onClick={handleMovePage} className="pr-red-btn">
-      <Button className="btn" variant="contained">
-        {children}
-      </Button>
-    </div>
+    <Button
+      onClick={handleMovePage}
+      className={`primary-btn ${subClass || ""}`}
+    >
+      {children}
+    </Button>
   );
 }
 
-export default PrRedBtn;
+export default PrimaryButton;

@@ -124,22 +124,13 @@
     font-size: 1.8rem;
   }
 
-  .pr-red-btn {
+  .primary-btn {
     flex: 1;
     margin: 25px 18px 25px 40px;
 
     @include respond(phone) {
       margin: 15px 0 0;
     }
-  }
-
-  .pr-red-btn .btn {
-    width: 100%;
-  }
-
-  .pr-red-btn svg {
-    font-size: 1.75rem;
-    margin-right: 5px;
   }
 
   & &__btn-like {

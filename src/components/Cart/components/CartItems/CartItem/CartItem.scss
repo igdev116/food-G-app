@@ -1,0 +1,79 @@
+@import "assets/styles/colors";
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+
+  &__img {
+    max-width: 8.5rem;
+    margin-right: 15px;
+  }
+
+  &__img img {
+    width: 100%;
+    height: 7.5rem;
+    object-fit: cover;
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__name {
+    font-size: 1.4rem;
+    font-weight: bold;
+    overflow: hidden;
+    display: block;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  &__handle {
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+  }
+
+  &__price {
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin: 8px 0 9px;
+
+    color: $primary-red-color;
+  }
+
+  &__qnt {
+    padding: 0 5px;
+  }
+
+  &__handle button {
+    background-color: rgba(0, 0, 0, 0.03);
+  }
+
+  &__handle svg {
+    fill: rgba(0, 0, 0, 0.55);
+
+    transition: all 0.35s ease-out;
+  }
+
+  &__handle button:hover svg {
+    fill: $primary-red-color;
+  }
+
+  & button {
+    min-width: 3rem;
+  }
+
+  &__rm svg {
+    font-size: 2.3rem;
+
+    fill: rgba(0, 0, 0, 0.25);
+  }
+
+  &__rm:hover svg {
+    fill: rgba(0, 0, 0, 0.55);
+  }
+}
