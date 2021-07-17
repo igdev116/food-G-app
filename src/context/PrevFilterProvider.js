@@ -6,6 +6,7 @@ function PrevFilterProvider({ children }) {
   const [prevName, setPrevName] = useState(null);
   const [prevPrice, setPrevPrice] = useState(null);
   const [prevRate, setPrevRate] = useState(null);
+  const [prevSearch, setPrevSearch] = useState(null);
   const [selectedRadio, setSelectedRadio] = useState(null);
   const [selectedDrop, setSelectedDrop] = useState("Featured");
   const [nameActive, setNameActive] = useState(null);
@@ -58,12 +59,14 @@ function PrevFilterProvider({ children }) {
       prevName,
       prevPrice,
       prevRate,
+      prevSearch,
       selectedRadio,
       selectedDrop,
       nameActive,
       setPrevName,
       setPrevPrice,
       setPrevRate,
+      setPrevSearch,
       setSelectedRadio,
       setSelectedDrop,
       setNameActive,

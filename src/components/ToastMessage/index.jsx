@@ -1,6 +1,9 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
+
+// react-toastify
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 
 // material ui icons
 import DoneOutlinedIcon from "@material-ui/icons/DoneOutlined";
@@ -39,30 +42,31 @@ const types = {
   },
 };
 
-function ToastMessage(props) {
-  const toastMsgData = useSelector((state) => state.toastMessage);
+function ToastMessage(type) {
+  const CloseButton = () => (
+    <div className="toast-msg__close">
+      <ExitToAppIcon />
+    </div>
+  );
 
-  return (
-    // <div id="toast-msg">
-    //   {toastMsgData.map((type, index) => (
-    //   ))}
-    // </div>
+  const ToastBody = () => (
     <div
       className="toast-msg"
-      style={{ backgroundColor: `${types["success"].color}` }}
+      style={{ backgroundColor: `${types[type].color}` }}
     >
-      <div className="toast-msg__icon">{types["success"].setIcon()}</div>
+      <div className="toast-msg__icon">{types[type].setIcon()}</div>
       <div className="toast-msg__content">
-        <h4 className="toast-msg__title">{types["success"].title}!</h4>
-        <div className="toast-msg__description">
-          {types["success"].description}
-        </div>
-      </div>
-      <div className="toast-msg__close">
-        <ExitToAppIcon />
+        <h4 className="toast-msg__title">{types[type].title}!</h4>
+        <div className="toast-msg__description">{types[type].description}</div>
       </div>
     </div>
   );
+
+  return toast(ToastBody(), {
+    closeButton: CloseButton(),
+    autoClose: true,
+    hideProgressBar: true,
+  });
 }
 
 export default ToastMessage;

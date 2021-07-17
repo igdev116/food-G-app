@@ -23,18 +23,18 @@ function Pagination() {
   const { handlePrevious } = useContext(PrevFilterContext);
   const { getProducts, totalRows, paginationActive } = useContext(ApiContext);
 
-  const { prevPrice, prevRate } = handlePrevious();
+  const { prevPrice, prevRate, prevSearch } = handlePrevious();
   const maxPage =
-    prevPrice || prevRate
+    prevPrice || prevRate || prevSearch
       ? Math.ceil(filteredProductsLen / 16)
       : Math.ceil(totalRows[name] / 16);
 
   useEffect(() => {
     const getFilteredProductsLen = async () => {
-      if (prevPrice || prevRate) {
+      if (prevPrice || prevRate || prevSearch) {
         const response = await shopApi.getAll(
           name,
-          prevPrice || JSON.parse(prevRate)
+          prevPrice || JSON.parse(prevRate) || prevSearch
         );
 
         setFilteredProductsLen(response.length);
@@ -42,7 +42,7 @@ function Pagination() {
     };
 
     getFilteredProductsLen();
-  }, [name, prevPrice, prevRate]);
+  }, [name, prevPrice, prevRate, prevSearch]);
 
   const handlePagination = (page) => {
     const { selected } = page;

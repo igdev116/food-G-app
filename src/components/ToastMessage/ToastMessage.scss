@@ -1,28 +1,16 @@
 @import "assets/styles/colors";
 
-#toast-msg {
-  position: fixed;
-  right: 30px;
-  top: 30px;
-  z-index: 999;
-  width: 32.5rem;
-}
-
 .toast-msg {
   position: relative;
 
   display: flex;
   align-items: center;
-  padding: 20px 15px 20px 15px;
+  padding: 0 15px;
   border-radius: 4px;
-  box-shadow: 0 2px 13px rgba(0, 0, 0, 0.25);
   width: 100%;
+  height: 100%;
 
   cursor: default;
-
-  & + & {
-    margin-top: 20px;
-  }
 
   &__icon {
     position: relative;
@@ -30,7 +18,7 @@
     width: 2.3rem;
     height: 2.3rem;
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: 12px;
 
     background-color: $primary-white-color;
   }
@@ -75,27 +63,24 @@
   }
 }
 
-@keyframes rightToLeft {
-  from {
-    opacity: 0;
-    transform: translateX(calc(100% + 30px));
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
+.Toastify__toast-container {
+  top: 30px;
+  right: 30px;
+  width: 34.5rem;
 
-@keyframes fadeOut {
-  to {
-    opacity: 0;
-  }
-}
+  .Toastify__toast {
+    position: relative;
 
-.Toastify__toast {
-  padding: 0;
+    padding: 0;
+    box-shadow: 0 2px 13px rgba(0, 0, 0, 0.25);
+  }
+
+  .Toastify__toast + .Toastify__toast {
+    margin-top: 20px;
+  }
 
   .Toastify__toast-body {
     padding: 0;
+    height: 11.5rem;
   }
 }

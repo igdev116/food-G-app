@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+
+import { AuthContext } from "context/AuthProvider";
 
 import DetailContainer from "./components/DetailContainer";
 import DetailTab from "./components/DetailTab";
@@ -9,6 +11,12 @@ import Banner from "components/Banner";
 import { Container } from "@material-ui/core";
 
 function Detail() {
+  const { setHasHeader } = useContext(AuthContext);
+
+  useEffect(() => {
+    setHasHeader(true);
+  }, [setHasHeader]);
+
   return (
     <div className="detail">
       <Banner />

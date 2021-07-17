@@ -32,12 +32,12 @@ const ApiProvider = ({ children }) => {
   }, []);
 
   const getProducts = async (type, params) => {
-    const { prevPrice, prevRate } = handlePrevious();
+    const { prevPrice, prevRate, prevSearch } = handlePrevious();
     const currentPagination =
       params && params.hasOwnProperty("_page") && params["_page"];
 
     const valueWithPage =
-      currentPagination && (prevPrice || JSON.parse(prevRate)); // get params of price or value when paginate
+      currentPagination && (prevPrice || JSON.parse(prevRate) || prevSearch); // get params when paginate
 
     try {
       setIsLoading(true);

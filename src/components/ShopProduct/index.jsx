@@ -5,17 +5,27 @@ import PropTypes from "prop-types";
 
 import { AuthContext } from "context/AuthProvider";
 import { addToCart } from "components/Cart/cartSlice";
+import {
+  addToastMessage,
+  removeToastMessage,
+} from "components/ToastMessage/toastMessageSlice";
+
+// react-toastify
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 
 // lazy load img
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
+// material ui icons
 import StarIcon from "@material-ui/icons/Star";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import RoomIcon from "@material-ui/icons/Room";
 
 import "./ShopProduct.scss";
+import ToastMessage from "components/ToastMessage";
 
 ShopProduct.propsTypes = {
   id: PropTypes.string,
@@ -49,7 +59,7 @@ function ShopProduct(props) {
 
   const { user } = useContext(AuthContext);
 
-  const onAddToCart = () => {
+  const handleAddToCart = (type) => {
     if (!user) {
       toggleDialog();
       return;
@@ -57,10 +67,15 @@ function ShopProduct(props) {
 
     const action = addToCart({ id, name, img, dsc, price, rate, country });
     dispatch(action);
+    showToastMsg(type);
   };
 
   const handleToDetail = (id) => {
     history.push(`/shop/${params.name}/${id}`);
+  };
+
+  const showToastMsg = (type) => {
+    ToastMessage(type);
   };
 
   return (
@@ -96,10 +111,16 @@ function ShopProduct(props) {
       </div>
 
       <div className="shop-product__btns">
-        <div className="shop-product__btn">
+        <div
+          onClick={() => showToastMsg("favourite")}
+          className="shop-product__btn"
+        >
           <FavoriteBorderIcon />
         </div>
-        <div onClick={onAddToCart} className="shop-product__btn">
+        <div
+          onClick={() => handleAddToCart("success")}
+          className="shop-product__btn"
+        >
           <ShoppingCartOutlinedIcon />
         </div>
       </div>

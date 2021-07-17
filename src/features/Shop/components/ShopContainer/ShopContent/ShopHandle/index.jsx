@@ -48,7 +48,7 @@ function ShopHandle(props) {
 
   const { getProducts } = useContext(ApiContext);
   const { handlePrevious } = useContext(PrevFilterContext);
-  const { selectedDrop, setSelectedDrop } = handlePrevious();
+  const { selectedDrop, setSelectedDrop, setPrevSearch } = handlePrevious();
 
   useEffect(() => {
     const handleClickDrop = (e) => {
@@ -72,6 +72,7 @@ function ShopHandle(props) {
 
     getProducts("our-foods", query);
     setInputValue("");
+    setPrevSearch(query);
   };
 
   const onFilterBySort = (sort, value) => {
