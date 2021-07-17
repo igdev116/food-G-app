@@ -1,0 +1,101 @@
+@import "assets/styles/colors";
+
+#toast-msg {
+  position: fixed;
+  right: 30px;
+  top: 30px;
+  z-index: 999;
+  width: 32.5rem;
+}
+
+.toast-msg {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  padding: 20px 15px 20px 15px;
+  border-radius: 4px;
+  box-shadow: 0 2px 13px rgba(0, 0, 0, 0.25);
+  width: 100%;
+
+  cursor: default;
+
+  & + & {
+    margin-top: 20px;
+  }
+
+  &__icon {
+    position: relative;
+
+    width: 2.3rem;
+    height: 2.3rem;
+    border-radius: 50%;
+    margin-right: 10px;
+
+    background-color: $primary-white-color;
+  }
+
+  &__icon svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    font-size: 1.6rem;
+    transform: translate(-50%, -50%);
+  }
+
+  &__content {
+    line-height: 2;
+
+    color: $primary-white-color;
+  }
+
+  &__title {
+    font-size: 1.55rem;
+    font-weight: bold;
+  }
+
+  &__description {
+    font-size: 1.3rem;
+  }
+
+  &__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  &__close svg {
+    font-size: 2.1rem;
+    opacity: 0.95;
+
+    fill: $primary-white-color;
+
+    cursor: pointer;
+  }
+}
+
+@keyframes rightToLeft {
+  from {
+    opacity: 0;
+    transform: translateX(calc(100% + 30px));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+.Toastify__toast {
+  padding: 0;
+
+  .Toastify__toast-body {
+    padding: 0;
+  }
+}
