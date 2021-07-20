@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import React from "react";
 import PropTypes from "prop-types";
 
 import PrimaryButton from "components/PrimaryButton";
@@ -21,40 +20,40 @@ import StarBorderIcon from "@material-ui/icons/StarBorder";
 
 import "./DetailContent.scss";
 
-DetailContent.propsTypes = {
-  product: PropTypes.object,
+DetailContent.propTypes = {
+  product: PropTypes.object.isRequired,
+  dataOptions: PropTypes.array.isRequired,
+  price: PropTypes.number.isRequired,
+  qnt: PropTypes.number.isRequired,
+
+  paramsName: PropTypes.string,
+  handleFuncs: PropTypes.object,
+  selectedRadio: PropTypes.string,
 };
 
 DetailContent.defaultProps = {
-  product: null,
+  paramsName: "",
+  handleFuncs: null,
+  selectedRadio: "",
 };
 
-const dataOptions = [
-  {
-    content: "Buy 2 get 15 percent off",
-    percentOff: "15",
-  },
-  {
-    content: "Buy 3 get 25 percent off",
-    percentOff: "25",
-  },
-  {
-    content: "Buy 5 get 50 percent off",
-    percentOff: "50",
-  },
-];
-
 function DetailContent(props) {
-  const { product } = props;
-  const { name, price, country, dsc, rate } = product ? product : "";
+  const {
+    product,
+    paramsName,
+    dataOptions,
+    handleFuncs,
+    selectedRadio,
+    price,
+    qnt,
+  } = props;
 
-  const params = useParams();
-  const paramsName = params.name.replace("-", " ");
+  const { name, country, dsc, rate } = product ? product : "";
+  const { handleOptionChange, handleIncreaseQnt, handleDecreaseQnt } =
+    handleFuncs;
 
-  const [selectedRadio, setSelectedRadio] = useState("");
-
-  const handleOptionChange = (e) => {
-    setSelectedRadio(e.target.value);
+  const onHandleOptionChange = (e, percentOff) => {
+    handleOptionChange(e, percentOff);
   };
 
   return (
@@ -102,21 +101,29 @@ function DetailContent(props) {
             checked={selectedRadio === content}
             content={content}
             value={content}
-            handleOptionChange={handleOptionChange}
+            handleOptionChange={(e) => onHandleOptionChange(e, percentOff)}
           />
         ))}
       </form>
 
       <div className="detail-content__btns">
         <div className="detail-content__btn-handle ">
-          <Button className="detail-content__btn-dec btn-circle">
-            <AddIcon />
-          </Button>
-          <span className="detail-content__btn-qnt">100</span>
-          <Button className="detail-content__btn-inc btn-circle">
+          <Button
+            onClick={handleDecreaseQnt}
+            className="detail-content__btn-inc btn-circle"
+          >
             <RemoveIcon />
           </Button>
+
+          <span className="detail-content__btn-qnt">{qnt}</span>
+          <Button
+            onClick={handleIncreaseQnt}
+            className="detail-content__btn-dec btn-circle"
+          >
+            <AddIcon />
+          </Button>
         </div>
+
         <PrimaryButton subClass="red">
           <AddShoppingCartOutlinedIcon />
           <span>Add to cart</span>

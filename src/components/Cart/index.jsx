@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
+
+import { db } from "firebase/configs";
 
 import CartItems from "./components/CartItems";
 import CartHandle from "./components/CartHandle";
@@ -22,6 +24,16 @@ function Cart(props) {
   const handleCloseCart = () => {
     setIsDropUp(!isDropUp);
   };
+
+  useEffect(() => {
+    db.collection("cart")
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          console.log(`${doc.id} => ${doc.data()}`);
+        });
+      });
+  }, []);
 
   return (
     <div className={isDropUp ? "cart active" : "cart"}>

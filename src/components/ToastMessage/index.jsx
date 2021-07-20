@@ -64,8 +64,9 @@ function ToastMessage(type) {
 
   return toast(ToastBody(), {
     closeButton: CloseButton(),
-    autoClose: true,
+    autoClose: 3000,
     hideProgressBar: true,
+    pauseOnHover: false,
   });
 }
 

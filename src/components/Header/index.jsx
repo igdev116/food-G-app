@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 
 import { AuthContext } from "context/AuthProvider";
-import auth from "firebase/configs";
+import { auth } from "firebase/configs";
 
 import Dialog from "components/Dialog";
 import BurgerNavbar from "./BurgerNavbar";

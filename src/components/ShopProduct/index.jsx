@@ -5,14 +5,6 @@ import PropTypes from "prop-types";
 
 import { AuthContext } from "context/AuthProvider";
 import { addToCart } from "components/Cart/cartSlice";
-import {
-  addToastMessage,
-  removeToastMessage,
-} from "components/ToastMessage/toastMessageSlice";
-
-// react-toastify
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.min.css";
 
 // lazy load img
 import { LazyLoadImage } from "react-lazy-load-image-component";

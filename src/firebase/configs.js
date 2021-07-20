@@ -1,5 +1,7 @@
 import firebase from "firebase/app";
+import "firebase/analytics";
 import "firebase/auth";
+import "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDBnJoi0ZzVOAa7hrE3QSiqvNtNWH36PWE",
@@ -11,13 +13,14 @@ const firebaseConfig = {
   measurementId: "G-Q29BM70CC8",
 };
 
-firebase.initializeApp(firebaseConfig);
+!firebase.apps.length ? firebase.initializeApp(firebaseConfig) : firebase.app();
+firebase.analytics();
 
 const auth = firebase.auth();
+const db = firebase.firestore();
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 const facebookProvider = new firebase.auth.FacebookAuthProvider();
 
 auth.setPersistence("local");
 
-export { googleProvider, facebookProvider };
-export default auth;
+export { googleProvider, facebookProvider, auth, db };

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import auth from "firebase/configs";
+import { auth } from "firebase/configs";
 
-export const AuthContext = React.createContext();
+const AuthContext = React.createContext();
 
 function AuthProvider({ children }) {
   const [hasHeader, setHasHeader] = useState(true);
@@ -32,3 +32,4 @@ function AuthProvider({ children }) {
 }
 
 export default AuthProvider;
+export { AuthContext };

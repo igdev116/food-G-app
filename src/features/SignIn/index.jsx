@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 
 import { AuthContext } from "context/AuthProvider";
 
-import auth, { googleProvider } from "firebase/configs";
+import { googleProvider, auth } from "firebase/configs";
 import FormSignIn from "./components/FormSignIn";
 
 // material ui icons

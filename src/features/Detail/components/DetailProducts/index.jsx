@@ -52,7 +52,7 @@ function DetailProducts() {
       <div className="detail-products__wrapper">
         {products &&
           products.map((item, index) => (
-            <ShopProduct toggleDialog={toggleDialog} key={index} {...item} />
+            <ShopProduct toggleDialog={toggleDialog} {...item} />
           ))}
       </div>
       <Dialog isShow={isShowDialog} setIsShow={setIsShowDialog} />

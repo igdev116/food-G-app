@@ -109,6 +109,7 @@
   &__btn-handle {
     display: flex;
     align-items: center;
+    min-width: 12rem;
 
     @include respond(phone) {
       margin-right: 100%;
@@ -117,7 +118,8 @@
 
   &__btn-qnt {
     font-size: 1.4rem;
-    margin: 0 10px;
+    min-width: 3.5rem;
+    text-align: center;
   }
 
   & :is(&__btn-dec, &__btn-inc) {
@@ -126,7 +128,7 @@
 
   .primary-btn {
     flex: 1;
-    margin: 25px 18px 25px 40px;
+    margin: 25px 18px 25px 15px;
 
     @include respond(phone) {
       margin: 15px 0 0;

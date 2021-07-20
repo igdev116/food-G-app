@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import shopApi from "api/shopApi";
 
-import DetailContent from "./DetailContent";
+import DetailMain from "./DetailMain";
 import DetailImg from "./DetailImg";
 
 // material ui core
@@ -32,7 +32,7 @@ function DetailContainer() {
           <DetailImg product={selectedProduct} />
         </Grid>
         <Grid item xs={12} md={6}>
-          <DetailContent product={selectedProduct} />
+          <DetailMain product={selectedProduct} />
         </Grid>
       </Grid>
     </section>
