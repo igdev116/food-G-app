@@ -9,6 +9,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import RestaurantMenuIcon from "@material-ui/icons/RestaurantMenu";
 import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
 import StoreMallDirectoryIcon from "@material-ui/icons/StoreMallDirectory";
+import LoyaltyIcon from "@material-ui/icons/Loyalty";
 
 import "./BurgerNavbar.scss";
 
@@ -17,6 +18,7 @@ BurgerNavbar.propsTypes = {
 
   isShow: PropTypes.bool.isRequired,
   showBurgerNav: PropTypes.func.isRequired,
+  setIsShowWishlist: PropTypes.func.isRequired,
 };
 
 BurgerNavbar.defaultProps = {
@@ -24,7 +26,7 @@ BurgerNavbar.defaultProps = {
 };
 
 function BurgerNavbar(props) {
-  const { user, isShow, showBurgerNav } = props;
+  const { user, isShow, showBurgerNav, setIsShowWishlist } = props;
 
   return (
     <div className="burger-nav">
@@ -60,6 +62,14 @@ function BurgerNavbar(props) {
             <StoreMallDirectoryIcon /> Store locations
           </li>
         </ul>
+
+        <div
+          onClick={() => setIsShowWishlist(true)}
+          className="burger-nav__favourite"
+        >
+          <LoyaltyIcon />
+          <span>Your wishlist</span>
+        </div>
       </div>
 
       <span

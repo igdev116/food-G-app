@@ -1,5 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
+
+import { AuthContext } from "context/AuthProvider";
+import { db } from "firebase/configs";
+import { addToCart } from "./cartSlice";
 
 import CartItems from "./components/CartItems";
 import CartHandle from "./components/CartHandle";
@@ -18,10 +23,25 @@ Cart.defaultProps = {
 
 function Cart(props) {
   const { isDropUp, setIsDropUp } = props;
+  const dispatch = useDispatch();
+
+  const { user } = useContext(AuthContext);
 
   const handleCloseCart = () => {
     setIsDropUp(!isDropUp);
   };
+
+  // get data from firestore
+  useEffect(() => {
+    if (user) {
+      db.collection("users")
+        .doc(user.uid)
+        .onSnapshot((doc) => {
+          const action = addToCart(doc.data().cart);
+          dispatch(action);
+        });
+    }
+  }, [user, dispatch]);
 
   return (
     <div className={isDropUp ? "cart active" : "cart"}>

@@ -19,18 +19,20 @@ import RestaurantMenuIcon from "@material-ui/icons/RestaurantMenu";
 import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
 import StoreMallDirectoryIcon from "@material-ui/icons/StoreMallDirectory";
 import EmojiFoodBeverageIcon from "@material-ui/icons/EmojiFoodBeverage";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import LoyaltyOutlinedIcon from "@material-ui/icons/LoyaltyOutlined";
 import PermContactCalendarIcon from "@material-ui/icons/PermContactCalendar";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 import Logo from "assets/svgs/logo.svg";
 import "./Header.scss";
+import Wishlist from "components/Wishlist";
 
 function Header() {
   const [isActive, setIsActive] = useState(false);
   const [isShow, setIsShow] = useState(false);
   const [isDropUp, setIsDropUp] = useState(false);
   const [isShowDialog, setIsShowDialog] = useState(false);
+  const [isShowWishlist, setIsShowWishlist] = useState(false);
 
   const history = useHistory();
 
@@ -74,6 +76,10 @@ function Header() {
   const toggleDialog = () => {
     toggleDropUp();
     !user && setIsShowDialog(true);
+  };
+
+  const toggleWishlist = () => {
+    setIsShowWishlist(true);
   };
 
   return (
@@ -135,12 +141,15 @@ function Header() {
 
                   <ul className="navbar__account-options">
                     <li className="navbar__account-option">
-                      <AccountCircleIcon />
-                      <span>Profile</span>
-                    </li>
-                    <li className="navbar__account-option">
                       <PermContactCalendarIcon />
                       <span>My account</span>{" "}
+                    </li>
+                    <li
+                      onClick={toggleWishlist}
+                      className="navbar__account-option"
+                    >
+                      <LoyaltyOutlinedIcon />
+                      <span>My wishlist</span>{" "}
                     </li>
                     <li
                       onClick={handleSignOut}
@@ -165,9 +174,18 @@ function Header() {
       </header>
 
       {/* mobile */}
-      <BurgerNavbar isShow={isShow} showBurgerNav={showBurgerNav} user={user} />
+      <BurgerNavbar
+        isShow={isShow}
+        showBurgerNav={showBurgerNav}
+        user={user}
+        setIsShowWishlist={setIsShowWishlist}
+      />
 
       <Cart isDropUp={isDropUp} setIsDropUp={setIsDropUp} />
+      <Wishlist
+        isShowWishlist={isShowWishlist}
+        setIsShowWishlist={setIsShowWishlist}
+      />
 
       <Dialog isShow={isShowDialog} setIsShow={setIsShowDialog} />
     </>

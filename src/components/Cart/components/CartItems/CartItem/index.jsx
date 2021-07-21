@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 // material ui core
 import { Button } from "@material-ui/core";
@@ -10,19 +11,26 @@ import RemoveIcon from "@material-ui/icons/Remove";
 
 import "./CartItem.scss";
 
-function CartItem() {
-  const img =
-    "https://goldbelly.imgix.net/uploads/showcase_media_asset/image/137148/Gramercy-Tavern-Burger-and-Kielbasa-Kit-6.4.21-72ppi-1x1-15.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1";
+CartItem.propTypes = {
+  cartProducts: PropTypes.object,
+};
+
+CartItem.defaultProps = {
+  cartProducts: {},
+};
+
+function CartItem(props) {
+  const { id, name, img, price } = props;
 
   return (
-    <div className="cart-item">
+    <div id={id} className="cart-item">
       <div className="cart-item__img">
         <img src={img} alt="Cart product" />
       </div>
 
       <div className="cart-item__content">
-        <div className="cart-item__name">Lorem ipsum dolor</div>
-        <div className="cart-item__price">$20.00</div>
+        <div className="cart-item__name">{name}</div>
+        <div className="cart-item__price">${price}</div>
         <div className="cart-item__handle">
           <Button>
             <AddIcon />
