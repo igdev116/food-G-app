@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
-import { useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import { AuthContext } from "context/AuthProvider";
-import { addToCart } from "components/Cart/cartSlice";
+import useFirestore from "hooks/useFirestore";
+
+import ToastMessage from "components/ToastMessage";
 
 // lazy load img
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -17,7 +18,6 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import RoomIcon from "@material-ui/icons/Room";
 
 import "./ShopProduct.scss";
-import ToastMessage from "components/ToastMessage";
 
 ShopProduct.propsTypes = {
   id: PropTypes.string,
@@ -47,27 +47,26 @@ function ShopProduct(props) {
   const params = useParams();
   const history = useHistory();
 
-  const dispatch = useDispatch();
-
   const { user } = useContext(AuthContext);
+  const { addToFirestore } = useFirestore();
 
-  const handleAddToCart = (type) => {
+  const handleAddToFirestore = (type) => {
+    const productInfo = { id, name, img, dsc, price, rate, country };
+
     if (!user) {
       toggleDialog();
       return;
     }
 
-    const action = addToCart({ id, name, img, dsc, price, rate, country });
-    dispatch(action);
-    showToastMsg(type);
+    addToFirestore(user.uid, {
+      type,
+      productInfo,
+    });
+    // ToastMessage(type);
   };
 
   const handleToDetail = (id) => {
     history.push(`/shop/${params.name}/${id}`);
-  };
-
-  const showToastMsg = (type) => {
-    ToastMessage(type);
   };
 
   return (
@@ -104,13 +103,13 @@ function ShopProduct(props) {
 
       <div className="shop-product__btns">
         <div
-          onClick={() => showToastMsg("favourite")}
+          onClick={() => handleAddToFirestore("favourite")}
           className="shop-product__btn"
         >
           <FavoriteBorderIcon />
         </div>
         <div
-          onClick={() => handleAddToCart("success")}
+          onClick={() => handleAddToFirestore("success")}
           className="shop-product__btn"
         >
           <ShoppingCartOutlinedIcon />

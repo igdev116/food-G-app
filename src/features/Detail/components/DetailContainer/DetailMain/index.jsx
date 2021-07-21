@@ -29,7 +29,7 @@ const dataOptions = [
 
 function DetailMain(props) {
   const { product } = props;
-  const { price } = product || "";
+  const { price } = product || 0;
 
   const [fixedPrice, setFixedPrice] = useState(price);
   const [prevId, setPrevId] = useState("");
@@ -75,14 +75,20 @@ function DetailMain(props) {
       setSelectedRadio(null);
     } else if (qnt === 5) {
       setFixedPrice((price * 5 * 0.5).toFixed(2));
+      setSelectedRadio("Buy 5 get 50 percent off");
     } else if (qnt > 5) {
-      setFixedPrice(price * qnt - (price * 5 * 0.5).toFixed(2));
+      setFixedPrice((price * qnt - price * 5 * 0.5).toFixed(2));
     } else if (qnt === 3) {
       setFixedPrice((price * 3 * 0.75).toFixed(2));
+      setSelectedRadio("Buy 3 get 25 percent off");
     } else if (qnt === 2) {
       setFixedPrice((price * 2 * 0.85).toFixed(2));
+      setSelectedRadio("Buy 2 get 15 percent off");
+    } else if (qnt === 1) {
+      setFixedPrice((price * 1).toFixed(2));
+      setSelectedRadio(null);
     } else {
-      setFixedPrice(price * qnt);
+      setFixedPrice((price * qnt).toFixed(2));
     }
 
     setPrevId(id);

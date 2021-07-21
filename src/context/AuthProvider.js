@@ -2,13 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { auth } from "firebase/configs";
+import useFirestore from "hooks/useFirestore";
 
 const AuthContext = React.createContext();
 
 function AuthProvider({ children }) {
   const [hasHeader, setHasHeader] = useState(true);
   const [user, setUser] = useState(null);
+
   const history = useHistory();
+
+  const { addToFirestore } = useFirestore();
 
   // set user
   useEffect(() => {
@@ -16,6 +20,8 @@ function AuthProvider({ children }) {
       if (user) {
         const { displayName, email, uid, photoURL } = user;
         setUser({ displayName, email, uid, photoURL });
+
+        addToFirestore(uid);
       }
     });
 
