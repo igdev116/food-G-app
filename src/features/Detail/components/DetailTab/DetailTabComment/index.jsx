@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 
 import { AuthContext } from "context/AuthProvider";
+import { PR_YELLOW_COLOR } from "constants/colors";
 
 import PrimaryButton from "components/PrimaryButton";
 
@@ -14,16 +15,27 @@ import "./DetailTabComment.scss";
 
 function DetailTabComment() {
   const [areaValue, setAreaValue] = useState("");
+  const [selectedStar, setSelectedStar] = useState(0);
+  const [hoverStar, setHoverStar] = useState(0);
 
   const { user } = useContext(AuthContext);
+
+  const colors = {
+    yellow: PR_YELLOW_COLOR,
+    blur: "#FDDA81",
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setAreaValue("");
   };
 
-  const handleSelectStar = (e) => {
-    console.log(e.target);
+  const handleSelectStar = (pos) => {
+    setSelectedStar(pos);
+  };
+
+  const handleHoverStar = (pos) => {
+    setHoverStar(pos);
   };
 
   return (
@@ -67,15 +79,22 @@ function DetailTabComment() {
 
         <form onSubmit={handleSubmit} className="detail-tab__comment-form">
           <div className="detail-tab__comment-row">
-            <div
-              onClick={(e) => handleSelectStar(e)}
-              className="detail-tab__comment-rate"
-            >
-              <StarIcon />
-              <StarIcon />
-              <StarIcon />
-              <StarIcon />
-              <StarIcon />
+            <div className="detail-tab__comment-rate">
+              {Array(5)
+                .fill()
+                .map((_, index) => (
+                  <StarIcon
+                    onClick={() => handleSelectStar(index + 1)}
+                    onMouseOver={() => handleHoverStar(index + 1)}
+                    onMouseLeave={() => handleHoverStar(0)}
+                    style={{
+                      fill:
+                        index < (selectedStar || hoverStar)
+                          ? colors.yellow
+                          : colors.blur,
+                    }}
+                  />
+                ))}
             </div>
             <span className="detail-tab__comment-msg">
               (Please choose an one)
