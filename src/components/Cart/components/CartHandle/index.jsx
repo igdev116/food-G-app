@@ -1,26 +1,47 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 import PrimaryButton from "components/PrimaryButton";
 
 // material ui icons
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import StoreMallDirectoryIcon from "@material-ui/icons/StoreMallDirectory";
-import FirstPageIcon from "@material-ui/icons/FirstPage";
 
 import "./CartHandle.scss";
 
 function CartHandle() {
   const [isActive, setIsActive] = useState(false);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  const cartProducts = useSelector((state) => state.cart);
 
   const handleDropUp = () => {
     setIsActive(!isActive);
   };
 
+  // caculate total price
+  useEffect(() => {
+    let totalPrice = cartProducts.reduce(
+      (accumulator, item) => accumulator + item.price * item.qnt,
+      0
+    );
+
+    const totalQnt = cartProducts.reduce(
+      (accumulator, item) => accumulator + item.qnt,
+      0
+    );
+
+    totalPrice = (
+      totalPrice *
+      (totalQnt >= 5 ? 0.5 : totalQnt >= 3 ? 0.75 : totalQnt >= 2 ? 0.85 : 1)
+    ).toFixed(2);
+
+    setTotalPrice(totalPrice);
+  }, [cartProducts]);
+
   return (
     <div className="cart-handle">
-      <div onClick={handleDropUp} className="cart-handle__dropup">
-        <FirstPageIcon />
-      </div>
+      <div onClick={handleDropUp} className="cart-handle__dropup"></div>
 
       <div
         className={
@@ -44,7 +65,7 @@ function CartHandle() {
 
       <div className="cart-handle__total">
         <span className="cart-handle__txt">Total</span>
-        <span className="cart-handle__price">$1000</span>
+        <span className="cart-handle__price">${totalPrice}</span>
       </div>
 
       <div className="cart-handle__btns">

@@ -37,8 +37,10 @@ function Cart(props) {
       db.collection("users")
         .doc(user.uid)
         .onSnapshot((doc) => {
-          const action = addToCart(doc.data().cart);
-          dispatch(action);
+          if (doc.data()) {
+            const action = addToCart(doc.data().cart);
+            dispatch(action);
+          }
         });
     }
   }, [user, dispatch]);

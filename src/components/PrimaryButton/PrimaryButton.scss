@@ -33,7 +33,9 @@
     background-color: #ff514e !important;
   }
 
-  &.red:hover {
-    background-color: #c33d3b !important;
+  @media (hover: hover) {
+    &.red:hover {
+      background-color: #c33d3b !important;
+    }
   }
 }

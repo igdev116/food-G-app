@@ -1,5 +1,11 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
+
+import { AuthContext } from "context/AuthProvider";
+import { db } from "firebase/configs";
+import { addToWishlist } from "./wishlistSlice";
+import useFirestore from "hooks/useFirestore";
 
 // material ui core
 import { Button } from "@material-ui/core";
@@ -24,8 +30,32 @@ Wishlist.defaultProps = {
 function Wishlist(props) {
   const { isShowWishlist, setIsShowWishlist } = props;
 
-  const img =
-    "https://goldbelly.imgix.net/uploads/showcase_media_asset/image/137148/Gramercy-Tavern-Burger-and-Kielbasa-Kit-6.4.21-72ppi-1x1-15.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1";
+  const dispatch = useDispatch();
+  const { user } = useContext(AuthContext);
+  const wishlistProducts = useSelector((state) => state.wishlist);
+
+  const { removeFromFirestore } = useFirestore();
+
+  // get data from firestore
+  useEffect(() => {
+    if (user) {
+      db.collection("users")
+        .doc(user.uid)
+        .onSnapshot((doc) => {
+          if (doc.data()) {
+            const action = addToWishlist(doc.data().wishlist);
+            dispatch(action);
+          }
+        });
+    }
+  }, [user, dispatch]);
+
+  const handleRemoveFromFirestore = (product) => {
+    removeFromFirestore(user.uid, {
+      type: "wishlist",
+      productInfo: product,
+    });
+  };
 
   return (
     <div className={isShowWishlist ? "wishlist active" : "wishlist"}>
@@ -41,24 +71,37 @@ function Wishlist(props) {
       </div>
 
       <div className="wishlist__items">
-        <div className="wishlist__item">
-          <div className="wishlist__img">
-            <img src={img} alt="" />
-          </div>
-          <div className="wishlist__content">
-            <span className="wishlist__name">Commander's Palace</span>
-            <p className="wishlist__description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Recusandae quo voluptates ducimus reiciendis perspiciatis eligendi
-              nisi, expedita accusantium molestias ullam.
-            </p>
-            <span className="wishlist__price">$89.00</span>
-          </div>
+        {wishlistProducts.map(
+          ({ id, name, img, dsc, price, rate, country }) => (
+            <div key={id} className="wishlist__item">
+              <div className="wishlist__img">
+                <img src={img} alt="" />
+              </div>
+              <div className="wishlist__content">
+                <span className="wishlist__name">{name}</span>
+                <p className="wishlist__description">{dsc}</p>
+                <span className="wishlist__price">${price}</span>
+              </div>
 
-          <Button className="wishlist__rm">
-            <DeleteOutlineIcon />
-          </Button>
-        </div>
+              <Button
+                onClick={() =>
+                  handleRemoveFromFirestore({
+                    id,
+                    name,
+                    img,
+                    dsc,
+                    price,
+                    rate,
+                    country,
+                  })
+                }
+                className="wishlist__rm"
+              >
+                <DeleteOutlineIcon />
+              </Button>
+            </div>
+          )
+        )}
       </div>
     </div>
   );

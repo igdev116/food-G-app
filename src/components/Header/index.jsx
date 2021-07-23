@@ -8,6 +8,7 @@ import { auth } from "firebase/configs";
 import Dialog from "components/Dialog";
 import BurgerNavbar from "./BurgerNavbar";
 import Cart from "components/Cart";
+import Wishlist from "components/Wishlist";
 
 // material ui core
 import { Container, Avatar } from "@material-ui/core";
@@ -25,7 +26,6 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 import Logo from "assets/svgs/logo.svg";
 import "./Header.scss";
-import Wishlist from "components/Wishlist";
 
 function Header() {
   const [isActive, setIsActive] = useState(false);
@@ -33,11 +33,12 @@ function Header() {
   const [isDropUp, setIsDropUp] = useState(false);
   const [isShowDialog, setIsShowDialog] = useState(false);
   const [isShowWishlist, setIsShowWishlist] = useState(false);
+  const [totalQnt, setTotalQnt] = useState(0);
 
   const history = useHistory();
 
   const { user, setUser, hasHeader } = useContext(AuthContext);
-  const cartData = useSelector((state) => state.cart);
+  const cartProducts = useSelector((state) => state.cart);
 
   // handle scroll
   useEffect(() => {
@@ -81,6 +82,15 @@ function Header() {
   const toggleWishlist = () => {
     setIsShowWishlist(true);
   };
+
+  useEffect(() => {
+    const totalQnt = cartProducts.reduce(
+      (accumulator, item) => accumulator + item.qnt,
+      0
+    );
+
+    setTotalQnt(totalQnt);
+  }, [cartProducts]);
 
   return (
     <>
@@ -129,9 +139,7 @@ function Header() {
               >
                 {user && <div className="navbar__overlay"></div>}
                 <ShoppingCartIcon />
-                <div className="navbar__cart-qnt">
-                  {user ? cartData.length : 0}
-                </div>
+                <div className="navbar__cart-qnt">{user ? totalQnt : 0}</div>
               </div>
 
               {user ? (

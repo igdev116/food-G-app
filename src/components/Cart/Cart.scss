@@ -72,13 +72,13 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    opacity: 0.85;
     box-shadow: -2px 0 15px rgba(0, 0, 0, 0.1);
+    opacity: 0.85;
     transform: translateX(100%);
 
     background-color: $primary-white-color;
 
-    transition: all 0.45s ease-in-out 1.03s;
+    transition: all 0.45s ease-in-out 0.9s;
 
     @include respond(mobile) {
       width: 100%;
@@ -88,7 +88,7 @@
   &.active &__container {
     opacity: 1;
     transform: translateX(0);
-    transition-delay: 0.55s;
+    transition-delay: 0.35s;
   }
 }
 

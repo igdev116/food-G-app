@@ -13,6 +13,8 @@ import "./CartItem.scss";
 
 CartItem.propTypes = {
   cartProducts: PropTypes.object,
+  handleAddToFirestore: PropTypes.func.isRequired,
+  handleRemoveFromFirestore: PropTypes.func.isRequired,
 };
 
 CartItem.defaultProps = {
@@ -20,7 +22,16 @@ CartItem.defaultProps = {
 };
 
 function CartItem(props) {
-  const { id, name, img, price } = props;
+  const { product, handleAddToFirestore, handleRemoveFromFirestore } = props;
+  const { id, name, img, price, qnt } = product;
+
+  const onHandleAddToFirestore = (type) => {
+    handleAddToFirestore(product, type);
+  };
+
+  const onHandleRemoveFromFirestore = () => {
+    handleRemoveFromFirestore(product);
+  };
 
   return (
     <div id={id} className="cart-item">
@@ -32,17 +43,20 @@ function CartItem(props) {
         <div className="cart-item__name">{name}</div>
         <div className="cart-item__price">${price}</div>
         <div className="cart-item__handle">
-          <Button>
-            <AddIcon />
-          </Button>
-          <span className="cart-item__qnt">100</span>
-          <Button>
+          <Button onClick={() => onHandleAddToFirestore("decrease")}>
             <RemoveIcon />
+          </Button>
+          <span className="cart-item__qnt">{qnt}</span>
+          <Button onClick={() => onHandleAddToFirestore("increase")}>
+            <AddIcon />
           </Button>
         </div>
       </div>
 
-      <Button className="cart-item__rm">
+      <Button
+        onClick={() => onHandleRemoveFromFirestore()}
+        className="cart-item__rm"
+      >
         <DeleteOutlineIcon />
       </Button>
     </div>

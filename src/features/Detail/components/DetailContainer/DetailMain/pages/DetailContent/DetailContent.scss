@@ -126,13 +126,17 @@
     font-size: 1.8rem;
   }
 
-  .primary-btn {
+  &__add {
     flex: 1;
     margin: 25px 18px 25px 15px;
 
     @include respond(phone) {
       margin: 15px 0 0;
     }
+  }
+
+  .primary-btn {
+    width: 100%;
   }
 
   & &__btn-like {

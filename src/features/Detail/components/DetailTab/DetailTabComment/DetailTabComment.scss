@@ -1,0 +1,125 @@
+@import "assets/styles/colors";
+@import "assets/styles/mixins";
+
+.detail-tab__comment {
+  margin-top: 50px;
+
+  &-customer {
+    display: flex;
+  }
+
+  &-customer + &-customer {
+    margin-top: 60px;
+  }
+
+  &-wrapper {
+    margin-left: 15px;
+
+    @include respond(phone) {
+      margin-left: 15px;
+    }
+  }
+
+  &-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  &-stars svg {
+    font-size: 1.6rem;
+
+    fill: $primary-yellow-color;
+  }
+
+  &-name {
+    margin-right: 8px;
+    font-weight: bold;
+    font-size: 1.4rem;
+  }
+
+  &-time {
+    font-size: 1.3rem;
+    padding-top: 2px;
+    font-weight: 500;
+
+    color: rgba(0, 0, 0, 0.55);
+  }
+
+  &-content {
+    margin-top: 10px;
+    font-size: 1.4rem;
+    line-height: 1.7;
+  }
+
+  &-user {
+    margin-top: 80px;
+    display: flex;
+  }
+
+  @include respond(desktop) {
+    &-user &-avatar,
+    &-customer &-customer-avatar {
+      width: 4.7rem;
+      height: 4.7rem;
+      margin-top: 3px;
+    }
+  }
+
+  &-form {
+    margin-left: 20px;
+    flex-basis: 60%;
+
+    @include respond(mobile) {
+      flex: 1;
+    }
+
+    @include respond(phone) {
+      margin-left: 15px;
+    }
+  }
+
+  &-rate svg {
+    font-size: 1.8rem;
+
+    fill: $primary-yellow-color;
+
+    cursor: pointer;
+  }
+
+  &-msg {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-left: 8px;
+  }
+
+  &-textarea {
+    padding: 15px;
+    outline: 0;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+    width: 100%;
+    height: 10rem;
+    margin-bottom: 20px;
+    font-family: "Roboto", sans-serif;
+    resize: none;
+
+    background-color: rgba(0, 0, 0, 0.03);
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  &-textarea::-webkit-scrollbar {
+    display: none;
+  }
+
+  & &-submit {
+    text-transform: capitalize;
+    padding: 7px 13px !important;
+  }
+
+  button[type="submit"] {
+    background-color: transparent;
+  }
+}

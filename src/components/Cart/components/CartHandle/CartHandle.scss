@@ -13,20 +13,30 @@
   }
 
   &__dropup {
+    position: relative;
+
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 5px;
     padding-top: 3px;
+    height: 2.5rem;
 
     cursor: pointer;
   }
 
-  &__dropup svg {
-    font-size: 2.2rem;
-    transform: rotate(90deg);
+  &__dropup:before {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    content: "";
 
-    color: rgba(0, 0, 0, 0.45);
+    width: 20%;
+    height: 5px;
+    border-radius: 999px;
+
+    background-color: rgba(0, 0, 0, 0.25);
   }
 
   &__total {
@@ -103,13 +113,13 @@
   }
 
   &__label {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
 
     color: $primary-grey-color;
   }
 
   &__content {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: 500;
   }
 }

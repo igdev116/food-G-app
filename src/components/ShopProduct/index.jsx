@@ -61,6 +61,7 @@ function ShopProduct(props) {
     addToFirestore(user.uid, {
       type,
       productInfo,
+      action: "increase",
     });
     // ToastMessage(type);
   };
@@ -103,7 +104,7 @@ function ShopProduct(props) {
 
       <div className="shop-product__btns">
         <div
-          onClick={() => handleAddToFirestore("favourite")}
+          onClick={() => handleAddToFirestore("wishlist")}
           className="shop-product__btn"
         >
           <FavoriteBorderIcon />

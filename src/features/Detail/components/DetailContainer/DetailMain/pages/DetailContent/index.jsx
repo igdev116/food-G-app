@@ -25,6 +25,7 @@ DetailContent.propTypes = {
   dataOptions: PropTypes.array.isRequired,
   price: PropTypes.number.isRequired,
   qnt: PropTypes.number.isRequired,
+  handleAddToFirestore: PropTypes.func.isRequired,
 
   paramsName: PropTypes.string,
   handleFuncs: PropTypes.object,
@@ -46,6 +47,7 @@ function DetailContent(props) {
     selectedRadio,
     price,
     qnt,
+    handleAddToFirestore,
   } = props;
 
   const { name, country, dsc, rate } = product ? product : "";
@@ -54,6 +56,10 @@ function DetailContent(props) {
 
   const onHandleOptionChange = (e, percentOff) => {
     handleOptionChange(e, percentOff);
+  };
+
+  const onHandleAddToFirestore = (type, product) => {
+    handleAddToFirestore(type, product);
   };
 
   return (
@@ -124,11 +130,20 @@ function DetailContent(props) {
           </Button>
         </div>
 
-        <PrimaryButton subClass="red">
-          <AddShoppingCartOutlinedIcon />
-          <span>Add to cart</span>
-        </PrimaryButton>
-        <Button className="detail-content__btn-like btn-circle">
+        <div
+          onClick={() => onHandleAddToFirestore("success", product)}
+          className="detail-content__add"
+        >
+          <PrimaryButton subClass="red">
+            <AddShoppingCartOutlinedIcon />
+            <span>Add to cart</span>
+          </PrimaryButton>
+        </div>
+
+        <Button
+          onClick={() => onHandleAddToFirestore("wishlist", product)}
+          className="detail-content__btn-like btn-circle"
+        >
           <FavoriteBorderIcon />
         </Button>
       </div>
