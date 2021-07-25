@@ -3,9 +3,6 @@ import React from "react";
 import FieldSignIn from "../FieldSignIn";
 import PrRedBtn from "components/PrimaryButton";
 
-// router dom
-import { Link } from "react-router-dom";
-
 // material ui
 import { Checkbox } from "@material-ui/core";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";

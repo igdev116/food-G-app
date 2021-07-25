@@ -23,7 +23,11 @@ function HomeProduct(props) {
   return (
     <div className="home-product">
       <div className="home-product__wrapper">
-        <img className="home-product__img" src={`/imgs/Home/${img}`} />
+        <img
+          className="home-product__img"
+          src={`/imgs/Home/${img}`}
+          alt="Product"
+        />
         <button className="btn">
           <span>Best Deal</span>
         </button>

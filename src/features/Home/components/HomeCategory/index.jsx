@@ -119,6 +119,7 @@ function HomeCategory() {
                       <img
                         className="home-category__card-img"
                         src={`/svgs/Home/${img}.svg`}
+                        alt="Card"
                       />
                     </div>
                     <div className="home-category__card-description">

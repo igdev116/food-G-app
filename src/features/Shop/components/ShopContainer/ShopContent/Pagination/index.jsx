@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import { ApiContext } from "context/ApiProvider";
@@ -70,7 +69,3 @@ function Pagination() {
 }
 
 export default Pagination;
-// if filter product by price or rate
-// reset totalRows with products length
-
-// dispatch action to store to get filtered products length

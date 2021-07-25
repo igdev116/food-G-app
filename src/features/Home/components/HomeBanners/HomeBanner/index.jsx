@@ -23,7 +23,7 @@ HomeBanner.defaultProps = {
 };
 
 function HomeBanner(props) {
-  const { title, description, strong, className, background } = props;
+  const { title, description, strong, background } = props;
 
   return (
     <div

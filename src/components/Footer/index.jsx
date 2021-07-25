@@ -87,6 +87,7 @@ function Footer() {
                 allowFullScreen={true}
                 loading="lazy"
                 scrolling="auto"
+                title="map"
               ></iframe>
             </div>
           </Grid>
