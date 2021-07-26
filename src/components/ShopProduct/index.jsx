@@ -3,7 +3,7 @@ import { useHistory, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import { AuthContext } from "context/AuthProvider";
-import useFirestore from "hooks/useFirestore";
+import useFirestoreProduct from "hooks/useFirestoreProduct";
 
 import ToastMessage from "components/ToastMessage";
 
@@ -48,7 +48,7 @@ function ShopProduct(props) {
   const history = useHistory();
 
   const { user } = useContext(AuthContext);
-  const { addToFirestore } = useFirestore();
+  const { addToFirestore } = useFirestoreProduct();
 
   const handleAddToFirestore = (type) => {
     const productInfo = { id, name, img, dsc, price, rate, country };

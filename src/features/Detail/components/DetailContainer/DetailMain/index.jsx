@@ -2,7 +2,7 @@ import { useContext, useState, useLayoutEffect } from "react";
 import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import useFirestore from "hooks/useFirestore";
+import useFirestoreProduct from "hooks/useFirestoreProduct";
 import { AuthContext } from "context/AuthProvider";
 
 import DetailContent from "./pages/DetailContent";
@@ -43,7 +43,7 @@ function DetailMain(props) {
   const { id } = params;
   const paramsName = params.name.replace("-", " ");
 
-  const { addToFirestore } = useFirestore();
+  const { addToFirestore } = useFirestoreProduct();
   const { user } = useContext(AuthContext) ?? "";
 
   const handleFuncs = {

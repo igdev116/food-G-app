@@ -23,4 +23,5 @@ const facebookProvider = new firebase.auth.FacebookAuthProvider();
 
 auth.setPersistence("local");
 
+export default firebase;
 export { googleProvider, facebookProvider, auth, db };

@@ -97,7 +97,7 @@ function DetailTab() {
         ></div>
       </div>
 
-      {/* <div className="detail-tab__content">
+      <div className="detail-tab__content">
         <p className="detail-tab__content-description">
           Although the legendary Double Burger really needs no introduction,
           please allow us… Tucked in between three soft buns are two all-beef
@@ -123,7 +123,7 @@ function DetailTab() {
             </div>
           ))}
         </div>
-      </div> */}
+      </div>
       <DetailTabComment />
 
       <div className="detail-tab__review"></div>

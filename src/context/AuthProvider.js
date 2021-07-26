@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { auth } from "firebase/configs";
-import useFirestore from "hooks/useFirestore";
+import useFirestoreProduct from "hooks/useFirestoreProduct";
 
 const AuthContext = React.createContext();
 
@@ -12,7 +12,7 @@ function AuthProvider({ children }) {
 
   const history = useHistory();
 
-  const { addToFirestore } = useFirestore();
+  const { addToFirestore } = useFirestoreProduct();
 
   // set user
   useEffect(() => {
@@ -25,9 +25,7 @@ function AuthProvider({ children }) {
       }
     });
 
-    return () => {
-      unsubscribed();
-    };
+    return () => unsubscribed;
   }, [history]);
 
   return (

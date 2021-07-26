@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { AuthContext } from "context/AuthProvider";
 import { db } from "firebase/configs";
 import { addToWishlist } from "./wishlistSlice";
-import useFirestore from "hooks/useFirestore";
+import useFirestoreProduct from "hooks/useFirestoreProduct";
 
 // material ui core
 import { Button } from "@material-ui/core";
@@ -34,7 +34,7 @@ function Wishlist(props) {
   const { user } = useContext(AuthContext);
   const wishlistProducts = useSelector((state) => state.wishlist);
 
-  const { removeFromFirestore } = useFirestore();
+  const { removeFromFirestore } = useFirestoreProduct();
 
   // get data from firestore
   useEffect(() => {

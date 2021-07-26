@@ -28,8 +28,6 @@
 
   &-stars svg {
     font-size: 1.6rem;
-
-    fill: $primary-yellow-color;
   }
 
   &-name {
@@ -38,9 +36,8 @@
     font-size: 1.4rem;
   }
 
-  &-time {
+  &-date {
     font-size: 1.3rem;
-    padding-top: 2px;
     font-weight: 500;
 
     color: rgba(0, 0, 0, 0.55);

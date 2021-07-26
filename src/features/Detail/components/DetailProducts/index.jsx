@@ -24,15 +24,6 @@ function DetailProducts() {
     setIsShowDialog(true);
   };
 
-  // get products from store to render
-  useEffect(() => {
-    setProducts(productData);
-
-    return () => {
-      setProducts(productData);
-    };
-  }, [productData]);
-
   // get or reset products when id is changed
   useEffect(() => {
     const getProducts = async (type) => {
@@ -44,6 +35,15 @@ function DetailProducts() {
 
     getProducts(name);
   }, [name, dispatch]);
+
+  // get products from store to render
+  useEffect(() => {
+    setProducts(productData);
+
+    return () => {
+      setProducts(productData);
+    };
+  }, [productData]);
 
   return (
     <div className="detail-products">
