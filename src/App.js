@@ -6,10 +6,6 @@ import {
   Switch,
 } from "react-router-dom";
 
-// react toastify
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.min.css";
-
 import Theme from "utils/cusMatUi";
 import ApiProvider from "./context/ApiProvider";
 import AuthProvider from "./context/AuthProvider";
@@ -23,6 +19,11 @@ import Home from "features/Home";
 import SignIn from "features/SignIn";
 import Shop from "features/Shop";
 import Detail from "features/Detail";
+import Checkout from "features/Checkout";
+
+// react toastify
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 
 // material ui core
 import { ThemeProvider } from "@material-ui/core/styles";
@@ -46,6 +47,8 @@ function App() {
                 <Route exact path="/shop/:name" component={Shop} />
 
                 <Route path="/shop/:name/:id" component={Detail} />
+
+                <Route path="/checkout" component={Checkout} />
 
                 <Route component={NotFound} />
               </Switch>
