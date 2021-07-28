@@ -2,23 +2,36 @@ import React from "react";
 
 import styled from "styled-components";
 
-import "./BackgroundIcon.scss";
+import "./styles.scss";
+
+const Img = styled.img`
+  top: ${(p) => (p.top ? p.top + "%" : "unset")};
+  right: ${(p) => (p.right ? p.right + "px" : "unset")};
+  bottom: ${(p) => (p.bottom ? p.bottom + "%" : "unset")};
+  left: ${(p) => (p.left ? p.left + "px" : "unset")};
+  z-index: ${(p) => (p.zIndex ? p.zIndex : -1)};
+
+  width: ${(p) => p.width}rem;
+
+  fill: red;
+
+  animation-duration: ${(p) => p.duration}s;
+  animation-delay: ${(p) => p.delay && p.delay + "s"};
+`;
 
 function BackgroundIcon(props) {
-  const { index, width, top, right, bottom, left, type, duration, delay } =
-    props;
-
-  const Img = styled.img`
-    top: ${top ? top + "%" : "unset"};
-    right: ${right ? right + "px" : "unset"};
-    bottom: ${bottom ? bottom + "%" : "unset"};
-    left: ${left ? left + "px" : "unset"};
-
-    width: ${width}rem;
-
-    animation-duration: ${duration}s;
-    animation-delay: ${delay && delay + "s"};
-  `;
+  const {
+    index,
+    width,
+    top,
+    right,
+    bottom,
+    left,
+    type,
+    duration,
+    delay,
+    zIndex,
+  } = props;
 
   const importSvgs = (r) => r.keys().map(r);
   const svgData = importSvgs(
@@ -28,8 +41,16 @@ function BackgroundIcon(props) {
   return (
     <Img
       src={svgData[index]}
+      width={width}
+      top={top}
+      right={right}
+      bottom={bottom}
+      left={left}
+      duration={duration}
+      delay={delay}
+      zIndex={zIndex}
       className={`bg-icon bg-icon--${type}`}
-      alt="background-icon"
+      alt="Background icon"
     />
   );
 }
