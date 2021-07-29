@@ -1,0 +1,49 @@
+@import "assets/styles/colors";
+@import "assets/styles/mixins";
+
+.checkout-user-info {
+  &__title {
+    font-size: 2.8rem;
+    margin-bottom: 25px;
+
+    @include respond(mobile) {
+      font-size: 2.2rem;
+    }
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+  }
+
+  &__content {
+    margin-left: 10px;
+  }
+
+  &__name {
+    margin-right: 5px;
+    font-weight: bold;
+  }
+
+  &__btn {
+    margin-top: 5px;
+    font-weight: 500;
+
+    color: $primary-red-color;
+
+    cursor: pointer;
+  }
+
+  &__msg {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-top: 15px;
+    font-size: 1.3rem;
+  }
+
+  &__msg svg {
+    font-size: 2rem;
+  }
+}

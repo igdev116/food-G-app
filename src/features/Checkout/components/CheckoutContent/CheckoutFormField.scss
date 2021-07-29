@@ -1,0 +1,67 @@
+@import "assets/styles/colors";
+@import "assets/styles/mixins";
+
+.checkout-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+
+  &__wrapper {
+    position: relative;
+
+    flex: 1;
+  }
+
+  &__input {
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    outline: 0;
+    border-radius: 4px;
+    width: 100%;
+
+    transition: all 0.35s;
+  }
+
+  &__input:focus {
+    border-color: rgba(0, 0, 0, 0.35);
+  }
+
+  &__label {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+
+    font-size: 1.3rem;
+    transform: translateY(-50%);
+    user-select: none;
+    pointer-events: none;
+
+    color: $primary-grey-color;
+
+    transition: all 0.25s ease-in-out;
+
+    @include respond(mobile) {
+      top: 0;
+      padding: 0 5px;
+
+      color: rgba(0, 0, 0, 0.55);
+      background-color: $primary-white-color;
+    }
+  }
+
+  &__input:not(:placeholder-shown) + &__label,
+  &__input:focus + &__label {
+    top: 0;
+    padding: 0 5px;
+
+    color: rgba(0, 0, 0, 0.55);
+    background-color: $primary-white-color;
+  }
+
+  &__error {
+    font-size: 1.3rem;
+
+    color: $error-color;
+  }
+}
