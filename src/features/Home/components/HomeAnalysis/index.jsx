@@ -1,10 +1,10 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 
 // material ui
 import { Container } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 
-// count up
+// react count up
 import CountUp from "react-countup";
 
 import "./HomeAnalysis.scss";
@@ -49,7 +49,7 @@ function HomeAnalysis() {
     const spaceToTop = ref.current.offsetTop;
 
     const handleScrollToCount = () => {
-      if (window.scrollY > spaceToTop + 130) {
+      if (window.scrollY > spaceToTop + 100) {
         setIsCome(true);
       }
     };

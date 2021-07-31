@@ -9,7 +9,7 @@ import "./ShopContent.scss";
 
 function ShopContent() {
   const [isFlex, setIsFlex] = useState(false);
-  const products = useSelector((state) => state.shop);
+  const products = useSelector((state) => state.shop.shopProducts);
 
   return (
     <div className="shop-content">

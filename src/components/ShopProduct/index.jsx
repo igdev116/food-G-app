@@ -27,7 +27,7 @@ ShopProduct.propsTypes = {
   price: PropTypes.number,
   rate: PropTypes.number,
 
-  toggleDialog: PropTypes.func,
+  openDialog: PropTypes.func,
 };
 
 ShopProduct.propsTypes = {
@@ -38,11 +38,11 @@ ShopProduct.propsTypes = {
   price: 0,
   rate: 0,
 
-  toggleDialog: null,
+  openDialog: null,
 };
 
 function ShopProduct(props) {
-  const { id, name, img, dsc, price, rate, country, toggleDialog } = props;
+  const { id, name, img, dsc, price, rate, country, openDialog } = props;
 
   const params = useParams();
   const history = useHistory();
@@ -54,7 +54,7 @@ function ShopProduct(props) {
     const productInfo = { id, name, img, dsc, price, rate, country };
 
     if (!user) {
-      toggleDialog();
+      openDialog();
       return;
     }
 

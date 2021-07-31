@@ -51,8 +51,10 @@
     cursor: default;
   }
 
-  &__card:hover &__card-img-wrapper {
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+  @media (hover: hover) {
+    &__card:hover &__card-img-wrapper {
+      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+    }
   }
 
   &__card-img {
@@ -74,8 +76,10 @@
     cursor: pointer;
   }
 
-  &__card:hover &__card-description {
-    color: $primary-red-color;
+  @media (hover: hover) {
+    &__card:hover &__card-description {
+      color: $primary-red-color;
+    }
   }
 
   .prev-btn,

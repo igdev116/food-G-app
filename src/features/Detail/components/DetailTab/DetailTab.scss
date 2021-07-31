@@ -27,6 +27,7 @@
     transition: all 0.25s ease-in-out;
 
     cursor: pointer;
+    user-select: none;
   }
 
   &__btn.active {

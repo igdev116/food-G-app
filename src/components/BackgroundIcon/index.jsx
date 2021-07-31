@@ -5,19 +5,6 @@ import styled from "styled-components";
 
 import "./styles.scss";
 
-const Img = styled.img`
-  top: ${(p) => (p.top ? p.top + "%" : "unset")};
-  right: ${(p) => (p.right ? p.right + "px" : "unset")};
-  bottom: ${(p) => (p.bottom ? p.bottom + "%" : "unset")};
-  left: ${(p) => (p.left ? p.left + "px" : "unset")};
-  z-index: ${(p) => (p.zIndex ? p.zIndex : -1)};
-
-  width: ${(p) => p.width}rem;
-
-  animation-duration: ${(p) => p.duration}s;
-  animation-delay: ${(p) => p.delay && p.delay + "s"};
-`;
-
 function BackgroundIcon(props) {
   const {
     src,
@@ -48,6 +35,19 @@ function BackgroundIcon(props) {
     />
   );
 }
+
+const Img = styled.img`
+  top: ${(p) => (p.top ? p.top + "%" : "unset")};
+  right: ${(p) => (p.right ? p.right + "px" : "unset")};
+  bottom: ${(p) => (p.bottom ? p.bottom + "%" : "unset")};
+  left: ${(p) => (p.left ? p.left + "px" : "unset")};
+  z-index: ${(p) => (p.zIndex ? p.zIndex : -1)};
+
+  width: ${(p) => p.width}rem;
+
+  animation-duration: ${(p) => p.duration}s;
+  animation-delay: ${(p) => p.delay && p.delay + "s"};
+`;
 
 BackgroundIcon.propTypes = {
   src: PropTypes.string,

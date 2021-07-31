@@ -103,6 +103,7 @@
 
     @include respond(phone) {
       flex-direction: column;
+      gap: 10px;
     }
   }
 
@@ -114,6 +115,7 @@
     color: inherit;
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15);
     border-radius: 999px;
+    min-width: 18.5rem;
 
     background-color: $primary-white-color;
 

@@ -196,6 +196,8 @@ function Header() {
         isShow={isShowBurgerNav}
         showBurgerNav={showBurgerNav}
         user={user}
+        handleLogOut={handleLogOut}
+        handleLogIn={handleLogIn}
       />
 
       <Cart />

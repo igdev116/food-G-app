@@ -326,6 +326,11 @@
 
     transition: transform 0.35s ease-in-out;
     will-change: all;
+
+    @include respond(mobile) {
+      width: 90%;
+      height: 35%;
+    }
   }
 
   &__video.show {

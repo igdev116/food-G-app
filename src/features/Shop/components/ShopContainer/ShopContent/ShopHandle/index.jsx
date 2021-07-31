@@ -1,8 +1,11 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useContext, useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-import { filterShopByOrder } from "features/Shop/shopSlice";
+import {
+  filterShopByOrder,
+  setShopProductsView,
+} from "features/Shop/shopSlice";
 import { ApiContext } from "contexts/ApiProvider";
 import { PrevFilterContext } from "contexts/PrevFilterProvider";
 
@@ -38,18 +41,19 @@ const dataTypes = [
   },
 ];
 
-function ShopHandle(props) {
-  const { isFlex, setIsFlex } = props;
-
+function ShopHandle() {
   const [inputValue, setInputValue] = useState("");
   const [isDrop, setIsDrop] = useState(false);
   const ref = useRef();
+
   const dispatch = useDispatch();
 
   const { getProducts } = useContext(ApiContext);
   const { handlePrevious } = useContext(PrevFilterContext);
   const { selectedDrop, setSelectedDrop, setPrevSearch } = handlePrevious();
+  const { shopProductsView } = useSelector((state) => state.shop);
 
+  // close sort when user clicks outside
   useEffect(() => {
     const handleClickDrop = (e) => {
       const el = ref.current;
@@ -67,7 +71,9 @@ function ShopHandle(props) {
   const handleSearch = (e) => {
     handlePrevious("search");
     e.preventDefault();
+
     if (!inputValue) return;
+
     const query = { name_like: inputValue };
 
     getProducts("our-foods", query);
@@ -81,6 +87,12 @@ function ShopHandle(props) {
 
     dispatch(action);
     setSelectedDrop(value);
+  };
+
+  const handleSetShopProductsView = (type) => {
+    const action = setShopProductsView(type);
+
+    dispatch(action);
   };
 
   return (
@@ -121,20 +133,16 @@ function ShopHandle(props) {
 
       <div className="shop-handle__display-types">
         <ViewList
-          onClick={() => setIsFlex(true)}
-          className={
-            isFlex
-              ? "shop-handle__display-type active"
-              : "shop-handle__display-type"
-          }
+          onClick={() => handleSetShopProductsView("list")}
+          className={`shop-handle__display-type ${
+            shopProductsView === "list" && "active"
+          }`}
         />
         <ViewModuleIcon
-          onClick={() => setIsFlex(false)}
-          className={
-            isFlex
-              ? "shop-handle__display-type"
-              : "shop-handle__display-type active"
-          }
+          onClick={() => handleSetShopProductsView("grid")}
+          className={`shop-handle__display-type ${
+            shopProductsView === "grid" && "active"
+          }`}
         />
       </div>
     </div>

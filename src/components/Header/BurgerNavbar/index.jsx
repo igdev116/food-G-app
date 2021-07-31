@@ -16,20 +16,8 @@ import LoyaltyIcon from "@material-ui/icons/Loyalty";
 
 import "./BurgerNavbar.scss";
 
-BurgerNavbar.propsTypes = {
-  user: PropTypes.object,
-
-  isShow: PropTypes.bool.isRequired,
-  showBurgerNav: PropTypes.func.isRequired,
-  setIsShowWishlist: PropTypes.func.isRequired,
-};
-
-BurgerNavbar.defaultProps = {
-  user: null,
-};
-
 function BurgerNavbar(props) {
-  const { user, isShow, showBurgerNav } = props;
+  const { user, isShow, showBurgerNav, handleLogOut, handleLogIn } = props;
 
   const dispatch = useDispatch();
 
@@ -39,6 +27,13 @@ function BurgerNavbar(props) {
     dispatch(action);
   };
 
+  const onHandleLogIn = () => {
+    if (!user) {
+      handleLogIn();
+      showBurgerNav();
+    }
+  };
+
   return (
     <div className="burger-nav">
       <div
@@ -46,17 +41,19 @@ function BurgerNavbar(props) {
           isShow ? "burger-nav__content active" : "burger-nav__content"
         }
       >
-        {user ? (
-          <div className="burger-nav__account">
-            <Avatar src={user.photoURL} className="burger-nav__icon" />
-            <div className="burger-nav__username">{user.displayName}</div>
+        <div className="burger-nav__top">
+          <div onClick={onHandleLogIn} className="burger-nav__account">
+            <Avatar src={user?.photoURL} className="burger-nav__icon" />
+            <div className="burger-nav__username">
+              {user?.displayName ?? "Sign In"}
+            </div>
           </div>
-        ) : (
-          <div className="burger-nav__account">
-            <Avatar className="burger-nav__icon" />
-            <div className="burger-nav__username">Sign In</div>
-          </div>
-        )}
+          {user && (
+            <div onClick={handleLogOut} className="burger-nav__logout">
+              Log Out
+            </div>
+          )}
+        </div>
 
         <ul className="burger-nav__list">
           <li className="burger-nav__item">
@@ -89,5 +86,19 @@ function BurgerNavbar(props) {
     </div>
   );
 }
+
+BurgerNavbar.propsTypes = {
+  user: PropTypes.object,
+
+  isShow: PropTypes.bool.isRequired,
+  showBurgerNav: PropTypes.func.isRequired,
+  setIsShowWishlist: PropTypes.func.isRequired,
+  handleLogOut: PropTypes.func.isRequired,
+  handleLogIn: PropTypes.func.isRequired,
+};
+
+BurgerNavbar.defaultProps = {
+  user: null,
+};
 
 export default BurgerNavbar;
