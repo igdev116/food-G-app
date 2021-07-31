@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react";
 
-import { AuthContext } from "context/AuthProvider";
+import { AuthContext } from "contexts/AuthProvider";
 
 import HomeBanners from "./components/HomeBanners";
 import HowItWorks from "./components/HowItWorks";

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import PrRedBtn from "components/PrimaryButton";
+import PrimaryButton from "components/PrimaryButton";
 import { MOBILE_BREAKPOINT } from "constants/breakpoints";
 
 import "assets/styles/_typography.scss";
@@ -105,7 +105,9 @@ function HomeIngredients() {
           <strong>$25.00</strong>
         </h2>
 
-        <PrRedBtn type="shop">Order Now</PrRedBtn>
+        <PrimaryButton subClass="red" page="shop">
+          Order Now
+        </PrimaryButton>
       </div>
     </section>
   );

@@ -26,6 +26,8 @@ const customStyles = {
   }),
   menu: (base) => ({
     ...base,
+    zIndex: 100,
+
     paddingTop: "5px",
     paddingBottom: "5px",
 
@@ -80,16 +82,18 @@ const CheckoutFormSelectWrapper = styled.div`
 `;
 
 function CheckoutFormSelect(props) {
+  const { errors, field } = props;
+
   return (
     <CheckoutFormSelectWrapper>
       <Select
-        {...props}
+        {...field}
         placeholder="Select a country"
         styles={customStyles}
         options={countriesList}
       />
       <span className="checkout-form-field__error">
-        {props.errors.country?.message}
+        {errors.country?.message}
       </span>
     </CheckoutFormSelectWrapper>
   );

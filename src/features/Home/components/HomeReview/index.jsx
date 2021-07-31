@@ -1,49 +1,36 @@
-import React from "react";
+import { homeReviewData } from "utils/staticData";
+
+// material ui core
+import { Container } from "@material-ui/core";
+
+// swiper js
+import SwiperCore, { Autoplay, Pagination } from "swiper/core";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// swiper scss
+import "swiper/swiper.scss";
+import "swiper/components/pagination/pagination.scss";
 
 import BackgroundIcon from "components/BackgroundIcon";
 
-import { Container } from "@material-ui/core";
-
-// swiper
-import SwiperCore, { Autoplay, Pagination } from "swiper/core";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper.scss";
-import "swiper/components/pagination/pagination.scss";
+import {
+  BackgroundIconFour,
+  BackgroundIconFive,
+  BackgroundIconSix,
+  BackgroundIconSeven,
+  BackgroundIconEight,
+} from "utils/backgroundIcons";
 
 import "./HomeReview.scss";
 
 // swiper modules
 SwiperCore.use([Autoplay, Pagination]);
 
-const data = [
-  {
-    img: "user-review-1.jpg",
-    name: "mark zuckerberg",
-    role: "Co-founding Facebook, Inc",
-    comment:
-      "I chose food G because of their value And incredible superior customer Service they really awesome Food with quality service Ha of their value And incredible sup with quality",
-  },
-  {
-    img: "user-review-2.jpg",
-    name: "Rose",
-    role: "Main vocalist of Backpink group",
-    comment:
-      "Had dinner with girl friends. Menu is perfect, something for everyone. Service was awesome and Jason was very accommodating. Will be back definitely!",
-  },
-  {
-    img: "user-review-3.jpg",
-    name: "Tim Cook",
-    role: "CEO of Apple",
-    comment:
-      "I had lunch with some of my colleagues at Echo on Day 1. I had the wedge salad - it was delicious. On Night 2, I enjoyed a drink at the bar. I had a Margarita. The service was excellent",
-  },
-];
-
 function HomeReview() {
   return (
     <section className="home-review">
       <BackgroundIcon
-        index="3"
+        src={BackgroundIconFour}
         width="14"
         top="-10"
         left="0"
@@ -51,7 +38,7 @@ function HomeReview() {
         duration="4"
       />
       <BackgroundIcon
-        index="4"
+        src={BackgroundIconFive}
         width="15"
         top="20"
         right="10"
@@ -60,7 +47,7 @@ function HomeReview() {
         delay="1"
       />
       <BackgroundIcon
-        index="5"
+        src={BackgroundIconSix}
         width="12"
         top="40"
         right="550"
@@ -69,7 +56,7 @@ function HomeReview() {
         delay="2"
       />
       <BackgroundIcon
-        index="6"
+        src={BackgroundIconSeven}
         width="12"
         bottom="20"
         left="250"
@@ -78,7 +65,7 @@ function HomeReview() {
         delay="3"
       />
       <BackgroundIcon
-        index="7"
+        src={BackgroundIconEight}
         width="13"
         top="-25"
         right="450"
@@ -98,7 +85,7 @@ function HomeReview() {
             disableOnInteraction: false,
           }}
         >
-          {data.map(({ img, name, role, comment }, index) => (
+          {homeReviewData.map(({ img, name, role, comment }, index) => (
             <SwiperSlide key={index}>
               <div className="home-review__content">
                 <div className="home-review__img-wrapper">

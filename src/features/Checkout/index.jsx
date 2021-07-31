@@ -1,21 +1,31 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import { useDispatch } from "react-redux";
 
-import { AuthContext } from "context/AuthProvider";
+import { AuthContext } from "contexts/AuthProvider";
+import { setIsAtCheckout } from "components/Header/headerSlice";
 
 import CheckoutBanner from "./components/CheckoutBanner";
 import CheckoutContent from "./components/CheckoutContent";
+import CheckoutLogin from "./components/CheckoutLogin";
 
 import "./Checkout.scss";
 
 function Checkout() {
-  const { setIsCheckout } = useContext(AuthContext);
+  const dispatch = useDispatch();
 
-  setIsCheckout(true);
+  const { user } = useContext(AuthContext);
+
+  // reset header when user refresh page
+  useEffect(() => {
+    const action = setIsAtCheckout(true);
+
+    dispatch(action);
+  }, []);
 
   return (
     <div className="checkout">
       <CheckoutBanner />
-      <CheckoutContent />
+      {user ? <CheckoutContent /> : <CheckoutLogin />}
     </div>
   );
 }

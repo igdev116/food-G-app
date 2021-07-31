@@ -2,10 +2,8 @@ import React, { useContext } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import { AuthContext } from "context/AuthProvider";
-import useFirestoreProduct from "hooks/useFirestoreProduct";
-
-import ToastMessage from "components/ToastMessage";
+import { AuthContext } from "contexts/AuthProvider";
+import useFirestoreProducts from "hooks/useFirestoreProducts";
 
 // lazy load img
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -16,6 +14,8 @@ import StarIcon from "@material-ui/icons/Star";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import RoomIcon from "@material-ui/icons/Room";
+
+import ToastMessage from "components/ToastMessage";
 
 import "./ShopProduct.scss";
 
@@ -48,7 +48,7 @@ function ShopProduct(props) {
   const history = useHistory();
 
   const { user } = useContext(AuthContext);
-  const { addToFirestore } = useFirestoreProduct();
+  const { addToFirestore } = useFirestoreProducts();
 
   const handleAddToFirestore = (type) => {
     const productInfo = { id, name, img, dsc, price, rate, country };

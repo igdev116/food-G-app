@@ -1,5 +1,6 @@
-const PR_RED_COLOR = "#E84C51";
-const PR_YELLOW_COLOR = "#fbb403";
+const PRIMARY_RED_COLOR = "#E84C51";
+const PRIMARY_YELLOW_COLOR = "#fbb403";
+const PRIMARY_WHITE_COLOR = "#fff";
 
-export { PR_YELLOW_COLOR };
-export default PR_RED_COLOR;
+export { PRIMARY_YELLOW_COLOR, PRIMARY_WHITE_COLOR };
+export default PRIMARY_RED_COLOR;

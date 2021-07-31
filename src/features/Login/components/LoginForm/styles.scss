@@ -1,7 +1,7 @@
 @import "assets/styles/colors";
 @import "assets/styles/mixins";
 
-.form-signin {
+.form-login {
   margin-bottom: 15px;
 
   &__commit {
@@ -12,19 +12,19 @@
   }
 
   &__commit-checkbox svg {
-    width: 20px;
-    height: 20px;
+    width: 2rem;
+    height: 2rem;
   }
 
   &__commit-msg {
     margin-left: 3px;
   }
 
-  .signin-btn-wrapper {
+  &__btn {
     text-align: center;
   }
 
-  .pr-red-btn > .btn {
-    padding: 10px 25px;
+  &__btn .primary-btn {
+    min-width: 9.5rem;
   }
 }

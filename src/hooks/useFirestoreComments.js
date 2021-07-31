@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import { db } from "firebase/configs";
 
-function useFirestoreComment() {
+function useFirestoreComments() {
   const [comments, setComments] = useState([]);
 
   const { id } = useParams();
@@ -42,4 +42,4 @@ function useFirestoreComment() {
   return { addToFirestore, comments };
 }
 
-export default useFirestoreComment;
+export default useFirestoreComments;

@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react";
 
-import { AuthContext } from "context/AuthProvider";
+import { AuthContext } from "contexts/AuthProvider";
 
 import Banner from "components/Banner";
 import ShopContainer from "./components/ShopContainer";

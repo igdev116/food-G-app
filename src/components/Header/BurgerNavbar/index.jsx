@@ -1,5 +1,8 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
+
+import { setIsShowWishlist } from "components/Wishlist/wishlistSlice";
 
 // material ui core
 import { Avatar } from "@material-ui/core";
@@ -26,7 +29,15 @@ BurgerNavbar.defaultProps = {
 };
 
 function BurgerNavbar(props) {
-  const { user, isShow, showBurgerNav, setIsShowWishlist } = props;
+  const { user, isShow, showBurgerNav } = props;
+
+  const dispatch = useDispatch();
+
+  const openWishlist = () => {
+    const action = setIsShowWishlist(true);
+
+    dispatch(action);
+  };
 
   return (
     <div className="burger-nav">
@@ -63,10 +74,7 @@ function BurgerNavbar(props) {
           </li>
         </ul>
 
-        <div
-          onClick={() => setIsShowWishlist(true)}
-          className="burger-nav__favourite"
-        >
+        <div onClick={openWishlist} className="burger-nav__favourite">
           <LoyaltyIcon />
           <span>Your wishlist</span>
         </div>

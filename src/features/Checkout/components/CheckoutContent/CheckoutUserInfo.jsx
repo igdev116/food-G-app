@@ -1,9 +1,9 @@
 import { useContext } from "react";
 
-import { AuthContext } from "context/AuthProvider";
+import { AuthContext } from "contexts/AuthProvider";
 
 // material ui core
-import { Avatar } from "@material-ui/core";
+import { Avatar, FormControlLabel } from "@material-ui/core";
 import Checkbox from "@material-ui/core/Checkbox";
 
 import "./CheckoutUserInfo.scss";
@@ -23,10 +23,11 @@ function CheckoutInfo() {
           <div className="checkout-user-info__btn">Log out</div>
         </div>
       </div>
-      <div className="checkout-user-info__msg">
-        <Checkbox color="primary" />
-        <span>Keep me up to date on news and offers</span>
-      </div>
+      <FormControlLabel
+        className="checkout-user-info__msg"
+        control={<Checkbox color="primary" />}
+        label="Keep me up to date on news and offers"
+      />
     </div>
   );
 }

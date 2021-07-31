@@ -1,6 +1,4 @@
-import React from "react";
-
-import BackgroundIcon from "components/BackgroundIcon";
+import { homeCategoryData } from "utils/staticData";
 
 // material ui
 import { Button, Container } from "@material-ui/core";
@@ -9,8 +7,18 @@ import DoubleArrowIcon from "@material-ui/icons/DoubleArrow";
 // swiper js
 import SwiperCore, { Autoplay, Navigation } from "swiper/core";
 import { Swiper, SwiperSlide } from "swiper/react";
+
+// swiper scss
 import "swiper/swiper.scss";
 import "swiper/components/navigation/navigation.scss";
+
+import BackgroundIcon from "components/BackgroundIcon";
+
+import {
+  BackgroundIconOne,
+  BackgroundIconTwo,
+  BackgroundIconThree,
+} from "utils/backgroundIcons";
 
 import "assets/styles/_typography.scss";
 import "./HomeCategory.scss";
@@ -18,50 +26,11 @@ import "./HomeCategory.scss";
 // swiper modules
 SwiperCore.use([Autoplay, Navigation]);
 
-const data = [
-  {
-    img: "hamburger",
-    name: "breakfast",
-  },
-  {
-    img: "coffee",
-    name: "coffee",
-  },
-  {
-    img: "pork",
-    name: "pork ham",
-  },
-  {
-    img: "dinner",
-    name: "dinner",
-  },
-  {
-    img: "tea",
-    name: "tea",
-  },
-  {
-    img: "lunch",
-    name: "lunch",
-  },
-  {
-    img: "juice",
-    name: "juice",
-  },
-  {
-    img: "chicken",
-    name: "grilled chicken",
-  },
-  {
-    img: "beef",
-    name: "roast beef",
-  },
-];
-
 function HomeCategory() {
   return (
     <section className="home-category">
       <BackgroundIcon
-        index="0"
+        src={BackgroundIconOne}
         width="25"
         top="-60"
         left="-20"
@@ -69,7 +38,7 @@ function HomeCategory() {
         duration="3"
       />
       <BackgroundIcon
-        index="1"
+        src={BackgroundIconTwo}
         width="15"
         top="-85"
         right="20"
@@ -77,7 +46,7 @@ function HomeCategory() {
         duration="5"
       />
       <BackgroundIcon
-        index="2"
+        src={BackgroundIconThree}
         width="15"
         top="60"
         right="60"
@@ -112,7 +81,7 @@ function HomeCategory() {
                 },
               }}
             >
-              {data.map(({ img, name }, index) => (
+              {homeCategoryData.map(({ img, name }, index) => (
                 <SwiperSlide key={index}>
                   <div className="home-category__card">
                     <div className="home-category__card-img-wrapper">

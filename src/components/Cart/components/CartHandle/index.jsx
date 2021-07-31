@@ -1,47 +1,34 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
-import PrimaryButton from "components/PrimaryButton";
+import usePrice from "hooks/usePrice";
 
 // material ui icons
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import StoreMallDirectoryIcon from "@material-ui/icons/StoreMallDirectory";
 
+import PrimaryButton from "components/PrimaryButton";
+
 import "./CartHandle.scss";
 
 function CartHandle() {
   const [isActive, setIsActive] = useState(false);
-  const [totalPrice, setTotalPrice] = useState(0);
 
-  const cartProducts = useSelector((state) => state.cart);
+  const history = useHistory();
 
-  const handleDropUp = () => {
+  const { totalPrice, discount } = usePrice();
+
+  const toggleDropUp = () => {
     setIsActive(!isActive);
   };
 
-  // caculate total price
-  useEffect(() => {
-    let totalPrice = cartProducts.reduce(
-      (accumulator, item) => accumulator + item.price * item.qnt,
-      0
-    );
-
-    const totalQnt = cartProducts.reduce(
-      (accumulator, item) => accumulator + item.qnt,
-      0
-    );
-
-    totalPrice = (
-      totalPrice *
-      (totalQnt >= 5 ? 0.5 : totalQnt >= 3 ? 0.75 : totalQnt >= 2 ? 0.85 : 1)
-    ).toFixed(2);
-
-    setTotalPrice(totalPrice);
-  }, [cartProducts]);
+  const moveToCheckout = () => {
+    history.push("/checkout");
+  };
 
   return (
     <div className="cart-handle">
-      <div onClick={handleDropUp} className="cart-handle__dropup"></div>
+      <div onClick={toggleDropUp} className="cart-handle__dropup"></div>
 
       <div
         className={
@@ -51,7 +38,7 @@ function CartHandle() {
         <h3 className="cart-handle__detail-title">Order Info</h3>
         <div className="cart-handle__row">
           <span className="cart-handle__label">Discount</span>
-          <span className="cart-handle__content">$199</span>
+          <span className="cart-handle__content">${discount}</span>
         </div>
         <div className="cart-handle__row">
           <span className="cart-handle__label">Shipping Cost</span>
@@ -70,13 +57,14 @@ function CartHandle() {
 
       <div className="cart-handle__btns">
         <PrimaryButton
+          page="checkout"
           subClass="red cart-handle__btn"
           className="cart-handle__btn cart-handle__btn--checkout"
         >
           <ShoppingCartIcon />
           <span>Checkout</span>
         </PrimaryButton>
-        <PrimaryButton subClass="cart-handle__btn">
+        <PrimaryButton page="shop" subClass="cart-handle__btn">
           <StoreMallDirectoryIcon />
           <span>Buy more</span>
         </PrimaryButton>

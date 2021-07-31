@@ -49,7 +49,7 @@ function HomeAnalysis() {
     const spaceToTop = ref.current.offsetTop;
 
     const handleScrollToCount = () => {
-      if (window.scrollY > spaceToTop + 150) {
+      if (window.scrollY > spaceToTop + 130) {
         setIsCome(true);
       }
     };

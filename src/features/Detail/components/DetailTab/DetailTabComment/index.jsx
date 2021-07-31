@@ -1,9 +1,9 @@
 import React, { useContext, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { AuthContext } from "context/AuthProvider";
-import { PR_YELLOW_COLOR } from "constants/colors";
-import useFirestoreComment from "hooks/useFirestoreComment";
+import { AuthContext } from "contexts/AuthProvider";
+import { PRIMARY_YELLOW_COLOR } from "constants/colors";
+import useFirestoreComments from "hooks/useFirestoreComments";
 
 import PrimaryButton from "components/PrimaryButton";
 
@@ -20,10 +20,10 @@ import "./DetailTabComment.scss";
 
 function DetailTabComment() {
   const ref = useRef(null);
-  const { comments } = useFirestoreComment();
+  const { comments } = useFirestoreComments();
 
   const colors = {
-    yellow: PR_YELLOW_COLOR,
+    yellow: PRIMARY_YELLOW_COLOR,
     blur: "#FDDA81",
   };
 
@@ -76,7 +76,7 @@ function DetailTabCommentUser({ colors, commentRef }) {
 
   const { id } = useParams();
 
-  const { addToFirestore } = useFirestoreComment();
+  const { addToFirestore } = useFirestoreComments();
   const { user } = useContext(AuthContext);
 
   const handleSelectStar = (pos) => {

@@ -1,8 +1,7 @@
-import React from "react";
-
-import PrRedBtn from "components/PrimaryButton";
-
+// material ui core
 import { Container } from "@material-ui/core";
+
+import PrimaryButton from "components/PrimaryButton";
 
 import "assets/styles/_typography.scss";
 import "./HomeDelivery.scss";
@@ -39,7 +38,9 @@ function HomeDelivery() {
                   <strong>123-59794069</strong>
                 </div>
               </div>
-              <PrRedBtn type="shop">Order Now</PrRedBtn>
+              <PrimaryButton subClass="red" page="shop">
+                Order Now
+              </PrimaryButton>
             </div>
           </div>
           <img

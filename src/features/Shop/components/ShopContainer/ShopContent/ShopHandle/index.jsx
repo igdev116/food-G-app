@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 
 import { filterShopByOrder } from "features/Shop/shopSlice";
-import { ApiContext } from "context/ApiProvider";
-import { PrevFilterContext } from "context/PrevFilterProvider";
+import { ApiContext } from "contexts/ApiProvider";
+import { PrevFilterContext } from "contexts/PrevFilterProvider";
 
 // material ui icons
 import SearchIcon from "@material-ui/icons/Search";

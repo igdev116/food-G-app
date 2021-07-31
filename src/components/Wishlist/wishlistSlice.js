@@ -1,16 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const wishlist = createSlice({
+const initialState = {
+  isShowWishlist: false,
+  wishlistProducts: [],
+};
+
+const wishlistSlice = createSlice({
   name: "wishList",
-  initialState: [],
+  initialState: initialState,
   reducers: {
     addToWishlist: (state, action) => {
-      return (state = action.payload);
+      return (state = { ...state, wishlistProducts: action.payload });
+    },
+    setIsShowWishlist: (state, action) => {
+      return (state = { ...state, isShowWishlist: action.payload });
     },
   },
 });
 
-const { reducer, actions } = wishlist;
+const { reducer, actions } = wishlistSlice;
 
-export const { addToWishlist } = actions;
+export const { addToWishlist, setIsShowWishlist } = actions;
 export default reducer;

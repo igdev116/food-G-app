@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const shop = createSlice({
+const shopSlice = createSlice({
   name: "shop",
   initialState: [],
   reducers: {
@@ -28,7 +28,7 @@ const shop = createSlice({
   },
 });
 
-const { reducer, actions } = shop;
+const { reducer, actions } = shopSlice;
 
 export const { setShopProducts, filterShopByOrder } = actions;
 export default reducer;

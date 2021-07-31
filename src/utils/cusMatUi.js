@@ -1,12 +1,12 @@
 import { createMuiTheme } from "@material-ui/core";
 
-import PR_RED_COLOR from "constants/colors";
+import PRIMARY_RED_COLOR from "constants/colors";
 
 // overrides button
 const Theme = createMuiTheme({
   palette: {
     primary: {
-      main: PR_RED_COLOR,
+      main: PRIMARY_RED_COLOR,
     },
   },
 });

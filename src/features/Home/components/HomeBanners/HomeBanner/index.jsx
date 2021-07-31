@@ -38,7 +38,7 @@ function HomeBanner(props) {
             <strong>{strong}</strong>
           </div>
 
-          <PrimaryButton subClass="red" type="shop">
+          <PrimaryButton subClass="red" page="shop">
             <AddShoppingCartIcon className="home-banner__icon" />
             Order now
           </PrimaryButton>

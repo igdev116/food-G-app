@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { ApiContext } from "context/ApiProvider";
-import { PrevFilterContext } from "context/PrevFilterProvider";
+import { ApiContext } from "contexts/ApiProvider";
+import { PrevFilterContext } from "contexts/PrevFilterProvider";
 import shopApi from "api/shopApi";
 
 // react paginate

@@ -1,0 +1,190 @@
+@import "assets/styles/colors";
+@import "assets/styles/mixins";
+
+.checkout-success {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 70vh;
+
+  @include respond(mobile) {
+    height: 50vh;
+  }
+
+  &__container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 9.25rem;
+    height: 10.5rem;
+  }
+
+  &__background {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 0px 65px rgba(255, 255, 255, 0.25) inset,
+      0px 0px 0px 65px rgba(255, 255, 255, 0.25) inset;
+    transform: scale(0.84);
+    border-radius: 50%;
+    opacity: 0;
+
+    background: linear-gradient(to bottom right, #5de593, #41d67c);
+
+    animation: animateContainer 0.75s ease-out forwards 0.75s;
+
+    svg {
+      width: 65%;
+      transform: translateY(0.25rem);
+      stroke-dasharray: 80;
+      stroke-dashoffset: 80;
+
+      animation: showCheck 0.35s forwards 1.25s ease-out;
+    }
+  }
+
+  &__shadow {
+    bottom: calc(-15% - 5px);
+    left: 0;
+    border-radius: 50%;
+
+    background: radial-gradient(
+      closest-side,
+      rgba(73, 218, 131, 1),
+      transparent
+    );
+
+    animation: showShadow 0.75s ease-out forwards 0.75s;
+  }
+
+  &__title {
+    font-size: 2.2rem;
+    margin: 10px 0 15px;
+    opacity: 0;
+    transform: translateX(-40px);
+
+    animation: leftToRight 0.75s ease 1.65s forwards;
+
+    @include respond(phone) {
+      font-size: 1.8rem;
+    }
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    padding: 10px;
+    transform: translateX(30px);
+
+    animation: rightToLeft 0.7s ease 2.1s forwards;
+
+    cursor: pointer;
+  }
+
+  &__btn svg {
+    font-size: 2.2rem;
+
+    fill: $primary-red-color;
+
+    @include respond(phone) {
+      font-size: 1.8rem;
+    }
+  }
+
+  &__btn span {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-left: 5px;
+
+    color: $primary-red-color;
+
+    @include respond(phone) {
+      font-size: 1.3rem;
+    }
+  }
+}
+
+@keyframes animateContainer {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+    box-shadow: 0px 0px 0px 65px rgba(255, 255, 255, 0.25) inset,
+      0px 0px 0px 65px rgba(255, 255, 255, 0.25) inset;
+  }
+  25% {
+    opacity: 1;
+    transform: scale(0.9);
+    box-shadow: 0px 0px 0px 65px rgba(255, 255, 255, 0.25) inset,
+      0px 0px 0px 65px rgba(255, 255, 255, 0.25) inset;
+  }
+  43.75% {
+    transform: scale(1.15);
+    box-shadow: 0px 0px 0px 43.334px rgba(255, 255, 255, 0.25) inset,
+      0px 0px 0px 65px rgba(255, 255, 255, 0.25) inset;
+  }
+  62.5% {
+    transform: scale(1);
+    box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.25) inset,
+      0px 0px 0px 21.667px rgba(255, 255, 255, 0.25) inset;
+  }
+  81.25% {
+    box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.25) inset,
+      0px 0px 0px 0px rgba(255, 255, 255, 0.25) inset;
+  }
+  100% {
+    opacity: 1;
+    box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.25) inset,
+      0px 0px 0px 0px rgba(255, 255, 255, 0.25) inset;
+  }
+}
+
+@keyframes showCheck {
+  from {
+    stroke-dashoffset: 80;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes showShadow {
+  0% {
+    opacity: 0;
+    width: 100%;
+    height: 15%;
+  }
+  25% {
+    opacity: 0.25;
+  }
+  43.75% {
+    width: 40%;
+    height: 7%;
+    opacity: 0.35;
+  }
+  100% {
+    width: 85%;
+    height: 15%;
+    opacity: 0.25;
+  }
+}
+
+@keyframes leftToRight {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes rightToLeft {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

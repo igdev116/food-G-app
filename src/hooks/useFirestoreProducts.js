@@ -1,6 +1,8 @@
 import { db } from "firebase/configs";
 
-function useFirestore() {
+function useFirestoreProducts() {
+  const query = db.collection("users");
+
   const checkProductExists = (data, productInfo) => {
     return data.some((item) => item.id === productInfo.id);
   };
@@ -31,7 +33,7 @@ function useFirestore() {
   };
 
   const addToFirestore = (uid, product) => {
-    db.collection("users")
+    query
       .doc(uid)
       .get()
       .then((doc) => {
@@ -56,7 +58,7 @@ function useFirestore() {
                     : wishlistData,
               });
         } else {
-          db.collection("users").doc(uid).set({
+          query.doc(uid).set({
             cart: [],
             wishlist: [],
           });
@@ -67,8 +69,8 @@ function useFirestore() {
       });
   };
 
-  const removeFromFirestore = (uid, product) => {
-    db.collection("users")
+  const removeFromFirestore = (uid, product, option) => {
+    query
       .doc(uid)
       .get()
       .then((doc) => {
@@ -85,7 +87,7 @@ function useFirestore() {
           : wishlistData.splice(index, 1);
 
         productInfo &&
-          db.collection("users").doc(uid).set({
+          query.doc(uid).set({
             cart: cartData,
             wishlist: wishlistData,
           });
@@ -95,7 +97,25 @@ function useFirestore() {
       });
   };
 
-  return { addToFirestore, removeFromFirestore };
+  const removeAllFromFirestore = (uid) => {
+    query
+      .doc(uid)
+      .get()
+      .then((doc) => {
+        const cartData = doc.data().cart;
+        const wishlistData = doc.data().wishlist;
+
+        // remove all products from cart
+        cartData.length = 0;
+
+        query.doc(uid).set({
+          cart: cartData,
+          wishlist: wishlistData,
+        });
+      });
+  };
+
+  return { addToFirestore, removeFromFirestore, removeAllFromFirestore };
 }
 
-export default useFirestore;
+export default useFirestoreProducts;

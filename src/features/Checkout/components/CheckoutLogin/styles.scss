@@ -1,0 +1,28 @@
+@import "assets/styles/mixins";
+
+.checkout-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 100px 0;
+  font-size: 1.8rem;
+  text-align: center;
+
+  .pr-heading-text {
+    margin-bottom: 30px;
+  }
+
+  &__img {
+    max-height: 35rem;
+    margin-top: 65px;
+
+    @include respond(tablet) {
+      max-height: 30rem;
+    }
+
+    @include respond(phone) {
+      max-height: 25rem;
+    }
+  }
+}

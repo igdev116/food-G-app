@@ -13,10 +13,20 @@
 
   &__icon {
     position: relative;
+    z-index: 10;
 
     width: 5.5rem;
     height: 5.5rem;
     border-radius: 50%;
+
+    transition: all 0.1s linear 0.4s;
+
+    background-color: $disabled-color;
+  }
+
+  &__node:nth-of-type(1) &__icon,
+  &__node:nth-of-type(2) &__icon,
+  &__icon.active {
     box-shadow: 0 1px 12px rgba($primary-red-color, 0.15);
 
     background-color: $primary-red-color;
@@ -40,10 +50,34 @@
   }
 
   &__line {
+    position: relative;
+
     height: 1rem;
     width: 100%;
     margin: -25px -5px 0;
 
+    background-color: $disabled-color;
+  }
+
+  &__line:nth-of-type(1):before {
+    width: 100%;
+  }
+
+  &__line:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+
+    width: 0;
+    height: 100%;
+
     background-color: $primary-red-color;
+
+    transition: all 0.45s linear;
+  }
+
+  &__line.active:before {
+    width: 100%;
   }
 }

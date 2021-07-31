@@ -2,8 +2,8 @@ import { useContext, useState, useLayoutEffect } from "react";
 import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import useFirestoreProduct from "hooks/useFirestoreProduct";
-import { AuthContext } from "context/AuthProvider";
+import useFirestoreProducts from "hooks/useFirestoreProducts";
+import { AuthContext } from "contexts/AuthProvider";
 
 import DetailContent from "./pages/DetailContent";
 
@@ -43,7 +43,7 @@ function DetailMain(props) {
   const { id } = params;
   const paramsName = params.name.replace("-", " ");
 
-  const { addToFirestore } = useFirestoreProduct();
+  const { addToFirestore } = useFirestoreProducts();
   const { user } = useContext(AuthContext) ?? "";
 
   const handleFuncs = {
@@ -80,6 +80,7 @@ function DetailMain(props) {
       setSelectedRadio(null);
     } else if (qnt >= 5) {
       setFixedPrice((price * qnt - price * 5 * 0.5).toFixed(2));
+      setSelectedRadio("Buy 5 get 50 percent off");
     } else if (qnt === 3) {
       setFixedPrice((price * 3 * 0.75).toFixed(2));
       setSelectedRadio("Buy 3 get 25 percent off");

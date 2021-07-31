@@ -1,24 +1,47 @@
+import { useState } from "react";
+import { useSelector } from "react-redux";
+
 import CheckoutProgress from "./CheckoutProgress";
 import CheckoutUserInfo from "./CheckoutUserInfo";
 import CheckoutForm from "./CheckoutForm";
 import CheckoutAside from "./CheckoutAside";
+import CheckoutSuccess from "../CheckoutSuccess";
 import BackgroundIcon from "components/BackgroundIcon";
+
+import {
+  BackgroundIconBlurOne,
+  BackgroundIconBlurTwo,
+  BackgroundIconBlurThree,
+  BackgroundIconBlurFour,
+} from "utils/backgroundIcons";
 
 import "./styles.scss";
 
 function CheckoutContent() {
+  const [isCheckoutSuccess, setIsCheckoutSuccess] = useState(false);
+  const [isPurchased, setIsPurchased] = useState(false);
+  const cartProducts = useSelector((state) => state.cart);
+
+  if (isPurchased) return <CheckoutSuccess />;
+
   return (
     <div className="checkout-content">
       <div className="checkout-content__left">
-        <CheckoutProgress />
+        <CheckoutProgress isCheckoutSuccess={isCheckoutSuccess} />
         <CheckoutUserInfo />
-        <CheckoutForm />
+        <CheckoutForm
+          setIsCheckoutSuccess={setIsCheckoutSuccess}
+          setIsPurchased={setIsPurchased}
+        />
       </div>
 
-      <div className="checkout-content__right">
+      <div
+        className="checkout-content__right"
+        style={{ paddingTop: cartProducts.length > 0 ? "95px" : "60px" }}
+      >
         <CheckoutAside />
         <BackgroundIcon
-          index="8"
+          src={BackgroundIconBlurOne}
           width="25"
           top="25"
           right="-30"
@@ -27,32 +50,32 @@ function CheckoutContent() {
           zIndex="0"
         />
         <BackgroundIcon
-          index="9"
-          width="13.5"
-          top="5"
-          left="40"
-          type="scale"
-          duration="5"
+          src={BackgroundIconBlurTwo}
+          width="18"
+          bottom="30"
+          left="5"
+          type="float"
+          duration="4"
           zIndex="0"
           delay="1"
         />
         <BackgroundIcon
-          index="10"
+          src={BackgroundIconBlurThree}
           width="20"
           bottom="5"
           right="40"
           type="scale"
-          duration="5"
+          duration="6"
           zIndex="0"
           delay="2"
         />
         <BackgroundIcon
-          index="11"
-          width="15"
-          top="60"
-          left="-55"
-          type="float"
-          duration="4"
+          src={BackgroundIconBlurFour}
+          width="12.5"
+          top="5"
+          left="30"
+          type="scale"
+          duration="5"
           zIndex="0"
           delay="1"
         />

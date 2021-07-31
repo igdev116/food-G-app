@@ -2,8 +2,8 @@ import React, { useContext, useState } from "react";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-import PR_RED_COLOR from "constants/colors";
-import { ApiContext } from "context/ApiProvider";
+import PRIMARY_RED_COLOR from "constants/colors";
+import { ApiContext } from "contexts/ApiProvider";
 
 // material ui icons
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -30,14 +30,14 @@ function ShopProducts(props) {
 
   return isLoading ? (
     <div className="spinner">
-      <CircularProgress thickness={5} style={{ color: PR_RED_COLOR }} />
+      <CircularProgress thickness={5} style={{ color: PRIMARY_RED_COLOR }} />
     </div>
   ) : (
     <>
       <div className={isFlex ? "shop-products display-flex" : "shop-products"}>
         {productData &&
           productData.map((item, index) => (
-            <ShopProduct toggleDialog={toggleDialog} key={index} {...item} />
+            <ShopProduct toggleDialog={toggleDialog} key={item.id} {...item} />
           ))}
       </div>
 

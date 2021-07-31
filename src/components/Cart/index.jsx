@@ -1,34 +1,29 @@
 import React, { useContext, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import PropTypes from "prop-types";
+import { useDispatch, useSelector } from "react-redux";
 
-import { AuthContext } from "context/AuthProvider";
+import { AuthContext } from "contexts/AuthProvider";
 import { db } from "firebase/configs";
 import { addToCart } from "./cartSlice";
+import { setIsShowCart } from "components/Header/headerSlice";
 
 import CartItems from "./components/CartItems";
 import CartHandle from "./components/CartHandle";
+import EmptyCart from "components/EmptyCart";
+
+import EmptyCartImg from "assets/svgs/Common/empty-cart.svg";
 
 import "./Cart.scss";
 
-Cart.propsTypes = {
-  isDropUp: PropTypes.bool,
-  setIsDropUp: PropTypes.func,
-};
-
-Cart.defaultProps = {
-  isDropUp: false,
-  setIsDropUp: null,
-};
-
-function Cart(props) {
-  const { isDropUp, setIsDropUp } = props;
+function Cart() {
+  const { user } = useContext(AuthContext);
+  const { isShowCart } = useSelector((state) => state.header);
+  const cartProducts = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
-  const { user } = useContext(AuthContext);
+  const closeCart = () => {
+    const action = setIsShowCart(false);
 
-  const handleCloseCart = () => {
-    setIsDropUp(!isDropUp);
+    dispatch(action);
   };
 
   // get data from firestore
@@ -46,16 +41,20 @@ function Cart(props) {
   }, [user, dispatch]);
 
   return (
-    <div className={isDropUp ? "cart active" : "cart"}>
+    <div className={isShowCart ? "cart active" : "cart"}>
+      <div onClick={closeCart} className="cart__overlay"></div>
       <div className="cart__container">
         <div className="cart__heading">
           <h2 className="cart__title">Shopping Cart</h2>
           <div
-            onClick={handleCloseCart}
-            className={!isDropUp ? "cart__close active" : "cart__close"}
+            onClick={closeCart}
+            className={!isShowCart ? "cart__close active" : "cart__close"}
           ></div>
         </div>
 
+        {cartProducts.length <= 0 && (
+          <EmptyCart src={EmptyCartImg} type="shop" />
+        )}
         <CartItems />
         <CartHandle />
       </div>

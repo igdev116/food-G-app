@@ -1,22 +1,24 @@
 import React, { useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 
-import { AuthContext } from "context/AuthProvider";
-
 import { googleProvider, auth } from "firebase/configs";
-import FormSignIn from "./components/FormSignIn";
+import { AuthContext } from "contexts/AuthProvider";
+
+// material ui core
+import { Button, Container } from "@material-ui/core";
 
 // material ui icons
-import { Button, Container } from "@material-ui/core";
 import FacebookIcon from "@material-ui/icons/Facebook";
 
-import "./SignIn.scss";
+import LoginForm from "./components/LoginForm";
+
+import "./styles.scss";
 
 function SignIn() {
   const history = useHistory();
 
   // sign in with google
-  const onGoogleSignIn = () => {
+  const handleGoogleLogIn = () => {
     auth.signInWithPopup(googleProvider).then(() => {
       history.goBack();
     });
@@ -29,46 +31,46 @@ function SignIn() {
   }, [setHasHeader]);
 
   return (
-    <section className="signin">
+    <section className="login">
       <Container>
-        <div className="signin__container">
+        <div className="login__container">
           <div
-            className="signin__thumb"
+            className="login__thumb"
             style={{ backgroundImage: "url(/svgs/SignIn/thumb.svg)" }}
           ></div>
 
-          <div className="signin__content">
+          <div className="login__content">
             <h2>JOIN WITH US</h2>
 
-            <div className="signin__msg">
+            <div className="login__msg">
               <span>Don't have an account? </span>
-              <Link className="signin__msg-btn" to="#">
-                <strong>Sign up</strong>
+              <Link className="login__msg-btn" to="#">
+                <strong>Create an account</strong>
               </Link>
             </div>
 
-            <FormSignIn />
+            <LoginForm />
 
-            <div className="signin__separate">
-              <span className="signin__separate-text">OR</span>
+            <div className="login__separate">
+              <span className="login__separate-text">OR</span>
             </div>
 
-            <div className="signin__options">
+            <div className="login__options">
               <Button
-                onClick={onGoogleSignIn}
+                onClick={handleGoogleLogIn}
                 variant="contained"
-                className="signin__option signin__option--gg"
+                className="login__option signin__option--gg"
               >
                 <img src="/svgs/SignIn/google.svg" alt="google icon" />
-                Sign in with Google
+                Log in with Google
               </Button>
 
               <Button
                 variant="contained"
-                className="signin__option signin__option--fb"
+                className="login__option signin__option--fb"
               >
                 <FacebookIcon />
-                Sign in with Facebook
+                Log in with Facebook
               </Button>
             </div>
           </div>

@@ -13,12 +13,12 @@
   margin-top: 5px;
   width: 100%;
 
+  transition: 0.2s ease-out;
+
   @include respond(mobile) {
     padding: 5px 0;
     display: none;
   }
-
-  transition: 0.2s ease-out;
 
   .hamburger-btn {
     display: none;
@@ -34,6 +34,10 @@
     }
   }
 
+  &__link {
+    cursor: pointer;
+  }
+
   &__container {
     display: flex;
     align-items: center;
@@ -41,6 +45,14 @@
     @include respond(mobile) {
       justify-content: space-between;
     }
+  }
+
+  &__container.checkout {
+    justify-content: center;
+  }
+
+  &__container.checkout > *:not(&__link) {
+    display: none;
   }
 
   &--left,
@@ -131,33 +143,6 @@
 
     color: $primary-white-color;
     background-color: $primary-yellow-color;
-  }
-
-  &__overlay {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 9999;
-
-    width: 6rem;
-    height: 6rem;
-    opacity: 0;
-    visibility: hidden;
-    border-radius: 50%;
-    transform: scale(0);
-
-    background-color: rgba(0, 0, 0, 0.65);
-
-    transition: all 0.85s linear 0.15s;
-
-    cursor: default;
-  }
-
-  &__cart.active &__overlay {
-    visibility: visible;
-    opacity: 1;
-    transform: scale(80);
-    transition-delay: 0s;
   }
 
   &__account {

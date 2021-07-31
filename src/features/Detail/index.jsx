@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 
-import { AuthContext } from "context/AuthProvider";
+import { AuthContext } from "contexts/AuthProvider";
 
 import DetailContainer from "./components/DetailContainer";
 import DetailTab from "./components/DetailTab";

@@ -1,11 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import PropTypes from "prop-types";
 
-import { AuthContext } from "context/AuthProvider";
+import { AuthContext } from "contexts/AuthProvider";
 import { db } from "firebase/configs";
-import { addToWishlist } from "./wishlistSlice";
-import useFirestoreProduct from "hooks/useFirestoreProduct";
+import { addToWishlist, setIsShowWishlist } from "./wishlistSlice";
+import useFirestoreProducts from "hooks/useFirestoreProducts";
 
 // material ui core
 import { Button } from "@material-ui/core";
@@ -15,26 +14,21 @@ import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
 import RadioOutlinedIcon from "@material-ui/icons/RadioOutlined";
 
+import EmptyCart from "components/EmptyCart";
+
+import EmptyCartImg from "assets/svgs/Common/empty-cart.svg";
+
 import "./Wishlist.scss";
 
-Wishlist.propTypes = {
-  isShowWishlist: PropTypes.bool,
-  setIsShowWishlist: PropTypes.func,
-};
-
-Wishlist.defaultProps = {
-  isShowWishlist: false,
-  setIsShowWishlist: null,
-};
-
 function Wishlist(props) {
-  const { isShowWishlist, setIsShowWishlist } = props;
-
   const dispatch = useDispatch();
-  const { user } = useContext(AuthContext);
-  const wishlistProducts = useSelector((state) => state.wishlist);
 
-  const { removeFromFirestore } = useFirestoreProduct();
+  const { user } = useContext(AuthContext);
+  const { wishlistProducts, isShowWishlist } = useSelector(
+    (state) => state.wishlist
+  );
+
+  const { removeFromFirestore } = useFirestoreProducts();
 
   // get data from firestore
   useEffect(() => {
@@ -44,6 +38,7 @@ function Wishlist(props) {
         .onSnapshot((doc) => {
           if (doc.data()) {
             const action = addToWishlist(doc.data().wishlist);
+
             dispatch(action);
           }
         });
@@ -57,6 +52,12 @@ function Wishlist(props) {
     });
   };
 
+  const closeWishlist = () => {
+    const action = setIsShowWishlist(false);
+
+    dispatch(action);
+  };
+
   return (
     <div className={isShowWishlist ? "wishlist active" : "wishlist"}>
       <div className="wishlist__top">
@@ -65,12 +66,15 @@ function Wishlist(props) {
           <span>Your wishlist</span>
         </div>
 
-        <Button onClick={() => setIsShowWishlist(false)}>
+        <Button onClick={closeWishlist}>
           <ExitToAppOutlinedIcon />
         </Button>
       </div>
 
       <div className="wishlist__items">
+        {wishlistProducts.length <= 0 && (
+          <EmptyCart src={EmptyCartImg} type="wishlist" />
+        )}
         {wishlistProducts.map(
           ({ id, name, img, dsc, price, rate, country }) => (
             <div key={id} className="wishlist__item">

@@ -1,18 +1,18 @@
 import React, { useContext } from "react";
 import { useSelector } from "react-redux";
 
-import useFirestoreProduct from "hooks/useFirestoreProduct";
-import { AuthContext } from "context/AuthProvider";
+import useFirestoreProducts from "hooks/useFirestoreProducts";
+import { AuthContext } from "contexts/AuthProvider";
 
 import CartItem from "./CartItem";
-
+import store from "app/store";
 import "./CartItems.scss";
 
 function CartItems() {
   const cartProducts = useSelector((state) => state.cart);
   const { user } = useContext(AuthContext);
 
-  const { addToFirestore, removeFromFirestore } = useFirestoreProduct();
+  const { addToFirestore, removeFromFirestore } = useFirestoreProducts();
 
   const handleAddToFirestore = (product, action) => {
     addToFirestore(user.uid, {

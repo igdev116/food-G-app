@@ -1,8 +1,4 @@
-import React from "react";
 import PropTypes from "prop-types";
-
-import PrimaryButton from "components/PrimaryButton";
-import Checkbox from "components/Checkbox";
 
 // material ui core
 import { Button } from "@material-ui/core";
@@ -17,6 +13,9 @@ import EventAvailableOutlinedIcon from "@material-ui/icons/EventAvailableOutline
 import LocalOfferOutlinedIcon from "@material-ui/icons/LocalOfferOutlined";
 import AddShoppingCartOutlinedIcon from "@material-ui/icons/AddShoppingCartOutlined";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
+
+import PrimaryButton from "components/PrimaryButton";
+import Checkbox from "components/Checkbox";
 
 import "./DetailContent.scss";
 

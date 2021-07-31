@@ -2,6 +2,36 @@
 @import "assets/styles/mixins";
 
 .cart {
+  position: relative;
+  z-index: 999;
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 998;
+
+    width: 6rem;
+    height: 6rem;
+    opacity: 0;
+    visibility: hidden;
+    border-radius: 50%;
+    transform: scale(0);
+
+    background-color: rgba(0, 0, 0, 0.65);
+
+    transition: all 0.85s linear 0.15s;
+
+    cursor: default;
+  }
+
+  &.active &__overlay {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(80);
+    transition-delay: 0s;
+  }
+
   &__heading {
     display: flex;
     align-items: center;
