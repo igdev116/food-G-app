@@ -33,10 +33,6 @@ body {
     padding: 0 75px;
 
     @include respond(mobile) {
-      padding: 0 20px;
-    }
-
-    @include respond(mobile) {
       padding: 0 10px;
     }
   }
