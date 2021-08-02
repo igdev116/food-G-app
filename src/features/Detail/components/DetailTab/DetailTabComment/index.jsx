@@ -5,8 +5,6 @@ import { AuthContext } from "contexts/AuthProvider";
 import { PRIMARY_YELLOW_COLOR } from "constants/colors";
 import useFirestoreComments from "hooks/useFirestoreComments";
 
-import PrimaryButton from "components/PrimaryButton";
-
 // react time ago
 import TimeAgo from "react-timeago";
 
@@ -15,6 +13,8 @@ import { Avatar } from "@material-ui/core";
 
 // material ui icons
 import StarIcon from "@material-ui/icons/Star";
+
+import PrimaryButton from "components/PrimaryButton";
 
 import "./DetailTabComment.scss";
 
@@ -72,19 +72,19 @@ function DetailTabComment() {
 function DetailTabCommentUser({ colors, commentRef }) {
   const [areaValue, setAreaValue] = useState("");
   const [selectedStar, setSelectedStar] = useState(0);
-  const [hoverStar, setHoverStar] = useState(0);
+  const [hoveredStar, setHoveredStar] = useState(0);
 
   const { id } = useParams();
 
   const { addToFirestore } = useFirestoreComments();
   const { user } = useContext(AuthContext);
 
-  const handleSelectStar = (pos) => {
+  const handleSelectedStar = (pos) => {
     setSelectedStar(pos);
   };
 
-  const handleHoverStar = (pos) => {
-    setHoverStar(pos);
+  const handleHoveredStar = (pos) => {
+    setHoveredStar(pos);
   };
 
   const handleSubmit = (e) => {
@@ -102,6 +102,7 @@ function DetailTabCommentUser({ colors, commentRef }) {
       date,
     });
     setAreaValue("");
+    setSelectedStar(0);
 
     window.scrollTo({
       top: commentRef.current.offsetTop - 200,
@@ -124,12 +125,12 @@ function DetailTabCommentUser({ colors, commentRef }) {
               .fill()
               .map((_, index) => (
                 <StarIcon
-                  onClick={() => handleSelectStar(index + 1)}
-                  onMouseOver={() => handleHoverStar(index + 1)}
-                  onMouseLeave={() => handleHoverStar(0)}
+                  onClick={() => handleSelectedStar(index + 1)}
+                  onMouseOver={() => handleHoveredStar(index + 1)}
+                  onMouseLeave={() => handleHoveredStar(0)}
                   style={{
                     fill:
-                      index < (selectedStar || hoverStar)
+                      index < (selectedStar || hoveredStar)
                         ? colors.yellow
                         : colors.blur,
                   }}

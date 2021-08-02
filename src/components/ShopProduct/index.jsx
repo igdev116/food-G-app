@@ -28,6 +28,7 @@ ShopProduct.propsTypes = {
   rate: PropTypes.number,
 
   openDialog: PropTypes.func,
+  moveToTop: PropTypes.func,
 };
 
 ShopProduct.propsTypes = {
@@ -39,10 +40,12 @@ ShopProduct.propsTypes = {
   rate: 0,
 
   openDialog: null,
+  moveToTop: null,
 };
 
 function ShopProduct(props) {
-  const { id, name, img, dsc, price, rate, country, openDialog } = props;
+  const { id, name, img, dsc, price, rate, country, openDialog, moveToTop } =
+    props;
 
   const params = useParams();
   const history = useHistory();
@@ -63,11 +66,12 @@ function ShopProduct(props) {
       productInfo,
       action: "increase",
     });
-    // ToastMessage(type);
+    ToastMessage(type);
   };
 
   const handleToDetail = (id) => {
     history.push(`/shop/${params.name}/${id}`);
+    moveToTop();
   };
 
   return (

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 import shopApi from "api/shopApi";
 import { setDetailProducts } from "features/Detail/detailSlice";
@@ -16,13 +16,9 @@ function DetailProducts() {
 
   const [products, setProducts] = useState([]);
   const [isShowDialog, setIsShowDialog] = useState(false);
+
   const dispatch = useDispatch();
-
   const productData = useSelector((state) => state.detail);
-
-  const toggleDialog = () => {
-    setIsShowDialog(true);
-  };
 
   // get or reset products when id is changed
   useEffect(() => {
@@ -45,14 +41,30 @@ function DetailProducts() {
     };
   }, [productData]);
 
+  const toggleDialog = () => {
+    setIsShowDialog(true);
+  };
+
+  const moveToTop = () => {
+    window.scrollTo({
+      top: 250,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div className="detail-products">
       <div className="pr-yellow-text">Best foods</div>
       <h2 className="pr-heading-text">Related Products</h2>
       <div className="detail-products__wrapper">
         {products &&
-          products.map((item, index) => (
-            <ShopProduct toggleDialog={toggleDialog} {...item} />
+          products.map((item) => (
+            <ShopProduct
+              moveToTop={moveToTop}
+              toggleDialog={toggleDialog}
+              key={item.id}
+              {...item}
+            />
           ))}
       </div>
       <Dialog isShow={isShowDialog} setIsShow={setIsShowDialog} />

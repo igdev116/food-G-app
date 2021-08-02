@@ -13,22 +13,14 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 import "./ToastMessage.scss";
 
-ToastMessage.propsTypes = {
-  type: PropTypes.string,
-};
-
-ToastMessage.defaultProps = {
-  type: PropTypes.string,
-};
-
-const types = {
+const toastTypes = {
   success: {
     title: "Success",
     description: "The product has been added to cart",
     color: "#43d787",
     setIcon: () => <DoneOutlinedIcon style={{ fill: "#43d787" }} />,
   },
-  favourite: {
+  wishlist: {
     title: "Success",
     description: "The product has been added to your favorites",
     color: "#f766ad",
@@ -43,6 +35,8 @@ const types = {
 };
 
 function ToastMessage(type) {
+  const toastType = toastTypes[type];
+
   const CloseButton = () => (
     <div className="toast-msg__close">
       <ExitToAppIcon />
@@ -52,12 +46,12 @@ function ToastMessage(type) {
   const ToastBody = () => (
     <div
       className="toast-msg"
-      style={{ backgroundColor: `${types[type].color}` }}
+      style={{ backgroundColor: `${toastType.color}` }}
     >
-      <div className="toast-msg__icon">{types[type].setIcon()}</div>
+      <div className="toast-msg__icon">{toastType.setIcon()}</div>
       <div className="toast-msg__content">
-        <h4 className="toast-msg__title">{types[type].title}!</h4>
-        <div className="toast-msg__description">{types[type].description}</div>
+        <h4 className="toast-msg__title">{toastType.title}!</h4>
+        <div className="toast-msg__description">{toastType.description}</div>
       </div>
     </div>
   );
@@ -69,5 +63,13 @@ function ToastMessage(type) {
     pauseOnHover: false,
   });
 }
+
+ToastMessage.propsTypes = {
+  type: PropTypes.string,
+};
+
+ToastMessage.defaultProps = {
+  type: PropTypes.string,
+};
 
 export default ToastMessage;

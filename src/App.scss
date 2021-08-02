@@ -42,10 +42,6 @@ body {
   }
 }
 
-img {
-  // max-width: 100%;
-}
-
 strong {
   color: $primary-red-color;
 }
@@ -63,4 +59,22 @@ button {
 
 ul {
   list-style-type: none;
+}
+
+::-webkit-scrollbar {
+  width: 1.3rem;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-track {
+  margin: 3px 0;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 2px solid transparent;
+
+  background-clip: content-box;
+  background-color: #909090;
+  background-clip: content-box;
 }

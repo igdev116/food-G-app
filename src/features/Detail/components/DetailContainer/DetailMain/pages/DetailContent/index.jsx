@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
 
+import useFirestoreComments from "hooks/useFirestoreComments";
+
 // material ui core
 import { Button } from "@material-ui/core";
 
@@ -19,24 +21,6 @@ import Checkbox from "components/Checkbox";
 
 import "./DetailContent.scss";
 
-DetailContent.propTypes = {
-  product: PropTypes.object.isRequired,
-  dataOptions: PropTypes.array.isRequired,
-  price: PropTypes.number.isRequired,
-  qnt: PropTypes.number.isRequired,
-  handleAddToFirestore: PropTypes.func.isRequired,
-
-  paramsName: PropTypes.string,
-  handleFuncs: PropTypes.object,
-  selectedRadio: PropTypes.string,
-};
-
-DetailContent.defaultProps = {
-  paramsName: "",
-  handleFuncs: null,
-  selectedRadio: "",
-};
-
 function DetailContent(props) {
   const {
     product,
@@ -52,6 +36,8 @@ function DetailContent(props) {
   const { name, country, dsc, rate } = product ? product : "";
   const { handleOptionChange, handleIncreaseQnt, handleDecreaseQnt } =
     handleFuncs;
+
+  const { comments } = useFirestoreComments();
 
   const onHandleOptionChange = (e, percentOff) => {
     handleOptionChange(e, percentOff);
@@ -74,7 +60,7 @@ function DetailContent(props) {
           {rate === 5 ? <StarIcon /> : <StarBorderIcon />}
         </div>
         <div className="detail-content__reviews">
-          <span className="detail-content__reviews-qnt">5</span>
+          <span className="detail-content__reviews-qnt">{comments.length}</span>
           <span> Customer Reviews</span>
         </div>
       </div>
@@ -164,5 +150,23 @@ function DetailContent(props) {
     </div>
   );
 }
+
+DetailContent.propTypes = {
+  product: PropTypes.object.isRequired,
+  dataOptions: PropTypes.array.isRequired,
+  price: PropTypes.number.isRequired,
+  qnt: PropTypes.number.isRequired,
+  handleAddToFirestore: PropTypes.func.isRequired,
+
+  paramsName: PropTypes.string,
+  handleFuncs: PropTypes.object,
+  selectedRadio: PropTypes.string,
+};
+
+DetailContent.defaultProps = {
+  paramsName: "",
+  handleFuncs: null,
+  selectedRadio: "",
+};
 
 export default DetailContent;

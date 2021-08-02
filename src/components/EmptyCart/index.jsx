@@ -7,32 +7,31 @@ import { PHONE_BREAKPOINT, TABLET_BREAKPOINT } from "constants/breakpoints";
 import styled from "styled-components";
 
 const EmptyCartContainer = styled.div`
-  position: ${(prop) => prop.type === "shop" && "absolute"};
-  left: ${(prop) => prop.type === "shop" && 0};
-  right: ${(prop) => prop.type === "shop" && 0};
+  position: ${(p) => p.type === "shop" && "absolute"};
+  left: ${(p) => p.type === "shop" && 0};
+  right: ${(p) => p.type === "shop" && 0};
   z-index: -1;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: ${(prop) =>
-    (prop.type === "shop" || prop.type === "wishlist") && "100%"};
-  margin-top: ${(prop) => prop.type === "shop" && "-35px"};
-  margin-bottom: 40px;
+  height: ${(p) => (p.type === "shop" || p.type === "wishlist") && "100%"};
+  margin-top: ${(p) => p.type === "shop" && "-35px"};
+  margin-bottom: ${(p) => (p.type === "wishlist" ? "0" : "40px")};
 
   img {
-    width: ${(prop) =>
-      prop.type === "shop"
+    width: ${(p) =>
+      p.type === "shop"
         ? "23.5rem"
-        : prop.type === "wishlist"
+        : p.type === "wishlist"
         ? "14.5rem"
         : "20.5rem"};
-    margin-bottom: ${(prop) => (prop.type === "wishlist" ? "20px" : "35px")};
+    margin-bottom: ${(p) => (p.type === "wishlist" ? "20px" : "35px")};
 
     @media (max-width: ${TABLET_BREAKPOINT}px) {
-      width: ${(prop) => prop.type === "wishlist" && "25.5rem"};
-      margin-bottom: ${(prop) => prop.type === "wishlist" && "35px"};
+      width: ${(p) => p.type === "wishlist" && "25.5rem"};
+      margin-bottom: ${(p) => p.type === "wishlist" && "35px"};
     }
 
     @media (max-width: ${PHONE_BREAKPOINT}px) {
@@ -42,13 +41,13 @@ const EmptyCartContainer = styled.div`
   }
 
   h2 {
-    font-size: ${(prop) => (prop.type === "wishlist" ? "1.65rem" : "2.1rem")};
+    font-size: ${(p) => (p.type === "wishlist" ? "1.65rem" : "2.1rem")};
     text-transform: capitalize;
 
-    color: ${(prop) => prop.type === "checkout" && PRIMARY_WHITE_COLOR};
+    color: ${(p) => p.type === "checkout" && PRIMARY_WHITE_COLOR};
 
     @media (max-width: ${TABLET_BREAKPOINT}px) {
-      font-size: ${(prop) => prop.type === "wishlist" && "2.1rem"};
+      font-size: ${(p) => p.type === "wishlist" && "2.1rem"};
     }
 
     @media (max-width: ${PHONE_BREAKPOINT}px) {

@@ -1,4 +1,3 @@
-import React from "react";
 import {
   BrowserRouter as Router,
   Redirect,
@@ -7,19 +6,9 @@ import {
 } from "react-router-dom";
 
 import Theme from "utils/cusMatUi";
-import ApiProvider from "./context/ApiProvider";
-import AuthProvider from "./context/AuthProvider";
-import PrevFilterProvider from "./context/PrevFilterProvider";
-
-import Header from "components/Header";
-import NotFound from "components/NotFound";
-import Footer from "components/Footer";
-import ScrollButton from "components/ScrollButton";
-import Home from "features/Home";
-import SignIn from "features/SignIn";
-import Shop from "features/Shop";
-import Detail from "features/Detail";
-import Checkout from "features/Checkout";
+import ApiProvider from "./contexts/ApiProvider";
+import AuthProvider from "./contexts/AuthProvider";
+import PrevFilterProvider from "./contexts/PrevFilterProvider";
 
 // react toastify
 import { ToastContainer } from "react-toastify";
@@ -27,6 +16,16 @@ import "react-toastify/dist/ReactToastify.min.css";
 
 // material ui core
 import { ThemeProvider } from "@material-ui/core/styles";
+
+import Header from "components/Header";
+import NotFound from "components/NotFound";
+import Footer from "components/Footer";
+import ScrollButton from "components/ScrollButton";
+import Home from "features/Home";
+import Login from "features/Login";
+import Shop from "features/Shop";
+import Detail from "features/Detail";
+import Checkout from "features/Checkout";
 
 import "./App.scss";
 
@@ -39,16 +38,16 @@ function App() {
             <ApiProvider>
               <Header />
               <Switch>
-                <Redirect exact from="/" to="/home" />
-                <Route path="/home" component={Home} />
+                <Redirect from="/" to="/home" exact />
+                <Route path="/home" component={Home} exact />
 
-                <Route path="/sign-in" component={SignIn} />
+                <Route path="/login" component={Login} exact />
 
-                <Route exact path="/shop/:name" component={Shop} />
+                <Route path="/shop/:name" component={Shop} exact />
 
-                <Route path="/shop/:name/:id" component={Detail} />
+                <Route path="/shop/:name/:id" component={Detail} exact />
 
-                <Route path="/checkout" component={Checkout} />
+                <Route path="/checkout" component={Checkout} exact />
 
                 <Route component={NotFound} />
               </Switch>
