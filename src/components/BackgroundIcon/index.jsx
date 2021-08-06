@@ -29,8 +29,9 @@ function BackgroundIcon(props) {
       left={left}
       duration={duration}
       delay={delay}
+      type={type}
       zIndex={zIndex}
-      className={`bg-icon bg-icon--${type}`}
+      className="bg-icon"
       alt="Background icon"
     />
   );
@@ -45,6 +46,7 @@ const Img = styled.img`
 
   width: ${(p) => p.width}rem;
 
+  animation-name: ${(p) => p.type};
   animation-duration: ${(p) => p.duration}s;
   animation-delay: ${(p) => p.delay && p.delay + "s"};
 `;

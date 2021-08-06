@@ -39,6 +39,11 @@ function PrimaryButton(props) {
 
       history.push("/checkout");
       dispatch(action);
+    } else if (page === "login") {
+      const action = setIsAtCheckout(false);
+
+      history.push("/login");
+      dispatch(action);
     }
   };
 

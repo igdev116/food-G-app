@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { AuthContext } from "contexts/AuthProvider";
-import { auth } from "firebase/configs";
+import { auth } from "configs/firebaseConfig";
 import { setIsAtCheckout, setIsShowCart } from "./headerSlice";
 import { setIsShowWishlist } from "components/Wishlist/wishlistSlice";
 

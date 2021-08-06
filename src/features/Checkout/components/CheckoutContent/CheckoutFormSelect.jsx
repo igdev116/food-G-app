@@ -7,6 +7,34 @@ import styled from "styled-components";
 // react select
 import Select from "react-select";
 
+function CheckoutFormSelect(props) {
+  const { errors, field } = props;
+
+  return (
+    <CheckoutFormSelectWrapper>
+      <Select
+        {...field}
+        placeholder="Select a country"
+        styles={customStyles}
+        options={countriesList}
+      />
+      <span className="checkout-form-field__error">
+        {errors.country?.message}
+      </span>
+    </CheckoutFormSelectWrapper>
+  );
+}
+
+const CheckoutFormSelectWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  & > *:first-child {
+    margin-bottom: 5px;
+  }
+`;
+
 const customStyles = {
   container: (base) => ({
     ...base,
@@ -73,30 +101,5 @@ const customStyles = {
     color: "rgba(0, 0, 0, 0.55)",
   }),
 };
-
-const CheckoutFormSelectWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  gap: 5px;
-`;
-
-function CheckoutFormSelect(props) {
-  const { errors, field } = props;
-
-  return (
-    <CheckoutFormSelectWrapper>
-      <Select
-        {...field}
-        placeholder="Select a country"
-        styles={customStyles}
-        options={countriesList}
-      />
-      <span className="checkout-form-field__error">
-        {errors.country?.message}
-      </span>
-    </CheckoutFormSelectWrapper>
-  );
-}
 
 export default CheckoutFormSelect;

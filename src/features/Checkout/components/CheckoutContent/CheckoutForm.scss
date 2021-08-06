@@ -7,7 +7,10 @@
   &__fields {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+
+    & > *:not(:last-child) {
+      margin-bottom: 20px;
+    }
   }
 
   &__title {
@@ -22,8 +25,11 @@
   &__row {
     display: flex;
     align-items: flex-start;
-    gap: 20px;
     width: 100%;
+
+    & > *:first-child {
+      margin-right: 20px;
+    }
   }
 
   &__bottom {

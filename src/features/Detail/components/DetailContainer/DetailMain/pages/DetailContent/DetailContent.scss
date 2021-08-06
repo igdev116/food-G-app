@@ -6,6 +6,7 @@
     font-size: 2.8rem;
     text-transform: capitalize;
     margin-bottom: 15px;
+    height: 3.5rem;
 
     @include respond(mobile) {
       font-size: 2.5rem;

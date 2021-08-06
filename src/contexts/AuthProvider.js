@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 
-import { auth } from "firebase/configs";
+import { auth } from "configs/firebaseConfig";
 import useFirestoreProducts from "hooks/useFirestoreProducts";
 
 const AuthContext = React.createContext();

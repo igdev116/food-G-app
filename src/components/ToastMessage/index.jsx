@@ -28,7 +28,7 @@ const toastTypes = {
   },
   warning: {
     title: "Warning",
-    description: "You have added this product to your favorites",
+    description: "Your cart is empty!",
     color: "#ffbb00",
     setIcon: () => <PriorityHighOutlinedIcon style={{ fill: "#ffbb00" }} />,
   },

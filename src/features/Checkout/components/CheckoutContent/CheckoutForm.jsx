@@ -1,9 +1,11 @@
 import { useContext, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import useFirestoreProducts from "hooks/useFirestoreProducts";
 import { AuthContext } from "contexts/AuthProvider";
+import { setIsAtCheckout } from "components/Header/headerSlice";
 
 // yup
 import * as yup from "yup";
@@ -19,6 +21,7 @@ import PrimaryButton from "components/PrimaryButton";
 import CheckoutFormField from "./CheckoutFormField";
 import CheckoutFormSelect from "./CheckoutFormSelect";
 import CheckoutLoading from "../CheckoutLoading";
+import ToastMessage from "components/ToastMessage";
 
 import "./CheckoutForm.scss";
 
@@ -47,6 +50,9 @@ function CheckoutForm(props) {
 
   const [isShowLoading, setIsShowLoading] = useState(false);
 
+  const history = useHistory();
+
+  const dispatch = useDispatch();
   const cartProducts = useSelector((state) => state.cart);
   const { user } = useContext(AuthContext);
   const { removeAllFromFirestore } = useFirestoreProducts();
@@ -62,6 +68,11 @@ function CheckoutForm(props) {
   });
 
   const onHandleSubmit = () => {
+    if (cartProducts.length <= 0) {
+      ToastMessage("warning");
+      return;
+    }
+
     reset({
       firstName: "",
       lastName: "",
@@ -80,6 +91,13 @@ function CheckoutForm(props) {
       setIsShowLoading(false);
       setIsPurchased(true);
     }, 1000);
+  };
+
+  const returnToShop = () => {
+    const action = setIsAtCheckout(false);
+
+    dispatch(action);
+    history.push("/shop/best-foods");
   };
 
   // if empty cart then reset progress to false
@@ -130,7 +148,7 @@ function CheckoutForm(props) {
         </div>
 
         <div className="checkout-form__bottom">
-          <div className="checkout-form__return">
+          <div onClick={returnToShop} className="checkout-form__return">
             <ChevronLeftIcon />
             <span>Return to shop</span>
           </div>

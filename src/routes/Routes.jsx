@@ -8,7 +8,7 @@ import styled from "styled-components";
 const Loading = styled.div`
   font-size: 1.6rem;
   font-weight: bold;
-  margin: 30px;
+  margin: 80px 30px 30px;
 `;
 
 function Routes() {

@@ -47,8 +47,6 @@ function DetailTab() {
     };
 
     window.addEventListener("resize", handleResizeWindow);
-
-    return window.removeEventListener("resize", handleResizeWindow);
   }, [firsBtntRef, btnElement]);
 
   return (

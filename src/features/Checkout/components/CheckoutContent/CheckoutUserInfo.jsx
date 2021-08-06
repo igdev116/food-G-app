@@ -1,6 +1,7 @@
 import { useContext } from "react";
 
 import { AuthContext } from "contexts/AuthProvider";
+import { auth } from "configs/firebaseConfig";
 
 // material ui core
 import { Avatar, FormControlLabel } from "@material-ui/core";
@@ -9,8 +10,14 @@ import Checkbox from "@material-ui/core/Checkbox";
 import "./CheckoutUserInfo.scss";
 
 function CheckoutInfo() {
-  const { user } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
   const { displayName, email, photoURL } = user || "";
+
+  const logout = () => {
+    auth.signOut().then(() => {
+      setUser(false);
+    });
+  };
 
   return (
     <div className="checkout-user-info">
@@ -20,7 +27,9 @@ function CheckoutInfo() {
         <div className="checkout-user-info__content">
           <span className="checkout-user-info__name">{displayName}</span>
           <span className="checkout-user-info__email">({email})</span>
-          <div className="checkout-user-info__btn">Log out</div>
+          <div onClick={logout} className="checkout-user-info__btn">
+            Log out
+          </div>
         </div>
       </div>
       <FormControlLabel

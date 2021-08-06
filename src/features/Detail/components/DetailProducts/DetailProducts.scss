@@ -8,7 +8,7 @@
     margin-top: 25px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-    gap: 15px;
+    grid-gap: 15px;
     text-align: start;
 
     @include respond(phone) {

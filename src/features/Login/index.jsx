@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 
-import { googleProvider, auth } from "firebase/configs";
+import { googleProvider, auth } from "configs/firebaseConfig";
 import { AuthContext } from "contexts/AuthProvider";
 
 // material ui core
@@ -21,6 +21,7 @@ function SignIn() {
   const handleGoogleLogIn = () => {
     auth.signInWithPopup(googleProvider).then(() => {
       history.goBack();
+      setHasHeader(true);
     });
   };
 

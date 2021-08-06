@@ -1,7 +1,7 @@
-import PrimaryButton from "components/PrimaryButton";
-
 // material ui core
 import { Container } from "@material-ui/core";
+
+import PrimaryButton from "components/PrimaryButton";
 
 import "./styles.scss";
 import "assets/styles/_typography.scss";
@@ -14,7 +14,9 @@ function CheckoutLogin() {
         <h2 className="pr-heading-text">
           You are not logged in. Please log in and try again!
         </h2>
-        <PrimaryButton subClass="red">Login now</PrimaryButton>
+        <PrimaryButton page="login" subClass="red">
+          Login now
+        </PrimaryButton>
         <img
           className="checkout-login__img"
           src="/svgs/Checkout/login.svg"

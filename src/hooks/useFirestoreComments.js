@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { db } from "firebase/configs";
+import { db } from "configs/firebaseConfig";
 
 function useFirestoreComments() {
   const [comments, setComments] = useState([]);

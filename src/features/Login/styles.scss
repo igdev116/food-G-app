@@ -99,11 +99,17 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 20px;
+
+    & > *:first-child {
+      margin-right: 20px;
+
+      @include respond(phone) {
+        margin-right: 0;
+      }
+    }
 
     @include respond(phone) {
       flex-direction: column;
-      gap: 10px;
     }
   }
 

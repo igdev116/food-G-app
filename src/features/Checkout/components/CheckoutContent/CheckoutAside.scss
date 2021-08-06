@@ -12,12 +12,15 @@ aside {
 .checkout-products {
   display: flex;
   flex-direction: column;
-  gap: 10px;
   max-height: 16rem;
   overflow-y: auto;
 
   -ms-overflow-style: none;
   scrollbar-width: none;
+
+  & > *:not(:last-child) {
+    margin-bottom: 10px;
+  }
 
   &::-webkit-scrollbar {
     display: none;
@@ -125,9 +128,12 @@ aside {
 .checkout-detail {
   display: flex;
   flex-direction: column;
-  gap: 20px;
   padding-bottom: 30px;
   border-bottom: 1px solid rgba($primary-white-color, 0.15);
+
+  & > *:not(:last-child) {
+    margin-bottom: 20px;
+  }
 
   &__row {
     display: flex;

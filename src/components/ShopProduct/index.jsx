@@ -71,7 +71,7 @@ function ShopProduct(props) {
 
   const handleToDetail = (id) => {
     history.push(`/shop/${params.name}/${id}`);
-    moveToTop();
+    moveToTop && moveToTop();
   };
 
   return (

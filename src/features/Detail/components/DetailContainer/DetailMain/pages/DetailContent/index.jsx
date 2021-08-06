@@ -2,6 +2,9 @@ import PropTypes from "prop-types";
 
 import useFirestoreComments from "hooks/useFirestoreComments";
 
+// react content loader
+import ContentLoader from "react-content-loader";
+
 // material ui core
 import { Button } from "@material-ui/core";
 
@@ -47,9 +50,15 @@ function DetailContent(props) {
     handleAddToFirestore(type, product);
   };
 
+  const contentLoader = () => (
+    <ContentLoader>
+      <rect x="0" y="0" rx="5" ry="5" width="100%" height="35" />
+    </ContentLoader>
+  );
+
   return (
     <div className="detail-content">
-      <h2 className="detail-content__title">{name}</h2>
+      <h2 className="detail-content__title">{name ? name : contentLoader()}</h2>
 
       <div className="detail-content__rate">
         <div className="detail-content__stars">

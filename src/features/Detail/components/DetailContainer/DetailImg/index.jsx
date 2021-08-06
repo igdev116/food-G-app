@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 
 import { MOBILE_BREAKPOINT } from "constants/breakpoints";
 
+// react content loader
+import ContentLoader from "react-content-loader";
+
 // react img magnifiers
 import { SideBySideMagnifier } from "react-image-magnifiers";
 
@@ -23,25 +26,33 @@ function DetailImg(props) {
   const [isAtDesktop, setIsAtDesktop] = useState(true);
   const [isLast, setIsLast] = useState(false);
 
+  const handleResizeWindow = () => {
+    if (window.innerWidth > MOBILE_BREAKPOINT) {
+      setIsAtDesktop(true);
+    } else {
+      setIsAtDesktop(false);
+    }
+  };
+
+  window.addEventListener("resize", handleResizeWindow);
+
   // reset img when window is resized
   useEffect(() => {
-    const handleResizeWindow = () => {
-      if (window.innerWidth > MOBILE_BREAKPOINT) {
-        setIsAtDesktop(true);
-      } else {
-        setIsAtDesktop(false);
-      }
-    };
-
     window.addEventListener("resize", handleResizeWindow);
 
     return window.removeEventListener("resize", handleResizeWindow);
   }, []);
 
+  const contentLoader = () => (
+    <ContentLoader viewBox="0 0 100 100">
+      <rect x="0" y="0" rx="5" ry="5" width="100%" height="100%" />
+    </ContentLoader>
+  );
+  console.log(isAtDesktop);
   return (
-    product && (
-      <div className="detail-img">
-        {isAtDesktop ? (
+    <div className="detail-img">
+      {isAtDesktop ? (
+        img ? (
           <SideBySideMagnifier
             className={isLast ? "detail-img__main last" : "detail-img__main"}
             imageSrc={img}
@@ -50,29 +61,44 @@ function DetailImg(props) {
             transitionSpeedInPlace={0.3}
           />
         ) : (
-          <div
-            className={isLast ? "detail-img__main last" : "detail-img__main"}
-          >
-            <img className="detail-img__main-mobile" src={img} alt="Foods" />
-          </div>
-        )}
-
-        <div className="detail-img__slides">
-          <div
-            onClick={() => setIsLast(false)}
-            className={isLast ? "detail-img__slide last" : "detail-img__slide"}
-          >
-            <img src={img} alt="Slide" />
-          </div>
-          <div
-            onClick={() => setIsLast(true)}
-            className={isLast ? "detail-img__slide" : "detail-img__slide last"}
-          >
-            <img src={img} alt="Slide" />
-          </div>
+          contentLoader()
+        )
+      ) : img ? (
+        <div className={isLast ? "detail-img__main last" : "detail-img__main"}>
+          <img className="detail-img__main-mobile" src={img} alt="Foods" />
         </div>
+      ) : (
+        contentLoader()
+      )}
+
+      <div className="detail-img__slides">
+        {img ? (
+          <>
+            <div
+              onClick={() => setIsLast(false)}
+              className={
+                isLast ? "detail-img__slide last" : "detail-img__slide"
+              }
+            >
+              <img src={img} alt="Slide" />
+            </div>
+            <div
+              onClick={() => setIsLast(true)}
+              className={
+                isLast ? "detail-img__slide" : "detail-img__slide last"
+              }
+            >
+              <img src={img} alt="Slide" />
+            </div>
+          </>
+        ) : (
+          <>
+            {contentLoader()}
+            {contentLoader()}
+          </>
+        )}
       </div>
-    )
+    </div>
   );
 }
 

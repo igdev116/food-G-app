@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { AuthContext } from "contexts/AuthProvider";
-import { db } from "firebase/configs";
+import { db } from "configs/firebaseConfig";
 import { addToWishlist, setIsShowWishlist } from "./wishlistSlice";
 import useFirestoreProducts from "hooks/useFirestoreProducts";
 
