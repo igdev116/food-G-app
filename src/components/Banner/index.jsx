@@ -4,7 +4,9 @@ import { useParams } from "react-router-dom";
 // material ui icons
 import LinearScaleIcon from "@material-ui/icons/LinearScale";
 
-import "./Banner.scss";
+import CommonBanner from "assets/images/Common/banner.jpg";
+
+import "./styles.scss";
 
 function Banner() {
   const { name } = useParams();
@@ -13,7 +15,7 @@ function Banner() {
   return (
     <section
       className="banner"
-      style={{ backgroundImage: "url(/imgs/Shop/banner.jpg)" }}
+      style={{ backgroundImage: `url(${CommonBanner})` }}
     >
       <h2 className="banner__title">{paramsName}</h2>
       <div className="banner__paths">

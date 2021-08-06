@@ -1,7 +1,3 @@
-import React from "react";
-
-// import Map from "./Map";
-
 // material ui
 import { Container } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
@@ -14,7 +10,7 @@ import InstagramIcon from "@material-ui/icons/Instagram";
 import YouTubeIcon from "@material-ui/icons/YouTube";
 import LinearScaleIcon from "@material-ui/icons/LinearScale";
 
-import "./Footer.scss";
+import "./styles.scss";
 
 function Footer() {
   return (

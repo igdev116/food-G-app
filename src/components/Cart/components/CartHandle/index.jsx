@@ -9,7 +9,7 @@ import StoreMallDirectoryIcon from "@material-ui/icons/StoreMallDirectory";
 
 import PrimaryButton from "components/PrimaryButton";
 
-import "./CartHandle.scss";
+import "./styles.scss";
 
 function CartHandle() {
   const [isActive, setIsActive] = useState(false);

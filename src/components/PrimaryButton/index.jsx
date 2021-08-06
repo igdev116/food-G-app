@@ -10,7 +10,7 @@ import { setIsShowWishlist } from "components/Wishlist/wishlistSlice";
 // material ui core
 import { Button } from "@material-ui/core";
 
-import "./PrimaryButton.scss";
+import "./styles.scss";
 
 function PrimaryButton(props) {
   const { page, subClass, children } = props;
@@ -60,11 +60,6 @@ function PrimaryButton(props) {
 PrimaryButton.propsTypes = {
   page: PropTypes.string,
   subClass: PropTypes.string,
-};
-
-PrimaryButton.defaultProps = {
-  page: "",
-  subClass: "",
 };
 
 export default PrimaryButton;

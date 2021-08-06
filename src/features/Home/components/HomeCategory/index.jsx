@@ -13,7 +13,6 @@ import "swiper/swiper.scss";
 import "swiper/components/navigation/navigation.scss";
 
 import BackgroundIcon from "components/BackgroundIcon";
-
 import {
   BackgroundIconOne,
   BackgroundIconTwo,
@@ -21,7 +20,7 @@ import {
 } from "utils/backgroundIcons";
 
 import "assets/styles/_typography.scss";
-import "./HomeCategory.scss";
+import "./styles.scss";
 
 // swiper modules
 SwiperCore.use([Autoplay, Navigation]);
@@ -57,8 +56,8 @@ function HomeCategory() {
 
       <Container>
         <div className="home-category__container">
-          <div className="pr-yellow-text">What we have?</div>
-          <h2 className="pr-heading-text">Browse food category</h2>
+          <div className="primary-yellow-text">What we have?</div>
+          <h2 className="primary-heading-text">Browse food category</h2>
           <div className="home-category__cards">
             <Swiper
               slidesPerView={2}
@@ -87,8 +86,8 @@ function HomeCategory() {
                     <div className="home-category__card-img-wrapper">
                       <img
                         className="home-category__card-img"
-                        src={`/svgs/Home/${img}.svg`}
-                        alt="Card"
+                        src={img}
+                        alt="Category card"
                       />
                     </div>
                     <div className="home-category__card-description">

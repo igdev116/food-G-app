@@ -5,15 +5,20 @@
 2. Material UI
 3. React-router-dom
 4. Axios
-5. Formik
+5. React-hook-form
 6. Yup
 7. Swiper
 8. Redux-toolkit
 9. Firebase
 10. Styled-component
 11. React-countup
-12. React Lazy Load Image Component
+12. React-lazy-load-image-component
 13. React-paginate
+14. React-image-magnifiers
+15. React-toastify
+16. React-timeago
+17. React-content-loader
+18. React-select
 ```
 
 ## Folder structure
@@ -38,14 +43,19 @@ src
 |  |__BackgroundIcon
 |  |__Banner
 |  |__Cart
+|  |  |__components
+|  |     |__CartItems
+|  |     |__|__CartItem
+|  |     |__CartHandle
 |  |__Checkbox
 |  |__CusButtons
 |  |__Dialog
-|  |__Footer // operating times, contacts, map
-|  |__Header // navs, cart, account
+|  |__Footer
+|  |__Header
 |  |  |__BurgerNavbar // mobile
 |  |__NotFound
 |  |__ShopProduct
+|  |__Wishlist
 |__configs
 |__constants
 |__context
@@ -69,11 +79,10 @@ src
 |  |     |__ShopBanner
 |  |     |__ShopContainer
 |  |        |__ShopContent
-|  |        |  |__ShopHandle // search, sort
+|  |        |  |__ShopHandle
 |  |        |  |__ShopProducts
 |  |        |     |__ShopProduct
-|  |        |__ShopFilters // filter by types, prices, sizes, best deals
-|  |        |__index.jsx // render
+|  |        |__ShopFilters
 |  |__SignIn
 |  |  |__components
 |  |     |__FormSignIn
@@ -81,16 +90,30 @@ src
 |  |__Detail
 |  |  |__components
 |  |     |__DetailContainer
-|  |     |  |__DetailContent
+|  |     |  |__DetailMain
+|  |     |  |  |__DetailContent
 |  |     |  |__DetailImg
-|  |     |__DetailTabs
+|  |     |__DetailTab
+|  |     |  |__DetailTabComment
 |  |     |__DetailProducts
+|  |__Checkout
+|__firebase
 |__hooks
 |__utils
 ```
 
-<!-- filter but page not change -->
-<!-- remove pagination when products length == 0 -->
-<!-- keep rate or price when paginate -->
+<!-- fix class name ingredients -->
+<!-- move firebase config -->
+<!-- remove gap -->
+<!-- remove defaultProps -->
+<!-- fix get api mobile -->
+<!-- random detail products -->
+<!-- comments quanity when choose product -->
+<!-- notify user when add to cart without login -->
 
 <!-- https://felixgerschau.com/react-rerender-components/#:~:text=In%20function%20components%2C%20the%20execution,t%20even%20receive%20any%20props. -->
+
+```
+Nếu đơn giản chỉ là bật tắt thì ko cần handle
+Đi sang trang khác thì moveto
+```

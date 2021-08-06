@@ -23,11 +23,4 @@ LoginFormField.propsTypes = {
   placeholder: PropTypes.string,
 };
 
-LoginFormField.defaultProps = {
-  type: "",
-  label: "",
-  icon: null,
-  placeholder: "",
-};
-
 export default LoginFormField;

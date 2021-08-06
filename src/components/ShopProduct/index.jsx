@@ -1,12 +1,14 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import { AuthContext } from "contexts/AuthProvider";
 import useFirestoreProducts from "hooks/useFirestoreProducts";
 
-// lazy load img
+// lazy load img js
 import { LazyLoadImage } from "react-lazy-load-image-component";
+
+// lazy load img css
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 // material ui icons
@@ -17,31 +19,7 @@ import RoomIcon from "@material-ui/icons/Room";
 
 import ToastMessage from "components/ToastMessage";
 
-import "./ShopProduct.scss";
-
-ShopProduct.propsTypes = {
-  id: PropTypes.string,
-  name: PropTypes.string,
-  img: PropTypes.string,
-  dsc: PropTypes.string,
-  price: PropTypes.number,
-  rate: PropTypes.number,
-
-  openDialog: PropTypes.func,
-  moveToTop: PropTypes.func,
-};
-
-ShopProduct.propsTypes = {
-  id: "",
-  name: "",
-  img: "",
-  dsc: "",
-  price: 0,
-  rate: 0,
-
-  openDialog: null,
-  moveToTop: null,
-};
+import "./styles.scss";
 
 function ShopProduct(props) {
   const { id, name, img, dsc, price, rate, country, openDialog, moveToTop } =
@@ -124,5 +102,29 @@ function ShopProduct(props) {
     </div>
   );
 }
+
+ShopProduct.propsTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
+  img: PropTypes.string,
+  dsc: PropTypes.string,
+  price: PropTypes.number,
+  rate: PropTypes.number,
+
+  openDialog: PropTypes.func,
+  moveToTop: PropTypes.func,
+};
+
+ShopProduct.propsTypes = {
+  id: "",
+  name: "",
+  img: "",
+  dsc: "",
+  price: 0,
+  rate: 0,
+
+  openDialog: null,
+  moveToTop: null,
+};
 
 export default ShopProduct;

@@ -3,8 +3,11 @@ import { Container } from "@material-ui/core";
 
 import PrimaryButton from "components/PrimaryButton";
 
+import BigDeliverySvg from "assets/svgs/Home/big-delivery.svg";
+import SmallDeliverySvg from "assets/svgs/Home/small-delivery.svg";
+
 import "assets/styles/_typography.scss";
-import "./HomeDelivery.scss";
+import "./styles.scss";
 
 function HomeDelivery() {
   return (
@@ -12,8 +15,8 @@ function HomeDelivery() {
       <Container>
         <div className="home-delivery__container">
           <div className="home-delivery__col">
-            <div className="pr-yellow-text">Delivery</div>
-            <h2 className="pr-heading-text">
+            <div className="primary-yellow-text">Delivery</div>
+            <h2 className="primary-heading-text">
               A Moments Of Delivered <strong>On Right Time & Place</strong>
             </h2>
 
@@ -26,7 +29,7 @@ function HomeDelivery() {
 
             <div className="home-delivery__contact">
               <img
-                src="/svgs/Home/small-delivery.svg"
+                src={SmallDeliverySvg}
                 className="home-delivery__contact-img"
                 alt="Delivery"
               ></img>
@@ -44,7 +47,7 @@ function HomeDelivery() {
             </div>
           </div>
           <img
-            src="/svgs/Home/big-delivery.svg"
+            src={BigDeliverySvg}
             className="home-delivery__img"
             alt="Delivery"
           />

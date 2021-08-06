@@ -1,12 +1,14 @@
 // material ui icons
 import LinearScaleIcon from "@material-ui/icons/LinearScale";
 
+import CommonBanner from "assets/images/Common/banner.jpg";
+
 import "./styles.scss";
 
 function CheckoutBanner() {
   return (
     <div
-      style={{ backgroundImage: "url('/imgs/Checkout/banner.jpg')" }}
+      style={{ backgroundImage: `url(${CommonBanner})` }}
       className="checkout-banner"
     >
       <h2 className="checkout-banner__title">Checkout</h2>

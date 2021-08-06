@@ -8,8 +8,8 @@ import { setDetailProducts } from "features/Detail/detailSlice";
 import ShopProduct from "components/ShopProduct";
 import Dialog from "components/Dialog";
 
-import "./DetailProducts.scss";
 import "assets/styles/_typography.scss";
+import "./styles.scss";
 
 function DetailProducts() {
   const { name } = useParams();
@@ -54,8 +54,8 @@ function DetailProducts() {
 
   return (
     <div className="detail-products">
-      <div className="pr-yellow-text">Best foods</div>
-      <h2 className="pr-heading-text">Related Products</h2>
+      <div className="primary-yellow-text">Best foods</div>
+      <h2 className="primary-heading-text">Related Products</h2>
       <div className="detail-products__wrapper">
         {products &&
           products.map((item) => (

@@ -26,8 +26,8 @@ import BurgerNavbar from "./BurgerNavbar";
 import Cart from "components/Cart";
 import Wishlist from "components/Wishlist";
 
-import Logo from "assets/svgs/logo.svg";
-import "./Header.scss";
+import Logo from "assets/svgs/Common/logo.svg";
+import "./styles.scss";
 
 function Header() {
   const [isStickyTop, setIsStickyTop] = useState(false);

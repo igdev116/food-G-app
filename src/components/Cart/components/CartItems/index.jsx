@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { useSelector } from "react-redux";
 
 import useFirestoreProducts from "hooks/useFirestoreProducts";
 import { AuthContext } from "contexts/AuthProvider";
 
 import CartItem from "./CartItem";
-import store from "app/store";
-import "./CartItems.scss";
+
+import "./styles.scss";
 
 function CartItems() {
   const cartProducts = useSelector((state) => state.cart);

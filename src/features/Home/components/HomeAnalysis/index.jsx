@@ -1,43 +1,17 @@
 import { useState, useRef, useEffect } from "react";
 
-// material ui
+import { homeAnalysisData } from "utils/staticData";
+
+// material ui core
 import { Container } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 
 // react count up
 import CountUp from "react-countup";
 
-import "./HomeAnalysis.scss";
+import { AnalysisThumb } from "utils/homeImages";
 
-const data = [
-  {
-    end: 350,
-    delay: 0.3,
-    duration: 4,
-    suffix: "+",
-    description: "Cups of Coffee",
-  },
-  {
-    end: 2678,
-    delay: 0.2,
-    duration: 4,
-    separator: ",",
-    suffix: "+",
-    description: "Orders Everyday",
-  },
-  {
-    end: 60,
-    delay: 0.5,
-    duration: 4,
-    description: "Skilled Professionals",
-  },
-  {
-    end: 30,
-    delay: 0.5,
-    duration: 4,
-    description: "Sandwichs at Hour",
-  },
-];
+import "./styles.scss";
 
 function HomeAnalysis() {
   const [isShow, setIsShow] = useState(false);
@@ -55,19 +29,17 @@ function HomeAnalysis() {
     };
     window.addEventListener("scroll", handleScrollToCount);
 
-    return () => {
-      window.addEventListener("scroll", handleScrollToCount);
-    };
+    return window.addEventListener("scroll", handleScrollToCount);
   }, []);
 
-  const handleModal = () => {
+  const toggleModal = () => {
     setIsShow(!isShow);
   };
 
   return (
     <section
       className="home-analysis"
-      style={{ backgroundImage: "url(/imgs/Home/analysis-thumb.jpg)" }}
+      style={{ backgroundImage: `url(${AnalysisThumb})` }}
       ref={ref}
     >
       <div className="home-analysis__wrapper">
@@ -76,7 +48,7 @@ function HomeAnalysis() {
             <span className="home-analysis__content-name">Sandwich</span>
             <span className="home-analysis__content-price">$45</span>
           </div>
-          <div onClick={handleModal} className="home-analysis__btn">
+          <div onClick={toggleModal} className="home-analysis__btn">
             <div className="triangle"></div>
           </div>
           <span className="gooey"></span>
@@ -90,7 +62,7 @@ function HomeAnalysis() {
               : "home-analysis__video-container"
           }
         >
-          <span onClick={handleModal} className="home-analysis__modal"></span>
+          <span onClick={toggleModal} className="home-analysis__modal"></span>
           <iframe
             title="Map"
             className={
@@ -106,7 +78,7 @@ function HomeAnalysis() {
       <div className="home-analysis__container">
         <Container>
           <Grid container spacing={3}>
-            {data.map(
+            {homeAnalysisData.map(
               (
                 { end, delay, duration, description, suffix, seperator },
                 index

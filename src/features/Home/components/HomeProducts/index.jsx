@@ -1,80 +1,31 @@
-import React from "react";
-
-import HomeProduct from "./HomeProduct";
-import Dialog from "components/Dialog";
+import { homeProductsData } from "utils/staticData";
 
 // material ui
 import { Container } from "@material-ui/core";
 
 // swiper js
-import SwiperCore, { Autoplay, Pagination } from "swiper/core";
 import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Autoplay, Pagination } from "swiper/core";
+
+// swiper scss
 import "swiper/components/pagination/pagination.scss";
 
+import HomeProduct from "./HomeProduct";
+import Dialog from "components/Dialog";
+
 import "assets/styles/_typography.scss";
-import "./HomeProducts.scss";
+import "./styles.scss";
 
 // swiper modules
 SwiperCore.use([Autoplay, Pagination]);
-
-const data = [
-  {
-    img: "product-1.png",
-    name: "Crazy Burger",
-    description: "Buarning do amet contur dicivt suia non nuameius velit",
-    price: "20",
-  },
-  {
-    img: "product-2.png",
-    name: "Beefcakes Burgers",
-    description: "Buarning do amet contur dicivt suia non nuameius velit",
-    price: "34",
-  },
-  {
-    img: "product-3.png",
-    name: "The Crispy Bun",
-    description: "Buarning do amet contur dicivt suia non nuameius velit",
-    price: "15",
-  },
-  {
-    img: "product-4.png",
-    name: "Bugout Burgers",
-    description: "Buarning do amet contur dicivt suia non nuameius velit",
-    price: "60",
-  },
-  {
-    img: "product-1.png",
-    name: "Crazy Burger",
-    description: "Buarning do amet contur dicivt suia non nuameius velit",
-    price: "20",
-  },
-  {
-    img: "product-2.png",
-    name: "Beefcakes Burgers",
-    description: "Buarning do amet contur dicivt suia non nuameius velit",
-    price: "34",
-  },
-  {
-    img: "product-3.png",
-    name: "The Crispy Bun",
-    description: "Buarning do amet contur dicivt suia non nuameius velit",
-    price: "15",
-  },
-  {
-    img: "product-4.png",
-    name: "Bugout Burgers",
-    description: "Buarning do amet contur dicivt suia non nuameius velit",
-    price: "60",
-  },
-];
 
 function HomeProducts() {
   return (
     <section className="home-products">
       <Dialog />
       <Container>
-        <div className="pr-yellow-text">Quality Products</div>
-        <h2 className="pr-heading-text">
+        <div className="primary-yellow-text">Quality Products</div>
+        <h2 className="primary-heading-text">
           Burger as expected <strong>dilicious</strong> one
         </h2>
         <div className="home-products__container">
@@ -106,16 +57,18 @@ function HomeProducts() {
               },
             }}
           >
-            {data.map(({ img, name, description, price }, index) => (
-              <SwiperSlide key={index}>
-                <HomeProduct
-                  img={img}
-                  name={name}
-                  description={description}
-                  price={price}
-                />
-              </SwiperSlide>
-            ))}
+            {homeProductsData.map(
+              ({ img, name, description, price }, index) => (
+                <SwiperSlide key={index}>
+                  <HomeProduct
+                    img={img}
+                    name={name}
+                    description={description}
+                    price={price}
+                  />
+                </SwiperSlide>
+              )
+            )}
           </Swiper>
         </div>
       </Container>

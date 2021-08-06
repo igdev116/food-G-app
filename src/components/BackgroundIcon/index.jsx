@@ -64,17 +64,4 @@ BackgroundIcon.propTypes = {
   zIndex: PropTypes.string,
 };
 
-BackgroundIcon.defaultProps = {
-  src: "",
-  width: "",
-  top: "",
-  right: "",
-  bottom: "",
-  left: "",
-  type: "",
-  duration: "",
-  delay: "",
-  zIndex: "",
-};
-
 export default BackgroundIcon;

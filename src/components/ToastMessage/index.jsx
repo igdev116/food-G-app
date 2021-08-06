@@ -11,7 +11,7 @@ import LoyaltyOutlinedIcon from "@material-ui/icons/LoyaltyOutlined";
 import PriorityHighOutlinedIcon from "@material-ui/icons/PriorityHighOutlined";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
-import "./ToastMessage.scss";
+import "./styles.scss";
 
 const toastTypes = {
   success: {
@@ -65,10 +65,6 @@ function ToastMessage(type) {
 }
 
 ToastMessage.propsTypes = {
-  type: PropTypes.string,
-};
-
-ToastMessage.defaultProps = {
   type: PropTypes.string,
 };
 

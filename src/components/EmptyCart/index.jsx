@@ -72,9 +72,4 @@ EmptyCart.propTypes = {
   type: PropTypes.string,
 };
 
-EmptyCart.defaultProps = {
-  src: "",
-  type: "",
-};
-
 export default EmptyCart;

@@ -12,7 +12,7 @@ import EmptyCart from "components/EmptyCart";
 
 import EmptyCartImg from "assets/svgs/Common/empty-cart.svg";
 
-import "./Cart.scss";
+import "./styles.scss";
 
 function Cart() {
   const { user } = useContext(AuthContext);

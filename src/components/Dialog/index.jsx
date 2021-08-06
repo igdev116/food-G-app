@@ -1,21 +1,10 @@
-import React from "react";
 import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 
 // material ui core
 import { Button } from "@material-ui/core";
 
-import "./Dialog.scss";
-
-Dialog.propsTypes = {
-  isShow: PropTypes.bool,
-  setIsShow: PropTypes.func,
-};
-
-Dialog.defaultProps = {
-  isShow: false,
-  setIsShow: null,
-};
+import "./styles.scss";
 
 function Dialog(props) {
   const { isShow, setIsShow } = props;
@@ -55,5 +44,10 @@ function Dialog(props) {
     </div>
   );
 }
+
+Dialog.propsTypes = {
+  isShow: PropTypes.bool,
+  setIsShow: PropTypes.func,
+};
 
 export default Dialog;

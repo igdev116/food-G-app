@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 
-import "./ScrollButton.scss";
+import "./styles.scss";
 
 function ScrollButton() {
   const [isShow, setIsShow] = useState(false);

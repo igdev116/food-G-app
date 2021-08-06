@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 import { googleProvider, auth } from "configs/firebaseConfig";
@@ -12,20 +12,23 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 
 import LoginForm from "./components/LoginForm";
 
+import LoginThumbSvg from "assets/svgs/Login/thumb.svg";
+import GoogleSvg from "assets/svgs/Login/google.svg";
+
 import "./styles.scss";
 
 function SignIn() {
   const history = useHistory();
 
-  // sign in with google
+  const { setHasHeader } = useContext(AuthContext);
+
+  // log in with google
   const handleGoogleLogIn = () => {
     auth.signInWithPopup(googleProvider).then(() => {
       history.goBack();
       setHasHeader(true);
     });
   };
-
-  const { setHasHeader } = useContext(AuthContext);
 
   useEffect(() => {
     setHasHeader(false);
@@ -37,7 +40,7 @@ function SignIn() {
         <div className="login__container">
           <div
             className="login__thumb"
-            style={{ backgroundImage: "url(/svgs/SignIn/thumb.svg)" }}
+            style={{ backgroundImage: `url(${LoginThumbSvg})` }}
           ></div>
 
           <div className="login__content">
@@ -62,7 +65,7 @@ function SignIn() {
                 variant="contained"
                 className="login__option signin__option--gg"
               >
-                <img src="/svgs/SignIn/google.svg" alt="google icon" />
+                <img src={GoogleSvg} alt="google icon" />
                 Log in with Google
               </Button>
 

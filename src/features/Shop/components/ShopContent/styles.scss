@@ -1,0 +1,19 @@
+@import "assets/styles/mixins";
+
+.shop-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  .spinner {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 50px;
+
+    @include respond(mobile) {
+      margin-top: 100px;
+    }
+  }
+}

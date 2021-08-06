@@ -18,7 +18,7 @@ import EmptyCart from "components/EmptyCart";
 
 import EmptyCartImg from "assets/svgs/Common/empty-cart.svg";
 
-import "./Wishlist.scss";
+import "./styles.scss";
 
 function Wishlist(props) {
   const dispatch = useDispatch();
