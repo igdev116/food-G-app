@@ -17,7 +17,7 @@ import GoogleSvg from "assets/svgs/Login/google.svg";
 
 import "./styles.scss";
 
-function SignIn() {
+function Login() {
   const history = useHistory();
 
   const { setHasHeader } = useContext(AuthContext);
@@ -63,7 +63,7 @@ function SignIn() {
               <Button
                 onClick={handleGoogleLogIn}
                 variant="contained"
-                className="login__option signin__option--gg"
+                className="login__option login__option--gg"
               >
                 <img src={GoogleSvg} alt="google icon" />
                 Log in with Google
@@ -71,7 +71,7 @@ function SignIn() {
 
               <Button
                 variant="contained"
-                className="login__option signin__option--fb"
+                className="login__option login__option--fb"
               >
                 <FacebookIcon />
                 Log in with Facebook
@@ -84,4 +84,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default Login;

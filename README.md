@@ -102,14 +102,8 @@ src
 |__utils
 ```
 
-<!-- fix class name ingredients -->
-<!-- move firebase config -->
-<!-- remove gap -->
-<!-- remove defaultProps -->
-<!-- fix get api mobile -->
 <!-- random detail products -->
-<!-- comments quanity when choose product -->
-<!-- notify user when add to cart without login -->
+<!-- prevent comment when not login -->
 
 <!-- https://felixgerschau.com/react-rerender-components/#:~:text=In%20function%20components%2C%20the%20execution,t%20even%20receive%20any%20props. -->
 

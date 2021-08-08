@@ -1,0 +1,64 @@
+@import "assets/styles/colors";
+@import "assets/styles/mixins";
+
+.detail-tab-comment {
+  margin-top: 50px;
+
+  &__customer {
+    display: flex;
+  }
+
+  &__customer + &__customer {
+    margin-top: 60px;
+  }
+
+  &__wrapper {
+    margin-left: 15px;
+
+    @include respond(phone) {
+      margin-left: 15px;
+    }
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  &__stars svg {
+    font-size: 1.6rem;
+  }
+
+  &__name {
+    margin-right: 8px;
+    font-weight: bold;
+    font-size: 1.4rem;
+  }
+
+  &__date {
+    font-size: 1.3rem;
+    font-weight: 500;
+
+    color: rgba(0, 0, 0, 0.55);
+  }
+
+  &__content {
+    margin-top: 10px;
+    font-size: 1.4rem;
+    line-height: 1.7;
+  }
+
+  &__user {
+    margin-top: 80px;
+    display: flex;
+  }
+
+  &__customer &__customer-avatar {
+    @include respond(desktop) {
+      width: 4.7rem;
+      height: 4.7rem;
+      margin-top: 3px;
+    }
+  }
+}

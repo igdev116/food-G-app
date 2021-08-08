@@ -32,8 +32,11 @@ function useFirestoreComments() {
 
   useEffect(() => {
     const unsubcribe = query.doc(id).onSnapshot((doc) => {
-      doc.data() &&
+      if (doc.data()) {
         setComments(doc.data().comments.sort((a, b) => b.date - a.date));
+      } else {
+        setComments([]);
+      }
     });
 
     return unsubcribe;

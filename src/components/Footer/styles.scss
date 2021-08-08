@@ -90,14 +90,16 @@
     }
   }
 
-  &__contact-txt:hover {
-    color: $primary-yellow-color;
+  @media (hover: hover) {
+    &__contact-txt:hover {
+      color: $primary-yellow-color;
 
-    cursor: pointer;
+      cursor: pointer;
+    }
   }
 
   &__contact--icons {
-    margin-top: 10px;
+    margin-top: 15px;
   }
 
   &__contact--icons svg {

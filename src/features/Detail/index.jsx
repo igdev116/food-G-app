@@ -12,7 +12,7 @@ import Banner from "components/Banner";
 import DetailTab from "./components/DetailTab";
 import DetailProducts from "./components/DetailProducts";
 import DetailImage from "./components/DetailImage";
-import DetailMain from "./components/DetailInfo";
+import DetailInfo from "./components/DetailInfo";
 
 import "./styles.scss";
 
@@ -46,7 +46,7 @@ function Detail() {
               <DetailImage product={selectedProduct} />
             </Grid>
             <Grid item xs={12} md={6}>
-              <DetailMain product={selectedProduct} />
+              <DetailInfo product={selectedProduct} />
             </Grid>
           </Grid>
         </section>

@@ -70,8 +70,10 @@
     }
   }
 
-  &__name:hover {
-    color: $primary-red-color;
+  @media (hover: hover) {
+    &__name:hover {
+      color: $primary-red-color;
+    }
   }
 
   &__description {
@@ -147,10 +149,12 @@
     }
   }
 
-  &:hover &__btns {
-    visibility: visible;
-    opacity: 1;
-    right: 8px;
+  @media (hover: hover) {
+    &:hover &__btns {
+      visibility: visible;
+      opacity: 1;
+      right: 8px;
+    }
   }
 
   &__btn {
@@ -170,8 +174,10 @@
     fill: $primary-white-color;
   }
 
-  &__btn:hover svg {
-    fill: $primary-red-color;
+  @media (hover: hover) {
+    &__btn:hover svg {
+      fill: $primary-red-color;
+    }
   }
 
   &__label {

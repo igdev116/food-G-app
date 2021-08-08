@@ -12,7 +12,7 @@ import "assets/styles/_typography.scss";
 import "./styles.scss";
 
 function DetailProducts() {
-  const { name } = useParams();
+  const { name, id } = useParams();
 
   const [products, setProducts] = useState([]);
   const [isShowDialog, setIsShowDialog] = useState(false);
@@ -23,7 +23,7 @@ function DetailProducts() {
   // get or reset products when id is changed
   useEffect(() => {
     const getProducts = async (type) => {
-      const response = await shopApi.getAll(type, { _limit: 5 });
+      const response = await shopApi.getAll(type);
       const action = setDetailProducts(response);
 
       dispatch(action);
@@ -34,12 +34,20 @@ function DetailProducts() {
 
   // get products from store to render
   useEffect(() => {
-    setProducts(productData);
+    if (productData.length <= 0) return;
 
-    return () => {
-      setProducts(productData);
-    };
-  }, [productData]);
+    const products = productData.filter((product) => product.id !== id);
+    const randomProducts = [];
+
+    for (let i = 0; i < 5; i++) {
+      const num = Math.floor(Math.random() * products.length);
+
+      randomProducts.push(products[num]);
+      products.splice(num, 1);
+    }
+
+    setProducts(randomProducts);
+  }, [productData, id]);
 
   const toggleDialog = () => {
     setIsShowDialog(true);

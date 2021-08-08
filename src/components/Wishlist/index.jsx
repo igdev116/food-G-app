@@ -20,7 +20,7 @@ import EmptyCartImg from "assets/svgs/Common/empty-cart.svg";
 
 import "./styles.scss";
 
-function Wishlist(props) {
+function Wishlist() {
   const dispatch = useDispatch();
 
   const { user } = useContext(AuthContext);

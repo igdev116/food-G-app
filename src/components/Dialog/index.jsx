@@ -8,15 +8,16 @@ import "./styles.scss";
 
 function Dialog(props) {
   const { isShow, setIsShow } = props;
+
   const history = useHistory();
 
   const hideDialog = () => {
     setIsShow(false);
   };
 
-  const moveToSignIn = () => {
+  const moveToLogin = () => {
     setIsShow(false);
-    history.push("/sign-in");
+    history.push("/login");
   };
 
   return (
@@ -32,12 +33,12 @@ function Dialog(props) {
             Cancle
           </Button>
           <Button
-            onClick={moveToSignIn}
+            onClick={moveToLogin}
             variant="contained"
             color="primary"
             className="dialog__btn"
           >
-            Sign In
+            Log In
           </Button>
         </div>
       </div>

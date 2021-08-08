@@ -5,20 +5,16 @@ import PropTypes from "prop-types";
 import PRIMARY_RED_COLOR from "constants/colors";
 import { ApiContext } from "contexts/ApiProvider";
 import { SHOP_PRODUCTS_VIEW } from "constants/localStorage";
+import { setShopProductsView } from "features/Shop/shopSlice";
 
 // material ui icons
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 import ShopProduct from "components/ShopProduct";
 import Dialog from "components/Dialog";
+import ShopEmpty from "./ShopEmpty";
 
 import "./ShopProducts.scss";
-import ShopEmpty from "./ShopEmpty";
-import { setShopProductsView } from "features/Shop/shopSlice";
-
-ShopProducts.propsTypes = {
-  isFlex: PropTypes.bool.isRequired,
-};
 
 function ShopProducts() {
   const [isShowDialog, setIsShowDialog] = useState(false);
@@ -69,5 +65,9 @@ function ShopProducts() {
     </>
   );
 }
+
+ShopProducts.propsTypes = {
+  isFlex: PropTypes.bool.isRequired,
+};
 
 export default ShopProducts;

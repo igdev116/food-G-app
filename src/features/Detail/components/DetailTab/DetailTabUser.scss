@@ -1,69 +1,19 @@
 @import "assets/styles/colors";
 @import "assets/styles/mixins";
 
-.detail-tab__comment {
-  margin-top: 50px;
+.detail-tab-user {
+  margin-top: 80px;
+  display: flex;
 
-  &-customer {
-    display: flex;
-  }
-
-  &-customer + &-customer {
-    margin-top: 60px;
-  }
-
-  &-wrapper {
-    margin-left: 15px;
-
-    @include respond(phone) {
-      margin-left: 15px;
-    }
-  }
-
-  &-row {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-
-  &-stars svg {
-    font-size: 1.6rem;
-  }
-
-  &-name {
-    margin-right: 8px;
-    font-weight: bold;
-    font-size: 1.4rem;
-  }
-
-  &-date {
-    font-size: 1.3rem;
-    font-weight: 500;
-
-    color: rgba(0, 0, 0, 0.55);
-  }
-
-  &-content {
-    margin-top: 10px;
-    font-size: 1.4rem;
-    line-height: 1.7;
-  }
-
-  &-user {
-    margin-top: 80px;
-    display: flex;
-  }
-
-  @include respond(desktop) {
-    &-user &-avatar,
-    &-customer &-customer-avatar {
+  &__avatar {
+    @include respond(desktop) {
       width: 4.7rem;
       height: 4.7rem;
       margin-top: 3px;
     }
   }
 
-  &-form {
+  &__form {
     margin-left: 20px;
     flex-basis: 60%;
 
@@ -76,19 +26,25 @@
     }
   }
 
-  &-rate svg {
+  &__row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  &__rate svg {
     font-size: 1.85rem;
 
     cursor: pointer;
   }
 
-  &-msg {
+  &__msg {
     font-size: 1.3rem;
     font-weight: 500;
     margin-left: 8px;
   }
 
-  &-textarea {
+  &__textarea {
     padding: 15px;
     outline: 0;
     border: 1px solid rgba(0, 0, 0, 0.08);
@@ -105,11 +61,11 @@
     scrollbar-width: none;
   }
 
-  &-textarea::-webkit-scrollbar {
+  &__textarea::-webkit-scrollbar {
     display: none;
   }
 
-  & &-submit {
+  & &__submit {
     text-transform: capitalize;
     padding: 7px 13px !important;
   }

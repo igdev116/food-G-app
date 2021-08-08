@@ -24,15 +24,26 @@ const ApiProvider = ({ children }) => {
 
   const { handlePrevious } = useContext(PrevFilterContext);
 
-  // handle when user at phone mode
+  const checkIsAtPhone = () => {
+    if (window.innerWidth < PHONE_BREAKPOINT) {
+      setIsAtPhone(true);
+    } else {
+      setIsAtPhone(false);
+    }
+  };
+
+  // handle when user refresh to phone mode
   useEffect(() => {
-    window.addEventListener("resize", () => {
-      if (window.innerWidth < PHONE_BREAKPOINT) {
-        setIsAtPhone(true);
-      } else {
-        setIsAtPhone(false);
-      }
-    });
+    window.addEventListener("load", checkIsAtPhone);
+
+    return window.addEventListener("load", checkIsAtPhone);
+  }, []);
+
+  // handle when user resize to phone mode
+  useEffect(() => {
+    window.addEventListener("resize", checkIsAtPhone);
+
+    return window.addEventListener("resize", checkIsAtPhone);
   }, []);
 
   // call api to get obj have pagination
@@ -55,6 +66,7 @@ const ApiProvider = ({ children }) => {
 
     try {
       setIsLoading(true);
+
       const response = await shopApi.getAll(
         type,
         isAtPhone

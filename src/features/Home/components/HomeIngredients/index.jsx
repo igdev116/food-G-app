@@ -5,7 +5,7 @@ import { homeIngredientsData } from "utils/staticData";
 
 import PrimaryButton from "components/PrimaryButton";
 
-import { IngredientsThumb } from "utils/homeImages";
+import { IngredientsThumb, ShapeOne, ShapeTwo } from "utils/homeImages";
 
 import "assets/styles/_typography.scss";
 import "./styles.scss";
@@ -55,11 +55,11 @@ function HomeIngredients() {
         </div>
         <span
           className="home-ingredients__shape-st"
-          style={{ backgroundImage: "url(/imgs/Home/shape-1.png)" }}
+          style={{ backgroundImage: `url(${ShapeOne})` }}
         ></span>
         <span
           className="home-ingredients__shape-nd"
-          style={{ backgroundImage: "url(/imgs/Home/shape-2.png)" }}
+          style={{ backgroundImage: `url(${ShapeTwo})` }}
         ></span>
       </div>
 

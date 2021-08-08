@@ -52,10 +52,12 @@
     }
   }
 
-  &__path:hover {
-    color: $primary-red-color;
+  @media (hover: hover) {
+    &__path:hover {
+      color: $primary-red-color;
 
-    cursor: pointer;
+      cursor: pointer;
+    }
   }
 
   &__path.active {

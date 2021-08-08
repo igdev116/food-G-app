@@ -44,7 +44,6 @@ const routesConfig = [
     component: Login,
   },
   {
-    // path: "*",
     component: NotFound,
   },
 ];

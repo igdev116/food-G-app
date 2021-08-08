@@ -11,28 +11,13 @@ import LoyaltyOutlinedIcon from "@material-ui/icons/LoyaltyOutlined";
 import PriorityHighOutlinedIcon from "@material-ui/icons/PriorityHighOutlined";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
-import "./styles.scss";
+import {
+  SUCCESS_COLOR,
+  FAVOURITE_COLOR,
+  WARNING_COLOR,
+} from "constants/colors";
 
-const toastTypes = {
-  success: {
-    title: "Success",
-    description: "The product has been added to cart",
-    color: "#43d787",
-    setIcon: () => <DoneOutlinedIcon style={{ fill: "#43d787" }} />,
-  },
-  wishlist: {
-    title: "Success",
-    description: "The product has been added to your favorites",
-    color: "#f766ad",
-    setIcon: () => <LoyaltyOutlinedIcon style={{ fill: "#f766ad" }} />,
-  },
-  warning: {
-    title: "Warning",
-    description: "Your cart is empty!",
-    color: "#ffbb00",
-    setIcon: () => <PriorityHighOutlinedIcon style={{ fill: "#ffbb00" }} />,
-  },
-};
+import "./styles.scss";
 
 function ToastMessage(type) {
   const toastType = toastTypes[type];
@@ -63,6 +48,27 @@ function ToastMessage(type) {
     pauseOnHover: false,
   });
 }
+
+const toastTypes = {
+  success: {
+    title: "Success",
+    description: "The product has been added to cart",
+    color: SUCCESS_COLOR,
+    setIcon: () => <DoneOutlinedIcon style={{ fill: SUCCESS_COLOR }} />,
+  },
+  wishlist: {
+    title: "Success",
+    description: "The product has been added to your favorites",
+    color: FAVOURITE_COLOR,
+    setIcon: () => <LoyaltyOutlinedIcon style={{ fill: FAVOURITE_COLOR }} />,
+  },
+  warning: {
+    title: "Warning",
+    description: "Your cart is empty!",
+    color: WARNING_COLOR,
+    setIcon: () => <PriorityHighOutlinedIcon style={{ fill: WARNING_COLOR }} />,
+  },
+};
 
 ToastMessage.propsTypes = {
   type: PropTypes.string,

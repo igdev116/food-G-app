@@ -1,11 +1,15 @@
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+
+import { setShopProducts } from "features/Shop/shopSlice";
+import shopApi from "api/shopApi";
+
 // material ui core
 import { Container } from "@material-ui/core";
 
 // material ui icons
 import ShoppingBasketOutlinedIcon from "@material-ui/icons/ShoppingBasketOutlined";
 import { setIsAtCheckout } from "components/Header/headerSlice";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 
 import "./styles.scss";
 
@@ -15,10 +19,18 @@ function CheckoutSuccess() {
   const dispatch = useDispatch();
 
   const moveToShop = () => {
-    const action = setIsAtCheckout(false);
+    const checkoutAction = setIsAtCheckout(false);
 
-    history.push("/shop/best-foods");
-    dispatch(action);
+    const getProducts = async (type, query) => {
+      const response = await shopApi.getAll(type, query);
+      const shopAction = setShopProducts(response);
+
+      dispatch(shopAction);
+    };
+
+    dispatch(checkoutAction);
+    history.push("/shop/our-foods?_limit=16");
+    getProducts("our-foods", { _limit: 16 });
   };
 
   return (

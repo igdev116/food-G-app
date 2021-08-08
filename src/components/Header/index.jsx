@@ -87,6 +87,7 @@ function Header() {
         setIsStickyTop(false);
       }
     };
+
     window.addEventListener("scroll", scrollShowNav);
 
     return window.addEventListener("scroll", scrollShowNav);

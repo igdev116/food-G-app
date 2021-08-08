@@ -1,4 +1,5 @@
 @import "assets/styles/colors";
+@import "assets/styles/mixins";
 
 .toast-msg {
   position: relative;
@@ -67,6 +68,10 @@
   top: 30px;
   right: 30px;
   width: 34.5rem;
+
+  @include respond(mobile) {
+    display: none;
+  }
 
   .Toastify__toast {
     position: relative;

@@ -115,16 +115,4 @@ ShopProduct.propsTypes = {
   moveToTop: PropTypes.func,
 };
 
-ShopProduct.propsTypes = {
-  id: "",
-  name: "",
-  img: "",
-  dsc: "",
-  price: 0,
-  rate: 0,
-
-  openDialog: null,
-  moveToTop: null,
-};
-
 export default ShopProduct;
