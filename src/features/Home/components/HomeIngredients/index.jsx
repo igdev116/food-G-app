@@ -48,18 +48,18 @@ function HomeIngredients() {
     });
 
     cardsTl
-      .from(leftCardRefs[0], { y: 20, duration: 0.6 }, 0.2)
-      .from(leftCardRefs[1], { y: 40, duration: 0.6 }, 0.6)
-      .from(leftCardRefs[2], { y: 20, duration: 0.6 }, 1)
-      .from(rightCardRefs[0], { y: 20, duration: 0.6 }, 1.4)
-      .from(rightCardRefs[1], { y: 40, duration: 0.6 }, 1.8)
-      .from(rightCardRefs[2], { y: 20, duration: 0.6 }, 2.2);
+      .from(leftCardRefs[0], { y: 20, opacity: 0, duration: 0.6 }, 0.2)
+      .from(leftCardRefs[1], { y: 40, opacity: 0, duration: 0.6 }, 0.6)
+      .from(leftCardRefs[2], { y: 20, opacity: 0, duration: 0.6 }, 1)
+      .from(rightCardRefs[0], { y: 20, opacity: 0, duration: 0.6 }, 1.4)
+      .from(rightCardRefs[1], { y: 40, opacity: 0, duration: 0.6 }, 1.8)
+      .from(rightCardRefs[2], { y: 20, opacity: 0, duration: 0.6 }, 2.2);
 
     contentTl
-      .from(captionRef, { x: -20, duration: 0.6 })
-      .from(headingRef, { x: 20, duration: 0.6 })
-      .from(priceRef, { y: 20, duration: 0.6 })
-      .from(btnRef, { y: 20, duration: 0.6 });
+      .from(captionRef, { x: -20, opacity: 0, duration: 0.6 })
+      .from(headingRef, { x: 20, opacity: 0, duration: 0.6 })
+      .from(priceRef, { y: 20, opacity: 0, duration: 0.6 })
+      .from(btnRef, { y: 20, opacity: 0, duration: 0.6 });
   }, []);
 
   return (

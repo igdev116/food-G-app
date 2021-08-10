@@ -35,13 +35,14 @@ function HomeWork() {
 
     tl.from(captionRef, {
       x: 20,
+      opacity: 0,
       duration: 0.7,
     })
-      .from(headingRef, { x: -20, duration: 0.8 }, "-=0.2")
-      .from(stepRefs[0], { y: 20, duration: 0.8 }, "-=0.2")
-      .from(stepRefs[1], { y: 20, duration: 0.6 }, "-=0.2")
-      .from(stepRefs[2], { y: 20, duration: 0.6 }, "-=0.2")
-      .from(stepRefs[3], { y: 20, duration: 0.6 }, "-=0.2");
+      .from(headingRef, { x: -20, opacity: 0, duration: 0.8 }, "-=0.2")
+      .from(stepRefs[0], { y: 20, opacity: 0, duration: 0.8 }, "-=0.2")
+      .from(stepRefs[1], { y: 20, opacity: 0, duration: 0.6 }, "-=0.2")
+      .from(stepRefs[2], { y: 20, opacity: 0, duration: 0.6 }, "-=0.2")
+      .from(stepRefs[3], { y: 20, opacity: 0, duration: 0.6 }, "-=0.2");
   }, []);
 
   return (

@@ -32,17 +32,9 @@ function HomeBanner(props) {
       },
     });
 
-    tl.from(titleRef, { x: -20, duration: 0.8 })
-      .from(
-        descRef,
-        {
-          x: 20,
-
-          duration: 0.7,
-        },
-        "-=0.2"
-      )
-      .from(btnRef, { y: 20, duration: 0.8 }, "-=0.2");
+    tl.from(titleRef, { x: -20, opacity: 0, duration: 0.8 })
+      .from(descRef, { x: 20, opacity: 0, duration: 0.7 }, "-=0.2")
+      .from(btnRef, { y: 20, opacity: 0, duration: 0.8 }, "-=0.2");
   }, []);
 
   return (

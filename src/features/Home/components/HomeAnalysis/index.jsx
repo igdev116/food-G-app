@@ -75,13 +75,13 @@ function HomeAnalysis() {
       },
     });
 
-    tl.from(numWpRefs[0], { duration: 0.5 })
+    tl.from(numWpRefs[0], { opacity: 0, duration: 0.5 })
       .counter(numRefs[0], { end: 350 }, 0)
-      .from(numWpRefs[1], { duration: 0.5 }, 0)
+      .from(numWpRefs[1], { opacity: 0, duration: 0.5 }, 0)
       .counter(numRefs[1], { end: 2678 }, 0)
-      .from(numWpRefs[2], { duration: 0.5 }, 0)
+      .from(numWpRefs[2], { opacity: 0, duration: 0.5 }, 0)
       .counter(numRefs[2], { end: 60 }, 0)
-      .from(numWpRefs[3], { duration: 0.5 }, 0)
+      .from(numWpRefs[3], { opacity: 0, duration: 0.5 }, 0)
       .counter(numRefs[3], { end: 30 }, 0);
   }, []);
 

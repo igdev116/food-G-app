@@ -31,11 +31,11 @@ function HomeDelivery() {
       },
     });
 
-    tl.from(captionRef, { x: -20, duration: 0.8 }, "-=0.2")
-      .from(headingRef, { x: 20, duration: 0.8 }, "-=0.2")
-      .from(descRef, { y: 20, duration: 0.8 }, "-=0.2")
-      .from(contactRef, { y: 15, duration: 0.65 }, "+=0.3")
-      .from(thumbRef, { x: 50, duration: 0.8 }, "-=1.2");
+    tl.from(captionRef, { x: -20, opacity: 0, duration: 0.8 }, "-=0.2")
+      .from(headingRef, { x: 20, opacity: 0, duration: 0.8 }, "-=0.2")
+      .from(descRef, { y: 20, opacity: 0, duration: 0.8 }, "-=0.2")
+      .from(contactRef, { y: 15, opacity: 0, duration: 0.65 }, "+=0.3")
+      .from(thumbRef, { x: 50, opacity: 0, duration: 0.8 }, "-=1.2");
   }, []);
 
   return (

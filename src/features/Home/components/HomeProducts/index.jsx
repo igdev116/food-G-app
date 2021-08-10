@@ -39,9 +39,9 @@ function HomeProducts() {
       },
     });
 
-    tl.from(captionRef, { x: 20, duration: 0.8 }, "-=0.2")
-      .from(headingRef, { x: -20, duration: 0.8 }, "-=0.2")
-      .from(cardsRef, { y: 20, duration: 0.8 }, "-=0.2");
+    tl.from(captionRef, { x: 20, opacity: 0, duration: 0.8 }, "-=0.2")
+      .from(headingRef, { x: -20, opacity: 0, duration: 0.8 }, "-=0.2")
+      .from(cardsRef, { y: 20, opacity: 0, duration: 0.8 }, "-=0.2");
   }, []);
 
   return (
