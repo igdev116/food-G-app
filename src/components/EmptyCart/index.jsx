@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { PRIMARY_WHITE_COLOR } from "constants/colors";
 import { PHONE_BREAKPOINT, TABLET_BREAKPOINT } from "constants/breakpoints";
 
+import LoadedImage from "components/LoadedImage";
+
 // styled components
 import styled from "styled-components";
 
@@ -61,7 +63,7 @@ function EmptyCart(props) {
 
   return (
     <EmptyCartContainer type={type}>
-      <img src={src} alt="Empty cart" />
+      <img src={LoadedImage(src)} alt="Empty cart" />
       <h2>Your {type === "wishlist" ? "wishlist" : "cart"} is empty 🍔</h2>
     </EmptyCartContainer>
   );

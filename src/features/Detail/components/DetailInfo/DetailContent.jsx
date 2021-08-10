@@ -61,7 +61,7 @@ function DetailContent(props) {
     }
 
     handleAddToFirestore(type, product);
-    ToastMessage("wishlist");
+    ToastMessage(type);
   };
 
   const contentLoader = () => (

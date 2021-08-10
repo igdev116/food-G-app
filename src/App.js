@@ -1,15 +1,16 @@
-import {
-  BrowserRouter as Router,
-  Redirect,
-  Route,
-  Switch,
-} from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
-import Theme from "utils/cusMatUi";
+import Theme from "utils/customMaterialUi";
 import ApiProvider from "./contexts/ApiProvider";
 import AuthProvider from "./contexts/AuthProvider";
 import PrevFilterProvider from "./contexts/PrevFilterProvider";
 import Routes from "routes/Routes";
+
+// gsap
+import gsap from "gsap";
+
+// gsap plugins
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 // react toastify
 import { ToastContainer } from "react-toastify";
@@ -25,6 +26,12 @@ import ScrollButton from "components/ScrollButton";
 import "./App.scss";
 
 function App() {
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.defaults({
+    opacity: 0,
+    force3D: true,
+  });
+
   return (
     <ThemeProvider theme={Theme}>
       <Router>

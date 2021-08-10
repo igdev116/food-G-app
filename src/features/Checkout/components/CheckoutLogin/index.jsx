@@ -2,6 +2,7 @@
 import { Container } from "@material-ui/core";
 
 import PrimaryButton from "components/PrimaryButton";
+import LoadedImage from "components/LoadedImage";
 
 import CheckoutLoginSvg from "assets/svgs/Checkout/login.svg";
 
@@ -21,7 +22,7 @@ function CheckoutLogin() {
         </PrimaryButton>
         <img
           className="checkout-login__img"
-          src={CheckoutLoginSvg}
+          src={LoadedImage(CheckoutLoginSvg)}
           alt="Login"
         />
       </div>

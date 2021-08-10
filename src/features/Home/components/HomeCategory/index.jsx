@@ -1,8 +1,13 @@
+import { useEffect } from "react";
+
 import { homeCategoryData } from "utils/staticData";
 
 // material ui
 import { Button, Container } from "@material-ui/core";
 import DoubleArrowIcon from "@material-ui/icons/DoubleArrow";
+
+// gsap
+import gsap from "gsap";
 
 // swiper js
 import SwiperCore, { Autoplay, Navigation } from "swiper/core";
@@ -13,6 +18,8 @@ import "swiper/swiper.scss";
 import "swiper/components/navigation/navigation.scss";
 
 import BackgroundIcon from "components/BackgroundIcon";
+import LoadedImage from "components/LoadedImage";
+
 import {
   BackgroundIconOne,
   BackgroundIconTwo,
@@ -26,6 +33,29 @@ import "./styles.scss";
 SwiperCore.use([Autoplay, Navigation]);
 
 function HomeCategory() {
+  let containerRef;
+  let captionRef;
+  let headingRef;
+  let cardsRef;
+
+  // animation
+  useEffect(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef,
+        start: "20% bottom",
+      },
+      opacity: 0,
+    });
+
+    tl.from(captionRef, {
+      x: 20,
+      duration: 0.8,
+    })
+      .from(headingRef, { x: -20, duration: 0.8 }, "-=0.2")
+      .from(cardsRef, { y: -20, duration: 0.6 }, "-=0.2");
+  }, []);
+
   return (
     <section className="home-category">
       <BackgroundIcon
@@ -55,10 +85,17 @@ function HomeCategory() {
       />
 
       <Container>
-        <div className="home-category__container">
-          <div className="primary-yellow-text">What we have?</div>
-          <h2 className="primary-heading-text">Browse food category</h2>
-          <div className="home-category__cards">
+        <div
+          ref={(el) => (containerRef = el)}
+          className="home-category__container"
+        >
+          <div ref={(el) => (captionRef = el)} className="primary-yellow-text">
+            What we have?
+          </div>
+          <h2 ref={(el) => (headingRef = el)} className="primary-heading-text">
+            Browse food category
+          </h2>
+          <div ref={(el) => (cardsRef = el)} className="home-category__cards">
             <Swiper
               slidesPerView={2}
               loop
@@ -86,7 +123,7 @@ function HomeCategory() {
                     <div className="home-category__card-img-wrapper">
                       <img
                         className="home-category__card-img"
-                        src={img}
+                        src={LoadedImage(img)}
                         alt="Category card"
                       />
                     </div>

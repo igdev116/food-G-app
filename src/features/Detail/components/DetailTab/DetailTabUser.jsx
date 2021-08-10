@@ -13,11 +13,13 @@ import StarIcon from "@material-ui/icons/Star";
 import PrimaryButton from "components/PrimaryButton";
 
 import "./DetailTabUser.scss";
+import Dialog from "components/Dialog";
 
 function DetailTabUser({ colors, commentRef }) {
   const [areaValue, setAreaValue] = useState("");
   const [selectedStar, setSelectedStar] = useState(0);
   const [hoveredStar, setHoveredStar] = useState(0);
+  const [isShowDialog, setIsShowDialog] = useState(false);
 
   const { id } = useParams();
 
@@ -33,9 +35,14 @@ function DetailTabUser({ colors, commentRef }) {
   };
 
   const handleSubmit = (e) => {
-    const date = new Date().getTime();
-
     e.preventDefault();
+
+    if (!user) {
+      setIsShowDialog(true);
+      return;
+    }
+
+    const date = new Date().getTime();
 
     if (!areaValue.trim()) return;
 
@@ -56,47 +63,51 @@ function DetailTabUser({ colors, commentRef }) {
   };
 
   return (
-    <div className="detail-tab-user">
-      <Avatar
-        src={user && user.photoURL}
-        className="detail-tab-user__avatar"
-        alt="Avatar"
-      />
-
-      <form onSubmit={handleSubmit} className="detail-tab-user__form">
-        <div className="detail-tab-user__row">
-          <div className="detail-tab-user__rate">
-            {Array(5)
-              .fill()
-              .map((_, index) => (
-                <StarIcon
-                  onClick={() => handleSelectedStar(index + 1)}
-                  onMouseOver={() => handleHoveredStar(index + 1)}
-                  onMouseLeave={() => handleHoveredStar(0)}
-                  style={{
-                    fill:
-                      index < (selectedStar || hoveredStar)
-                        ? colors.yellow
-                        : colors.blur,
-                  }}
-                />
-              ))}
-          </div>
-          <span className="detail-tab-user__msg">(Please choose an one)</span>
-        </div>
-        <textarea
-          className="detail-tab-user__textarea"
-          placeholder="Type your comment here..."
-          onChange={(e) => setAreaValue(e.target.value)}
-          value={areaValue}
+    <>
+      <div className="detail-tab-user">
+        <Avatar
+          src={user && user.photoURL}
+          className="detail-tab-user__avatar"
+          alt="Avatar"
         />
-        <button type="submit">
-          <PrimaryButton subClass="red detail-tab-user__submit">
-            Post comment
-          </PrimaryButton>
-        </button>
-      </form>
-    </div>
+
+        <form onSubmit={handleSubmit} className="detail-tab-user__form">
+          <div className="detail-tab-user__row">
+            <div className="detail-tab-user__rate">
+              {Array(5)
+                .fill()
+                .map((_, index) => (
+                  <StarIcon
+                    onClick={() => handleSelectedStar(index + 1)}
+                    onMouseOver={() => handleHoveredStar(index + 1)}
+                    onMouseLeave={() => handleHoveredStar(0)}
+                    style={{
+                      fill:
+                        index < (selectedStar || hoveredStar)
+                          ? colors.yellow
+                          : colors.blur,
+                    }}
+                  />
+                ))}
+            </div>
+            <span className="detail-tab-user__msg">(Please choose an one)</span>
+          </div>
+          <textarea
+            className="detail-tab-user__textarea"
+            placeholder="Type your comment here..."
+            onChange={(e) => setAreaValue(e.target.value)}
+            value={areaValue}
+          />
+          <button type="submit">
+            <PrimaryButton subClass="red detail-tab-user__submit">
+              Post comment
+            </PrimaryButton>
+          </button>
+        </form>
+      </div>
+
+      <Dialog isShow={isShowDialog} setIsShow={setIsShowDialog} />
+    </>
   );
 }
 

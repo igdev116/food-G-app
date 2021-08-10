@@ -1,4 +1,9 @@
+import { useEffect } from "react";
+
 import { homeProductsData } from "utils/staticData";
+
+// gsap
+import gsap from "gsap";
 
 // material ui
 import { Container } from "@material-ui/core";
@@ -20,15 +25,36 @@ import "./styles.scss";
 SwiperCore.use([Autoplay, Pagination]);
 
 function HomeProducts() {
+  let containerRef;
+  let captionRef;
+  let headingRef;
+  let cardsRef;
+
+  // animation
+  useEffect(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef,
+        start: "60% bottom",
+      },
+    });
+
+    tl.from(captionRef, { x: 20, duration: 0.8 }, "-=0.2")
+      .from(headingRef, { x: -20, duration: 0.8 }, "-=0.2")
+      .from(cardsRef, { y: 20, duration: 0.8 }, "-=0.2");
+  }, []);
+
   return (
-    <section className="home-products">
+    <section ref={(el) => (containerRef = el)} className="home-products">
       <Dialog />
       <Container>
-        <div className="primary-yellow-text">Quality Products</div>
-        <h2 className="primary-heading-text">
+        <div ref={(el) => (captionRef = el)} className="primary-yellow-text">
+          Quality Products
+        </div>
+        <h2 ref={(el) => (headingRef = el)} className="primary-heading-text">
           Burger as expected <strong>dilicious</strong> one
         </h2>
-        <div className="home-products__container">
+        <div ref={(el) => (cardsRef = el)} className="home-products__container">
           <Swiper
             loop
             speed={800}

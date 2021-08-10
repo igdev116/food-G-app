@@ -1,4 +1,9 @@
+import { useEffect } from "react";
+
 import { homeReviewsData } from "utils/staticData";
+
+// gsap
+import gsap from "gsap";
 
 // material ui core
 import { Container } from "@material-ui/core";
@@ -12,6 +17,7 @@ import "swiper/swiper.scss";
 import "swiper/components/pagination/pagination.scss";
 
 import BackgroundIcon from "components/BackgroundIcon";
+import LoadedImage from "components/LoadedImage";
 
 import {
   BackgroundIconFour,
@@ -26,9 +32,54 @@ import "./styles.scss";
 // swiper modules
 SwiperCore.use([Autoplay, Pagination]);
 
-function HomeReview() {
+function HomeReviews() {
+  let containerRef;
+
+  // animation
+  useEffect(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef,
+        start: "center bottom",
+      },
+    });
+
+    tl.from(containerRef, { y: -20, duration: 0.8 });
+  }, []);
+
   return (
     <section className="home-reviews">
+      <Container ref={(el) => (containerRef = el)}>
+        <Swiper
+          speed={500}
+          spaceBetween={20}
+          loop
+          grabCursor={true}
+          pagination={{ clickable: true }}
+          autoplay={{
+            delay: 10000,
+            disableOnInteraction: false,
+          }}
+        >
+          {homeReviewsData.map(({ img, name, role, comment }, index) => (
+            <SwiperSlide key={index}>
+              <div className="home-reviews__content">
+                <div className="home-reviews__img-wrapper">
+                  <img
+                    src={LoadedImage(img)}
+                    alt="user-review"
+                    className="home-reviews__img"
+                  ></img>
+                </div>
+                <div className="home-reviews__name">{name}</div>
+                <div className="home-reviews__role">{role}</div>
+                <p className="home-reviews__comment">{comment}</p>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </Container>
+
       <BackgroundIcon
         src={BackgroundIconFour}
         width="14"
@@ -73,39 +124,8 @@ function HomeReview() {
         duration="10"
         delay="3"
       />
-      <Container>
-        <Swiper
-          speed={500}
-          spaceBetween={20}
-          loop
-          grabCursor={true}
-          pagination={{ clickable: true }}
-          autoplay={{
-            delay: 10000,
-            disableOnInteraction: false,
-          }}
-        >
-          {homeReviewsData.map(({ img, name, role, comment }, index) => (
-            <SwiperSlide key={index}>
-              <div className="home-reviews__content">
-                <div className="home-reviews__img-wrapper">
-                  <img
-                    src={img}
-                    alt="user-review"
-                    className="home-reviews__img"
-                  ></img>
-                </div>
-                <div className="home-reviews__name">{name}</div>
-                <div className="home-reviews__role">{role}</div>
-                <p className="home-reviews__comment">{comment}</p>
-              </div>
-              ;
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </Container>
     </section>
   );
 }
 
-export default HomeReview;
+export default HomeReviews;

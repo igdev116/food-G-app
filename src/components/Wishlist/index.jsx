@@ -79,7 +79,7 @@ function Wishlist() {
           ({ id, name, img, dsc, price, rate, country }) => (
             <div key={id} className="wishlist__item">
               <div className="wishlist__img">
-                <img src={img} alt="" />
+                <img src={img} alt="Wishlist" />
               </div>
               <div className="wishlist__content">
                 <span className="wishlist__name">{name}</span>

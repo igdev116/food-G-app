@@ -9,6 +9,8 @@ import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 
+import LoadedImage from "components/LoadedImage";
+
 import "./CartItem.scss";
 
 function CartItem(props) {
@@ -26,7 +28,7 @@ function CartItem(props) {
   return (
     <div id={id} className="cart-item">
       <div className="cart-item__img">
-        <img src={img} alt="Cart product" />
+        <img src={LoadedImage(img)} alt="Cart product" />
       </div>
 
       <div className="cart-item__content">

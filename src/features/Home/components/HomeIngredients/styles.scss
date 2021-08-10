@@ -26,6 +26,10 @@
 
       background-image: none;
     }
+
+    @include respond(mobile) {
+      background-image: none !important;
+    }
   }
 
   &__cards-left,
@@ -39,7 +43,7 @@
     }
   }
 
-  &__cards-left &__card:nth-child(2) {
+  &__cards-left &__card-wrapper:nth-child(2) {
     transform: translateX(60px);
 
     @include respond(mobile) {
@@ -47,13 +51,13 @@
     }
   }
 
-  &__cards-left &__card:last-child {
+  &__cards-left &__card-wrapper:last-child {
     @include respond(phone) {
       margin-bottom: 0;
     }
   }
 
-  &__cards-right &__card:nth-child(2) {
+  &__cards-right &__card-wrapper:nth-child(2) {
     transform: translateX(-60px);
 
     @include respond(mobile) {
@@ -61,7 +65,7 @@
     }
   }
 
-  &__cards-left &__card:nth-child(2):hover {
+  &__cards-left &__card-wrapper:nth-child(2):hover {
     transform: translate(60px, -10px);
 
     @include respond(mobile) {
@@ -69,7 +73,7 @@
     }
   }
 
-  &__cards-right &__card:nth-child(2):hover {
+  &__cards-right &__card-wrapper:nth-child(2):hover {
     transform: translate(-60px, -10px);
 
     @include respond(mobile) {
@@ -137,11 +141,8 @@
     background-color: $primary-red-color;
   }
 
-  &__card:hover &__card-title,
-  &__card:hover &__card-content {
+  &__card:hover :is(&__card-title, &__card-content) {
     color: $primary-white-color;
-
-    transition: all 0.2s ease-in-out;
   }
 
   &__card-title {
@@ -149,6 +150,8 @@
     margin-bottom: 8px;
 
     color: $primary-black-color;
+
+    transition: all 0.12s ease-in-out;
   }
 
   &__card-content {
@@ -156,6 +159,8 @@
     line-height: 1.6;
 
     color: $primary-grey-color;
+
+    transition: all 0.12s ease-in-out;
 
     @include respond(mobile) {
       overflow: hidden;

@@ -1,29 +1,72 @@
+import { useEffect } from "react";
+
 import { homeWorkData } from "utils/staticData";
 
-// material ui
+// gsap
+import gsap from "gsap";
+
+// material ui core
 import { Container } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
+
+import LoadedImage from "components/LoadedImage";
 
 import "assets/styles/_typography.scss";
 import "./styles.scss";
 
 function HomeWork() {
+  let containerRef;
+  let captionRef;
+  let headingRef;
+  let stepOneRef;
+  let stepTwoRef;
+  let stepThreeRef;
+  let stepFourRef;
+  const stepRefs = [stepOneRef, stepTwoRef, stepThreeRef, stepFourRef];
+
+  // animation
+  useEffect(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef,
+        start: "20% bottom",
+      },
+    });
+
+    tl.from(captionRef, {
+      x: 20,
+      duration: 0.7,
+    })
+      .from(headingRef, { x: -20, duration: 0.8 }, "-=0.2")
+      .from(stepRefs[0], { y: 20, duration: 0.8 }, "-=0.2")
+      .from(stepRefs[1], { y: 20, duration: 0.6 }, "-=0.2")
+      .from(stepRefs[2], { y: 20, duration: 0.6 }, "-=0.2")
+      .from(stepRefs[3], { y: 20, duration: 0.6 }, "-=0.2");
+  }, []);
+
   return (
-    <section className="home-work">
+    <section ref={(el) => (containerRef = el)} className="home-work">
       <Container>
-        <div className="primary-yellow-text">Order now!</div>
-        <h2 className="primary-heading-text">How it works</h2>
+        <div ref={(el) => (captionRef = el)} className="primary-yellow-text">
+          Order now!
+        </div>
+        <h2 ref={(el) => (headingRef = el)} className="primary-heading-text">
+          How it works
+        </h2>
 
         <div className="home-work__steps">
           <Grid container spacing={3}>
             {homeWorkData.map(({ img, step, content, arrow }, index) => (
               <Grid key={index} item xs={12} sm={6} lg={3}>
-                <div className="home-work__step">
+                <div
+                  ref={(el) => (stepRefs[index] = el)}
+                  className="home-work__step"
+                >
                   <div className="home-work__thumb">
                     <div className="home-work__thumb-wrapper">
                       <img
                         className="home-work__img"
-                        src={img}
+                        src={LoadedImage(img)}
                         alt="steps"
                       ></img>
                       <span>0{step} Step</span>

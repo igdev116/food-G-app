@@ -1,21 +1,8 @@
-import React from "react";
 import PropTypes from "prop-types";
 
+import LoadedImage from "components/LoadedImage";
+
 import "./HomeProduct.scss";
-
-HomeProduct.propsTypes = {
-  img: PropTypes.string,
-  name: PropTypes.string,
-  description: PropTypes.string,
-  price: PropTypes.string,
-};
-
-HomeProduct.propsTypes = {
-  img: "",
-  name: "",
-  description: "",
-  price: "",
-};
 
 function HomeProduct(props) {
   const { img, name, description, price } = props;
@@ -23,7 +10,11 @@ function HomeProduct(props) {
   return (
     <div className="home-product">
       <div className="home-product__wrapper">
-        <img className="home-product__img" src={img} alt="Home product" />
+        <img
+          className="home-product__img"
+          src={LoadedImage(img)}
+          alt="Home product"
+        />
         <button className="btn">
           <span>Best Deal</span>
         </button>
@@ -36,5 +27,12 @@ function HomeProduct(props) {
     </div>
   );
 }
+
+HomeProduct.propsTypes = {
+  img: PropTypes.string,
+  name: PropTypes.string,
+  description: PropTypes.string,
+  price: PropTypes.string,
+};
 
 export default HomeProduct;

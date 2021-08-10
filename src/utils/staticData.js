@@ -238,30 +238,17 @@ const homeReviewsData = [
 
 const homeAnalysisData = [
   {
-    end: 350,
-    delay: 0.3,
-    duration: 4,
     suffix: "+",
     description: "Cups of Coffee",
   },
   {
-    end: 2678,
-    delay: 0.2,
-    duration: 4,
-    separator: ",",
     suffix: "+",
     description: "Orders Everyday",
   },
   {
-    end: 60,
-    delay: 0.5,
-    duration: 4,
     description: "Skilled Professionals",
   },
   {
-    end: 30,
-    delay: 0.5,
-    duration: 4,
     description: "Sandwichs at Hour",
   },
 ];
