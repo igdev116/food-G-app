@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import { homeCategoryData } from "utils/staticData";
 
@@ -33,10 +33,10 @@ import "./styles.scss";
 SwiperCore.use([Autoplay, Navigation]);
 
 function HomeCategory() {
-  let containerRef;
-  let captionRef;
-  let headingRef;
-  let cardsRef;
+  let containerRef = useRef(null);
+  let captionRef = useRef(null);
+  let headingRef = useRef(null);
+  let cardsRef = useRef(null);
 
   // animation
   useEffect(() => {

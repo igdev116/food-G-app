@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import { homeWorkData } from "utils/staticData";
 
@@ -15,13 +15,13 @@ import "assets/styles/_typography.scss";
 import "./styles.scss";
 
 function HomeWork() {
-  let containerRef;
-  let captionRef;
-  let headingRef;
-  let stepOneRef;
-  let stepTwoRef;
-  let stepThreeRef;
-  let stepFourRef;
+  let containerRef = useRef(null);
+  let captionRef = useRef(null);
+  let headingRef = useRef(null);
+  let stepOneRef = useRef(null);
+  let stepTwoRef = useRef(null);
+  let stepThreeRef = useRef(null);
+  let stepFourRef = useRef(null);
   const stepRefs = [stepOneRef, stepTwoRef, stepThreeRef, stepFourRef];
 
   // animation

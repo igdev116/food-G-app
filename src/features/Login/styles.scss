@@ -63,6 +63,10 @@
     color: $primary-grey-color;
   }
 
+  &__msg-btn {
+    cursor: pointer;
+  }
+
   &__separate {
     position: relative;
 

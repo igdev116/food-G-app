@@ -4,6 +4,7 @@ const PRIMARY_WHITE_COLOR = "#fff";
 const SUCCESS_COLOR = "#43d787";
 const FAVOURITE_COLOR = "#f766ad";
 const WARNING_COLOR = "#ffbb00";
+const CLOSED_COLOR = "#3598DB";
 
 export {
   PRIMARY_YELLOW_COLOR,
@@ -11,5 +12,6 @@ export {
   SUCCESS_COLOR,
   FAVOURITE_COLOR,
   WARNING_COLOR,
+  CLOSED_COLOR,
 };
 export default PRIMARY_RED_COLOR;

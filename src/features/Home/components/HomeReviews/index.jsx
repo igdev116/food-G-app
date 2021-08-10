@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import { homeReviewsData } from "utils/staticData";
 
@@ -33,7 +33,7 @@ import "./styles.scss";
 SwiperCore.use([Autoplay, Pagination]);
 
 function HomeReviews() {
-  let containerRef;
+  let containerRef = useRef(null);
 
   // animation
   useEffect(() => {

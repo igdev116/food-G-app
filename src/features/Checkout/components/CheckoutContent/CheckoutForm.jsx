@@ -42,7 +42,7 @@ const schema = yup.object().shape({
   phone: yup
     .string()
     .required("A phone number is required")
-    .matches(/(09|01[2|6|8|9])+([0-9]{8})\b/, "Phone number is not valid"),
+    .matches(/(84|0[3|5|7|8|9])+([0-9]{8})\b/, "Phone number is not valid"),
 });
 
 function CheckoutForm(props) {

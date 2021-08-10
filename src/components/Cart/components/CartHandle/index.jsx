@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 
 import usePrice from "hooks/usePrice";
 
@@ -14,16 +13,10 @@ import "./styles.scss";
 function CartHandle() {
   const [isActive, setIsActive] = useState(false);
 
-  const history = useHistory();
-
   const { totalPrice, discount } = usePrice();
 
   const toggleDropUp = () => {
     setIsActive(!isActive);
-  };
-
-  const moveToCheckout = () => {
-    history.push("/checkout");
   };
 
   return (

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import { homeAnalysisData } from "utils/staticData";
 
@@ -18,15 +18,15 @@ import "./styles.scss";
 function HomeAnalysis() {
   const [isShow, setIsShow] = useState(false);
 
-  let containerRef;
-  let numWpOneRef;
-  let numWpTwoRef;
-  let numWpThreeRef;
-  let numWpFourRef;
-  let numOneRef;
-  let numTwoRef;
-  let numThreeRef;
-  let numFourRef;
+  let containerRef = useRef(null);
+  let numWpOneRef = useRef(null);
+  let numWpTwoRef = useRef(null);
+  let numWpThreeRef = useRef(null);
+  let numWpFourRef = useRef(null);
+  let numOneRef = useRef(null);
+  let numTwoRef = useRef(null);
+  let numThreeRef = useRef(null);
+  let numFourRef = useRef(null);
   const numWpRefs = [numWpOneRef, numWpTwoRef, numWpThreeRef, numWpFourRef];
   const numRefs = [numOneRef, numTwoRef, numThreeRef, numFourRef];
 

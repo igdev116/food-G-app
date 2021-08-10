@@ -12,6 +12,7 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 
 import LoginForm from "./components/LoginForm";
 import LoadedImage from "components/LoadedImage";
+import ToastMessage from "components/ToastMessage";
 
 import LoginThumbSvg from "assets/svgs/Login/thumb.svg";
 import GoogleSvg from "assets/svgs/Login/google.svg";
@@ -23,7 +24,6 @@ function Login() {
 
   const { setHasHeader } = useContext(AuthContext);
 
-  // log in with google
   const handleGoogleLogIn = () => {
     auth
       .signInWithPopup(googleProvider)
@@ -36,7 +36,6 @@ function Login() {
       });
   };
 
-  // log in with facebook
   const handleFacebookLogIn = () => {
     auth
       .signInWithPopup(facebookProvider)
@@ -47,6 +46,10 @@ function Login() {
       .catch((error) => {
         console.log(error.message);
       });
+  };
+
+  const handleFeatureClosed = () => {
+    ToastMessage("closed");
   };
 
   useEffect(() => {
@@ -67,9 +70,9 @@ function Login() {
 
             <div className="login__msg">
               <span>Don't have an account? </span>
-              <Link className="login__msg-btn" to="#">
+              <span onClick={handleFeatureClosed} className="login__msg-btn">
                 <strong>Create an account</strong>
-              </Link>
+              </span>
             </div>
 
             <LoginForm />

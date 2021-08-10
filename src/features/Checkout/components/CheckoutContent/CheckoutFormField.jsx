@@ -12,7 +12,7 @@ function CheckoutFormField(props) {
           className="checkout-form-field__input"
           placeholder=" "
           type="text"
-          {...register(`${name}`)}
+          {...register(name)}
         />
         <span className="checkout-form-field__label">{label}</span>
       </div>

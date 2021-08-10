@@ -21,7 +21,10 @@
   }
 
   &__btn {
-    text-align: center;
+    display: block;
+    margin: 0 auto;
+
+    background-color: transparent;
   }
 
   &__btn .primary-btn {

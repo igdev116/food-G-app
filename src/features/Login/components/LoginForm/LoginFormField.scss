@@ -20,6 +20,8 @@
     width: 18px;
     height: 18px;
     margin: 0 8px;
+
+    color: $primary-grey-color;
   }
 
   input {
@@ -33,5 +35,13 @@
 
   input::placeholder {
     color: $primary-grey-color;
+  }
+
+  &__error {
+    display: inline-block;
+    font-size: 1.3rem;
+    margin-top: 5px;
+
+    color: $error-color;
   }
 }

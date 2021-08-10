@@ -66,6 +66,8 @@ function ShopHandle() {
     };
 
     window.addEventListener("click", handleClickDrop);
+
+    return window.addEventListener("click", handleClickDrop);
   }, []);
 
   const handleSearch = (e) => {

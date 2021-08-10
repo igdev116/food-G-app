@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import { homeIngredientsData } from "utils/staticData";
 
@@ -14,19 +14,19 @@ import "assets/styles/_typography.scss";
 import "./styles.scss";
 
 function HomeIngredients() {
-  let cardsContainerRef;
-  let cardOneRef;
-  let cardTwoRef;
-  let cardThreeRef;
-  let cardFourRef;
-  let cardFiveRef;
-  let cardSixRef;
+  let cardsContainerRef = useRef(null);
+  let cardOneRef = useRef(null);
+  let cardTwoRef = useRef(null);
+  let cardThreeRef = useRef(null);
+  let cardFourRef = useRef(null);
+  let cardFiveRef = useRef(null);
+  let cardSixRef = useRef(null);
 
-  let contentContainerRef;
-  let captionRef;
-  let headingRef;
-  let priceRef;
-  let btnRef;
+  let contentContainerRef = useRef(null);
+  let captionRef = useRef(null);
+  let headingRef = useRef(null);
+  let priceRef = useRef(null);
+  let btnRef = useRef(null);
 
   const leftCardRefs = [cardOneRef, cardTwoRef, cardThreeRef];
   const rightCardRefs = [cardFourRef, cardFiveRef, cardSixRef];
@@ -77,8 +77,9 @@ function HomeIngredients() {
               <div
                 ref={(el) => (leftCardRefs[index] = el)}
                 className="home-ingredients__card-wrapper"
+                key={`${title}-${index}`}
               >
-                <div key={index} className="home-ingredients__card">
+                <div className="home-ingredients__card">
                   <h3 className="home-ingredients__card-title">{title}</h3>
                   <p className="home-ingredients__card-content">{content}</p>
                   <span>{order}</span>
@@ -93,6 +94,7 @@ function HomeIngredients() {
               <div
                 ref={(el) => (rightCardRefs[index] = el)}
                 className="home-ingredients__card-wrapper"
+                key={`${title}-${index}`}
               >
                 <div key={index} className="home-ingredients__card">
                   <h3 className="home-ingredients__card-title">{title}</h3>

@@ -27,10 +27,15 @@ import "./App.scss";
 
 function App() {
   gsap.registerPlugin(ScrollTrigger);
-  gsap.defaults({
+  gsap.config({
     opacity: 0,
     force3D: true,
   });
+
+  window.console = {
+    log: {},
+    dir: {},
+  };
 
   return (
     <ThemeProvider theme={Theme}>

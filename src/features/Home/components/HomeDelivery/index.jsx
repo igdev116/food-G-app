@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import gsap from "gsap";
 
@@ -15,12 +15,12 @@ import "assets/styles/_typography.scss";
 import "./styles.scss";
 
 function HomeDelivery() {
-  let containerRef;
-  let captionRef;
-  let headingRef;
-  let descRef;
-  let contactRef;
-  let thumbRef;
+  let containerRef = useRef(null);
+  let captionRef = useRef(null);
+  let headingRef = useRef(null);
+  let descRef = useRef(null);
+  let contactRef = useRef(null);
+  let thumbRef = useRef(null);
 
   // animation
   useEffect(() => {

@@ -20,6 +20,7 @@
     height: 2.3rem;
     border-radius: 50%;
     margin-right: 12px;
+    flex-shrink: 0;
 
     background-color: $primary-white-color;
   }

@@ -19,6 +19,8 @@
 16. React-content-loader
 17. React-select
 18. Gsap
+19.Firebase authentication
+20.Firebase firestore
 ```
 
 ## Folder structure
@@ -36,11 +38,4 @@ src
 |__hooks
 |__routes
 |__utils
-```
-
-<!-- https://felixgerschau.com/react-rerender-components/#:~:text=In%20function%20components%2C%20the%20execution,t%20even%20receive%20any%20props. -->
-
-```
-Nếu đơn giản chỉ là bật tắt thì ko cần handle
-Đi sang trang khác thì moveto
 ```

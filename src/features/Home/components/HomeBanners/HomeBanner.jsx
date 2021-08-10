@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 
 // gsap
@@ -18,10 +18,10 @@ import "./HomeBanner.scss";
 function HomeBanner(props) {
   const { title, description, strong, background } = props;
 
-  let containerRef;
-  let titleRef;
-  let descRef;
-  let btnRef;
+  let containerRef = useRef(null);
+  let titleRef = useRef(null);
+  let descRef = useRef(null);
+  let btnRef = useRef(null);
 
   // animation
   useEffect(() => {
