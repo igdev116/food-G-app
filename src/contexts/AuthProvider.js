@@ -20,8 +20,8 @@ function AuthProvider({ children }) {
     const unsubscribed = auth.onAuthStateChanged((user) => {
       if (user) {
         const { displayName, email, uid, photoURL } = user;
-        setUser({ displayName, email, uid, photoURL });
 
+        setUser({ displayName, email, uid, photoURL });
         addToFirestore(uid);
 
         // if user tries to login then redirect to home

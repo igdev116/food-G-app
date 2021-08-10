@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 
-import { googleProvider, auth } from "configs/firebaseConfig";
+import { googleProvider, auth, facebookProvider } from "configs/firebaseConfig";
 import { AuthContext } from "contexts/AuthProvider";
 
 // material ui core
@@ -11,6 +11,7 @@ import { Button, Container } from "@material-ui/core";
 import FacebookIcon from "@material-ui/icons/Facebook";
 
 import LoginForm from "./components/LoginForm";
+import LoadedImage from "components/LoadedImage";
 
 import LoginThumbSvg from "assets/svgs/Login/thumb.svg";
 import GoogleSvg from "assets/svgs/Login/google.svg";
@@ -24,10 +25,28 @@ function Login() {
 
   // log in with google
   const handleGoogleLogIn = () => {
-    auth.signInWithPopup(googleProvider).then(() => {
-      history.goBack();
-      setHasHeader(true);
-    });
+    auth
+      .signInWithPopup(googleProvider)
+      .then(() => {
+        history.goBack();
+        setHasHeader(true);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
+  // log in with facebook
+  const handleFacebookLogIn = () => {
+    auth
+      .signInWithPopup(facebookProvider)
+      .then(() => {
+        history.goBack();
+        setHasHeader(true);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
 
   useEffect(() => {
@@ -40,7 +59,7 @@ function Login() {
         <div className="login__container">
           <div
             className="login__thumb"
-            style={{ backgroundImage: `url(${LoginThumbSvg})` }}
+            style={{ backgroundImage: `url(${LoadedImage(LoginThumbSvg)})` }}
           ></div>
 
           <div className="login__content">
@@ -70,6 +89,7 @@ function Login() {
               </Button>
 
               <Button
+                onClick={handleFacebookLogIn}
                 variant="contained"
                 className="login__option login__option--fb"
               >

@@ -26,7 +26,9 @@ function CheckoutInfo() {
         <Avatar src={photoURL} alt="User" />
         <div className="checkout-user-info__content">
           <span className="checkout-user-info__name">{displayName}</span>
-          <span className="checkout-user-info__email">({email})</span>
+          {email && (
+            <span className="checkout-user-info__email">({email})</span>
+          )}
           <div onClick={logout} className="checkout-user-info__btn">
             Log out
           </div>
