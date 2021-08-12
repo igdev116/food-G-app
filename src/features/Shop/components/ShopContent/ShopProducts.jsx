@@ -6,6 +6,7 @@ import PRIMARY_RED_COLOR from "constants/colors";
 import { ApiContext } from "contexts/ApiProvider";
 import { SHOP_PRODUCTS_VIEW } from "constants/localStorage";
 import { setShopProductsView } from "features/Shop/shopSlice";
+import { MOBILE_BREAKPOINT } from "constants/breakpoints";
 
 // material ui icons
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -31,9 +32,16 @@ function ShopProducts() {
   // get shop view type when user refresh page
   useEffect(() => {
     const view = localStorage.getItem(SHOP_PRODUCTS_VIEW);
-    const action = setShopProductsView(view);
 
-    dispatch(action);
+    if (window.innerWidth > MOBILE_BREAKPOINT) {
+      const action = setShopProductsView(view);
+
+      dispatch(action);
+    } else {
+      const action = setShopProductsView("grid");
+
+      dispatch(action);
+    }
   }, []);
 
   if (isLoading) {
@@ -56,7 +64,7 @@ function ShopProducts() {
         }
       >
         {shopProducts &&
-          shopProducts.map((item, index) => (
+          shopProducts.map((item) => (
             <ShopProduct openDialog={openDialog} key={item.id} {...item} />
           ))}
       </div>
