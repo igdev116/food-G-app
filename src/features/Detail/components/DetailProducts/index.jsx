@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
-import shopApi from "api/shopApi";
-import { setDetailProducts } from "features/Detail/detailSlice";
+import shopApi from 'apis/shopApi';
+import { setDetailProducts } from 'features/Detail/detailSlice';
 
-import ShopProduct from "components/ShopProduct";
-import Dialog from "components/Dialog";
+import ShopProduct from 'components/ShopProduct';
+import Dialog from 'components/Dialog';
 
-import "assets/styles/_typography.scss";
-import "./styles.scss";
+import 'assets/styles/_typography.scss';
+import './styles.scss';
 
 function DetailProducts() {
   const { name, id } = useParams();
@@ -56,15 +56,15 @@ function DetailProducts() {
   const moveToTop = () => {
     window.scrollTo({
       top: 250,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   };
 
   return (
-    <div className="detail-products">
-      <div className="primary-yellow-text">Best foods</div>
-      <h2 className="primary-heading-text">Related Products</h2>
-      <div className="detail-products__wrapper">
+    <div className='detail-products'>
+      <div className='primary-yellow-text'>Best foods</div>
+      <h2 className='primary-heading-text'>Related Products</h2>
+      <div className='detail-products__wrapper'>
         {products &&
           products.map((item) => (
             <ShopProduct

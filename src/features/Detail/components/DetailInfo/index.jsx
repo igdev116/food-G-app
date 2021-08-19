@@ -1,23 +1,23 @@
-import { useContext, useState, useLayoutEffect } from "react";
-import { useParams } from "react-router-dom";
-import PropTypes from "prop-types";
+import { useContext, useState, useLayoutEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-import useFirestoreProducts from "hooks/useFirestoreProducts";
-import { AuthContext } from "contexts/AuthProvider";
+import useFirestoreProducts from 'hooks/useFirestoreProducts';
+import { AuthContext } from 'contexts/AuthContext';
 
-import DetailContent from "./DetailContent";
+import DetailContent from './DetailContent';
 
 const dataOptions = [
   {
-    content: "Buy 2 get 15 percent off",
+    content: 'Buy 2 get 15 percent off',
     percentOff: 15,
   },
   {
-    content: "Buy 3 get 25 percent off",
+    content: 'Buy 3 get 25 percent off',
     percentOff: 25,
   },
   {
-    content: "Buy 5 get 50 percent off",
+    content: 'Buy 5 get 50 percent off',
     percentOff: 50,
   },
 ];
@@ -27,16 +27,16 @@ function DetailMain(props) {
   const { price } = product || 0;
 
   const [fixedPrice, setFixedPrice] = useState(price);
-  const [prevId, setPrevId] = useState("");
+  const [prevId, setPrevId] = useState('');
   const [qnt, setQnt] = useState(1);
-  const [selectedRadio, setSelectedRadio] = useState("");
+  const [selectedRadio, setSelectedRadio] = useState('');
 
   const params = useParams();
   const { id } = params;
-  const paramsName = params.name.replace("-", " ");
+  const paramsName = params.name.replace('-', ' ');
 
   const { addToFirestore } = useFirestoreProducts();
-  const { user } = useContext(AuthContext) ?? "";
+  const { user } = useContext(AuthContext) ?? '';
 
   const handleFuncs = {
     handleOptionChange: (e, percentOff) => {
@@ -72,13 +72,13 @@ function DetailMain(props) {
       setSelectedRadio(null);
     } else if (qnt >= 5) {
       setFixedPrice((price * qnt - price * 5 * 0.5).toFixed(2));
-      setSelectedRadio("Buy 5 get 50 percent off");
+      setSelectedRadio('Buy 5 get 50 percent off');
     } else if (qnt === 3) {
       setFixedPrice((price * 3 * 0.75).toFixed(2));
-      setSelectedRadio("Buy 3 get 25 percent off");
+      setSelectedRadio('Buy 3 get 25 percent off');
     } else if (qnt === 2) {
       setFixedPrice((price * 2 * 0.85).toFixed(2));
-      setSelectedRadio("Buy 2 get 15 percent off");
+      setSelectedRadio('Buy 2 get 15 percent off');
     } else {
       setFixedPrice(((price || 0) * 1).toFixed(2));
       setSelectedRadio(null);

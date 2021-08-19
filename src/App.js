@@ -1,29 +1,29 @@
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import Theme from "utils/customMaterialUi";
-import ApiProvider from "./contexts/ApiProvider";
-import AuthProvider from "./contexts/AuthProvider";
-import PrevFilterProvider from "./contexts/PrevFilterProvider";
-import Routes from "routes/Routes";
+import Theme from 'utils/customMaterialUi';
+import ApiProvider from './contexts/ApiContext';
+import AuthProvider from './contexts/AuthContext';
+import PrevFilterProvider from './contexts/PrevFilterContext';
+import Routes from 'routes/Routes';
 
 // gsap
-import gsap from "gsap";
+import gsap from 'gsap';
 
 // gsap plugins
-import ScrollTrigger from "gsap/ScrollTrigger";
+import ScrollTrigger from 'gsap/ScrollTrigger';
 
 // react toastify
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.min.css";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 // material ui core
-import { ThemeProvider } from "@material-ui/core/styles";
+import { ThemeProvider } from '@material-ui/core/styles';
 
-import Header from "components/Header";
-import Footer from "components/Footer";
-import ScrollButton from "components/ScrollButton";
+import Header from 'components/Header';
+import Footer from 'components/Footer';
+import ScrollButton from 'components/ScrollButton';
 
-import "./App.scss";
+import './App.scss';
 
 function App() {
   gsap.registerPlugin(ScrollTrigger);

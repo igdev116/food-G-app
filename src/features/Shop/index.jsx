@@ -1,17 +1,17 @@
-import { useEffect, useContext } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useEffect, useContext } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 
-import { ApiContext } from "contexts/ApiProvider";
-import { AuthContext } from "contexts/AuthProvider";
+import { ApiContext } from 'contexts/ApiContext';
+import { AuthContext } from 'contexts/AuthContext';
 
 // material ui core
-import { Container } from "@material-ui/core";
+import { Container } from '@material-ui/core';
 
-import Banner from "components/Banner";
-import ShopFilters from "./components/ShopFilters";
-import ShopContent from "./components/ShopContent";
+import Banner from 'components/Banner';
+import ShopFilters from './components/ShopFilters';
+import ShopContent from './components/ShopContent';
 
-import "./styles.scss";
+import './styles.scss';
 
 function Shop() {
   const { setHasHeader } = useContext(AuthContext);
@@ -22,7 +22,7 @@ function Shop() {
   const { getProducts } = useContext(ApiContext);
 
   // when browser loaded get url to re-render
-  window.addEventListener("load", () => {
+  window.addEventListener('load', () => {
     const params = history.location.search;
 
     if (params) {
@@ -45,10 +45,10 @@ function Shop() {
   }, [setHasHeader]);
 
   return (
-    <section className="shop">
+    <section className='shop'>
       <Banner />
       <Container>
-        <div className="shop__container">
+        <div className='shop__container'>
           <ShopFilters />
           <ShopContent />
         </div>

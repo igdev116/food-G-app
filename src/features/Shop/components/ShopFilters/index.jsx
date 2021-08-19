@@ -1,52 +1,52 @@
-import { useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useContext } from 'react';
+import { useParams } from 'react-router-dom';
 
-import { ApiContext } from "contexts/ApiProvider";
-import { PrevFilterContext } from "contexts/PrevFilterProvider";
+import { ApiContext } from 'contexts/ApiContext';
+import { PrevFilterContext } from 'contexts/PrevFilterContext';
 
-import Checkbox from "components/Checkbox";
+import Checkbox from 'components/Checkbox';
 
 // material ui icons
-import StarIcon from "@material-ui/icons/Star";
-import StarBorderIcon from "@material-ui/icons/StarBorder";
+import StarIcon from '@material-ui/icons/Star';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
 
-import { Bread, Burger, Drinks, Pizza, Sandwich } from "utils/shopSvgs";
+import { Bread, Burger, Drinks, Pizza, Sandwich } from 'utils/shopSvgs';
 
-import "./styles.scss";
+import './styles.scss';
 
 const typeOptions = [
   {
     img: Burger,
-    name: "Burgers",
-    type: "burgers",
+    name: 'Burgers',
+    type: 'burgers',
   },
   {
     img: Bread,
-    name: "Breads",
-    type: "breads",
+    name: 'Breads',
+    type: 'breads',
   },
   {
     img: Sandwich,
-    name: "Sandwiches",
-    type: "sandwiches",
+    name: 'Sandwiches',
+    type: 'sandwiches',
   },
   {
     img: Drinks,
-    name: "Drinks",
-    type: "drinks",
+    name: 'Drinks',
+    type: 'drinks',
   },
   {
     img: Pizza,
-    name: "Pizzas",
-    type: "pizzas",
+    name: 'Pizzas',
+    type: 'pizzas',
   },
 ];
 
 const priceOptions = [
-  { content: "Under $100", range: { price_lte: 100 } },
-  { content: "$50 to $100", range: { price_gte: 50, price_lte: 100 } },
-  { content: "Under $50", range: { price_lte: 50 } },
-  { content: "Above $100", range: { price_gte: 100 } },
+  { content: 'Under $100', range: { price_lte: 100 } },
+  { content: '$50 to $100', range: { price_gte: 50, price_lte: 100 } },
+  { content: 'Under $50', range: { price_lte: 50 } },
+  { content: 'Above $100', range: { price_gte: 100 } },
 ];
 
 function ShopFilters() {
@@ -58,7 +58,7 @@ function ShopFilters() {
 
   const onFilterByName = (params) => {
     const { prevName, setPrevName, setSelectedRadio, setNameActive } =
-      handlePrevious("name", params);
+      handlePrevious('name', params);
 
     if (params !== prevName) {
       getProducts(params);
@@ -70,7 +70,7 @@ function ShopFilters() {
   };
 
   const onFilterByPrice = (params) => {
-    const { prevPrice, setPrevPrice } = handlePrevious("price", params);
+    const { prevPrice, setPrevPrice } = handlePrevious('price', params);
 
     if (prevPrice !== params) {
       getProducts(name, params);
@@ -87,7 +87,7 @@ function ShopFilters() {
 
   const onFilterByRate = (params) => {
     const stringParams = JSON.stringify(params); // covert to string to compare
-    const { prevRate, setPrevRate } = handlePrevious("rate", params);
+    const { prevRate, setPrevRate } = handlePrevious('rate', params);
 
     if (prevRate !== stringParams) {
       getProducts(name, params);
@@ -97,27 +97,26 @@ function ShopFilters() {
   };
 
   return (
-    <div className="shop-filters">
-      <h2 className="shop-filters__title">Popular</h2>
-      <ul className="shop-filters__list">
+    <div className='shop-filters'>
+      <h2 className='shop-filters__title'>Popular</h2>
+      <ul className='shop-filters__list'>
         {typeOptions.map(({ img, name, type }) => (
           <li
             key={name}
             onClick={() => onFilterByName(type)}
             className={
               type === nameActive
-                ? "shop-filters__item active"
-                : "shop-filters__item"
-            }
-          >
-            <img src={img} alt="Shop icons" />
-            <span className="shop-filters__item-name">{name}</span>
+                ? 'shop-filters__item active'
+                : 'shop-filters__item'
+            }>
+            <img src={img} alt='Shop icons' />
+            <span className='shop-filters__item-name'>{name}</span>
           </li>
         ))}
       </ul>
 
-      <h2 className="shop-filters__title">Price</h2>
-      <form className="shop-filters__form">
+      <h2 className='shop-filters__title'>Price</h2>
+      <form className='shop-filters__form'>
         {priceOptions.map(({ content, range }) => (
           <Checkbox
             key={content}
@@ -130,11 +129,10 @@ function ShopFilters() {
         ))}
       </form>
 
-      <h2 className="shop-filters__title">Rate</h2>
+      <h2 className='shop-filters__title'>Rate</h2>
       <div
         onClick={() => onFilterByRate({ rate_like: 5 })}
-        className="shop-filters__stars"
-      >
+        className='shop-filters__stars'>
         <StarIcon />
         <StarIcon />
         <StarIcon />
@@ -144,8 +142,7 @@ function ShopFilters() {
       </div>
       <div
         onClick={() => onFilterByRate({ rate_like: 4 })}
-        className="shop-filters__stars"
-      >
+        className='shop-filters__stars'>
         <StarIcon />
         <StarIcon />
         <StarIcon />
@@ -155,8 +152,7 @@ function ShopFilters() {
       </div>
       <div
         onClick={() => onFilterByRate({ rate_like: 3 })}
-        className="shop-filters__stars"
-      >
+        className='shop-filters__stars'>
         <StarIcon />
         <StarIcon />
         <StarIcon />

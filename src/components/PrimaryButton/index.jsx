@@ -1,16 +1,16 @@
-import React, { useContext } from "react";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import PropTypes from "prop-types";
+import React, { useContext } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-import { ApiContext } from "contexts/ApiProvider";
-import { setIsAtCheckout, setIsShowCart } from "components/Header/headerSlice";
-import { setIsShowWishlist } from "components/Wishlist/wishlistSlice";
+import { ApiContext } from 'contexts/ApiContext';
+import { setIsAtCheckout, setIsShowCart } from 'components/Header/headerSlice';
+import { setIsShowWishlist } from 'components/Wishlist/wishlistSlice';
 
 // material ui core
-import { Button } from "@material-ui/core";
+import { Button } from '@material-ui/core';
 
-import "./styles.scss";
+import './styles.scss';
 
 function PrimaryButton(props) {
   const { page, subClass, children } = props;
@@ -28,21 +28,21 @@ function PrimaryButton(props) {
     dispatch(cartAction);
     dispatch(wishlistAction);
 
-    if (page === "shop") {
+    if (page === 'shop') {
       const action = setIsAtCheckout(false);
 
-      history.push("/shop/best-foods");
-      getProducts("best-foods");
+      history.push('/shop/best-foods');
+      getProducts('best-foods');
       dispatch(action);
-    } else if (page === "checkout") {
+    } else if (page === 'checkout') {
       const action = setIsAtCheckout(true);
 
-      history.push("/checkout");
+      history.push('/checkout');
       dispatch(action);
-    } else if (page === "login") {
+    } else if (page === 'login') {
       const action = setIsAtCheckout(false);
 
-      history.push("/login");
+      history.push('/login');
       dispatch(action);
     }
   };
@@ -50,8 +50,7 @@ function PrimaryButton(props) {
   return (
     <Button
       onClick={handleMovePage}
-      className={`primary-btn ${subClass || ""}`}
-    >
+      className={`primary-btn ${subClass || ''}`}>
       {children}
     </Button>
   );

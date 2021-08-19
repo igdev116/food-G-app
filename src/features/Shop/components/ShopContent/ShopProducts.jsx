@@ -1,21 +1,21 @@
-import { useContext, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import PropTypes from "prop-types";
+import { useContext, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import PRIMARY_RED_COLOR from "constants/colors";
-import { ApiContext } from "contexts/ApiProvider";
-import { SHOP_PRODUCTS_VIEW } from "constants/localStorage";
-import { setShopProductsView } from "features/Shop/shopSlice";
-import { MOBILE_BREAKPOINT } from "constants/breakpoints";
+import PRIMARY_RED_COLOR from 'constants/colors';
+import { ApiContext } from 'contexts/ApiContext';
+import { SHOP_PRODUCTS_VIEW } from 'constants/localStorage';
+import { setShopProductsView } from 'features/Shop/shopSlice';
+import { MOBILE_BREAKPOINT } from 'constants/breakpoints';
 
 // material ui icons
-import CircularProgress from "@material-ui/core/CircularProgress";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-import ShopProduct from "components/ShopProduct";
-import Dialog from "components/Dialog";
-import ShopEmpty from "./ShopEmpty";
+import ShopProduct from 'components/ShopProduct';
+import Dialog from 'components/Dialog';
+import ShopEmpty from './ShopEmpty';
 
-import "./ShopProducts.scss";
+import './ShopProducts.scss';
 
 function ShopProducts() {
   const [isShowDialog, setIsShowDialog] = useState(false);
@@ -38,7 +38,7 @@ function ShopProducts() {
 
       dispatch(action);
     } else {
-      const action = setShopProductsView("grid");
+      const action = setShopProductsView('grid');
 
       dispatch(action);
     }
@@ -46,7 +46,7 @@ function ShopProducts() {
 
   if (isLoading) {
     return (
-      <div className="spinner">
+      <div className='spinner'>
         <CircularProgress thickness={5} style={{ color: PRIMARY_RED_COLOR }} />
       </div>
     );
@@ -58,11 +58,10 @@ function ShopProducts() {
 
       <div
         className={
-          shopProductsView === "list"
-            ? "shop-products display-flex"
-            : "shop-products"
-        }
-      >
+          shopProductsView === 'list'
+            ? 'shop-products display-flex'
+            : 'shop-products'
+        }>
         {shopProducts &&
           shopProducts.map((item) => (
             <ShopProduct openDialog={openDialog} key={item.id} {...item} />

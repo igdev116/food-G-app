@@ -1,12 +1,12 @@
-import { useContext } from "react";
-import { useSelector } from "react-redux";
+import { useContext } from 'react';
+import { useSelector } from 'react-redux';
 
-import useFirestoreProducts from "hooks/useFirestoreProducts";
-import { AuthContext } from "contexts/AuthProvider";
+import useFirestoreProducts from 'hooks/useFirestoreProducts';
+import { AuthContext } from 'contexts/AuthContext';
 
-import CartItem from "./CartItem";
+import CartItem from './CartItem';
 
-import "./styles.scss";
+import './styles.scss';
 
 function CartItems() {
   const cartProducts = useSelector((state) => state.cart);
@@ -16,7 +16,7 @@ function CartItems() {
 
   const handleAddToFirestore = (product, action) => {
     addToFirestore(user.uid, {
-      type: "success",
+      type: 'success',
       productInfo: product,
       action: action,
     });
@@ -24,13 +24,13 @@ function CartItems() {
 
   const handleRemoveFromFirestore = (product) => {
     removeFromFirestore(user.uid, {
-      type: "success",
+      type: 'success',
       productInfo: product,
     });
   };
 
   return (
-    <div className="cart-items">
+    <div className='cart-items'>
       {cartProducts.map((product) => (
         <CartItem
           handleAddToFirestore={handleAddToFirestore}

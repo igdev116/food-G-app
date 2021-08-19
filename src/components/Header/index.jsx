@@ -1,33 +1,33 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import React, { useContext, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
-import { AuthContext } from "contexts/AuthProvider";
-import { auth } from "configs/firebaseConfig";
-import { setIsAtCheckout, setIsShowCart } from "./headerSlice";
-import { setIsShowWishlist } from "components/Wishlist/wishlistSlice";
+import { AuthContext } from 'contexts/AuthContext';
+import { auth } from 'configs/firebaseConfig';
+import { setIsAtCheckout, setIsShowCart } from './headerSlice';
+import { setIsShowWishlist } from 'components/Wishlist/wishlistSlice';
 
 // material ui core
-import { Container, Avatar } from "@material-ui/core";
+import { Container, Avatar } from '@material-ui/core';
 
 // material ui icons
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import HomeIcon from "@material-ui/icons/Home";
-import RestaurantMenuIcon from "@material-ui/icons/RestaurantMenu";
-import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
-import StoreMallDirectoryIcon from "@material-ui/icons/StoreMallDirectory";
-import EmojiFoodBeverageIcon from "@material-ui/icons/EmojiFoodBeverage";
-import LoyaltyOutlinedIcon from "@material-ui/icons/LoyaltyOutlined";
-import PermContactCalendarIcon from "@material-ui/icons/PermContactCalendar";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import HomeIcon from '@material-ui/icons/Home';
+import RestaurantMenuIcon from '@material-ui/icons/RestaurantMenu';
+import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
+import StoreMallDirectoryIcon from '@material-ui/icons/StoreMallDirectory';
+import EmojiFoodBeverageIcon from '@material-ui/icons/EmojiFoodBeverage';
+import LoyaltyOutlinedIcon from '@material-ui/icons/LoyaltyOutlined';
+import PermContactCalendarIcon from '@material-ui/icons/PermContactCalendar';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
-import Dialog from "components/Dialog";
-import BurgerNavbar from "./BurgerNavbar";
-import Cart from "components/Cart";
-import Wishlist from "components/Wishlist";
+import Dialog from 'components/Dialog';
+import BurgerNavbar from './BurgerNavbar';
+import Cart from 'components/Cart';
+import Wishlist from 'components/Wishlist';
 
-import Logo from "assets/svgs/Common/logo.svg";
-import "./styles.scss";
+import Logo from 'assets/svgs/Common/logo.svg';
+import './styles.scss';
 
 function Header() {
   const [isStickyTop, setIsStickyTop] = useState(false);
@@ -50,13 +50,13 @@ function Header() {
   const handleBackToHome = () => {
     const action = setIsAtCheckout(false);
 
-    history.push("/home");
+    history.push('/home');
     setIsAtCheckout(false);
     dispatch(action);
   };
 
   const handleLogIn = () => {
-    history.push("/login");
+    history.push('/login');
   };
 
   const handleLogOut = () => {
@@ -88,9 +88,9 @@ function Header() {
       }
     };
 
-    window.addEventListener("scroll", scrollShowNav);
+    window.addEventListener('scroll', scrollShowNav);
 
-    return window.addEventListener("scroll", scrollShowNav);
+    return window.addEventListener('scroll', scrollShowNav);
   }, []);
 
   // handle products quanity
@@ -106,83 +106,79 @@ function Header() {
   return (
     <>
       <header
-        className={isStickyTop ? "navbar active" : "navbar"}
-        style={{ display: hasHeader ? "block" : "none" }}
-      >
+        className={isStickyTop ? 'navbar active' : 'navbar'}
+        style={{ display: hasHeader ? 'block' : 'none' }}>
         <Container>
           <div
             className={
-              isAtCheckout ? "navbar__container checkout" : "navbar__container"
-            }
-          >
+              isAtCheckout ? 'navbar__container checkout' : 'navbar__container'
+            }>
             {/* mobile */}
             <EmojiFoodBeverageIcon
               onClick={showBurgerNav}
-              className="hamburger-btn"
+              className='hamburger-btn'
             />
 
             {/* desktop */}
-            <div onClick={handleBackToHome} className="navbar__link">
-              <img className="navbar__logo" src={Logo} alt="logo" />
+            <div onClick={handleBackToHome} className='navbar__link'>
+              <img className='navbar__logo' src={Logo} alt='logo' />
             </div>
 
-            <div className="navbar--left">
-              <ul className="navbar__list">
-                <li className="navbar__item">
+            <div className='navbar--left'>
+              <ul className='navbar__list'>
+                <li className='navbar__item'>
                   <HomeIcon />
                   Pages
                 </li>
-                <li className="navbar__item">
+                <li className='navbar__item'>
                   <RestaurantMenuIcon />
                   Order online
                 </li>
-                <li className="navbar__item">
+                <li className='navbar__item'>
                   <LibraryBooksIcon />
                   News
                 </li>
-                <li className="navbar__item">
+                <li className='navbar__item'>
                   <StoreMallDirectoryIcon />
                   Store locations
                 </li>
               </ul>
             </div>
 
-            <div className="navbar--right">
-              <div onClick={toggleCart} className="navbar__cart">
+            <div className='navbar--right'>
+              <div onClick={toggleCart} className='navbar__cart'>
                 <ShoppingCartIcon />
-                <div className="navbar__cart-qnt">{user ? totalQnt : 0}</div>
+                <div className='navbar__cart-qnt'>{user ? totalQnt : 0}</div>
               </div>
 
               {user ? (
-                <div className="navbar__account">
+                <div className='navbar__account'>
                   <Avatar src={user.photoURL} />
-                  <div className="navbar__username">{user.displayName}</div>
+                  <div className='navbar__username'>{user.displayName}</div>
 
-                  <ul className="navbar__account-options">
-                    <li className="navbar__account-option">
+                  <ul className='navbar__account-options'>
+                    <li className='navbar__account-option'>
                       <PermContactCalendarIcon />
-                      <span>My account</span>{" "}
+                      <span>My account</span>{' '}
                     </li>
                     <li
                       onClick={toggleWishlist}
-                      className="navbar__account-option"
-                    >
+                      className='navbar__account-option'>
                       <LoyaltyOutlinedIcon />
-                      <span>My wishlist</span>{" "}
+                      <span>My wishlist</span>{' '}
                     </li>
                     <li
                       onClick={handleLogOut}
-                      className="navbar__account-option"
-                    >
+                      className='navbar__account-option'>
                       <ExitToAppIcon />
                       <span>Logout</span>
                     </li>
                   </ul>
                 </div>
               ) : (
-                <div onClick={handleLogIn} className="navbar__account">
+                <div onClick={handleLogIn} className='navbar__account'>
                   <Avatar />
-                  <div className="navbar__username navbar__username--signed-out">
+                  <div className='navbar__username navbar__username--signed-out'>
                     Sign In
                   </div>
                 </div>

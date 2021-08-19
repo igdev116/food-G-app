@@ -1,14 +1,14 @@
-import { useContext, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useContext, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
-import { AuthContext } from "contexts/AuthProvider";
-import { setIsAtCheckout } from "components/Header/headerSlice";
+import { AuthContext } from 'contexts/AuthContext';
+import { setIsAtCheckout } from 'components/Header/headerSlice';
 
-import CheckoutBanner from "./components/CheckoutBanner";
-import CheckoutContent from "./components/CheckoutContent";
-import CheckoutLogin from "./components/CheckoutLogin";
+import CheckoutBanner from './components/CheckoutBanner';
+import CheckoutContent from './components/CheckoutContent';
+import CheckoutLogin from './components/CheckoutLogin';
 
-import "./Checkout.scss";
+import './Checkout.scss';
 
 function Checkout() {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ function Checkout() {
   }, []);
 
   return (
-    <div className="checkout">
+    <div className='checkout'>
       <CheckoutBanner />
       {user ? <CheckoutContent /> : <CheckoutLogin />}
     </div>

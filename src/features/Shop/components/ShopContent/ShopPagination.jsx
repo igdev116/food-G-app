@@ -1,18 +1,18 @@
-import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
-import { ApiContext } from "contexts/ApiProvider";
-import { PrevFilterContext } from "contexts/PrevFilterProvider";
-import shopApi from "api/shopApi";
+import { ApiContext } from 'contexts/ApiContext';
+import { PrevFilterContext } from 'contexts/PrevFilterContext';
+import shopApi from 'apis/shopApi';
 
 // react paginate
-import ReactPaginate from "react-paginate";
+import ReactPaginate from 'react-paginate';
 
 // material ui icons
-import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
-import NavigateNextIcon from "@material-ui/icons/NavigateNext";
+import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
-import "./ShopPagination.scss";
+import './ShopPagination.scss';
 
 function ShopPagination() {
   const [filteredProductsLen, setFilteredProductsLen] = useState(0);
@@ -50,7 +50,7 @@ function ShopPagination() {
       _page: selected + 1,
     };
 
-    handlePrevious("pagination");
+    handlePrevious('pagination');
     getProducts(name, params);
   };
 
@@ -62,7 +62,7 @@ function ShopPagination() {
       pageRangeDisplayed={3}
       onPageChange={handlePagination}
       marginPagesDisplayed={1}
-      containerClassName={"shop-pagination"}
+      containerClassName={'shop-pagination'}
       forcePage={paginationActive}
     />
   );

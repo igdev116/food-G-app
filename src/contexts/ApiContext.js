@@ -1,14 +1,14 @@
-import { useContext, useEffect, useState, createContext } from "react";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useContext, useEffect, useState, createContext } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
-import shopApi from "api/shopApi";
-import { setShopProducts } from "features/Shop/shopSlice";
-import { PrevFilterContext } from "./PrevFilterProvider";
-import { PHONE_BREAKPOINT } from "constants/breakpoints";
+import shopApi from 'apis/shopApi';
+import { setShopProducts } from 'features/Shop/shopSlice';
+import { PrevFilterContext } from './PrevFilterContext';
+import { PHONE_BREAKPOINT } from 'constants/breakpoints';
 
 // query string
-import queryString from "query-string";
+import queryString from 'query-string';
 
 const ApiContext = createContext();
 
@@ -34,22 +34,22 @@ const ApiProvider = ({ children }) => {
 
   // handle when user refresh to phone mode
   useEffect(() => {
-    window.addEventListener("load", checkIsAtPhone);
+    window.addEventListener('load', checkIsAtPhone);
 
-    return window.addEventListener("load", checkIsAtPhone);
+    return window.addEventListener('load', checkIsAtPhone);
   }, []);
 
   // handle when user resize to phone mode
   useEffect(() => {
-    window.addEventListener("resize", checkIsAtPhone);
+    window.addEventListener('resize', checkIsAtPhone);
 
-    return window.addEventListener("resize", checkIsAtPhone);
+    return window.addEventListener('resize', checkIsAtPhone);
   }, []);
 
   // call api to get obj have pagination
   useEffect(() => {
     const getPagination = async () => {
-      const response = await shopApi.getAll("pagination");
+      const response = await shopApi.getAll('pagination');
       setTotalRows(response);
     };
 
@@ -59,7 +59,7 @@ const ApiProvider = ({ children }) => {
   const getProducts = async (type, params) => {
     const { prevPrice, prevRate, prevSearch } = handlePrevious();
     const currentPagination =
-      params && params.hasOwnProperty("_page") && params["_page"];
+      params && params.hasOwnProperty('_page') && params['_page'];
 
     const valueWithPage =
       currentPagination && (prevPrice || JSON.parse(prevRate) || prevSearch); // get params when paginate
@@ -115,8 +115,7 @@ const ApiProvider = ({ children }) => {
         getProducts,
         totalRows,
         paginationActive,
-      }}
-    >
+      }}>
       {children}
     </ApiContext.Provider>
   );

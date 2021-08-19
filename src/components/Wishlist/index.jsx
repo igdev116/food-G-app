@@ -1,24 +1,24 @@
-import React, { useContext, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useContext, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { AuthContext } from "contexts/AuthProvider";
-import { db } from "configs/firebaseConfig";
-import { addToWishlist, setIsShowWishlist } from "./wishlistSlice";
-import useFirestoreProducts from "hooks/useFirestoreProducts";
+import { AuthContext } from 'contexts/AuthContext';
+import { db } from 'configs/firebaseConfig';
+import { addToWishlist, setIsShowWishlist } from './wishlistSlice';
+import useFirestoreProducts from 'hooks/useFirestoreProducts';
 
 // material ui core
-import { Button } from "@material-ui/core";
+import { Button } from '@material-ui/core';
 
 // material ui icons
-import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
-import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
-import RadioOutlinedIcon from "@material-ui/icons/RadioOutlined";
+import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
+import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
+import RadioOutlinedIcon from '@material-ui/icons/RadioOutlined';
 
-import EmptyCart from "components/EmptyCart";
+import EmptyCart from 'components/EmptyCart';
 
-import EmptyCartImg from "assets/svgs/Common/empty-cart.svg";
+import EmptyCartImg from 'assets/svgs/Common/empty-cart.svg';
 
-import "./styles.scss";
+import './styles.scss';
 
 function Wishlist() {
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ function Wishlist() {
   // get data from firestore
   useEffect(() => {
     if (user) {
-      db.collection("users")
+      db.collection('users')
         .doc(user.uid)
         .onSnapshot((doc) => {
           if (doc.data()) {
@@ -47,7 +47,7 @@ function Wishlist() {
 
   const handleRemoveFromFirestore = (product) => {
     removeFromFirestore(user.uid, {
-      type: "wishlist",
+      type: 'wishlist',
       productInfo: product,
     });
   };
@@ -59,9 +59,9 @@ function Wishlist() {
   };
 
   return (
-    <div className={isShowWishlist ? "wishlist active" : "wishlist"}>
-      <div className="wishlist__top">
-        <div className="wishlist__shop">
+    <div className={isShowWishlist ? 'wishlist active' : 'wishlist'}>
+      <div className='wishlist__top'>
+        <div className='wishlist__shop'>
           <RadioOutlinedIcon />
           <span>Your wishlist</span>
         </div>
@@ -71,20 +71,20 @@ function Wishlist() {
         </Button>
       </div>
 
-      <div className="wishlist__items">
+      <div className='wishlist__items'>
         {wishlistProducts.length <= 0 && (
-          <EmptyCart src={EmptyCartImg} type="wishlist" />
+          <EmptyCart src={EmptyCartImg} type='wishlist' />
         )}
         {wishlistProducts.map(
           ({ id, name, img, dsc, price, rate, country }) => (
-            <div key={id} className="wishlist__item">
-              <div className="wishlist__img">
-                <img src={img} alt="Wishlist" />
+            <div key={id} className='wishlist__item'>
+              <div className='wishlist__img'>
+                <img src={img} alt='Wishlist' />
               </div>
-              <div className="wishlist__content">
-                <span className="wishlist__name">{name}</span>
-                <p className="wishlist__description">{dsc}</p>
-                <span className="wishlist__price">${price}</span>
+              <div className='wishlist__content'>
+                <span className='wishlist__name'>{name}</span>
+                <p className='wishlist__description'>{dsc}</p>
+                <span className='wishlist__price'>${price}</span>
               </div>
 
               <Button
@@ -99,8 +99,7 @@ function Wishlist() {
                     country,
                   })
                 }
-                className="wishlist__rm"
-              >
+                className='wishlist__rm'>
                 <DeleteOutlineIcon />
               </Button>
             </div>
