@@ -9,7 +9,7 @@
 6. Yup
 7. Swiper
 8. Redux-toolkit
-9. Firebase
+9. Firebase (Authentication, Firestore)
 10. Styled-component
 11. React-lazy-load-image-component
 12. React-paginate
@@ -19,8 +19,6 @@
 16. React-content-loader
 17. React-select
 18. Gsap
-19.Firebase authentication
-20.Firebase firestore
 ```
 
 ## Folder structure
