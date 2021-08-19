@@ -1,6 +1,8 @@
 <h1 align='center'>Food-G Order App 🍕</h1>
 
-### **🍺 Live Demo:** https://food-g-app.web.app/home
+#### **🍺 Live Demo:** https://food-g-app.web.app/home
+
+<br />
 
 ### **🍩 Technologies**
 
