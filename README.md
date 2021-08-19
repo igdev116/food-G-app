@@ -1,31 +1,42 @@
-## What we use?
+<h1 align='center'>Food-G Order App 🍕</h1>
 
-```
-1. SCSS
-2. Material UI
-3. React-router-dom
-4. Axios
-5. React-hook-form
-6. Yup
-7. Swiper
-8. Redux-toolkit
-9. Firebase (Authentication, Firestore)
-10. Styled-component
-11. React-lazy-load-image-component
-12. React-paginate
-13. React-image-magnifiers
-14. React-toastify
-15. React-timeago
-16. React-content-loader
-17. React-select
-18. Gsap
-```
+### **🍺 Live Demo:** https://food-g-app.web.app/home
 
-## Folder structure
+<br />
+
+### **🍩 Technologies**
+
+- Frontend
+
+  - SCSS
+  - Material UI
+  - Axios
+  - React-router-dom
+  - Redux-toolkit
+  - Styled-component
+  - Swiper
+  - Gsap
+  - Yup
+  - React-hook-form
+  - React-lazy-load-image-component
+  - React-paginate
+  - React-image-magnifiers
+  - React-toastify
+  - React-timeago
+  - React-content-loader
+  - React-select
+
+- Backend
+
+  - Firebase (Authentication, Firestore)
+    <br />
+    <br />
+
+### **🏨 Folder structure**
 
 ```
 src
-|__api
+|__apis
 |__app
 |__assets
 |__components
@@ -36,4 +47,36 @@ src
 |__hooks
 |__routes
 |__utils
+```
+
+<br />
+
+### **⚙ Install**
+
+1. Clone Project
+
+```
+  git clone https://github.com/igdev116/food-G-app.git
+```
+
+2. Install Packages
+
+```
+  npm install (or yarn install)
+```
+
+3. Run Project\
+   **Note:** Because this project is using **mkcert** to make locally-trusted development certificates so you have to change the **script** in **package.json** file
+
+```js
+  // from 👀
+  "start": "set HTTPS=true&&set..."
+  // to 👏
+  "start": "react-scripts start"
+```
+
+4. Using
+
+```
+  npm start (or yarn start)
 ```
