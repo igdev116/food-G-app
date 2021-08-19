@@ -2,9 +2,7 @@
 
 #### **🍺 Live Demo:** https://food-g-app.web.app/home
 
-<br />
-
-### **🍩 Technologies**
+#### **🍩 Technologies**
 
 - Frontend
 
@@ -29,10 +27,8 @@
 - Backend
 
   - Firebase (Authentication, Firestore)
-    <br />
-    <br />
 
-### **🏨 Folder structure**
+#### **🏨 Folder structure**
 
 ```
 src
@@ -49,9 +45,7 @@ src
 |__utils
 ```
 
-<br />
-
-### **⚙ Install**
+#### **⚙ Install**
 
 1. Clone Project
 
