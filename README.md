@@ -2,8 +2,6 @@
 
 ### **🍺 Live Demo:** https://food-g-app.web.app/home
 
-<br />
-
 ### **🍩 Technologies**
 
 - Frontend
