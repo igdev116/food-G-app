@@ -1,13 +1,13 @@
-import axios from "axios";
-import queryString from "query-string";
+import axios from 'axios';
+import queryString from 'query-string';
 
-const baseURL = "https://ig-food-menus.herokuapp.com/";
+const baseURL = 'https://free-food-menus-api-production.up.railway.app/';
 
 const axiosClient = axios.create({
   // baseURL: process.env.REACT_APP_API_URL,
   baseURL: baseURL,
   headers: {
-    "content-type": "application/json",
+    'content-type': 'application/json',
   },
   paramsSerializer: (params) => queryString.stringify(params),
 });
