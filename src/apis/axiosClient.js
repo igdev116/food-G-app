@@ -1,7 +1,7 @@
 import axios from 'axios';
 import queryString from 'query-string';
 
-const baseURL = 'https://free-food-menus-api-production.up.railway.app/';
+const baseURL = 'https://tiny-blue-vulture-shoe.cyclic.app/';
 
 const axiosClient = axios.create({
   // baseURL: process.env.REACT_APP_API_URL,
